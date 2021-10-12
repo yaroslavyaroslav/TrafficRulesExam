@@ -47,7 +47,7 @@
         </outline>
         <outline text="0.4">
           <outline text="0.4.0">
-            <outline text="Экран статистики тестов"/>
+            <outline text="Экран статистики теста"/>
             <outline text="Режим решения">
               <outline text="Как на экзамене" _note="20 вопросов из одного билета"/>
               <outline text="Решение по темам"/>
@@ -142,6 +142,5 @@
         </outline>
       </outline>
     </outline>
-    <outline text=""/>
   </body>
 </opml>

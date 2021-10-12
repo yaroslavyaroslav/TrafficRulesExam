@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "YandexMobileMetrica",
+        "repositoryURL": "https://github.com/yandexmobile/metrica-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "8be51a74e2f4449e2f3d4e69824c5feba2787584",
+          "version": "4.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

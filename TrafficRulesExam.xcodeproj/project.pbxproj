@@ -15,6 +15,8 @@
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
 		5C85388427159AF400D8853E /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85388327159AF400D8853E /* Hero */; };
 		5C85388727159B8A00D8853E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85388627159B8A00D8853E /* Lottie */; };
+		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
+		5C85388B27183D5900D8853E /* ExamCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		5C453E122714730A006BFFCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C453E142714730D006BFFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C453E172714730D006BFFCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
+		5C85388A27183D5900D8853E /* ExamCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 			children = (
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C453E122714730A006BFFCB /* ContentView.swift */,
+				5C85388A27183D5900D8853E /* ExamCardModel.swift */,
 				5C453E142714730D006BFFCB /* Assets.xcassets */,
 				5C453E162714730D006BFFCB /* Preview Content */,
+				5C85388827182F3800D8853E /* ExamCards.json */,
 			);
 			path = TrafficRulesExam;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C85388927182F3900D8853E /* ExamCards.json in Resources */,
 				5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */,
 				5C453E152714730D006BFFCB /* Assets.xcassets in Resources */,
 			);
@@ -157,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C453E132714730A006BFFCB /* ContentView.swift in Sources */,
+				5C85388B27183D5900D8853E /* ExamCardModel.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

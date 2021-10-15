@@ -25,14 +25,14 @@ struct Answer: Codable {
 }
 
 struct Question: Codable {
-    let id: Int
+    let id: Decimal
     let text: String
     let picture: URL?
     let answers: [Answer]
 }
 
 struct ExamCardModel: Codable {
-    let id: Int
+    let id: Decimal
     let questions: [Question]
     let correctAnswer: AnswerID
     let hint: String

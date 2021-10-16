@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ExamCard.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 14.10.2021.
@@ -8,18 +8,18 @@
 import Foundation
 
 
-enum AnswerID: Codable {
-    case a, b, v, g
+enum AnswerID: Int, Codable {
+    case a, b, c, d
     
     init(from decoder: Decoder) throws {
         
-        let label = try decoder.singleValueContainer().decode(String.self)
+        let label = try decoder.singleValueContainer().decode(Int.self)
         
         switch label {
-        case "А": self = .a
-        case "Б": self = .b
-        case "В": self = .v
-        case "Г": self = .g
+        case 1: self = .a
+        case 2: self = .b
+        case 3: self = .c
+        case 4: self = .d
         default: fatalError()
         }
     }
@@ -28,10 +28,10 @@ enum AnswerID: Codable {
 extension AnswerID {
     var stringValue: String {
         switch self {
-        case .a: return "А"
-        case .b: return "Б"
-        case .v: return "В"
-        case .g: return "Г"
+        case .a: return "1."
+        case .b: return "2."
+        case .c: return "3."
+        case .d: return "4."
         }
     }
 }
@@ -54,7 +54,7 @@ struct Question: Codable, Identifiable {
     let topic: String
 }
 
-struct ExamCard: Codable {
+struct ExamCard: Codable, Identifiable {
     let id: Decimal
     let questions: [Question]
 }

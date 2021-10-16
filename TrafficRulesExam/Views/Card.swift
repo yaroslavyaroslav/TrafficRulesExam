@@ -12,8 +12,9 @@ struct Card: View {
     var card: ExamCard
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
             QuestionCard(questions: card.questions, questionDetails: card.questions[0])
+            Spacer()
         }
     }
 }

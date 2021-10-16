@@ -13,11 +13,35 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            Text(question.picture?.absoluteString ?? "this is link")
-                .padding()
-            Text("\(question.text) \((question.id + 1).description)")
-                .padding()
+            VStack(alignment: .center) {
+                Text("Вопрос \(question.id.description).")
+            }
+            .padding(10)
+            Spacer()
+            
+            if let picture = question.picture {
+                Text(picture.absoluteString).padding(10)
+                Spacer()
+            }
+            
+            if #available(iOS 15.0, *) {
+                HStack(alignment: .top, spacing: 10) {
+                    Text(question.text)
+                }
+                .padding(10)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .background {
+                    Color(UIColor.green)
+                }
+            } else {
+                fatalError()
+            }
+            
+            
+            
+            Spacer()
             Answers(answers: question.answers)
+            Spacer()
         }
     }
 }

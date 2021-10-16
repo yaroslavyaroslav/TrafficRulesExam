@@ -12,8 +12,22 @@ struct Answers: View {
     var answers: [Answer]
     
     var body: some View {
-        ForEach(answers) { answer in
-            Text(answer.text)
+        VStack(alignment: .leading, spacing: 0) {
+            ForEach(answers) { answer in
+                if #available(iOS 15.0, *) {
+                    HStack(alignment: .top, spacing: 10) {
+                        Text(answer.id.stringValue)
+                        Text(answer.text)
+                    }
+                    .padding(10)
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    .background {
+                        Color(UIColor.green)
+                    }
+                } else {
+                    fatalError()
+                }
+            }
         }
     }
 }

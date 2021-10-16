@@ -12,7 +12,7 @@ struct Answers: View {
     var answers: [Answer]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 5) {
             ForEach(answers) { answer in
                 if #available(iOS 15.0, *) {
                     HStack(alignment: .top, spacing: 10) {

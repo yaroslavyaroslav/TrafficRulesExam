@@ -13,18 +13,24 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .center) {
-                Text("Вопрос \(question.id.description).")
-            }
-            .padding(10)
-            Spacer()
-            
-            if let picture = question.picture {
-                Text(picture.absoluteString).padding(10)
-                Spacer()
-            }
-            
             if #available(iOS 15.0, *) {
+                
+                VStack(alignment: .center) {
+                    Text("Вопрос \(question.id.description).")
+                }
+                .padding(10)
+                .background {
+                    Color(UIColor.green)
+                }
+                Spacer()
+                
+                
+                if let picture = question.picture {
+                    Text(picture.absoluteString).padding(10)
+                    Spacer()
+                }
+                
+                
                 HStack(alignment: .top, spacing: 10) {
                     Text(question.text)
                 }
@@ -36,9 +42,7 @@ struct QuestionContent: View {
             } else {
                 fatalError()
             }
-            
-            
-            
+
             Spacer()
             Answers(answers: question.answers)
             Spacer()

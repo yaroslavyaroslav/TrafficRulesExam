@@ -20,10 +20,11 @@ struct Answers: View {
                         Text(answer.text)
                     }
                     .padding(10)
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    .frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)
                     .background {
                         Color(UIColor.green)
                     }
+                    .cornerRadius(8)
                 } else {
                     fatalError()
                 }

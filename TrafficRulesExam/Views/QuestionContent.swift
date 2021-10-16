@@ -22,11 +22,18 @@ struct QuestionContent: View {
                 .background {
                     Color(UIColor.green)
                 }
+                .cornerRadius(8)
+                
                 Spacer()
                 
                 
                 if let picture = question.picture {
                     Text(picture.absoluteString).padding(10)
+                        .padding(10)
+                        .background {
+                            Color(UIColor.green)
+                        }
+                        .cornerRadius(8)
                     Spacer()
                 }
                 
@@ -35,14 +42,15 @@ struct QuestionContent: View {
                     Text(question.text)
                 }
                 .padding(10)
-                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .background {
                     Color(UIColor.green)
                 }
+                .cornerRadius(8)
             } else {
                 fatalError()
             }
-
+            
             Spacer()
             Answers(answers: question.answers)
             Spacer()

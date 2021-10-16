@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0F75B0271A0558004473EA /* QuestionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75AF271A0558004473EA /* QuestionPicker.swift */; };
+		5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75AF271A0558004473EA /* QuestionCard.swift */; };
 		5C0F75B2271A07F1004473EA /* Answers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B1271A07F1004473EA /* Answers.swift */; };
-		5C0F75B4271A086A004473EA /* QuestionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B3271A086A004473EA /* QuestionDetail.swift */; };
+		5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B3271A086A004473EA /* QuestionContent.swift */; };
 		5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */; };
 		5C453E132714730A006BFFCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E122714730A006BFFCB /* ContentView.swift */; };
 		5C453E152714730D006BFFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E142714730D006BFFCB /* Assets.xcassets */; };
 		5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E172714730D006BFFCB /* Preview Assets.xcassets */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
-		5C85388727159B8A00D8853E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85388627159B8A00D8853E /* Lottie */; };
 		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
 		5C85388B27183D5900D8853E /* ExamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCard.swift */; };
 		5C97B49327197B8A0017723A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelData.swift */; };
@@ -24,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C0F75AF271A0558004473EA /* QuestionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPicker.swift; sourceTree = "<group>"; };
+		5C0F75AF271A0558004473EA /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
 		5C0F75B1271A07F1004473EA /* Answers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answers.swift; sourceTree = "<group>"; };
-		5C0F75B3271A086A004473EA /* QuestionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetail.swift; sourceTree = "<group>"; };
+		5C0F75B3271A086A004473EA /* QuestionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContent.swift; sourceTree = "<group>"; };
 		5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficRulesExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamApp.swift; sourceTree = "<group>"; };
 		5C453E122714730A006BFFCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,7 +44,6 @@
 			files = (
 				5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */,
 				5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */,
-				5C85388727159B8A00D8853E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +109,8 @@
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C453E122714730A006BFFCB /* ContentView.swift */,
 				5C97B49727197EEF0017723A /* Card.swift */,
-				5C0F75AF271A0558004473EA /* QuestionPicker.swift */,
-				5C0F75B3271A086A004473EA /* QuestionDetail.swift */,
+				5C0F75AF271A0558004473EA /* QuestionCard.swift */,
+				5C0F75B3271A086A004473EA /* QuestionContent.swift */,
 				5C0F75B1271A07F1004473EA /* Answers.swift */,
 			);
 			path = Views;
@@ -137,7 +135,6 @@
 			packageProductDependencies = (
 				5C85387C27158DBB00D8853E /* YandexMobileMetrica */,
 				5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */,
-				5C85388627159B8A00D8853E /* Lottie */,
 			);
 			productName = TrafficRulesExam;
 			productReference = 5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */;
@@ -169,7 +166,6 @@
 			mainGroup = 5C453E042714730A006BFFCB;
 			packageReferences = (
 				5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
-				5C85388527159B8A00D8853E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 5C453E0E2714730A006BFFCB /* Products */;
 			projectDirPath = "";
@@ -200,12 +196,12 @@
 			files = (
 				5C0F75B2271A07F1004473EA /* Answers.swift in Sources */,
 				5C453E132714730A006BFFCB /* ContentView.swift in Sources */,
-				5C0F75B4271A086A004473EA /* QuestionDetail.swift in Sources */,
+				5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelData.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
-				5C0F75B0271A0558004473EA /* QuestionPicker.swift in Sources */,
+				5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,14 +416,6 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		5C85388527159B8A00D8853E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -440,11 +428,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
 			productName = YandexMobileMetricaCrashes;
-		};
-		5C85388627159B8A00D8853E /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5C85388527159B8A00D8853E /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

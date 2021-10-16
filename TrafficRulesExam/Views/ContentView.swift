@@ -15,8 +15,6 @@ struct ContentView: View {
                 Text("This is row")
             }
         }
-        Text("Hello, world!")
-            .padding()
     }
 }
 

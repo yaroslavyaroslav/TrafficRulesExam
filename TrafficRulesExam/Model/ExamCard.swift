@@ -8,24 +8,30 @@
 import Foundation
 
 
-enum AnswerID: String, Codable {
+enum AnswerID: Codable {
     case a, b, v, g
     
-    enum CodingKeys: String, CodingKey {
-        case a = "А"
-        case b = "Б"
-        case v = "В"
-        case g = "Г"
-    }
-
     init(from decoder: Decoder) throws {
+        
         let label = try decoder.singleValueContainer().decode(String.self)
+        
         switch label {
-            case "А": self = .a
-            case "Б": self = .b
-            case "В": self = .v
-            case "Г": self = .g
-            default: fatalError()
+        case "А": self = .a
+        case "Б": self = .b
+        case "В": self = .v
+        case "Г": self = .g
+        default: fatalError()
+        }
+    }
+}
+
+extension AnswerID {
+    var stringValue: String {
+        switch self {
+        case .a: return "А"
+        case .b: return "Б"
+        case .v: return "В"
+        case .g: return "Г"
         }
     }
 }

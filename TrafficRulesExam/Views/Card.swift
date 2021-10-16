@@ -13,7 +13,7 @@ struct Card: View {
     
     var body: some View {
         VStack{
-            QuestionPicker(questions: card.questions, questionDetails: card.questions[0])
+            QuestionCard(questions: card.questions, questionDetails: card.questions[0])
         }
     }
 }

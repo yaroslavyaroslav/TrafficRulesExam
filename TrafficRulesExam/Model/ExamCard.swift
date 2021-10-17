@@ -45,7 +45,7 @@ struct Answer: Codable, Identifiable {
 }
 
 struct Question: Codable, Identifiable {
-    let id: Decimal
+    let id: Int
     let text: String
     let picture: URL?
     let answers: [Answer]
@@ -54,7 +54,11 @@ struct Question: Codable, Identifiable {
     let topic: String
 }
 
+extension Question: Equatable {
+    static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id }
+}
+
 struct ExamCard: Codable, Identifiable {
-    let id: Decimal
+    let id: Int
     let questions: [Question]
 }

@@ -20,7 +20,7 @@ struct Answers: View {
                         Text(answer.text)
                     }
                     .padding(10)
-                    .frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)
+                    .frame(maxWidth: .infinity, minHeight: 50, idealHeight: 100, alignment: .leading)
                     .background {
                         Color(UIColor.green)
                     }

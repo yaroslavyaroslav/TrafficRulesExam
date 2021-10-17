@@ -14,7 +14,6 @@ struct Card: View {
     var body: some View {
         VStack(alignment: .leading){
             QuestionCard(questions: card.questions, questionDetails: card.questions[0])
-            Spacer()
         }
     }
 }

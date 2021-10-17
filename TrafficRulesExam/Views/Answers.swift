@@ -15,6 +15,7 @@ struct AnswerHStack: View {
             HStack(alignment: .top, spacing: 10) {
                 Text(answer.id.stringValue)
                 Text(answer.text)
+                    .multilineTextAlignment(.leading)
             }
             .padding(10)
             .frame(maxWidth: .infinity, minHeight: 50, idealHeight: 100, alignment: .leading)

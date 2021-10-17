@@ -40,6 +40,7 @@ struct QuestionContent: View {
                 
                 HStack(alignment: .top, spacing: 10) {
                     Text(question.text)
+                        .multilineTextAlignment(.leading)
                 }
                 .padding(10)
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -27,45 +27,51 @@ struct QuestionCard: View {
     
     var body: some View {
         VStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .center, spacing: 3) {
-                    ForEach(questions) { question in
-                        if question == questionDetails {
-                            Button(question.id.description) {
-                                withAnimation {
-                                    questionDetails = question
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: true) {
+                    HStack(alignment: .center, spacing: 3) {
+                        ForEach(questions, id: \.id) { question in
+                            if question == questionDetails {
+                                Button(question.id.description) {
+                                    withAnimation {
+                                        questionDetails = question
+                                    }
                                 }
-                            }
-                            .frame(width: 40, height: 40, alignment: .center)
-                            .border(.green, width: 3)
-                        } else {
-                            Button(question.id.description) {
-                                withAnimation {
-                                    questionDetails = question
+                                .frame(width: 40, height: 40, alignment: .center)
+                                .border(.green, width: 3)
+                            } else {
+                                Button(question.id.description) {
+                                    withAnimation {
+                                        questionDetails = question
+                                    }
                                 }
+                                .frame(width: 40, height: 40, alignment: .center)
+                                .border(.gray, width: 3)
                             }
-                            .frame(width: 40, height: 40, alignment: .center)
-                            .border(.gray, width: 3)
+                        }
+                        .cornerRadius(8)
+                    }
+                }
+                Spacer()
+                QuestionContent(question: questionDetails)
+                    .transition(.moveAndFade)
+                
+                // FIXME: Если быстро нажать следующий вопрос — будет out of range — кнопка не успевает перерисоваться по if на завершить.
+                if questionDetails.id < 20 {
+                    Button("Следующий вопрос") {
+                        withAnimation {
+                            questionDetails = questions[questionDetails.id]
+                            if questionDetails.id < 19 {
+                                proxy.scrollTo(questionDetails.id + 2)
+                            }
                         }
                     }
-                    .cornerRadius(8)
-                }
-            }
-            Spacer()
-            QuestionContent(question: questionDetails)
-                .transition(.moveAndFade)
-            
-            if questionDetails.id < 20 {
-                Button("Следующий вопрос") {
-                    withAnimation {
-                        questionDetails = questions[questionDetails.id]
-                    }
-                }
-                .padding(10)
-            } else {
-                Button("Завершить") {
-                    withAnimation {
-                        print("this")
+                    .padding(10)
+                } else {
+                    Button("Завершить") {
+                        withAnimation {
+                            print("this")
+                        }
                     }
                 }
             }

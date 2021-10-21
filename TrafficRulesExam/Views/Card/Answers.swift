@@ -48,6 +48,6 @@ struct Answers: View {
 
 struct Answers_Previews: PreviewProvider {
     static var previews: some View {
-        Answers(answers: cards[0].questions[0].answers)
+        Answers(answers: cards[0].questions[1].answers)
     }
 }

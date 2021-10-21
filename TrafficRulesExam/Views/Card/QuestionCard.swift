@@ -32,21 +32,33 @@ struct QuestionCard: View {
                     HStack(alignment: .center, spacing: 3) {
                         ForEach(questions, id: \.id) { question in
                             if question == questionDetails {
-                                Button(question.id.description) {
+                                Button {
                                     withAnimation {
                                         questionDetails = question
                                     }
+                                } label: {
+                                    Text(question.id.description)
+                                        .foregroundColor(.black)
                                 }
                                 .frame(width: 40, height: 40, alignment: .center)
-                                .border(.green, width: 3)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                                .foregroundColor(.green)
+                                )
                             } else {
-                                Button(question.id.description) {
+                                Button {
                                     withAnimation {
                                         questionDetails = question
                                     }
+                                } label: {
+                                    Text(question.id.description)
+                                        .foregroundColor(.white)
                                 }
                                 .frame(width: 40, height: 40, alignment: .center)
-                                .border(.gray, width: 3)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                                .foregroundColor(.gray)
+                                )
                             }
                         }
                         .cornerRadius(8)

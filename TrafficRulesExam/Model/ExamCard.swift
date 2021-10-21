@@ -54,11 +54,13 @@ struct Question: Codable, Identifiable {
     let topic: String
 }
 
-extension Question: Equatable { static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id } }
+extension Question: Equatable { static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id }}
 
-extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) } }
+extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) }}
 
 struct ExamCard: Codable, Identifiable {
     let id: Int
     let questions: [Question]
 }
+
+extension ExamCard: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) }}

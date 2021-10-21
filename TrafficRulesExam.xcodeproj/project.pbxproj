@@ -20,6 +20,7 @@
 		5C85388B27183D5900D8853E /* ExamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCard.swift */; };
 		5C97B49327197B8A0017723A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelData.swift */; };
 		5C97B49827197EEF0017723A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* Card.swift */; };
+		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		5C97B49727197EEF0017723A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		5CDE11D22720A7C700981225 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +110,21 @@
 			children = (
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C453E122714730A006BFFCB /* CardsGalery.swift */,
+				5CDE11D22720A7C700981225 /* CardRow.swift */,
+				5CDE11D12720A79800981225 /* Card */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CDE11D12720A79800981225 /* Card */ = {
+			isa = PBXGroup;
+			children = (
 				5C97B49727197EEF0017723A /* Card.swift */,
 				5C0F75AF271A0558004473EA /* QuestionCard.swift */,
 				5C0F75B3271A086A004473EA /* QuestionContent.swift */,
 				5C0F75B1271A07F1004473EA /* Answers.swift */,
 			);
-			path = Views;
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
+				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,10 +1,12 @@
 [
     {
         "id": 1,
-        "result": {
+        "results": [
+            {
             "exam_date": "2021-10-30T18:25:43-05:00",
             "mistakes": 0
-        },
+            }
+        ],
         "questions":
         [
             {
@@ -492,10 +494,12 @@
     },
     {
         "id": 2,
-        "result": {
-            "exam_date": "2021-10-29T18:25:43-05:00",
-            "mistakes": 3
-        },
+        "results": [
+            {
+                "exam_date": "2021-10-29T18:25:43-05:00",
+                "mistakes": 3
+            }
+        ],
         "questions":
         [
             {

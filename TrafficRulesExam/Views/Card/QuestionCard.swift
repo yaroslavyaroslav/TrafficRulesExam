@@ -28,38 +28,22 @@ struct QuestionCard: View {
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
-                ScrollView(.horizontal, showsIndicators: true) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .center, spacing: 3) {
                         ForEach(questions, id: \.id) { question in
-                            if question == questionDetails {
-                                Button {
-                                    withAnimation {
-                                        questionDetails = question
-                                    }
-                                } label: {
-                                    Text(question.id.description)
-                                        .foregroundColor(.black)
+                            Button {
+                                withAnimation {
+                                    questionDetails = question
                                 }
-                                .frame(width: 40, height: 40, alignment: .center)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                                .foregroundColor(.green)
-                                )
-                            } else {
-                                Button {
-                                    withAnimation {
-                                        questionDetails = question
-                                    }
-                                } label: {
-                                    Text(question.id.description)
-                                        .foregroundColor(.white)
-                                }
-                                .frame(width: 40, height: 40, alignment: .center)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                                .foregroundColor(.gray)
-                                )
+                            } label: {
+                                Text(question.id.description)
+                                    .foregroundColor(.black)
                             }
+                            .frame(width: 40, height: 40, alignment: .center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(question == questionDetails ? .green : .gray)
+                            )
                         }
                         .cornerRadius(8)
                     }
@@ -69,24 +53,20 @@ struct QuestionCard: View {
                     .transition(.moveAndFade)
                     .padding(8)
                 
-                // FIXME: Если быстро нажать следующий вопрос — будет out of range — кнопка не успевает перерисоваться по if на завершить.
-                if questionDetails.id < 20 {
-                    Button("Следующий вопрос") {
-                        withAnimation {
-                            questionDetails = questions[questionDetails.id]
-                            if questionDetails.id < 19 {
-                                proxy.scrollTo(questionDetails.id + 2)
-                            }
-                        }
-                    }
-                    .padding(10)
-                } else {
-                    Button("Завершить") {
-                        withAnimation {
+                Button(questionDetails.id < 20 ? "Следующий вопрос" : "Завершить") {
+                    withAnimation {
+                        guard questionDetails.id != 20 else {
                             print("this")
+                            return
+                        }
+                        questionDetails = questions[questionDetails.id]
+
+                        if questionDetails.id < 19 {
+                            proxy.scrollTo(questionDetails.id + 2)
                         }
                     }
                 }
+                .padding(10)
             }
         }
     }

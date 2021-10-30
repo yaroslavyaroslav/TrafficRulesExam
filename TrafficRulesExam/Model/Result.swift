@@ -8,10 +8,6 @@
 import Foundation
 
 
-enum ResultState {
-    case unknown, succeed, failed
-}
-
 struct Result {
     let mistakes: Int
     let examDate: Date?
@@ -29,7 +25,7 @@ struct Result {
     
     var state: ResultState {
         guard let _ = examDate else {
-            return .unknown
+            return .undefined
         }
         
         if succeed {
@@ -41,3 +37,8 @@ struct Result {
 }
 
 extension Result: Codable { }
+
+
+enum ResultState {
+    case undefined, succeed, failed
+}

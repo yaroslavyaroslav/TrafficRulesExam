@@ -10,7 +10,7 @@ import SwiftUI
 struct CardItem: View {
     
     var card: ExamCard
-        
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,26 +18,24 @@ struct CardItem: View {
                 .font(.system(size: 30))
             Spacer()
             
-            if let result = card.results.last {
-                Text("\(20 - result.mistakes)/20")
-                    .font(.system(size: 25))
+            Text(card.results.isEmpty ? "Начать" : "\(20 - card.results.last!.mistakes)/20")
+                .font(.system(size: 25))
+            Spacer()
+            
+            if let date = card.results.last?.examDate {
+                Text(self.prettyDate(date))
+                    .font(.system(size: 20))
                 Spacer()
-                
-                if let date = result.examDate {
-                    Text(self.prettyDate(date))
-                        .font(.system(size: 20))
-                    Spacer()
-                }
-            } else {
-                Text("0/20")
-                    .font(.system(size: 25))
             }
         }
         .foregroundColor(.white)
         .frame(width: 170, height: 200, alignment: .center)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(card.results[0].succeed ? .green : .red)
+                // if there's no result — .gray,
+                // if there is and it's good — .green
+                // if there is and not good — .red
+                .foregroundColor(card.results.isEmpty ? .gray : (card.results.last!.succeed ? .green : .red))
         )
     }
 }

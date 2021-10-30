@@ -61,6 +61,9 @@ extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.com
 struct ExamCard: Codable, Identifiable {
     let id: Int
     let questions: [Question]
+    let result: Result
 }
 
 extension ExamCard: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) }}
+
+extension ExamCard: Equatable { static func == (lhs: ExamCard, rhs: ExamCard) -> Bool { lhs.id == rhs.id } }

@@ -21,16 +21,27 @@ struct CardRow: View {
                         Card(card: card)
                     } label: {
                         VStack {
-                            Text("1/20")
-                            Text("10.09.2021")
+                            Spacer()
                             Text("Билет \(card.id)")
+                                .font(.system(size: 30))
+                            Spacer()
+                            Text("\(20 - card.result.mistakes)/20")
+                                .font(.system(size: 25))
+                            Spacer()
+                            if let date = card.result.examDate {
+//                                Text(date.formatted(date: .numeric, time: .omitted))
+                                Text(date.description(with: .current))
+                                    .font(.system(size: 12))
+                                Spacer()
+                            }
                         }
+                        .foregroundColor(.white)
                         .frame(width: 170, height: 200, alignment: .center)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.blue)
-                                        .foregroundColor(.green))
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.green)
+                        )
                     }
-
                 }
             }.font(.largeTitle)
         }

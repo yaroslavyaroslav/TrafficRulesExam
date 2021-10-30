@@ -20,6 +20,7 @@
 		5C85388B27183D5900D8853E /* ExamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCard.swift */; };
 		5C97B49327197B8A0017723A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelData.swift */; };
 		5C97B49827197EEF0017723A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* Card.swift */; };
+		5CDB6372272D946700E888F7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Result.swift */; };
 		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		5C97B49727197EEF0017723A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		5CDB6371272D946700E888F7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5CDE11D22720A7C700981225 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			children = (
 				5C85388A27183D5900D8853E /* ExamCard.swift */,
 				5C97B49227197B8A0017723A /* ModelData.swift */,
+				5CDB6371272D946700E888F7 /* Result.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				5C97B49327197B8A0017723A /* ModelData.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
+				5CDB6372272D946700E888F7 /* Result.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */,

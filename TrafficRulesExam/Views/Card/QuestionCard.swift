@@ -67,6 +67,7 @@ struct QuestionCard: View {
                 Spacer()
                 QuestionContent(question: questionDetails)
                     .transition(.moveAndFade)
+                    .padding(8)
                 
                 // FIXME: Если быстро нажать следующий вопрос — будет out of range — кнопка не успевает перерисоваться по if на завершить.
                 if questionDetails.id < 20 {

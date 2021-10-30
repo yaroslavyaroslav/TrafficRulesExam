@@ -23,6 +23,7 @@
 		5CDB6372272D946700E888F7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Result.swift */; };
 		5CDB6374272DC30E00E888F7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
 		5CDB6376272DC36200E888F7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6375272DC36200E888F7 /* Answer.swift */; };
+		5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6379272DD0AD00E888F7 /* CardItem.swift */; };
 		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		5CDB6371272D946700E888F7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5CDB6373272DC30D00E888F7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5CDB6375272DC36200E888F7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		5CDB6379272DD0AD00E888F7 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 		5CDE11D22720A7C700981225 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C453E122714730A006BFFCB /* CardsGalery.swift */,
 				5CDE11D22720A7C700981225 /* CardRow.swift */,
+				5CDB6379272DD0AD00E888F7 /* CardItem.swift */,
 				5CDE11D12720A79800981225 /* Card */,
 			);
 			path = Views;
@@ -217,6 +220,7 @@
 				5C0F75B2271A07F1004473EA /* Answers.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */,
+				5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelData.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,

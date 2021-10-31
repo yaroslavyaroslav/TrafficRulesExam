@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Question: Codable, Identifiable {
+struct Question: Codable {
     let id: Int
     let text: String
     let picture: URL?
@@ -17,6 +17,8 @@ struct Question: Codable, Identifiable {
     let topic: String
 }
 
-extension Question: Equatable { static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id }}
+extension Question: Identifiable { }
 
-extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) }}
+extension Question: Equatable { static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id } }
+
+extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) } }

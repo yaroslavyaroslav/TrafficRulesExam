@@ -6,20 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 struct Result {
+    
     let mistakes: Int
+    
     let examDate: Date?
     
-    var additionalQuestionsFired: Bool {
-        mistakes > 0 ? true : false
-    }
+    var additionalQuestionsFired: Bool { mistakes > 0 ? true : false }
     
     var succeed: Bool {
-        guard mistakes > 0 else {
-            return true
-        }
+        guard mistakes > 0 else { return true }
+        
         return mistakes > 2 ? false : true
     }
     
@@ -35,8 +35,6 @@ struct Result {
         }
     }
 }
-
-extension Result: Codable { }
 
 
 enum ResultState {

@@ -7,12 +7,16 @@
 
 import Foundation
 
-struct ExamCard: Codable, Identifiable {
+struct ExamCard {
     let id: Int
     let questions: [Question]
-    let results: [Result]
+    
+    @Storage(key: "exam_results", defaultValue: [Result]())
+    var results: [Result]
 }
 
-extension ExamCard: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) }}
+extension ExamCard: Identifiable { }
+
+extension ExamCard: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) } }
 
 extension ExamCard: Equatable { static func == (lhs: ExamCard, rhs: ExamCard) -> Bool { lhs.id == rhs.id } }

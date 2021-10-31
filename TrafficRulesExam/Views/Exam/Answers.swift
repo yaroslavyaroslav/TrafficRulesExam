@@ -43,7 +43,7 @@ struct Answers: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             ForEach(answers, id: \.id) { answer in
-                AnswerButton(didTap: (answer.id == self.answer)) {
+                AnswerButton(tapped: self.answer == answer.id) {
                     self.answer = answer.id
                     print("This is answer \(answer.id)")
                 } label: {
@@ -51,42 +51,6 @@ struct Answers: View {
                 }
             }
         }
-    }
-}
-
-
-struct AnswerButton<Content: View>: View {
-        
-    var action: () -> Void
-    
-    var label: () -> Content
-    
-    var didTap = false
-    
-    init(didTap: Bool, action: @escaping () -> Void, @ViewBuilder label: @escaping () -> Content) {
-        self.didTap = didTap
-        self.label = label
-        self.action = action
-    }
-    
-    var body: some View {
-        Button(action: action, label: label)
-            .buttonStyle(AnswerButtonStyle(didTap: didTap))
-    }
-}
-
-struct AnswerButtonStyle: ButtonStyle {
-    
-    let didTap: Bool
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        return configuration.label
-            .padding()
-            .background(Color.green)
-            .foregroundColor(Color.white)
-            .opacity(didTap ? 0.7 : (configuration.isPressed ? 0.7 : 1))
-            .scaleEffect(didTap ? 0.8 : (configuration.isPressed ? 0.8 : 1))
-            .animation(.easeInOut(duration: 0.2))
     }
 }
 

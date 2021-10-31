@@ -11,6 +11,7 @@
 		5C0F75B2271A07F1004473EA /* Answers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B1271A07F1004473EA /* Answers.swift */; };
 		5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B3271A086A004473EA /* QuestionContent.swift */; };
 		5C121919272ED02D00DB4826 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C121918272ED02D00DB4826 /* UserDefaultsWrapper.swift */; };
+		5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C12191F272F2B6100DB4826 /* AnswerButton.swift */; };
 		5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */; };
 		5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E122714730A006BFFCB /* CardsGalery.swift */; };
 		5C453E152714730D006BFFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E142714730D006BFFCB /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		5C0F75B1271A07F1004473EA /* Answers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answers.swift; sourceTree = "<group>"; };
 		5C0F75B3271A086A004473EA /* QuestionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContent.swift; sourceTree = "<group>"; };
 		5C121918272ED02D00DB4826 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		5C12191F272F2B6100DB4826 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 		5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficRulesExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamApp.swift; sourceTree = "<group>"; };
 		5C453E122714730A006BFFCB /* CardsGalery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGalery.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				5C0F75AF271A0558004473EA /* QuestionCard.swift */,
 				5C0F75B3271A086A004473EA /* QuestionContent.swift */,
 				5C0F75B1271A07F1004473EA /* Answers.swift */,
+				5C12191F272F2B6100DB4826 /* AnswerButton.swift */,
 			);
 			path = Exam;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */,
 				5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */,
+				5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,

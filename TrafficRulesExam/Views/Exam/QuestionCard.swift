@@ -49,6 +49,7 @@ struct QuestionCard: View {
                     }
                 }
                 Spacer()
+                
                 QuestionContent(question: questionDetails)
                     .transition(.moveAndFade)
                     .padding(8)
@@ -66,6 +67,7 @@ struct QuestionCard: View {
                         }
                     }
                 }
+                .disabled(true)
                 .padding(10)
             }
         }

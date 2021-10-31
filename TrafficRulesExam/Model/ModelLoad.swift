@@ -9,7 +9,6 @@ import Foundation
 
 var cards: [ExamCard] = cardsSource.map { ExamCard(source: $0) }
 
-
 fileprivate var cardsSource: [ExamCardSource] = load("ExamCards.json")
 
 fileprivate struct ExamCardSource: Codable {

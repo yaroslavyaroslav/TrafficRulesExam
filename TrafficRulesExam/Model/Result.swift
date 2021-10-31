@@ -11,29 +11,27 @@ import SwiftUI
 
 struct Result {
     
-    let mistakes: Int
+    let mistakes: [Int: Int]
     
-    let examDate: Date?
+    let examDate: Date
     
-    var additionalQuestionsFired: Bool { mistakes > 0 ? true : false }
+    var additionalQuestionsFired: Bool { mistakes.count > 0 ? true : false }
     
     var succeed: Bool {
-        guard mistakes > 0 else { return true }
+        guard mistakes.count > 0 else { return true }
         
-        return mistakes > 2 ? false : true
+        return mistakes.count > 2 ? false : true
     }
     
-    var state: ResultState {
-        guard let _ = examDate else {
-            return .undefined
-        }
-        
-        if succeed {
-            return .succeed
-        } else {
-            return .failed
-        }
-    }
+//    var state: ResultState {
+//        guard let _ = examDate else {
+//            return .undefined
+//        }
+//        
+//        guard self.mistakes > 0 else { return .succeed }
+//        
+//        return self.mistakes > 2 ? .failed : .succeed
+//    }
 }
 
 

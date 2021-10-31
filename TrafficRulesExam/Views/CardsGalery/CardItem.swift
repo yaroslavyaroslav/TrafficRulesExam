@@ -18,7 +18,7 @@ struct CardItem: View {
                 .font(.system(size: 30))
             Spacer()
             
-            Text(card.results.isEmpty ? "Начать" : "\(20 - card.results.last!.mistakes)/20")
+            Text(card.results.isEmpty ? "Начать" : "\(20 - card.results.last!.mistakes.count)/20")
                 .font(.system(size: 25))
             Spacer()
             
@@ -32,14 +32,13 @@ struct CardItem: View {
         .frame(width: 170, height: 200, alignment: .center)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                // if there's no result — .gray,
+                // if there's no result — .gray
                 // if there is and it's good — .green
-                // if there is and not good — .red
+                // if there is and it is no go-o-od — .red
                 .foregroundColor(card.results.isEmpty ? .gray : (card.results.last!.succeed ? .green : .red))
         )
     }
 }
-
 
 extension CardItem {
     private func prettyDate(_ date: Date) -> String {

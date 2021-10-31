@@ -11,6 +11,8 @@ struct QuestionContent: View {
     
     var question: Question
     
+    var answer: AnswerID?
+    
     var body: some View {
         VStack {
             if #available(iOS 15.0, *) {

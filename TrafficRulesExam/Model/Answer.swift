@@ -18,7 +18,7 @@ extension Answer: Codable { }
 
 
 enum AnswerID: Int {
-    case a, b, c, d
+    case a, b, c, d, none
     
     init(from decoder: Decoder) throws {
         
@@ -29,7 +29,7 @@ enum AnswerID: Int {
         case 2: self = .b
         case 3: self = .c
         case 4: self = .d
-        default: fatalError()
+        default: self = .none
         }
     }
 }
@@ -41,6 +41,7 @@ extension AnswerID {
         case .b: return "2."
         case .c: return "3."
         case .d: return "4."
+        case .none: return "none"
         }
     }
 }

@@ -19,7 +19,6 @@ struct Answers: View {
             ForEach(answers, id: \.id) { answer in
                 AnswerButton(tapped: selectedAnswer.answer == answer.id) {
                     selectedAnswer.answer = answer.id
-                    print("This is answer \(answer.id)")
                 } label: {
                     AnswerHStack(answer: answer)
                 }

@@ -16,46 +16,29 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            if #available(iOS 15.0, *) {
-                
-                VStack(alignment: .center) {
-                    Text("Вопрос \(question.id.description).")
-                }
+            Text("Вопрос \(question.id.description).")
                 .padding(10)
-                .background {
-                    Color(UIColor.green)
-                }
+                .background(Color.green)
                 .cornerRadius(8)
-                
+            Spacer()
+            
+            
+            if let picture = question.picture {
+                Text(picture.absoluteString).padding(10)
+                    .padding(10)
+                    .background(Color.green)
+                    .cornerRadius(8)
                 Spacer()
-                
-                
-                if let picture = question.picture {
-                    Text(picture.absoluteString).padding(10)
-                        .padding(10)
-                        .background {
-                            Color(UIColor.green)
-                        }
-                        .cornerRadius(8)
-                    Spacer()
-                }
-                
-                
-                HStack(alignment: .top, spacing: 10) {
-                    Text(question.text)
-                        .multilineTextAlignment(.leading)
-                }
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background {
-                    Color(UIColor.green)
-                }
-                .cornerRadius(8)
-            } else {
-                fatalError()
             }
             
+            Text(question.text)
+                .multilineTextAlignment(.leading)
+                .padding(10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.green)
+                .cornerRadius(8)
             Spacer()
+            
             Answers(answers: question.answers, selectedAnswer: selectedAnswer)
             Spacer()
         }

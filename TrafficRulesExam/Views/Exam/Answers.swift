@@ -46,6 +46,6 @@ struct AnswerHStack: View {
 
 struct Answers_Previews: PreviewProvider {
     static var previews: some View {
-        Answers(answers: cards[0].questions[1].answers, selectedAnswer: SelectedAnswer())
+        Answers(answers: cards[0].questions[6].answers, selectedAnswer: SelectedAnswer())
     }
 }

@@ -15,6 +15,7 @@ struct Card: View {
         VStack(alignment: .leading){
             QuestionCard(questions: card.questions, questionDetails: card.questions[0])
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

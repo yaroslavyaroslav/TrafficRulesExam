@@ -33,8 +33,6 @@ struct AnswerButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         return configuration.label
-            .padding()
-            .background(Color.green)
             .foregroundColor(Color.white)
             .opacity(tapped ? 0.7 : (configuration.isPressed ? 0.7 : 1))
             .scaleEffect(tapped ? 0.8 : (configuration.isPressed ? 0.8 : 1))

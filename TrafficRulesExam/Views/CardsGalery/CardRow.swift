@@ -22,6 +22,8 @@ struct CardRow: View {
                     } label: {
                         CardItem(card: card)
                     }
+                    .navigationTitle(Text("Билеты"))
+                    .navigationBarTitleDisplayMode(.large)
                 }
             }
         }

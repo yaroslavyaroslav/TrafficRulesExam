@@ -11,7 +11,8 @@ struct QuestionContent: View {
     
     var question: Question
     
-    var answer: AnswerID?
+    @ObservedObject
+    var selectedAnswer: SelectedAnswer
     
     var body: some View {
         VStack {
@@ -55,7 +56,7 @@ struct QuestionContent: View {
             }
             
             Spacer()
-            Answers(answers: question.answers)
+            Answers(answers: question.answers, selectedAnswer: selectedAnswer)
             Spacer()
         }
     }
@@ -63,6 +64,6 @@ struct QuestionContent: View {
 
 struct QuestionContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionContent(question: cards[0].questions[0])
+        QuestionContent(question: cards[0].questions[0], selectedAnswer: SelectedAnswer() )
     }
 }

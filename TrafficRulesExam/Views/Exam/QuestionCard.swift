@@ -25,6 +25,9 @@ struct QuestionCard: View {
     @State
     var questionDetails: Question
     
+    @StateObject
+    var selectedAnswer: SelectedAnswer = SelectedAnswer()
+    
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
@@ -34,6 +37,7 @@ struct QuestionCard: View {
                             Button {
                                 withAnimation {
                                     questionDetails = question
+                                    self.resetSelectedAnswer()
                                 }
                             } label: {
                                 Text(question.id.description)
@@ -50,7 +54,7 @@ struct QuestionCard: View {
                 }
                 Spacer()
                 
-                QuestionContent(question: questionDetails)
+                QuestionContent(question: questionDetails, selectedAnswer: selectedAnswer)
                     .transition(.moveAndFade)
                     .padding(8)
                 
@@ -65,12 +69,20 @@ struct QuestionCard: View {
                         if questionDetails.id < 19 {
                             proxy.scrollTo(questionDetails.id + 2)
                         }
+                        self.resetSelectedAnswer()
                     }
                 }
-                .disabled(true)
+                .disabled(selectedAnswer.answer == AnswerID.none)
                 .padding(10)
             }
         }
+    }
+}
+
+
+extension QuestionCard {
+    func resetSelectedAnswer() {
+        selectedAnswer.answer = .none
     }
 }
 

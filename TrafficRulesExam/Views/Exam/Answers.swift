@@ -17,7 +17,7 @@ struct Answers: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             ForEach(answers, id: \.id) { answer in
-                AnswerButton(tapped: selectedAnswer.answer == answer.id) {
+                AnswerButton(isSelected: selectedAnswer.answer == answer.id) {
                     selectedAnswer.answer = answer.id
                 } label: {
                     AnswerHStack(answer: answer)

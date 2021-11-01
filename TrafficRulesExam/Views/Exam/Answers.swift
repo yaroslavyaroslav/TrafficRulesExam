@@ -19,6 +19,8 @@ struct Answers: View {
             ForEach(answers, id: \.id) { answer in
                 AnswerButton(isSelected: selectedAnswer.answer == answer.id) {
                     selectedAnswer.answer = answer.id
+                    
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 } label: {
                     AnswerHStack(answer: answer)
                 }

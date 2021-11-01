@@ -17,10 +17,7 @@ fileprivate struct ExamCardSource: Codable {
 }
 
 fileprivate extension ExamCard {
-    init(source: ExamCardSource) {
-        self.id = source.id
-        self.questions = source.questions
-    }
+    init(source: ExamCardSource) { self.init(id: source.id, questions: source.questions) }
 }
 
 fileprivate func load<T: Decodable>(_ filename: String) -> T {

@@ -20,6 +20,9 @@ extension AnyTransition {
 
 struct QuestionCard: View {
     
+    @State
+    private var result = Result(mistakes: [:], examDate: Date())
+    
     var questions: [Question]
     
     @State
@@ -27,6 +30,8 @@ struct QuestionCard: View {
     
     @StateObject
     var selectedAnswer: SelectedAnswer = SelectedAnswer()
+    
+    @AppStorage("ResultData") var results: [Result] = [Result]()
     
     var body: some View {
         VStack {
@@ -37,7 +42,7 @@ struct QuestionCard: View {
                             Button {
                                 withAnimation {
                                     questionDetails = question
-                                    self.resetSelectedAnswer()
+                                    self.saveAnswer()
                                 }
                             } label: {
                                 Text(question.id.description)
@@ -60,16 +65,13 @@ struct QuestionCard: View {
                 
                 Button(questionDetails.id < 20 ? "Следующий вопрос" : "Завершить") {
                     withAnimation {
-                        guard questionDetails.id != 20 else {
-                            print("this")
-                            return
-                        }
+                        guard questionDetails.id != 20 else { results.append(result); return }
                         questionDetails = questions[questionDetails.id]
 
                         if questionDetails.id < 19 {
                             proxy.scrollTo(questionDetails.id + 2)
                         }
-                        self.resetSelectedAnswer()
+                        self.saveAnswer()
                     }
                 }
                 .disabled(selectedAnswer.answer == AnswerID.none)
@@ -81,7 +83,12 @@ struct QuestionCard: View {
 
 
 extension QuestionCard {
-    func resetSelectedAnswer() {
+    func saveAnswer() {
+        guard selectedAnswer.answer != .none else { return }
+        
+        if questionDetails.correctAnswer != selectedAnswer.answer {
+            result.addMistake(mistake: (questionDetails.id, selectedAnswer.answer))
+        }
         selectedAnswer.answer = .none
     }
 }

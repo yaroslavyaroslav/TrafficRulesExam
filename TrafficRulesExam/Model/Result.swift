@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Result {
     
-    let mistakes: [Int: Int]
+    private(set) var mistakes: [Int: AnswerID]
     
     let examDate: Date
     
@@ -22,18 +22,16 @@ struct Result {
         
         return mistakes.count > 2 ? false : true
     }
-    
-//    var state: ResultState {
-//        guard let _ = examDate else {
-//            return .undefined
-//        }
-//        
-//        guard self.mistakes > 0 else { return .succeed }
-//        
-//        return self.mistakes > 2 ? .failed : .succeed
-//    }
 }
 
+extension Result {
+    mutating func addMistake(mistake: (Int, AnswerID)) {
+        let (questionID, wrongAnswerID) = mistake
+        mistakes[questionID] = wrongAnswerID
+    }
+}
+
+extension Result: Codable { }
 
 enum ResultState {
     case undefined, succeed, failed

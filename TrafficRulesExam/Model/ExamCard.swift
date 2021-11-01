@@ -10,9 +10,6 @@ import Foundation
 struct ExamCard {
     let id: Int
     let questions: [Question]
-    
-    @Storage(key: "exam_results", defaultValue: [Result]())
-    var results: [Result]
 }
 
 extension ExamCard: Identifiable { }

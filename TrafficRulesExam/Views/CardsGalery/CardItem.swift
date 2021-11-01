@@ -11,6 +11,9 @@ struct CardItem: View {
     
     var card: ExamCard
     
+    // FIXME: Результаты из массива должны стать объектом с ID (билета) и массивом результатов.
+    @AppStorage("ResultData") var results: [Result] = [Result]()
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,11 +21,11 @@ struct CardItem: View {
                 .font(.system(size: 30))
             Spacer()
             
-            Text(card.results.isEmpty ? "Начать" : "\(20 - card.results.last!.mistakes.count)/20")
+            Text(results.isEmpty ? "Начать" : "\(20 - results.last!.mistakes.count)/20")
                 .font(.system(size: 25))
             Spacer()
             
-            if let date = card.results.last?.examDate {
+            if let date = results.last?.examDate {
                 Text(self.prettyDate(date))
                     .font(.system(size: 20))
                 Spacer()
@@ -35,7 +38,7 @@ struct CardItem: View {
                 // if there's no result — .gray
                 // if there is and it's good — .green
                 // if there is and it is no go-o-od — .red
-                .foregroundColor(card.results.isEmpty ? .gray : (card.results.last!.succeed ? .green : .red))
+                .foregroundColor(results.isEmpty ? .gray : (results.last!.succeed ? .green : .red))
         )
     }
 }

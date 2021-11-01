@@ -47,6 +47,6 @@ struct QuestionContent: View {
 
 struct QuestionContent_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionContent(question: cards[0].questions[0], selectedAnswer: SelectedAnswer() )
+        QuestionContent(question: cards[0].questions[0], selectedAnswer: SelectedAnswer())
     }
 }

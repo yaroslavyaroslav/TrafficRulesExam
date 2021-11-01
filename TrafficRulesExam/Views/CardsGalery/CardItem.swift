@@ -11,8 +11,7 @@ struct CardItem: View {
     
     var card: ExamCard
     
-    // FIXME: Результаты из массива должны стать объектом с ID (билета) и массивом результатов.
-    @AppStorage("ResultData") var results: [Result] = [Result]()
+    var results: CardResult
     
     var body: some View {
         VStack {
@@ -21,11 +20,11 @@ struct CardItem: View {
                 .font(.system(size: 30))
             Spacer()
             
-            Text(results.isEmpty ? "Начать" : "\(20 - results.last!.mistakes.count)/20")
+            Text(results.resultHistory.isEmpty ? "Начать" : "\(20 - results.resultHistory.last!.mistakes.count)/20")
                 .font(.system(size: 25))
             Spacer()
             
-            if let date = results.last?.examDate {
+            if let date = results.resultHistory.last?.examDate {
                 Text(self.prettyDate(date))
                     .font(.system(size: 20))
                 Spacer()
@@ -38,7 +37,7 @@ struct CardItem: View {
                 // if there's no result — .gray
                 // if there is and it's good — .green
                 // if there is and it is no go-o-od — .red
-                .foregroundColor(results.isEmpty ? .gray : (results.last!.succeed ? .green : .red))
+                .foregroundColor(results.resultHistory.isEmpty ? .gray : (results.resultHistory.last!.succeed ? .green : .red))
         )
     }
 }
@@ -56,8 +55,8 @@ extension CardItem {
 struct CardItem_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            CardItem(card: cards[0])
-            CardItem(card: cards[1])
+//            CardItem(card: cards[0])
+//            CardItem(card: cards[1])
         }
     }
 }

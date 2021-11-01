@@ -33,6 +33,13 @@ extension Result {
 
 extension Result: Codable { }
 
+struct CardResult {
+    let id: Int
+    private(set) var resultHistory: [Result]
+}
+
+extension CardResult: Codable { }
+
 enum ResultState {
     case undefined, succeed, failed
 }

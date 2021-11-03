@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CardItem: View {
     
-    var card: ExamCard
+    let card: ExamCard
     
-    var results: CardResult
+    let results: CardResult
     
     var body: some View {
         VStack {
@@ -20,11 +20,11 @@ struct CardItem: View {
                 .font(.system(size: 30))
             Spacer()
             
-            Text(results.resultHistory.isEmpty ? "Начать" : "\(20 - results.resultHistory.last!.mistakes.count)/20")
+            Text(results.resultHistory.items.isEmpty ? "Начать" : "\(20 - results.resultHistory.items.last!.mistakes.count)/20")
                 .font(.system(size: 25))
             Spacer()
             
-            if let date = results.resultHistory.last?.examDate {
+            if let date = results.resultHistory.items.last?.examDate {
                 Text(self.prettyDate(date))
                     .font(.system(size: 20))
                 Spacer()
@@ -37,7 +37,7 @@ struct CardItem: View {
                 // if there's no result — .gray
                 // if there is and it's good — .green
                 // if there is and it is no go-o-od — .red
-                .foregroundColor(results.resultHistory.isEmpty ? .gray : (results.resultHistory.last!.succeed ? .green : .red))
+                .foregroundColor(results.resultHistory.items.isEmpty ? .gray : (results.resultHistory.items.last!.succeed ? .green : .red))
         )
     }
 }

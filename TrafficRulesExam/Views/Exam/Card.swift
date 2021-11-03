@@ -9,11 +9,14 @@ import SwiftUI
 
 struct Card: View {
     
-    var card: ExamCard
+    let card: ExamCard
+    
+    @ObservedObject
+    var result: CardResult
     
     var body: some View {
         VStack(alignment: .leading){
-            QuestionCard(questions: card.questions, questionDetails: card.questions[0])
+            QuestionCard(questions: card.questions, questionDetails: card.questions[0], resultHistory: result.resultHistory)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -21,6 +24,6 @@ struct Card: View {
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(card: cards[0])
+        Card(card: cards[0], result: CardResult(1, Results([])))
     }
 }

@@ -40,6 +40,7 @@
 		5C453E122714730A006BFFCB /* CardsGalery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGalery.swift; sourceTree = "<group>"; };
 		5C453E142714730D006BFFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C453E172714730D006BFFCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 				5C97B49627197E610017723A /* Views */,
 				5C97B49427197BDC0017723A /* Model */,
 				5C453E142714730D006BFFCB /* Assets.xcassets */,
+				5C53ECF82732C54D0044905A /* MyPlayground.playground */,
 				5C453E162714730D006BFFCB /* Preview Content */,
 				5C97B49527197C2B0017723A /* Resources */,
 			);

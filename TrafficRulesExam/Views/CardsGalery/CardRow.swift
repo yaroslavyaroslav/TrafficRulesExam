@@ -10,22 +10,20 @@ import SwiftUI
 struct CardRow: View {
     
     @AppStorage("ResultData")
-    var results: [CardResult] = {
-        (1...20).map { CardResult(id: $0, resultHistory: [Result]()) }
-    }()
+    var results: [CardResult] = { (1...2).map { CardResult($0, Results([])) } }()
     
     var cards: [ExamCard]
     
     var body: some View {
-        
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+        
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(cards, id: \.id) { card in
+                ForEach(results, id: \.id) { result in
                     NavigationLink {
-                        Card(card: card)
+                        Card(card: cards[0], result: result)
                     } label: {
-                        CardItem(card: card, results: results[0])
+                        CardItem(card: cards[0], results: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)

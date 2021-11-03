@@ -23,7 +23,7 @@ struct QuestionCard: View {
     @State
     private var result = Result(mistakes: [:], examDate: Date())
     
-    var questions: [Question]
+    let questions: [Question]
     
     @State
     var questionDetails: Question
@@ -31,7 +31,8 @@ struct QuestionCard: View {
     @StateObject
     var selectedAnswer: SelectedAnswer = SelectedAnswer()
     
-    @AppStorage("ResultData") var results: [Result] = [Result]()
+    @State
+    var resultHistory: Results
     
     var body: some View {
         VStack {
@@ -65,7 +66,7 @@ struct QuestionCard: View {
                 
                 Button(questionDetails.id < 20 ? "Следующий вопрос" : "Завершить") {
                     withAnimation {
-                        guard questionDetails.id != 20 else { results.append(result); return }
+                        guard questionDetails.id != 20 else { resultHistory.items.append(result); return }
                         questionDetails = questions[questionDetails.id]
 
                         if questionDetails.id < 19 {
@@ -95,6 +96,6 @@ extension QuestionCard {
 
 struct QuestionCard_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3])
+        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3], resultHistory: Results([]))
     }
 }

@@ -23,32 +23,17 @@ struct Result {
     }
 }
 
-class Results: ObservableObject {
+struct Results: Codable {
     
-    @Published
-    var items: [Result] = [Result]()
-    
-    private enum CodingKeys: String, CodingKey {
-        case items
+    var items: [Result] {
+        didSet {
+            print("Results.item did updated.")
+        }
     }
-    
+
     init(_ items: [Result]) {
         self.items = items
     }
-    
-    required init(from decoder:Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        items = try container.decode([Result].self, forKey: .items)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(items.self, forKey: .items)
-    }
-}
-
-extension Results: Codable {
-    
 }
 
 extension Result {
@@ -60,31 +45,48 @@ extension Result {
 
 extension Result: Codable { }
 
-class CardResult: ObservableObject {
+struct CardResult {
     let id: Int
     
-    @Published
-    private(set) var resultHistory: Results
+    var resultHistory: Results {
+        didSet {
+            print("CardResult.resultHistory did updated. ")
+        }
+    }
     
     init(_ id: Int, _ resultHistory: Results) {
         self.id = id
         self.resultHistory = resultHistory
     }
-    private enum CodingKeys: String, CodingKey {
-        case id, resultHistory
-    }
-    
-    required init(from decoder:Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.resultHistory = try container.decode(Results.self, forKey: .resultHistory)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id.self, forKey: .id)
-        try container.encode(resultHistory.self, forKey: .resultHistory)
-    }
 }
 
 extension CardResult: Codable { }
+
+
+struct CardResults: Codable {
+    var items: [CardResult] {
+        willSet {
+            let data = try! JSONEncoder().encode(newValue)
+            let string = try! String(data: data, encoding: .utf8)
+            UserDefaults.standard.set(string, forKey: "CardResults")
+        }
+        didSet {
+            print("CardResults.items did updated.")
+        }
+    }
+}
+
+extension CardResults {
+    init() throws {
+        let userDefaults = UserDefaults.standard.string(forKey: "CardResults")
+        guard let data = userDefaults?.data(using: .utf8) else { throw InitError(kind: .emptyUserDefaults) }
+        self.items = try JSONDecoder().decode([CardResult].self, from: data)
+    }
+}
+
+struct InitError:  Error {
+    let kind: ErrorKind
+    enum ErrorKind {
+        case emptyUserDefaults
+    }
+}

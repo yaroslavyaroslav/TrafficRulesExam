@@ -9,9 +9,17 @@ import SwiftUI
 
 struct CardRow: View {
     
-    @AppStorage("ResultData")
-    var results: [CardResult] = { (1...2).map { CardResult($0, Results([])) } }()
-    
+    @State
+    var results: CardResults = {
+        var object: CardResults!
+        do {
+            object = try CardResults()
+        } catch {
+           object = CardResults(items:{ (1...2).map { CardResult($0, Results([])) } }())
+        }
+        return object
+    }()
+
     var cards: [ExamCard]
     
     var body: some View {
@@ -19,9 +27,9 @@ struct CardRow: View {
         
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(results, id: \.id) { result in
+                ForEach($results.items, id: \.id) { $result in
                     NavigationLink {
-                        Card(card: cards[0], result: result)
+                        Card(card: cards[0], result: $result)
                     } label: {
                         CardItem(card: cards[0], results: result)
                     }

@@ -1,25 +1,23 @@
 import SwiftUI
-import OrderedCollections
+import PlaygroundSupport
 
-extension OrderedSet: RawRepresentable where Element: Codable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder().decode(OrderedSet<Element>.self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
 
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-              let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
+
+struct ContentView: View {
+    @State private var isShowingDetailView = false
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: Text("Second View"), isActive: $isShowingDetailView) { EmptyView() }
+
+                Button("Tap to show detail") {
+                    isShowingDetailView = true
+                }
+            }
+            .navigationTitle("Navigation")
         }
-        return result
     }
 }
 
-let some = OrderedSet([4, 1, 2, 3, 4])
-print(some.rawValue)
+PlaygroundPage.current.setLiveView(ContentView())

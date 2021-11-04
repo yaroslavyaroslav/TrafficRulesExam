@@ -19,6 +19,8 @@ struct CardRow: View {
         }
         return object
     }()
+    
+    @State var isShowingExamCard = false
 
     var cards: [ExamCard]
     
@@ -28,8 +30,8 @@ struct CardRow: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in
-                    NavigationLink {
-                        Card(card: cards[0], result: $result)
+                    NavigationLink(isActive: $isShowingExamCard) {
+                        Card(card: cards[0], result: $result, isShowingExamCard: $isShowingExamCard)
                     } label: {
                         CardItem(card: cards[0], results: result)
                     }

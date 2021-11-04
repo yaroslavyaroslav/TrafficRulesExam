@@ -72,7 +72,8 @@ struct QuestionCard: View {
                         guard questionDetails.id != 20 else {
                             historyRes.items.append(result)
                             isShowingExamCard = false
-                            return }
+                            return
+                        }
                         questionDetails = questions[questionDetails.id]
 
                         if questionDetails.id < 19 {

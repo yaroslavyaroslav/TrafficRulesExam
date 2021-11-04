@@ -14,9 +14,12 @@ struct Card: View {
     @Binding
     var result: CardResult
     
+    @Binding
+    var isShowingExamCard: Bool
+    
     var body: some View {
         VStack(alignment: .leading){
-            QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory)
+            QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory, isShowingExamCard: $isShowingExamCard)
         }
         .navigationBarTitleDisplayMode(.inline)
     }

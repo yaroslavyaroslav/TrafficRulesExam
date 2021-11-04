@@ -12,7 +12,7 @@ import Foundation
 struct CardResult {
     /// Result id.
     ///
-    /// Is equal to the ExamCard id.
+    /// Is equal to the ``ExamCard.id``.
     let id: Int
     
     /// History of the results processed tests.
@@ -25,7 +25,7 @@ extension CardResult: Codable { }
 struct CardResults {
     /// Array of the results of the processed exams for a given card.
     ///
-    /// This var encodes itsef to the JSON and stores it to the UserDefaults by key *CardResults*.
+    /// This var encodes itsef to the JSON and stores it to the UserDefaults by key ``CardResults``.
     var items: [CardResult] {
         willSet {
             // FIXME: Disable force unwrap.
@@ -38,12 +38,11 @@ struct CardResults {
 }
 
 extension CardResults {
-    /// Initializer that loads data from UserDefaults storage.
+    /// Initializer that loads data from ``UserDefaults`` storage.
     ///
-    /// It's encodes JSON of the **[CardResult]** type and set it to the *items* property.
+    /// It's encodes JSON of the ``[CardResult]`` type and set it to the *items* property.
     ///
-    /// Throws:
-    /// - emptyUserDefaults: on empty UserDefaults storage by key *CardResults* on init.
+    /// - Throws: ``InitError.emptyUserDefaults``: on empty UserDefaults storage by key ``CardResults`` on init.
     init() throws {
         let userDefaults = UserDefaults.standard.string(forKey: "CardResults")
         guard let data = userDefaults?.data(using: .utf8) else { throw InitError(kind: .emptyUserDefaults) }

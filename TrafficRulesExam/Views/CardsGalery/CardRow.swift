@@ -15,7 +15,7 @@ struct CardRow: View {
         do {
             object = try CardResults()
         } catch {
-           object = CardResults(items:{ (1...2).map { CardResult($0, Results([])) } }())
+            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object
     }()

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Nimble
 
 class TrafficRulesExamUITests: XCTestCase {
 
@@ -28,27 +29,24 @@ class TrafficRulesExamUITests: XCTestCase {
         app.launch()
         
         // tap ExamCard
-        app.scrollViews.otherElements.buttons.element(boundBy: 0).tap()
-
+        let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(Int.random(in: 1...1))"])
+        app.scrollViews.otherElements.buttons.containing(rndCardPeredicate).firstMatch.tap()
         
         // Tap 19 questions
         for _ in 1...19 {
-            app.buttons.containing(rndPredicate()).firstMatch.tap()
+            app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
             app.buttons["Следующий вопрос"].tap()
         }
         
         // Tap last question and exit.
-        app.buttons.containing(rndPredicate()).firstMatch.tap()
+        app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
         app.buttons["Завершить"].tap()
         
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        expect(app.buttons.containing(rndCardPeredicate).firstMatch.exists) == true
     }
-
-    private func rndAnswer() -> Int { Int.random(in: 1...3) }
     
-    private func rndPredicate() -> NSPredicate {
-        NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(rndAnswer())."])
+    private func rndAnswerPredicate() -> NSPredicate {
+        NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(Int.random(in: 1...3))."])
     }
     
     func testLaunchPerformance() throws {

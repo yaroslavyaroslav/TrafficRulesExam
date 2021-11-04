@@ -34,6 +34,9 @@ struct QuestionCard: View {
     @Binding
     var historyRes: Results
     
+    @Binding
+    var isShowingExamCard: Bool
+    
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
@@ -66,7 +69,10 @@ struct QuestionCard: View {
                 
                 Button(questionDetails.id < 20 ? "Следующий вопрос" : "Завершить") {
                     withAnimation {
-                        guard questionDetails.id != 20 else { historyRes.items.append(result); return }
+                        guard questionDetails.id != 20 else {
+                            historyRes.items.append(result)
+                            isShowingExamCard = false
+                            return }
                         questionDetails = questions[questionDetails.id]
 
                         if questionDetails.id < 19 {

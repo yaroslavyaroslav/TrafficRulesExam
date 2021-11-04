@@ -23,13 +23,13 @@ class TrafficRulesExamUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExamWorkflowWalktrough() throws {
+    func testExamFailedWalktrough() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
         
         // tap ExamCard
-        let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(Int.random(in: 1...1))"])
+        let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(Int.random(in: 1...2))"])
         app.scrollViews.otherElements.buttons.containing(rndCardPeredicate).firstMatch.tap()
         
         // Tap 19 questions

@@ -31,9 +31,9 @@ struct CardRow: View {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in
                     NavigationLink(isActive: $isShowingExamCard) {
-                        Card(card: cards[0], result: $result, isShowingExamCard: $isShowingExamCard)
+                        Card(card: cards.getElementById(id: result.id), result: $result, isShowingExamCard: $isShowingExamCard)
                     } label: {
-                        CardItem(card: cards[0], results: result)
+                        CardItem(card: cards.getElementById(id: result.id), results: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)

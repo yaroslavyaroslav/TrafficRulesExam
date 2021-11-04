@@ -22,15 +22,35 @@ class TrafficRulesExamUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testExamWorkflowWalktrough() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        // tap ExamCard
+        app.scrollViews.otherElements.buttons.element(boundBy: 0).tap()
 
+        
+        // Tap 19 questions
+        for _ in 1...19 {
+            app.buttons.containing(rndPredicate()).firstMatch.tap()
+            app.buttons["Следующий вопрос"].tap()
+        }
+        
+        // Tap last question and exit.
+        app.buttons.containing(rndPredicate()).firstMatch.tap()
+        app.buttons["Завершить"].tap()
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    private func rndAnswer() -> Int { Int.random(in: 1...3) }
+    
+    private func rndPredicate() -> NSPredicate {
+        NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(rndAnswer())."])
+    }
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.

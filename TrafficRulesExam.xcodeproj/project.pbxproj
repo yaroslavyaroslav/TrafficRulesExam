@@ -17,6 +17,9 @@
 		5C453E152714730D006BFFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E142714730D006BFFCB /* Assets.xcassets */; };
 		5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E172714730D006BFFCB /* Preview Assets.xcassets */; };
 		5C53ECFF2733F5700044905A /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
+		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
+		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
+		5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
 		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
@@ -29,6 +32,23 @@
 		5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6379272DD0AD00E888F7 /* CardItem.swift */; };
 		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C53ED4327340BBE0044905A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C453E052714730A006BFFCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C453E0C2714730A006BFFCB;
+			remoteInfo = TrafficRulesExam;
+		};
+		5C53ED5227340BCE0044905A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C453E052714730A006BFFCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C453E0C2714730A006BFFCB;
+			remoteInfo = TrafficRulesExam;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5C0F75AF271A0558004473EA /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
@@ -43,6 +63,11 @@
 		5C453E172714730D006BFFCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C53ECFE2733F5700044905A /* CardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResults.swift; sourceTree = "<group>"; };
+		5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamTests.swift; sourceTree = "<group>"; };
+		5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITests.swift; sourceTree = "<group>"; };
+		5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
@@ -64,6 +89,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C53ED3C27340BBE0044905A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C53ED4927340BCE0044905A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				5C453E0F2714730A006BFFCB /* TrafficRulesExam */,
+				5C53ED4027340BBE0044905A /* TrafficRulesExamTests */,
+				5C53ED4D27340BCE0044905A /* TrafficRulesExamUITests */,
 				5C453E0E2714730A006BFFCB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */,
+				5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */,
+				5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +155,23 @@
 				5C453E172714730D006BFFCB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C53ED4027340BBE0044905A /* TrafficRulesExamTests */ = {
+			isa = PBXGroup;
+			children = (
+				5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */,
+			);
+			path = TrafficRulesExamTests;
+			sourceTree = "<group>";
+		};
+		5C53ED4D27340BCE0044905A /* TrafficRulesExamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */,
+				5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */,
+			);
+			path = TrafficRulesExamUITests;
 			sourceTree = "<group>";
 		};
 		5C97B49427197BDC0017723A /* Model */ = {
@@ -182,6 +242,42 @@
 			productReference = 5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5C53ED3E27340BBE0044905A /* TrafficRulesExamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C53ED4527340BBE0044905A /* Build configuration list for PBXNativeTarget "TrafficRulesExamTests" */;
+			buildPhases = (
+				5C53ED3B27340BBE0044905A /* Sources */,
+				5C53ED3C27340BBE0044905A /* Frameworks */,
+				5C53ED3D27340BBE0044905A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C53ED4427340BBE0044905A /* PBXTargetDependency */,
+			);
+			name = TrafficRulesExamTests;
+			productName = TrafficRulesExamTests;
+			productReference = 5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5C53ED4B27340BCE0044905A /* TrafficRulesExamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C53ED5427340BCE0044905A /* Build configuration list for PBXNativeTarget "TrafficRulesExamUITests" */;
+			buildPhases = (
+				5C53ED4827340BCE0044905A /* Sources */,
+				5C53ED4927340BCE0044905A /* Frameworks */,
+				5C53ED4A27340BCE0044905A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C53ED5327340BCE0044905A /* PBXTargetDependency */,
+			);
+			name = TrafficRulesExamUITests;
+			productName = TrafficRulesExamUITests;
+			productReference = 5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -189,11 +285,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					5C453E0C2714730A006BFFCB = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					5C53ED3E27340BBE0044905A = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 5C453E0C2714730A006BFFCB;
+					};
+					5C53ED4B27340BCE0044905A = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 5C453E0C2714730A006BFFCB;
 					};
 				};
 			};
@@ -214,6 +318,8 @@
 			projectRoot = "";
 			targets = (
 				5C453E0C2714730A006BFFCB /* TrafficRulesExam */,
+				5C53ED3E27340BBE0044905A /* TrafficRulesExamTests */,
+				5C53ED4B27340BCE0044905A /* TrafficRulesExamUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +332,20 @@
 				5C85388927182F3900D8853E /* ExamCards.json in Resources */,
 				5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */,
 				5C453E152714730D006BFFCB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C53ED3D27340BBE0044905A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C53ED4A27340BCE0044905A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +375,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C53ED3B27340BBE0044905A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C53ED4827340BCE0044905A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */,
+				5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C53ED4427340BBE0044905A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C453E0C2714730A006BFFCB /* TrafficRulesExam */;
+			targetProxy = 5C53ED4327340BBE0044905A /* PBXContainerItemProxy */;
+		};
+		5C53ED5327340BCE0044905A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C453E0C2714730A006BFFCB /* TrafficRulesExam */;
+			targetProxy = 5C53ED5227340BCE0044905A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5C453E192714730D006BFFCB /* Debug */ = {
@@ -434,6 +584,80 @@
 			};
 			name = Release;
 		};
+		5C53ED4627340BBE0044905A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KNF7B55U4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrafficRulesExam.app/TrafficRulesExam";
+			};
+			name = Debug;
+		};
+		5C53ED4727340BBE0044905A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KNF7B55U4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrafficRulesExam.app/TrafficRulesExam";
+			};
+			name = Release;
+		};
+		5C53ED5527340BCE0044905A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KNF7B55U4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrafficRulesExam;
+			};
+			name = Debug;
+		};
+		5C53ED5627340BCE0044905A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KNF7B55U4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrafficRulesExam;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -451,6 +675,24 @@
 			buildConfigurations = (
 				5C453E1C2714730D006BFFCB /* Debug */,
 				5C453E1D2714730D006BFFCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C53ED4527340BBE0044905A /* Build configuration list for PBXNativeTarget "TrafficRulesExamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C53ED4627340BBE0044905A /* Debug */,
+				5C53ED4727340BBE0044905A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C53ED5427340BCE0044905A /* Build configuration list for PBXNativeTarget "TrafficRulesExamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C53ED5527340BCE0044905A /* Debug */,
+				5C53ED5627340BCE0044905A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

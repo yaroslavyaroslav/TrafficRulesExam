@@ -7,9 +7,20 @@
 
 import Foundation
 
-var cards: [ExamCard] = load("ExamCards.json")
+var cards: [ExamCard] = cardsSource.map { ExamCard(source: $0) }
 
-func load<T: Decodable>(_ filename: String) -> T {
+fileprivate var cardsSource: [ExamCardSource] = load("ExamCards.json")
+
+fileprivate struct ExamCardSource: Codable {
+    let id: Int
+    let questions: [Question]
+}
+
+fileprivate extension ExamCard {
+    init(source: ExamCardSource) { self.init(id: source.id, questions: source.questions) }
+}
+
+fileprivate func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
@@ -26,6 +37,7 @@ func load<T: Decodable>(_ filename: String) -> T {
     do {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         return try decoder.decode(T.self, from: data)
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")

@@ -13,12 +13,8 @@ struct CardsGalery: View {
     
     var body: some View {
         NavigationView {
-            List(cards) { card in
-                NavigationLink(destination: Card(card: card)) {
-                    Text("This is row")
-                        .padding()
-                }
-            }
+            CardRow(cards: cards)
+                .padding()
         }
     }
 }

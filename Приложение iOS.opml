@@ -5,8 +5,8 @@
       <column name="text" width="739"/>
     </editor> -->
     <title>Приложение iOS</title>
-    <expansionState>0,1,2,3,4,10,11,15,19,20,21,25,26,32,33,37,38,39,47,48,50,54,55,57,58,62,63,66,67,69,70</expansionState>
-    <vertScrollState>1</vertScrollState>
+    <expansionState>0,1,3,10,14,19,20,24,25,32,33,37,38,39,47,48,50,54,55,57,58,62,63,66,67,69,70</expansionState>
+    <vertScrollState>0</vertScrollState>
     <windowTop>252</windowTop>
     <windowLeft>0</windowLeft>
     <windowRight>760</windowRight>
@@ -15,40 +15,40 @@
   <body>
     <outline text="Релизы" _status="indeterminate">
       <outline text="0" _status="indeterminate">
-        <outline text="0.1" _status="indeterminate">
-          <outline text="0.1.0" _status="indeterminate">
-            <outline text="Экран вопроса из билета" _status="indeterminate">
+        <outline text="0.1" _status="checked">
+          <outline text="0.1.0" _status="checked">
+            <outline text="Экран вопроса из билета" _status="checked">
               <outline text="Список вопросов билета" _status="checked" _note="Скролл горизонтальный"/>
               <outline text="Смена вопросов по нажатии на далее" _status="checked"/>
               <outline text="Нажимабельные варианты ответа" _status="checked"/>
-              <outline text="Вычисление ошибки/правильного ответа"/>
+              <outline text="Вычисление ошибки/правильного ответа" _status="checked"/>
             </outline>
-            <outline text="Экран результатов теста"/>
             <outline text="Экран выбора билета (Б1)" _status="checked">
               <outline text="Цвет билета зависит от статуса" _status="checked">
-                <outline text="Серый — не решал" _status="checked"/>
-                <outline text="Красный — не прошел" _status="checked"/>
-                <outline text="Зеленый — прошел" _status="checked"/>
+                <outline text="Серый — не решал" _status="checked"/>
+                <outline text="Красный — не прошел" _status="checked"/>
+                <outline text="Зеленый — прошел" _status="checked"/>
               </outline>
               <outline text="Поля" _status="checked">
                 <outline text="Номер билета" _status="checked"/>
-                <outline text="Дата прохождения" _status="checked" _note="Если не проходил — кнопка начать"/>
+                <outline text="Дата прохождения" _status="checked" _note="Если не проходил — кнопка начать"/>
                 <outline text="Количество правильных ответов для пройденного" _status="checked"/>
               </outline>
             </outline>
           </outline>
         </outline>
-        <outline text="0.2">
-          <outline text="0.2.0">
-            <outline text="Сохранение результата теста">
-              <outline text="Сохранение результатов теста"/>
-              <outline text="История результатов теста"/>
-              <outline text="Грузить данные результатов на экран выбора билета."/>
+        <outline text="0.2" _status="checked">
+          <outline text="0.2.0" _status="checked">
+            <outline text="Сохранение результата теста" _status="checked">
+              <outline text="Сохранение результатов теста" _status="checked"/>
+              <outline text="История результатов теста" _status="checked"/>
+              <outline text="Грузить данные результатов на экран выбора билета." _status="checked"/>
             </outline>
           </outline>
         </outline>
         <outline text="0.3">
           <outline text="0.3.0">
+            <outline text="Экран результатов теста"/>
             <outline text="Экран списка тем билетов (Б1)"/>
             <outline text="Текст ПДД"/>
             <outline text="Экран настроек приложения">

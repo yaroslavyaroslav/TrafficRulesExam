@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CwlCatchException",
+        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
+        "state": {
+          "branch": null,
+          "revision": "35f9e770f54ce62dd8526470f14c6e137cef3eea",
+          "version": "2.1.1"
+        }
+      },
+      {
+        "package": "CwlPreconditionTesting",
+        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+        "state": {
+          "branch": null,
+          "revision": "fb7a26374e8570ff5c68142e5c83406d6abae0d8",
+          "version": "2.0.2"
+        }
+      },
+      {
+        "package": "YandexMobileMetrica",
+        "repositoryURL": "https://github.com/yandexmobile/metrica-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "8be51a74e2f4449e2f3d4e69824c5feba2787584",
+          "version": "4.0.0"
+        }
+      },
+      {
+        "package": "Nimble",
+        "repositoryURL": "https://github.com/Quick/Nimble",
+        "state": {
+          "branch": "main",
+          "revision": "ea662491f7f4b6ec72656674488bf830003eaaf5",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

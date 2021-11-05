@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head><!-- <editor>
+      <sidebar width="197"/>
+      <column name="text" width="739"/>
+    </editor> -->
+    <title>Приложение iOS</title>
+    <expansionState>0,1,3,10,14,19,20,24,25,32,33,37,38,39,47,48,50,54,55,57,58,62,63,66,67,69,70</expansionState>
+    <vertScrollState>0</vertScrollState>
+    <windowTop>252</windowTop>
+    <windowLeft>0</windowLeft>
+    <windowRight>760</windowRight>
+    <windowBottom>1196</windowBottom>
+  </head>
+  <body>
+    <outline text="Релизы" _status="indeterminate">
+      <outline text="0" _status="indeterminate">
+        <outline text="0.1" _status="checked">
+          <outline text="0.1.0" _status="checked">
+            <outline text="Экран вопроса из билета" _status="checked">
+              <outline text="Список вопросов билета" _status="checked" _note="Скролл горизонтальный"/>
+              <outline text="Смена вопросов по нажатии на далее" _status="checked"/>
+              <outline text="Нажимабельные варианты ответа" _status="checked"/>
+              <outline text="Вычисление ошибки/правильного ответа" _status="checked"/>
+            </outline>
+            <outline text="Экран выбора билета (Б1)" _status="checked">
+              <outline text="Цвет билета зависит от статуса" _status="checked">
+                <outline text="Серый — не решал" _status="checked"/>
+                <outline text="Красный — не прошел" _status="checked"/>
+                <outline text="Зеленый — прошел" _status="checked"/>
+              </outline>
+              <outline text="Поля" _status="checked">
+                <outline text="Номер билета" _status="checked"/>
+                <outline text="Дата прохождения" _status="checked" _note="Если не проходил — кнопка начать"/>
+                <outline text="Количество правильных ответов для пройденного" _status="checked"/>
+              </outline>
+            </outline>
+          </outline>
+        </outline>
+        <outline text="0.2" _status="checked">
+          <outline text="0.2.0" _status="checked">
+            <outline text="Сохранение результата теста" _status="checked">
+              <outline text="Сохранение результатов теста" _status="checked"/>
+              <outline text="История результатов теста" _status="checked"/>
+              <outline text="Грузить данные результатов на экран выбора билета." _status="checked"/>
+            </outline>
+          </outline>
+        </outline>
+        <outline text="0.3">
+          <outline text="0.3.0">
+            <outline text="Экран результатов теста"/>
+            <outline text="Экран списка тем билетов (Б1)"/>
+            <outline text="Текст ПДД"/>
+            <outline text="Экран настроек приложения">
+              <outline text="Тема оформления">
+                <outline text="Светлая"/>
+                <outline text="Темная"/>
+              </outline>
+              <outline text="Стиль рисунков">
+                <outline text="Как на экзамене" _note="стремные"/>
+                <outline text="Перерисованные" _note="красивые"/>
+              </outline>
+              <outline text="Случайный порядок вопросов в билете"/>
+              <outline text="Случайные ответы в билете"/>
+            </outline>
+          </outline>
+        </outline>
+        <outline text="0.4">
+          <outline text="0.4.0">
+            <outline text="Экран статистики теста"/>
+            <outline text="Режим решения">
+              <outline text="Как на экзамене" _note="20 вопросов из одного билета"/>
+              <outline text="Решение по темам"/>
+              <outline text="Случайный порядок вопросов">
+                <outline text="Билет из случайных вопросов"/>
+                <outline text="Бесконечные вопросы"/>
+              </outline>
+            </outline>
+          </outline>
+        </outline>
+        <outline text="0.5">
+          <outline text="0.5.0">
+            <outline text="Экран статистики решенных билетов">
+              <outline text="Бензин"/>
+              <outline text="Статистика правильных ответов"/>
+              <outline text="Статистика неправильных ответов"/>
+            </outline>
+            <outline text="Встроенные покупки"/>
+          </outline>
+        </outline>
+        <outline text="0.6">
+          <outline text="0.6.0">
+            <outline text="Интеграция с Game Center"/>
+          </outline>
+        </outline>
+        <outline text="0.7">
+          <outline text="0.7.0">
+            <outline text="Аналитика">
+              <outline text="Аппметрика">
+                <outline text="Статистика использования">
+                  <outline text="Покупки"/>
+                  <outline text="Успешное решение билетов"/>
+                  <outline text="Неуспешное решение билетов"/>
+                </outline>
+                <outline text="Отслеживание установок"/>
+              </outline>
+            </outline>
+          </outline>
+        </outline>
+        <outline text="0.8">
+          <outline text="0.8.0">
+            <outline text="Рейтинг" _note="Гейм центр"/>
+          </outline>
+        </outline>
+        <outline text="0.9">
+          <outline text="0.9.0">
+            <outline text="Анимация элементов" _note="Должно быть красиво"/>
+            <outline text="Оптимизация производительности" _note="Не должно лагать или греть телефон"/>
+          </outline>
+        </outline>
+      </outline>
+      <outline text="1">
+        <outline text="1.0">
+          <outline text="1.0.0">
+            <outline text="Настройка геймификации">
+              <outline text="Очки за правильно решённые"/>
+              <outline text="Бензин для решения"/>
+              <outline text="Ежедневный бесплатный бензин"/>
+            </outline>
+            <outline text="Релиз со всеми функциями версии 0.*.*"/>
+          </outline>
+        </outline>
+        <outline text="1.1">
+          <outline text="1.1.0">
+            <outline text="Билеты категории А"/>
+          </outline>
+        </outline>
+        <outline text="1.2">
+          <outline text="1.2.0">
+            <outline text="Билеты категории С"/>
+          </outline>
+        </outline>
+        <outline text="1.3">
+          <outline text="1.3.0">
+            <outline text="Билеты категории Д"/>
+          </outline>
+        </outline>
+        <outline text="1.4">
+          <outline text="1.4.0">
+            <outline text="Билеты категории Е"/>
+          </outline>
+        </outline>
+      </outline>
+      <outline text="2">
+        <outline text="2.0">
+          <outline text="2.0.0">
+            <outline text="Карты маршрутов"/>
+            <outline text="Площадка"/>
+            <outline text="Видео с ютуб" _note="По маршрутам и площадкам"/>
+            <outline text="Видео с вк" _note="По маршрутам и площадкам"/>
+          </outline>
+        </outline>
+      </outline>
+    </outline>
+  </body>
+</opml>

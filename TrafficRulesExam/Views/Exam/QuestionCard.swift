@@ -26,13 +26,20 @@ struct QuestionCard: View {
     let questions: [Question]
     
     @State
-    var questionDetails: Question
+    var questionDetails: Question {
+        didSet {
+            print("current QD: \(questionDetails.id)")
+        }
+    }
     
     @StateObject
     var selectedAnswer: SelectedAnswer = SelectedAnswer()
     
     @Binding
     var historyRes: Results
+    
+    @State
+    var answeredQuestions: Set<Int> = []
     
     @Binding
     var isShowingExamCard: Bool
@@ -55,8 +62,9 @@ struct QuestionCard: View {
                             .frame(width: 40, height: 40, alignment: .center)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(question == questionDetails ? .green : .gray)
+                                    .foregroundColor(question == questionDetails ? .green : (answeredQuestions.contains(question.id) ? .yellow : .gray))
                             )
+                            .disabled(answeredQuestions.contains(question.id))
                         }
                         .cornerRadius(8)
                     }
@@ -67,19 +75,32 @@ struct QuestionCard: View {
                     .transition(.moveAndFade)
                     .padding(8)
                 
-                Button(questionDetails.id < 20 ? "Следующий вопрос" : "Завершить") {
+                Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
                     withAnimation {
-                        guard questionDetails.id != 20 else {
+                        self.saveAnswer()
+                        answeredQuestions.insert(questionDetails.id)
+                        print(answeredQuestions.count)
+                        
+                        if answeredQuestions.count == 20 {
                             historyRes.items.append(result)
                             isShowingExamCard = false
                             return
                         }
-                        questionDetails = questions[questionDetails.id]
+                        
+                        print(answeredQuestions)
+
+                        let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
+                        if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
+                            questionDetails = questions[questionDetails.id]
+                        } else {
+                            questionDetails = questions[notAnswered[0] - 1]
+                        }
 
                         if questionDetails.id < 19 {
+                            // don't scrolls correct backward.
                             proxy.scrollTo(questionDetails.id + 2)
                         }
-                        self.saveAnswer()
+                        
                     }
                 }
                 .disabled(selectedAnswer.answer == AnswerID.none)
@@ -93,7 +114,7 @@ struct QuestionCard: View {
 extension QuestionCard {
     func saveAnswer() {
         guard selectedAnswer.answer != .none else { return }
-        
+            
         if questionDetails.correctAnswer != selectedAnswer.answer {
             result.addMistake(mistake: (questionDetails.id, selectedAnswer.answer))
         }

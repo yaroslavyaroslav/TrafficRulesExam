@@ -34,7 +34,9 @@ class TrafficRulesExamUITests: XCTestCase {
         
         // Tap 19 questions
         for _ in 1...19 {
-            app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
+            let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
+            expect(app.buttons.containing(self.rndAnswerPredicate()).firstMatch.exists) == true
+            answerButton.tap()
             app.buttons["Следующий вопрос"].tap()
         }
         
@@ -49,12 +51,12 @@ class TrafficRulesExamUITests: XCTestCase {
         NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(Int.random(in: 1...3))."])
     }
     
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
 }

@@ -87,20 +87,16 @@ struct QuestionCard: View {
                             return
                         }
                         
-                        print(answeredQuestions)
-
                         let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
                         if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
                             questionDetails = questions[questionDetails.id]
+                            if questionDetails.id < 20 {
+                                proxy.scrollTo(questionDetails.id + 1)
+                            }
                         } else {
                             questionDetails = questions[notAnswered[0] - 1]
+                            proxy.scrollTo(questionDetails.id)
                         }
-
-                        if questionDetails.id < 19 {
-                            // don't scrolls correct backward.
-                            proxy.scrollTo(questionDetails.id + 2)
-                        }
-                        
                     }
                 }
                 .disabled(selectedAnswer.answer == AnswerID.none)

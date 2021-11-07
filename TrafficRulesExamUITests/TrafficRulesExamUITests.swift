@@ -7,6 +7,7 @@
 
 import XCTest
 import Nimble
+import OSLog
 
 
 class TrafficRulesExamUITests: XCTestCase {
@@ -86,7 +87,8 @@ class TrafficRulesExamUITests: XCTestCase {
         let (app, examCard) = startExam()
         
         // Tap 19 questions
-        for _ in 1...19 {
+        for id in 1...19 {
+            os_log("question \(id.description) processing.")
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             let nextQuestionButton = app.buttons["Следующий вопрос"]
             
@@ -108,23 +110,31 @@ class TrafficRulesExamUITests: XCTestCase {
         
         let (app, examCard) = startExam(randomCard)
         
-        let appExamCard = cards[randomCard - 1]
+        let appExamCard = cards.getElementById(id: randomCard)
+                
+        // FIXME: Почему-то иногда, когда тест тапает на Билет 1, в приложении открывается Билет 2.
+        // При этом функция getElementById отрабатывает валидно, возвращая билет того же ID.
+        // Остановился на дебаге вьюх.
+        os_log("navbar title: \(app.navigationBars.firstMatch.identifier), randomID: \(randomCard)")
+        expect(app.navigationBars.firstMatch.identifier).to(contain("Билет \(randomCard)"), description: "ExamCard label \(examCard.label) doesn't match randomID \(randomCard.description)")
         
-        for id in 0...18 {
-            let answerID = appExamCard.questions[id].correctAnswer.stringValue
-            let answerPredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(answerID)"])
+        for id in 1...19 {
+            os_log("question \(id.description) processing.")
+            let answerID = appExamCard.questions.getElementById(id: id).correctAnswer.stringValue
+            let answerPredicate = exactAnswerPredicate(answerID)
             
             let answerButton = app.buttons.containing(answerPredicate).firstMatch
             let nextQuestionButton = app.buttons["Следующий вопрос"]
             
-            expect(answerButton.exists).to(beTrue(), description: "Answer button doesn't exists")
+            // FIXME: Иногда падает здесь на 2 билете на 4 вопросе (выбирает 4 ответ из 3).
+            expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerID) in question \(id.description) doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }
         
         // Tap last question and exit.
-        let answerID = appExamCard.questions[19].correctAnswer.stringValue
-        let answerPredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(answerID)"])
+        let answerID = appExamCard.questions.getElementById(id: 20).correctAnswer.stringValue
+        let answerPredicate = exactAnswerPredicate(answerID)
         app.buttons.containing(answerPredicate).firstMatch.tap()
         app.buttons["Завершить"].tap()
         
@@ -137,21 +147,32 @@ class TrafficRulesExamUITests: XCTestCase {
     /// - Returns: tuple: instance XCUIApplication, selected ExamCard
     private func startExam(_ id: Int? = nil) -> (XCUIApplication, XCUIElement) {
         let app = XCUIApplication()
-        
         app.launch()
-        let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(id ?? Int.random(in: 1...2))"])
+        
+        let rndId = id ?? Int.random(in: 1...2)
+
+        os_log("Ticket \(rndId.description) selected")
+
+        let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(rndId)"])
         // tap ExamCard
-        let examCard = app.scrollViews.otherElements.buttons.containing(rndCardPeredicate).firstMatch
+        let examCard = app.buttons.containing(rndCardPeredicate).firstMatch
         examCard.tap()
         
         return (app, examCard)
     }
     
     private func rndAnswerPredicate() -> NSPredicate {
-        // В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
-        NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(Int.random(in: 1...2))."])
+        let rndId = Int.random(in: 1...2)
+        os_log("Answer \(rndId.description) selected")
+        // FIXME: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
+        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(rndId)."])
     }
-        
+    
+    private func exactAnswerPredicate(_ answer: String) -> NSPredicate {
+        os_log("Answer \(answer) selected")
+        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(answer)"])
+    }
+    
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
 //            // This measures how long it takes to launch your application.

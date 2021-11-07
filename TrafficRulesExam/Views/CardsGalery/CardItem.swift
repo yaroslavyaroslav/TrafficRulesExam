@@ -46,7 +46,7 @@ extension CardItem {
     private func prettyDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
+        dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "RU_ru")
         return dateFormatter.string(from: date)
     }

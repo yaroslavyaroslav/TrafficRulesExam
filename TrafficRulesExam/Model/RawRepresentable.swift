@@ -30,8 +30,10 @@ extension Array: RawRepresentable where Element: Codable {
 
 extension CardResults: RawRepresentable {
     public init?(rawValue: String) {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder().decode(CardResults.self, from: data)
+              let result = try? decoder.decode(CardResults.self, from: data)
         else {
             return nil
         }
@@ -39,7 +41,9 @@ extension CardResults: RawRepresentable {
     }
 
     public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        guard let data = try? encoder.encode(self),
               let result = String(data: data, encoding: .utf8)
         else {
             return "[]"

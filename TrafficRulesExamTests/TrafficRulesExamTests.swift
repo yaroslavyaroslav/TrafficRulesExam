@@ -7,6 +7,10 @@
 
 import XCTest
 
+@testable
+import TrafficRulesExam
+
+
 class TrafficRulesExamTests: XCTestCase {
 
     override func setUpWithError() throws {

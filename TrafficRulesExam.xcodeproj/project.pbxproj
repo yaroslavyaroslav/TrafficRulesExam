@@ -24,6 +24,14 @@
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
 		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
 		5C85388B27183D5900D8853E /* ExamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCard.swift */; };
+		5C8A6C6C273849C800572459 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
+		5C8A6C6D273849C800572459 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6375272DC36200E888F7 /* Answer.swift */; };
+		5C8A6C6F273849EC00572459 /* ExamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85388A27183D5900D8853E /* ExamCard.swift */; };
+		5C8A6C70273849FE00572459 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C121918272ED02D00DB4826 /* RawRepresentable.swift */; };
+		5C8A6C71273849FE00572459 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
+		5C8A6C72273849FE00572459 /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
+		5C8A6C7327384AA000572459 /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
+		5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */; };
 		5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelLoad.swift */; };
 		5C97B49827197EEF0017723A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* Card.swift */; };
 		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
@@ -71,6 +79,7 @@
 		5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
+		5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtilityDataModel.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
 		5C97B49727197EEF0017723A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		5CDB6371272D946700E888F7 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
@@ -171,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */,
+				5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */,
 				5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */,
 			);
 			path = TrafficRulesExamUITests;
@@ -352,6 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A6C7327384AA000572459 /* ExamCards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,8 +404,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A6C6C273849C800572459 /* Question.swift in Sources */,
+				5C8A6C6D273849C800572459 /* Answer.swift in Sources */,
+				5C8A6C71273849FE00572459 /* Results.swift in Sources */,
+				5C8A6C6F273849EC00572459 /* ExamCard.swift in Sources */,
 				5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */,
+				5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */,
 				5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */,
+				5C8A6C72273849FE00572459 /* CardResults.swift in Sources */,
+				5C8A6C70273849FE00572459 /* RawRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

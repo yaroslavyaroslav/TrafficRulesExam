@@ -16,6 +16,9 @@
 		5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E122714730A006BFFCB /* CardsGalery.swift */; };
 		5C453E152714730D006BFFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E142714730D006BFFCB /* Assets.xcassets */; };
 		5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E172714730D006BFFCB /* Preview Assets.xcassets */; };
+		5C45EBBA2739964D00C90977 /* TotalStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBB92739964D00C90977 /* TotalStats.swift */; };
+		5C45EBBC2739968600C90977 /* ExamCardStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBBB2739968600C90977 /* ExamCardStats.swift */; };
+		5C45EBBE2739969600C90977 /* ExamStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBBD2739969600C90977 /* ExamStats.swift */; };
 		5C53ECFF2733F5700044905A /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
@@ -70,6 +73,9 @@
 		5C453E122714730A006BFFCB /* CardsGalery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGalery.swift; sourceTree = "<group>"; };
 		5C453E142714730D006BFFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C453E172714730D006BFFCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C45EBB92739964D00C90977 /* TotalStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStats.swift; sourceTree = "<group>"; };
+		5C45EBBB2739968600C90977 /* ExamCardStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCardStats.swift; sourceTree = "<group>"; };
+		5C45EBBD2739969600C90977 /* ExamStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamStats.swift; sourceTree = "<group>"; };
 		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C53ECFE2733F5700044905A /* CardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResults.swift; sourceTree = "<group>"; };
 		5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +174,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5C45EBBF273996A500C90977 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				5C45EBB92739964D00C90977 /* TotalStats.swift */,
+				5C45EBBB2739968600C90977 /* ExamCardStats.swift */,
+				5C45EBBD2739969600C90977 /* ExamStats.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		5C53ED4027340BBE0044905A /* TrafficRulesExamTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +230,7 @@
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C12191A272ED61600DB4826 /* CardsGalery */,
 				5CDE11D12720A79800981225 /* Exam */,
+				5C45EBBF273996A500C90977 /* Stats */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C121919272ED02D00DB4826 /* RawRepresentable.swift in Sources */,
+				5C45EBBA2739964D00C90977 /* TotalStats.swift in Sources */,
 				5C0F75B2271A07F1004473EA /* Answers.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContent.swift in Sources */,
@@ -382,10 +400,12 @@
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
 				5C53ECFF2733F5700044905A /* CardResults.swift in Sources */,
+				5C45EBBE2739969600C90977 /* ExamStats.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 				5CDB6372272D946700E888F7 /* Results.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
+				5C45EBBC2739968600C90977 /* ExamCardStats.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */,

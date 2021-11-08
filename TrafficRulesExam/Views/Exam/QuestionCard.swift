@@ -41,9 +41,9 @@ struct QuestionCard: View {
     @State
     var answeredQuestions: Set<Int> = []
     
-    @Binding
-    var isShowingExamCard: Bool
-    
+    @Environment(\.presentationMode)
+    var presentationMode
+
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
@@ -83,7 +83,7 @@ struct QuestionCard: View {
                         
                         if answeredQuestions.count == 20 {
                             historyRes.items.append(result)
-                            isShowingExamCard = false
+                            presentationMode.wrappedValue.dismiss()
                             return
                         }
                         
@@ -106,7 +106,6 @@ struct QuestionCard: View {
     }
 }
 
-
 extension QuestionCard {
     func saveAnswer() {
         guard selectedAnswer.answer != .none else { return }
@@ -120,6 +119,6 @@ extension QuestionCard {
 
 //struct QuestionCard_Previews: PreviewProvider {
 //    static var previews: some View {
-////        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3], resultHistory: Results([]))
+//        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3], resultHistory: Results(items: []), historyRes: <#Binding<Results>#>)
 //    }
 //}

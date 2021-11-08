@@ -92,7 +92,7 @@ class TrafficRulesExamUITests: XCTestCase {
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             let nextQuestionButton = app.buttons["Следующий вопрос"]
             
-            expect(answerButton.exists).to(beTrue(), description: "Answer button doesn't exists")
+            expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerButton.label) in question \(id.description) doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }
@@ -111,11 +111,7 @@ class TrafficRulesExamUITests: XCTestCase {
         let (app, examCard) = startExam(randomCard)
         
         let appExamCard = cards.getElementById(id: randomCard)
-                
-        // FIXME: Почему-то иногда, когда тест тапает на Билет 1, в приложении открывается Билет 2.
-        // При этом функция getElementById отрабатывает валидно, возвращая билет того же ID.
-        // Остановился на дебаге вьюх.
-        os_log("navbar title: \(app.navigationBars.firstMatch.identifier), randomID: \(randomCard)")
+
         expect(app.navigationBars.firstMatch.identifier).to(contain("Билет \(randomCard)"), description: "ExamCard label \(examCard.label) doesn't match randomID \(randomCard.description)")
         
         for id in 1...19 {

@@ -14,19 +14,18 @@ struct Card: View {
     @Binding
     var result: CardResult
     
-    @Binding
-    var isShowingExamCard: Bool
-    
     var body: some View {
         VStack(alignment: .leading){
-            QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory, isShowingExamCard: $isShowingExamCard)
+            QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Билет \(card.id)")
     }
+    
 }
 
 //struct Card_Previews: PreviewProvider {
 //    static var previews: some View {
-////        Card(card: cards[0], result: CardResult(1, Results([])))
+//        Card(card: cards[0], result: CardResult(id: 1, resultHistory: Results(items: [])))
 //    }
 //}

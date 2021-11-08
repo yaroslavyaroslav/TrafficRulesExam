@@ -57,3 +57,7 @@ extension Result {
 }
 
 extension Result: Codable { }
+
+extension Result: Identifiable {
+    var id: Date { examDate }
+}

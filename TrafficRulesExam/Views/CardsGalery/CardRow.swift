@@ -19,8 +19,6 @@ struct CardRow: View {
         }
         return object
     }()
-    
-    @State var isShowingExamCard = false
 
     var cards: [ExamCard]
     

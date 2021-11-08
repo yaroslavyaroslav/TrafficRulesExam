@@ -11,7 +11,16 @@ import SwiftUI
 struct TrafficRulesExamApp: App {
     var body: some Scene {
         WindowGroup {
-            CardsGalery(cards: cards)
+            TabView {
+                CardsGalery(cards: cards)
+                    .tabItem {
+                        Text("Решать")
+                    }
+                TotalStats(cards: cards)
+                    .tabItem {
+                        Text("Статистика")
+                    }
+            }
         }
     }
 }

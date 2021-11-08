@@ -16,7 +16,7 @@ struct CardResult {
     let id: Int
     
     /// History of the results processed tests.
-    var resultHistory: Results { didSet { print("CardResult.resultHistory did updated. ") } }
+    var resultHistory: Results
 }
 
 extension CardResult: Codable { }
@@ -33,7 +33,6 @@ struct CardResults {
             let string = String(data: data, encoding: .utf8)
             UserDefaults.standard.set(string, forKey: "CardResults")
         }
-        didSet { print("CardResults.items did updated.") }
     }
 }
 

@@ -12,7 +12,7 @@ import SwiftUI
 /// Object to store Result objects for being compatiable with SwiftUI data flow.
 struct Results {
     /// Array of the results of the processed exams
-    var items: [Result] { didSet { print("Results.item did updated.") } }
+    var items: [Result]
 }
 
 extension Results: Codable { }

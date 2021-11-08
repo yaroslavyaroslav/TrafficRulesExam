@@ -30,8 +30,13 @@ struct CardRow: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in
-                    NavigationLink(isActive: $isShowingExamCard) {
-                        Card(card: cards.getElementById(id: result.id), result: $result, isShowingExamCard: $isShowingExamCard)
+                    /*
+                     Если использовать NavigationLink(isActive:) в ForEach тап на кнопку открывает рандомный destination.
+                     Проблема закрытия DestinationView по тапу на кнопку решается через вызов в DestinationView
+                     метода @Environment(\.presentationMode) переменной dismiss()
+                     */
+                    NavigationLink {
+                        Card(card: cards.getElementById(id: result.id), result: $result)
                     } label: {
                         CardItem(card: cards.getElementById(id: result.id), results: result)
                     }

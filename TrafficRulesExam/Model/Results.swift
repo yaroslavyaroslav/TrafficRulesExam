@@ -32,7 +32,7 @@ struct Result {
     ///
     /// Additional questions fires when user makes a 2 or less mistakes during the main test part (20 questions).
     /// In that case after the main part app provides additional questions in theme where user have mistaken.
-    /// It's 2 more questions for each given mistake, 4 at max.
+    /// It's 5 more questions for each given mistake, 10 at max.
     var additionalQuestionsFired: Bool { mistakes.count > 0 ? true : false }
     
     /// Did test succeed

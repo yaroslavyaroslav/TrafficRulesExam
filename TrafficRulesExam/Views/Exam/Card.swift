@@ -20,6 +20,7 @@ struct Card: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")
+//        .navigationBarBackButtonHidden(true)
     }
     
 }

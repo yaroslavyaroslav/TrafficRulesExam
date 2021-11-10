@@ -21,6 +21,10 @@
 		5C45EBBE2739969600C90977 /* ExamStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBBD2739969600C90977 /* ExamStats.swift */; };
 		5C45EBC1273BF1FD00C90977 /* TotalStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC0273BF1FD00C90977 /* TotalStats.swift */; };
 		5C45EBC3273C07A000C90977 /* Date+PrittyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */; };
+		5C45EBC5273C4CF400C90977 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC4273C4CF200C90977 /* MainScreen.swift */; };
+		5C45EBC7273C4FBB00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
+		5C45EBC8273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
+		5C45EBC9273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
 		5C53ECFF2733F5700044905A /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
@@ -80,6 +84,8 @@
 		5C45EBBD2739969600C90977 /* ExamStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamStats.swift; sourceTree = "<group>"; };
 		5C45EBC0273BF1FD00C90977 /* TotalStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStats.swift; sourceTree = "<group>"; };
 		5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+PrittyPrint.swift"; sourceTree = "<group>"; };
+		5C45EBC4273C4CF200C90977 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C53ECFE2733F5700044905A /* CardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResults.swift; sourceTree = "<group>"; };
 		5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +223,7 @@
 				5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */,
 				5CDB6371272D946700E888F7 /* Results.swift */,
 				5C53ECFE2733F5700044905A /* CardResults.swift */,
+				5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */,
 				5C121918272ED02D00DB4826 /* RawRepresentable.swift */,
 			);
 			path = Model;
@@ -234,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
+				5C45EBC4273C4CF200C90977 /* MainScreen.swift */,
 				5C12191A272ED61600DB4826 /* CardsGalery */,
 				5CDE11D12720A79800981225 /* Exam */,
 				5C45EBBF273996A500C90977 /* Stats */,
@@ -410,6 +418,8 @@
 				5C53ECFF2733F5700044905A /* CardResults.swift in Sources */,
 				5C45EBBE2739969600C90977 /* ExamStats.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
+				5C45EBC7273C4FBB00C90977 /* UserDefaults.swift in Sources */,
+				5C45EBC5273C4CF400C90977 /* MainScreen.swift in Sources */,
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 				5CDB6372272D946700E888F7 /* Results.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
@@ -424,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C45EBC9273C52AF00C90977 /* UserDefaults.swift in Sources */,
 				5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +449,7 @@
 				5C8A6C6F273849EC00572459 /* ExamCard.swift in Sources */,
 				5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */,
 				5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */,
+				5C45EBC8273C52AF00C90977 /* UserDefaults.swift in Sources */,
 				5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */,
 				5C8A6C72273849FE00572459 /* CardResults.swift in Sources */,
 				5C8A6C70273849FE00572459 /* RawRepresentable.swift in Sources */,

@@ -15,7 +15,7 @@ struct CardRow: View {
         do {
             object = try CardResults()
         } catch {
-            UserDefaults.standard.removeObject(forKey: "CardResults")
+            UserDefaults.standard.removeObject(forKey: UDKeys.cardResults.rawValue)
             object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object

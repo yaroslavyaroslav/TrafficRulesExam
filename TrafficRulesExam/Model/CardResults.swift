@@ -35,7 +35,7 @@ struct CardResults {
             // FIXME: Disable force unwrap.
             let data = try! JSONEncoder().encode(newValue)
             let string = String(data: data, encoding: .utf8)
-            UserDefaults.standard.set(string, forKey: "CardResults")
+            UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
         }
     }
     
@@ -57,7 +57,7 @@ extension CardResults {
     ///
     /// - Throws: ``InitError.emptyUserDefaults``: on empty UserDefaults storage by key ``CardResults`` on init.
     init() throws {
-        let userDefaults = UserDefaults.standard.string(forKey: "CardResults")
+        let userDefaults = UserDefaults.standard.string(forKey: UDKeys.cardResults.rawValue)
         guard let data = userDefaults?.data(using: .utf8) else { throw InitError(kind: .emptyUserDefaults) }
         self.items = try JSONDecoder().decode([CardResult].self, from: data)
     }

@@ -25,11 +25,9 @@ struct TotalStatsNavigation: View {
     var cards: [ExamCard]
     
     var body: some View {
-//        NavigationView {
-            TotalStats(results: results)
+        TotalStats(results: results)
             .navigationTitle(Text("Статистика"))
             .navigationBarTitleDisplayMode(.large)
-//        }
     }
 }
 

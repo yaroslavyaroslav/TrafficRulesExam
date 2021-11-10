@@ -29,45 +29,44 @@ struct TotalStats: View {
     
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    VStack {
-                        ZStack(alignment: .topLeading) {
-                            Rectangle()
-                                .frame(width: maxWidth, height: graphHeight)
-                                .foregroundColor(.gray)
-                            Rectangle()
-                                .frame(width: triedTickets, height: graphHeight)
-                                .foregroundColor(.red)
-                            Rectangle()
-                                .frame(width: successTickets, height: graphHeight)
-                                .foregroundColor(.green)
-                        }
-                        .cornerRadius(8)
-                        
-                        HStack {
-                            if successTickets > 0 {
-                                Text("Правильно \(results.cardsSucceed)")
-                                    .foregroundColor(.green)
-                                Spacer()
-                            }
-                            if triedTickets > 0 {
-                                Text("Решено \(results.cardsTried)")
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }
-                            Text("Всего \(cards.count)")
-                                .foregroundColor(.gray)
-                            if successTickets == 0 && triedTickets == 0 {
-                                Spacer()
-                            }
-                        }
-                        Text("\(results.items.count.description) билетов от 01.10.2021")
-                            .padding()
+            HStack {
+                VStack {
+                    ZStack(alignment: .topLeading) {
+                        Rectangle()
+                            .frame(width: maxWidth, height: graphHeight)
+                            .foregroundColor(.gray)
+                        Rectangle()
+                            .frame(width: triedTickets, height: graphHeight)
+                            .foregroundColor(.red)
+                        Rectangle()
+                            .frame(width: successTickets, height: graphHeight)
+                            .foregroundColor(.green)
                     }
+                    .cornerRadius(8)
+                    .padding()
+                    
+                    HStack {
+                        if successTickets > 0 {
+                            Text("Правильно \(results.cardsSucceed)")
+                                .foregroundColor(.green)
+                            Spacer()
+                        }
+                        if triedTickets > 0 && triedTickets != successTickets {
+                            Text("Решено \(results.cardsTried)")
+                                .foregroundColor(.red)
+                            Spacer()
+                        }
+                        Text("Всего \(cards.count)")
+                            .foregroundColor(.gray)
+                        if successTickets == 0 && triedTickets == 0 {
+                            Spacer()
+                        }
+                    }
+                    Text("\(results.items.count.description) билетов от 01.10.2021")
+                        .padding()
                 }
-                .frame(width: maxWidth)
             }
+            .frame(width: maxWidth)
             
             let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
             HStack {

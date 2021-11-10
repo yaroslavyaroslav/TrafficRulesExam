@@ -35,10 +35,12 @@ struct ExamCardStats: View {
 struct ExamCardStats_Previews: PreviewProvider {
     static var results: CardResults = {
         let results = (1...2).map { id -> CardResult in
-            let mistakes = [1: AnswerID.b, 10: AnswerID.c, 15: AnswerID.a]
+            
+            let mistakes = [Mistake(id: 1, wrongAnswer: .b), Mistake(id: 10, wrongAnswer: .c), Mistake(id: 15, wrongAnswer: .a)]
+            
             let results = (1...3).map { idx -> Result in
                 if idx == 2 {
-                    return Result(mistakes: [:], examDate: Date())
+                    return Result(mistakes: [], examDate: Date())
                 } else {
                     return Result(mistakes: mistakes, examDate: Date())
                 }

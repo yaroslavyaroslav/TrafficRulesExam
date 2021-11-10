@@ -23,7 +23,7 @@ extension Results: Codable { }
 struct Result {
     
     /// Dictionary of the mistakes which user have made during one test
-    private(set) var mistakes: [Int: AnswerID]
+    private(set) var mistakes: [Mistake]
     
     /// When test happened
     let examDate: Date
@@ -51,13 +51,27 @@ extension Result {
     /// Add mistake tuple to the mistakes property
     /// - Parameter mistake: mistake *tuple* with question id *(Int)* and answer id (*AnswerID*)
     mutating func addMistake(mistake: (Int, AnswerID)) {
-        let (questionID, wrongAnswerID) = mistake
-        mistakes[questionID] = wrongAnswerID
+        mistakes.append(Mistake(id: mistake.0, wrongAnswer: mistake.1))
     }
 }
 
 extension Result: Codable { }
 
 extension Result: Identifiable {
+    /// ID to conform Identifiable — it's the examDate.
     var id: Date { examDate }
 }
+
+
+/// Mistake object
+///
+/// Stores one mistake that was taken by the user during the test.
+struct Mistake {
+    /// Number of the question in the exam card.
+    let id: Int
+    
+    /// Wrong answer that was given by the user
+    let wrongAnswer:  AnswerID
+}
+
+extension Mistake: Codable, Identifiable { }

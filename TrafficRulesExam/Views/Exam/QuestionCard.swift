@@ -21,7 +21,7 @@ extension AnyTransition {
 struct QuestionCard: View {
     
     @State
-    private var result = Result(mistakes: [:], examDate: Date())
+    private var result = Result(mistakes: [], examDate: Date())
     
     let questions: [Question]
     

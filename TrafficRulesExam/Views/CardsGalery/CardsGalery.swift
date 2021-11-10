@@ -12,10 +12,11 @@ struct CardsGalery: View {
     var cards: [ExamCard]
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             CardRow(cards: cards)
-                .padding()
-        }
+            
+//            .padding()
+//        }
     }
 }
 

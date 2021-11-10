@@ -19,6 +19,10 @@ struct CardResult {
     var resultHistory: Results
 }
 
+extension CardResult: Equatable {
+    static func == (lhs: CardResult, rhs: CardResult) -> Bool { lhs.id == rhs.id }
+}
+
 extension CardResult: Codable { }
 
 /// Object to store CardResult objects for being compatiable with SwiftUI dataflow.

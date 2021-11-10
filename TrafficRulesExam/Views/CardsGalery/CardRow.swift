@@ -37,7 +37,7 @@ struct CardRow: View {
                     NavigationLink {
                         Card(card: cards.getElementById(id: result.id), result: $result)
                     } label: {
-                        CardItem(card: cards.getElementById(id: result.id), results: result)
+                        CardItem(card: cards.getElementById(id: result.id), result: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)

@@ -86,7 +86,7 @@ struct TotalStats: View {
                         NavigationLink {
                             ExamCardStats(cardResult: result)
                         } label: {
-                            CardItem(card: cards.getElementById(id: result.id), results: result)
+                            CardItem(card: cards.getElementById(id: result.id), result: result)
                         }
                     }
                 }

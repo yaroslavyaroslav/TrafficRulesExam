@@ -34,6 +34,16 @@ struct CardResults {
             UserDefaults.standard.set(string, forKey: "CardResults")
         }
     }
+    
+    /// Number of tickets that user have tried to solve.
+    ///
+    /// Doesn't matter did them succeed or not.
+    var cardsTried: Int { items.filter { $0.resultHistory.items.count > 0 }.count }
+    
+    /// Number of tickets that user have succeed.
+    ///
+    /// Counts only if last attemtion were suceessful.
+    var cardsSucceed: Int { items.filter { $0.resultHistory.items.last?.succeed ?? false }.count }
 }
 
 extension CardResults {

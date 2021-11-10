@@ -16,7 +16,7 @@ struct TrafficRulesExamApp: App {
                     .tabItem {
                         Text("Решать")
                     }
-                TotalStats(cards: cards)
+                TotalStatsNavigation(cards: cards)
                     .tabItem {
                         Text("Статистика")
                     }

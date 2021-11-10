@@ -25,7 +25,7 @@ struct CardItem: View {
             Spacer()
             
             if let date = results.resultHistory.items.last?.examDate {
-                Text(self.prettyDate(date))
+                Text(date.prettyPrint)
                     .font(.system(size: 20))
                 Spacer()
             }
@@ -39,16 +39,6 @@ struct CardItem: View {
                 // if there is and it is no go-o-od — .red
                 .foregroundColor(results.resultHistory.items.isEmpty ? .gray : (results.resultHistory.items.last!.succeed ? .green : .red))
         )
-    }
-}
-
-extension CardItem {
-    private func prettyDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "RU_ru")
-        return dateFormatter.string(from: date)
     }
 }
 

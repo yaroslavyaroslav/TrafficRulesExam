@@ -12,6 +12,7 @@ struct CardRow: View {
     @State
     var results: CardResults = {
         var object: CardResults!
+        UserDefaults.standard.removeObject(forKey: "CardResults")
         do {
             object = try CardResults()
         } catch {

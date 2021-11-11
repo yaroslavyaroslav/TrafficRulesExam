@@ -14,7 +14,8 @@ struct ExamCardStats: View {
     var body: some View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
-                ExamStats(result: result)
+                ExamStats(result: result, cardId: cardResult.id)
+                    .navigationBarTitle(Text("Билет \(cardResult.id)"))
             } label: {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
@@ -31,6 +32,19 @@ struct ExamCardStats: View {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct ExamCardStats_Previews: PreviewProvider {
     static var results: CardResults = {

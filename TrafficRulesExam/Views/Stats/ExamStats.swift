@@ -11,6 +11,8 @@ struct ExamStats: View {
     
     var result: Result
     
+    let cardId: Int
+    
     var body: some View {
         VStack {
             Text("Билет 8")
@@ -26,18 +28,37 @@ struct ExamStats: View {
             } else {
                 List((0..<result.mistakes.count)) { id in
                     NavigationLink {
-                        Text("This is")
+                        let wrongAnswerLoc = Binding<AnswerID>(
+                            get: { result.mistakes[id].wrongAnswer },
+                            set: { _ in }
+                        )
+                        
+                        QuestionContent(question: getQuestionForStats(cardID: cardId, questionId: id), selectedAnswer: wrongAnswerLoc, correctAnswer: getCorrectAnswerForQuestion(cardID: cardId, questionId: id))
                     } label: {
                         VStack {
-                            Text("Ошибка в \(result.mistakes[id].id) вопросе")
+                            Text("Ошибка в \(result.mistakes[id].id.description) вопросе")
                             Text("Вы ответили \(result.mistakes[id].wrongAnswer.stringValue)")
-                            Text("Правильный ответ Такой-то.")
+                            Text("Правильный ответ \(getCorrectAnswerForQuestion(cardID: cardId, questionId: id).stringValue)")
                         }
                     }
                 }
             }
         }
     }
+    
+    private func getQuestionForStats(cardID: Int, questionId: Int) -> Question {
+        cards.getElementById(id: cardId).questions.getElementById(id: result.mistakes[questionId].id)
+    }
+    
+    private func getCorrectAnswerForQuestion(cardID: Int, questionId: Int) -> AnswerID {
+        cards.getElementById(id: cardId).questions.getElementById(id: result.mistakes[questionId].id).correctAnswer
+    }
+    
+//    private mutating func getSelectedAnswer(questionID: Int) -> Binding<AnswerID> {
+//        Binding<AnswerID>(
+//            get: { self.wrongAnswer },
+//            set: { answer in self.wrongAnswer = answer })
+//    }
 }
 
 struct ExamStats_Previews: PreviewProvider {
@@ -56,14 +77,7 @@ struct ExamStats_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        ExamStats(result: results[0])
-        ExamStats(result: results[1])
-    }
-}
-
-
-extension Dictionary {
-    subscript(i: Int) -> (key: Key, value: Value) {
-        get { self[index(startIndex, offsetBy: i)] }
+        ExamStats(result: results[0], cardId: 0)
+        ExamStats(result: results[1], cardId: 1)
     }
 }

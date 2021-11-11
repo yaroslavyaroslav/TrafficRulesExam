@@ -9,12 +9,24 @@ import SwiftUI
 
 struct MainScreen: View {
     
+    var swipeGesture: some Gesture {
+        DragGesture(minimumDistance: 8)
+            .onChanged {
+                if $0.translation.width > 100 {
+                    withAnimation {
+                        selectedIndex = .cardGalery
+                    }
+                } else if $0.translation.width < -100 {
+                    withAnimation {
+                        selectedIndex = .totalStatsNavigation
+                    }
+                }
+            }
+    }
+    
     private enum Tabs {
         case cardGalery, totalStatsNavigation
     }
-    
-    let cardGalery = CardsGalery(cards: cards)
-    let totalStatsNavigation = TotalStatsNavigation(cards: cards)
     
     @State
     private var selectedIndex: Tabs = .cardGalery
@@ -29,23 +41,14 @@ struct MainScreen: View {
 
             switch selectedIndex {
             case .cardGalery: CardsGalery(cards: cards)
+                    .padding()
+                    .gesture(swipeGesture)
             case .totalStatsNavigation: TotalStatsNavigation(cards: cards)
+                    .padding()
+                    .gesture(swipeGesture)
             }
         }
-        .gesture(
-            DragGesture(minimumDistance: 8, coordinateSpace: .global)
-                .onChanged {
-                    if $0.translation.width > 100 {
-                        withAnimation {
-                            selectedIndex = .cardGalery
-                        }
-                    } else if $0.translation.width < -100 {
-                        withAnimation {
-                            selectedIndex = .totalStatsNavigation
-                        }
-                    }
-                }
-        )
+        .gesture(swipeGesture)
     }
 }
 

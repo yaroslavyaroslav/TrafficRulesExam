@@ -11,8 +11,10 @@ struct QuestionContent: View {
     
     var question: Question
     
-    @ObservedObject
-    var selectedAnswer: SelectedAnswer
+    @Binding
+    var selectedAnswer: AnswerID
+    
+    let correctAnswer: AnswerID?
     
     var body: some View {
         VStack {
@@ -39,14 +41,18 @@ struct QuestionContent: View {
                 .cornerRadius(8)
             Spacer()
             
-            Answers(answers: question.answers, selectedAnswer: selectedAnswer)
+            Answers(answers: question.answers, selectedAnswer: $selectedAnswer, correctAnswer: correctAnswer)
             Spacer()
         }
     }
 }
 
 struct QuestionContent_Previews: PreviewProvider {
+    
+    @State
+    static var answer = AnswerID.a
+    
     static var previews: some View {
-        QuestionContent(question: cards[0].questions[0], selectedAnswer: SelectedAnswer())
+        QuestionContent(question: cards[0].questions[0], selectedAnswer: $answer, correctAnswer: nil)
     }
 }

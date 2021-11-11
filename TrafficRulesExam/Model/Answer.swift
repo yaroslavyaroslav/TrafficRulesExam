@@ -17,15 +17,8 @@ extension Answer: Identifiable { }
 
 extension Answer: Codable { }
 
-
-class SelectedAnswer: ObservableObject {
-    
-    @Published
-    var answer: AnswerID = .none
-}
-
 enum AnswerID: Int {
-    case a, b, c, d, none
+    case none, a, b, c, d
     
     init(from decoder: Decoder) throws {
         

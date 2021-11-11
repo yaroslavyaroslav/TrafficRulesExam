@@ -28,8 +28,8 @@ struct QuestionCard: View {
     @State
     var questionDetails: Question
     
-    @StateObject
-    var selectedAnswer: SelectedAnswer = SelectedAnswer()
+    @State
+    var selectedAnswer: AnswerID = .none
     
     @Binding
     var historyRes: Results
@@ -67,7 +67,7 @@ struct QuestionCard: View {
                 }
                 Spacer()
                 
-                QuestionContent(question: questionDetails, selectedAnswer: selectedAnswer)
+                QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
                     .padding(8)
                 
@@ -95,7 +95,7 @@ struct QuestionCard: View {
                         }
                     }
                 }
-                .disabled(selectedAnswer.answer == AnswerID.none)
+                .disabled(selectedAnswer == AnswerID.none)
                 .padding(10)
             }
         }
@@ -104,17 +104,24 @@ struct QuestionCard: View {
 
 extension QuestionCard {
     func saveAnswer() {
-        guard selectedAnswer.answer != .none else { return }
+        guard selectedAnswer != .none else { return }
             
-        if questionDetails.correctAnswer != selectedAnswer.answer {
-            result.addMistake(mistake: (questionDetails.id, selectedAnswer.answer))
+        if questionDetails.correctAnswer != selectedAnswer {
+            result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
-        selectedAnswer.answer = .none
+        selectedAnswer = .none
     }
 }
 
-//struct QuestionCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3], resultHistory: Results(items: []), historyRes: <#Binding<Results>#>)
-//    }
-//}
+struct QuestionCard_Previews: PreviewProvider {
+    
+    @State
+    static var history: Results = {
+        let result = Result(mistakes: [], examDate: Date())
+        return Results(items: [result])
+    }()
+    
+    static var previews: some View {
+        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3],  historyRes: $history)
+    }
+}

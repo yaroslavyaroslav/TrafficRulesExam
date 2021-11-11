@@ -9,8 +9,4 @@ import Foundation
 
 enum UDKeys: String {
     case cardResults
-    
-    enum CodingKeys: String, CodingKey {
-        case cardResults = "CardResults"
-    }
 }

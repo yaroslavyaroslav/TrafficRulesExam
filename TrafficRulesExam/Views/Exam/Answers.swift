@@ -11,18 +11,21 @@ struct Answers: View {
     
     var answers: [Answer]
     
-    @ObservedObject
-    var selectedAnswer: SelectedAnswer
+    @Binding
+    var selectedAnswer: AnswerID
+    
+    let correctAnswer: AnswerID?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             ForEach(answers, id: \.id) { answer in
-                AnswerButton(isSelected: selectedAnswer.answer == answer.id) {
-                    selectedAnswer.answer = answer.id
+                AnswerButton(isSelected: selectedAnswer == answer.id) {
+                    selectedAnswer = answer.id
                     
                     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 } label: {
                     AnswerHStack(answer: answer)
+                        .background(answer.id == correctAnswer?.id ? Color.green : Color.yellow)
                 }
             }
         }
@@ -41,13 +44,16 @@ struct AnswerHStack: View {
         .padding(10)
         .foregroundColor(.black)
         .frame(maxWidth: .infinity, minHeight: 50, idealHeight: 100, alignment: .leading)
-        .background(Color.yellow)
         .cornerRadius(8)
     }
 }
 
 struct Answers_Previews: PreviewProvider {
+    
+    @State
+    static var selAnswer = AnswerID.a
+    
     static var previews: some View {
-        Answers(answers: cards[0].questions[6].answers, selectedAnswer: SelectedAnswer())
+        Answers(answers: cards[0].questions[6].answers, selectedAnswer: $selAnswer, correctAnswer: nil)
     }
 }

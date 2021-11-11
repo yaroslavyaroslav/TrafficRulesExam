@@ -18,14 +18,18 @@ struct Answers: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            ForEach(answers, id: \.id) { answer in
+            ForEach(answers) { answer in
                 AnswerButton(isSelected: selectedAnswer == answer.id) {
                     selectedAnswer = answer.id
-                    
-                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .soft)
+                        .impactOccurred()
                 } label: {
                     AnswerHStack(answer: answer)
+                        .padding(10)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, idealHeight: 200, alignment: .leading)
                         .background(answer.id == correctAnswer?.id ? Color.green : Color.yellow)
+                        .cornerRadius(4)
                 }
             }
         }
@@ -41,10 +45,6 @@ struct AnswerHStack: View {
             Text(answer.text)
                 .multilineTextAlignment(.leading)
         }
-        .padding(10)
-        .foregroundColor(.black)
-        .frame(maxWidth: .infinity, minHeight: 50, idealHeight: 100, alignment: .leading)
-        .cornerRadius(8)
     }
 }
 
@@ -54,6 +54,6 @@ struct Answers_Previews: PreviewProvider {
     static var selAnswer = AnswerID.a
     
     static var previews: some View {
-        Answers(answers: cards[0].questions[6].answers, selectedAnswer: $selAnswer, correctAnswer: nil)
+        Answers(answers: cards[1].questions[16].answers, selectedAnswer: $selAnswer, correctAnswer: .b)
     }
 }

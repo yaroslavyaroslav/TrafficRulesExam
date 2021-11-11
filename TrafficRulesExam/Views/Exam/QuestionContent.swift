@@ -18,13 +18,6 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            Text("Вопрос \(question.id.description).")
-                .padding(10)
-                .background(Color.green)
-                .cornerRadius(8)
-            Spacer()
-            
-            
             if let picture = question.picture {
                 Text(picture.absoluteString).padding(10)
                     .padding(10)
@@ -44,6 +37,7 @@ struct QuestionContent: View {
             Answers(answers: question.answers, selectedAnswer: $selectedAnswer, correctAnswer: correctAnswer)
             Spacer()
         }
+        .padding(8)
     }
 }
 
@@ -53,6 +47,6 @@ struct QuestionContent_Previews: PreviewProvider {
     static var answer = AnswerID.a
     
     static var previews: some View {
-        QuestionContent(question: cards[0].questions[0], selectedAnswer: $answer, correctAnswer: nil)
+        QuestionContent(question: cards[1].questions[16], selectedAnswer: $answer, correctAnswer: .c)
     }
 }

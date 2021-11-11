@@ -69,7 +69,6 @@ struct QuestionCard: View {
                 
                 QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
-                    .padding(8)
                 
                 Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
                     withAnimation {
@@ -122,6 +121,6 @@ struct QuestionCard_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3],  historyRes: $history)
+        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16],  historyRes: $history)
     }
 }

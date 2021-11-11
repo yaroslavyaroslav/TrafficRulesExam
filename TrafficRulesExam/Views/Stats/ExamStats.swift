@@ -77,7 +77,7 @@ struct ExamStats_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        ExamStats(result: results[0], cardId: 0)
+        ExamStats(result: results[2], cardId: 2)
         ExamStats(result: results[1], cardId: 1)
     }
 }

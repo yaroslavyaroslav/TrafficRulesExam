@@ -33,6 +33,7 @@ struct ExamStats: View {
                             selectedAnswer: getSelectedAnswer(id),
                             correctAnswer: getCorrectAnswerForQuestion(cardID: cardId, questionId: id)
                         )
+                            .navigationBarTitle(Text("Вопрос \(result.mistakes[id].id.description)"))
                     } label: {
                         VStack {
                             Text("Ошибка в \(result.mistakes[id].id.description) вопросе")

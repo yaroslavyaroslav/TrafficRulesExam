@@ -46,23 +46,12 @@
             </outline>
           </outline>
         </outline>
-        <outline text="0.3">
-          <outline text="0.3.0">
-            <outline text="Экран результатов теста"/>
-            <outline text="Экран списка тем билетов (Б1)"/>
-            <outline text="Текст ПДД"/>
-            <outline text="Экран настроек приложения">
-              <outline text="Тема оформления">
-                <outline text="Светлая"/>
-                <outline text="Темная"/>
-              </outline>
-              <outline text="Стиль рисунков">
-                <outline text="Как на экзамене" _note="стремные"/>
-                <outline text="Перерисованные" _note="красивые"/>
-              </outline>
-              <outline text="Случайный порядок вопросов в билете"/>
-              <outline text="Случайные ответы в билете"/>
-            </outline>
+        <outline text="0.3" _status="indeterminate">
+          <outline text="0.3.0" _status="indeterminate">
+            <outline text="Экран результатов теста" _status="checked"/>
+            <outline text="Поправить отображение экрана вопроса билета" _note="В статистике нет padding().&#10;Нужно инкапсулировать стили вопроса."/>
+            <outline text="Сделать рефакторинг экранов" _note="Код сейчас сильно запутан."/>
+            <outline text="Покрыть тестами статистику."/>
           </outline>
         </outline>
         <outline text="0.4">
@@ -80,6 +69,20 @@
         </outline>
         <outline text="0.5">
           <outline text="0.5.0">
+            <outline text="Экран списка тем билетов (Б1)"/>
+            <outline text="Текст ПДД"/>
+            <outline text="Экран настроек приложения">
+              <outline text="Тема оформления">
+                <outline text="Светлая"/>
+                <outline text="Темная"/>
+              </outline>
+              <outline text="Стиль рисунков">
+                <outline text="Как на экзамене" _note="стремные"/>
+                <outline text="Перерисованные" _note="красивые"/>
+              </outline>
+              <outline text="Случайный порядок вопросов в билете"/>
+              <outline text="Случайные ответы в билете"/>
+            </outline>
             <outline text="Экран статистики решенных билетов">
               <outline text="Бензин"/>
               <outline text="Статистика правильных ответов"/>

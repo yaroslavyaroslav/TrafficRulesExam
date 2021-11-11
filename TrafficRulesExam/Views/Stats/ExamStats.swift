@@ -28,12 +28,11 @@ struct ExamStats: View {
             } else {
                 List((0..<result.mistakes.count)) { id in
                     NavigationLink {
-                        let wrongAnswerLoc = Binding<AnswerID>(
-                            get: { result.mistakes[id].wrongAnswer },
-                            set: { _ in }
+                        QuestionContent(
+                            question: getQuestionForStats(cardID: cardId, questionId: id),
+                            selectedAnswer: getSelectedAnswer(id),
+                            correctAnswer: getCorrectAnswerForQuestion(cardID: cardId, questionId: id)
                         )
-                        
-                        QuestionContent(question: getQuestionForStats(cardID: cardId, questionId: id), selectedAnswer: wrongAnswerLoc, correctAnswer: getCorrectAnswerForQuestion(cardID: cardId, questionId: id))
                     } label: {
                         VStack {
                             Text("Ошибка в \(result.mistakes[id].id.description) вопросе")
@@ -54,11 +53,12 @@ struct ExamStats: View {
         cards.getElementById(id: cardId).questions.getElementById(id: result.mistakes[questionId].id).correctAnswer
     }
     
-//    private mutating func getSelectedAnswer(questionID: Int) -> Binding<AnswerID> {
-//        Binding<AnswerID>(
-//            get: { self.wrongAnswer },
-//            set: { answer in self.wrongAnswer = answer })
-//    }
+    private func getSelectedAnswer(_ questionID: Int) -> Binding<AnswerID> {
+        Binding<AnswerID>(
+            get: { result.mistakes[questionID].wrongAnswer },
+            set: { _ in }
+        )
+    }
 }
 
 struct ExamStats_Previews: PreviewProvider {

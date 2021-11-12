@@ -19,7 +19,7 @@ extension ExamCard: Hashable { func hash(into hasher: inout Hasher) { hasher.com
 extension ExamCard: Equatable { static func == (lhs: ExamCard, rhs: ExamCard) -> Bool { lhs.id == rhs.id } }
 
 extension Array where Element: Identifiable {
-    func getElementById(id: Element.ID) -> Element {
+    func getElementById(_ id: Element.ID) -> Element {
         // FIXME: Remove force unwrap.
         self.first { $0.id == id }!
     }

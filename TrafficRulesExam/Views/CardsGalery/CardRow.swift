@@ -36,9 +36,9 @@ struct CardRow: View {
                      метода @Environment(\.presentationMode) переменной dismiss()
                      */
                     NavigationLink {
-                        Card(card: cards.getElementById(id: result.id), result: $result)
+                        Card(card: cards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: cards.getElementById(id: result.id), result: result)
+                        CardItem(card: cards.getElementById(result.id), result: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)

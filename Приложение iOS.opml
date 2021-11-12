@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
-  <head><!-- <editor>
+  <head><!-- <editor scale-mac="1.5">
       <sidebar width="197"/>
-      <column name="text" width="739"/>
+      <column name="text" width="729"/>
     </editor> -->
     <title>Приложение iOS</title>
-    <expansionState>0,1,3,10,14,19,20,24,25,32,33,37,38,39,47,48,50,54,55,57,58,62,63,66,67,69,70</expansionState>
+    <expansionState>0,1,3,10,14,19,20,24,25,31,32,40,41,47,48,52,58,59,61,62,66,67,70,71,73,74</expansionState>
     <vertScrollState>0</vertScrollState>
     <windowTop>252</windowTop>
     <windowLeft>0</windowLeft>
-    <windowRight>760</windowRight>
+    <windowRight>759</windowRight>
     <windowBottom>1196</windowBottom>
   </head>
   <body>
@@ -52,6 +52,7 @@
             <outline text="Поправить отображение экрана вопроса билета" _note="В статистике нет padding().&#10;Нужно инкапсулировать стили вопроса."/>
             <outline text="Сделать рефакторинг экранов" _note="Код сейчас сильно запутан."/>
             <outline text="Покрыть тестами статистику."/>
+            <outline text="Добавить все билеты"/>
           </outline>
         </outline>
         <outline text="0.4">

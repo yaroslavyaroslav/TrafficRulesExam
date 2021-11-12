@@ -26,19 +26,19 @@ struct ExamStats: View {
                     .padding()
                 Spacer()
             } else {
-                List((0..<result.mistakes.count)) { id in
+                List((0..<result.mistakes.count)) { mistakeIdx in
                     NavigationLink {
                         QuestionContent(
-                            question: getQuestionForStats(cardID: cardId, questionId: id),
-                            selectedAnswer: getSelectedAnswer(id),
-                            correctAnswer: getCorrectAnswerForQuestion(cardID: cardId, questionId: id)
+                            question: getQuestionForStats(cardId, mistakeIdx),
+                            selectedAnswer: getSelectedAnswer(mistakeIdx),
+                            correctAnswer: getCorrectAnswerForQuestion(cardId, mistakeIdx)
                         )
-                            .navigationBarTitle(Text("Вопрос \(result.mistakes[id].id.description)"))
+                            .navigationBarTitle(Text("Вопрос \(result.mistakes[mistakeIdx].id.description)"))
                     } label: {
                         VStack {
-                            Text("Ошибка в \(result.mistakes[id].id.description) вопросе")
-                            Text("Вы ответили \(result.mistakes[id].wrongAnswer.stringValue)")
-                            Text("Правильный ответ \(getCorrectAnswerForQuestion(cardID: cardId, questionId: id).stringValue)")
+                            Text("Ошибка в \(result.mistakes[mistakeIdx].id.description) вопросе")
+                            Text("Вы ответили \(result.mistakes[mistakeIdx].wrongAnswer.stringValue)")
+                            Text("Правильный ответ \(getCorrectAnswerForQuestion(cardId, mistakeIdx).stringValue)")
                         }
                     }
                 }
@@ -46,12 +46,12 @@ struct ExamStats: View {
         }
     }
     
-    private func getQuestionForStats(cardID: Int, questionId: Int) -> Question {
-        cards.getElementById(id: cardId).questions.getElementById(id: result.mistakes[questionId].id)
+    private func getQuestionForStats(_ cardID: Int, _ questionId: Int) -> Question {
+        cards.getElementById(cardId).questions.getElementById(result.mistakes[questionId].id)
     }
     
-    private func getCorrectAnswerForQuestion(cardID: Int, questionId: Int) -> AnswerID {
-        cards.getElementById(id: cardId).questions.getElementById(id: result.mistakes[questionId].id).correctAnswer
+    private func getCorrectAnswerForQuestion(_ cardID: Int, _ questionId: Int) -> AnswerID {
+        cards.getElementById(cardId).questions.getElementById(result.mistakes[questionId].id).correctAnswer
     }
     
     private func getSelectedAnswer(_ questionID: Int) -> Binding<AnswerID> {

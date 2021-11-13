@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExamCard {
+struct ExamCard: Codable {
     let id: Int
     let questions: [Question]
 }

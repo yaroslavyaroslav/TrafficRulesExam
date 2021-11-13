@@ -6,16 +6,38 @@
 //
 
 import Foundation
+import UIKit
 
-struct Question: Codable {
+struct Question {
     let id: Int
     let text: String
-    let picture: URL?
+    let picture: String?
     let answers: [Answer]
     let correctAnswer: AnswerID
     let hint: String
     let topic: String
 }
+
+extension Question {
+    var image: UIImage? {
+        get {
+            guard let picture = picture else { return nil }
+            
+//            if picture.absoluteString.contains("http") {
+//                do {
+//                    let (data, _) = try await URLSession.shared.data(from: picture)
+//                    return UIImage(data: data)
+//                } catch {
+//                    return nil
+//                }
+//            } else {
+            return UIImage(named: String(picture.split(separator: ".")[0]))
+//            }
+        }
+    }
+}
+
+extension Question: Codable { }
 
 extension Question: Identifiable { }
 

@@ -18,10 +18,11 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            if let picture = question.picture {
-                Text(picture.absoluteString).padding(10)
-                    .padding(10)
-                    .background(Color.green)
+            // FIXME: У всех вопросов есть поле Picture.
+            if let _ = question.picture {
+                Image(uiImage: UIImage(named: "\(1)_\(question.id)")!)
+                    .resizable()
+                    .scaledToFit()
                     .cornerRadius(8)
                 Spacer()
             }
@@ -47,6 +48,6 @@ struct QuestionContent_Previews: PreviewProvider {
     static var answer = AnswerID.a
     
     static var previews: some View {
-        QuestionContent(question: cards[1].questions[16], selectedAnswer: $answer, correctAnswer: .c)
+        QuestionContent(question: cards[1].questions[1], selectedAnswer: $answer, correctAnswer: .c)
     }
 }

@@ -7,18 +7,7 @@
 
 import Foundation
 
-var cards: [ExamCard] = cardsSource.map { ExamCard(source: $0) }
-
-fileprivate var cardsSource: [ExamCardSource] = load("ExamCards.json")
-
-fileprivate struct ExamCardSource: Codable {
-    let id: Int
-    let questions: [Question]
-}
-
-fileprivate extension ExamCard {
-    init(source: ExamCardSource) { self.init(id: source.id, questions: source.questions) }
-}
+var cards: [ExamCard] = load("ExamCards.json")
 
 fileprivate func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

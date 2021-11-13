@@ -59,7 +59,9 @@ extension CardResults {
     init() throws {
         let userDefaults = UserDefaults.standard.string(forKey: UDKeys.cardResults.rawValue)
         guard let data = userDefaults?.data(using: .utf8) else { throw InitError(kind: .emptyUserDefaults) }
-        self.items = try JSONDecoder().decode([CardResult].self, from: data)
+        let items = try JSONDecoder().decode([CardResult].self, from: data)
+        guard items.count == 20 else { throw InitError(kind: .notEnoughTickets) }
+        self.items = items
     }
 }
 
@@ -70,5 +72,6 @@ fileprivate struct InitError:  Error {
     
     enum ErrorKind {
         case emptyUserDefaults
+        case notEnoughTickets
     }
 }

@@ -29,6 +29,7 @@
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
 		5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */; };
+		5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81B8C8273ED59C00A7121E /* URLSession+async.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
 		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
@@ -93,6 +94,7 @@
 		5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITests.swift; sourceTree = "<group>"; };
 		5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C81B8C8273ED59C00A7121E /* URLSession+async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+async.swift"; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtilityDataModel.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				5C85388A27183D5900D8853E /* ExamCard.swift */,
 				5CDB6375272DC36200E888F7 /* Answer.swift */,
 				5CDB6373272DC30D00E888F7 /* Question.swift */,
+				5C81B8C8273ED59C00A7121E /* URLSession+async.swift */,
 				5C97B49227197B8A0017723A /* ModelLoad.swift */,
 				5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */,
 				5CDB6371272D946700E888F7 /* Results.swift */,
@@ -413,6 +416,7 @@
 				5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */,
 				5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */,
 				5C45EBC3273C07A000C90977 /* Date+PrittyPrint.swift in Sources */,
+				5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
 				5C53ECFF2733F5700044905A /* CardResults.swift in Sources */,

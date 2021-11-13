@@ -12,7 +12,7 @@ struct CardsGalery: View {
     var cards: [ExamCard]
     
     var body: some View {
-        CardRow(cards: cards)
+        CardRow(locCards: cards)
     }
 }
 

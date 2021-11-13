@@ -12,17 +12,17 @@ struct CardRow: View {
     @State
     var results: CardResults = {
         var object: CardResults!
-        UserDefaults.standard.removeObject(forKey: "CardResults")
+
         do {
             object = try CardResults()
         } catch {
             UserDefaults.standard.removeObject(forKey: UDKeys.cardResults.rawValue)
-            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items:{ (1...(cards.count)).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object
     }()
 
-    var cards: [ExamCard]
+    var locCards: [ExamCard]
     
     var body: some View {
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -36,9 +36,9 @@ struct CardRow: View {
                      метода @Environment(\.presentationMode) переменной dismiss()
                      */
                     NavigationLink {
-                        Card(card: cards.getElementById(result.id), result: $result)
+                        Card(card: locCards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: cards.getElementById(result.id), result: result)
+                        CardItem(card: locCards.getElementById(result.id), result: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
@@ -50,6 +50,6 @@ struct CardRow: View {
 
 struct CardRow_Previews: PreviewProvider {
     static var previews: some View {
-        CardRow(cards: cards)
+        CardRow(locCards: cards)
     }
 }

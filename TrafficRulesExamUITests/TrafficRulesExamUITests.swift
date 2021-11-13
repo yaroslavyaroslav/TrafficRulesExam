@@ -106,17 +106,17 @@ class TrafficRulesExamUITests: XCTestCase {
     
     func testExamSucceedStraightforwardWalktrough() {
         
-        let randomCard = Int.random(in: 1...2)
+        let randomCard = Int.random(in: 1...20)
         
         let (app, examCard) = startExam(randomCard)
         
-        let appExamCard = cards.getElementById(id: randomCard)
+        let appExamCard = cards.getElementById(randomCard)
 
         expect(app.navigationBars.firstMatch.identifier).to(contain("Билет \(randomCard)"), description: "ExamCard label \(examCard.label) doesn't match randomID \(randomCard.description)")
         
         for id in 1...19 {
             os_log("question \(id.description) processing.")
-            let answerID = appExamCard.questions.getElementById(id: id).correctAnswer.stringValue
+            let answerID = appExamCard.questions.getElementById(id).correctAnswer.stringValue
             let answerPredicate = exactAnswerPredicate(answerID)
             
             let answerButton = app.buttons.containing(answerPredicate).firstMatch
@@ -129,7 +129,7 @@ class TrafficRulesExamUITests: XCTestCase {
         }
         
         // Tap last question and exit.
-        let answerID = appExamCard.questions.getElementById(id: 20).correctAnswer.stringValue
+        let answerID = appExamCard.questions.getElementById(20).correctAnswer.stringValue
         let answerPredicate = exactAnswerPredicate(answerID)
         app.buttons.containing(answerPredicate).firstMatch.tap()
         app.buttons["Завершить"].tap()
@@ -158,7 +158,7 @@ class TrafficRulesExamUITests: XCTestCase {
     }
     
     private func rndAnswerPredicate() -> NSPredicate {
-        let rndId = Int.random(in: 1...2)
+        let rndId = Int.random(in: 1...20)
         os_log("Answer \(rndId.description) selected")
         // FIXME: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
         return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(rndId)."])

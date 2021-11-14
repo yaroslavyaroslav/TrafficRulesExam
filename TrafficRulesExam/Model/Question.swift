@@ -11,7 +11,7 @@ import UIKit
 struct Question {
     let id: Int
     let text: String
-    let picture: String?
+    let picture: String
     let answers: [Answer]
     let correctAnswer: AnswerID
     let hint: String
@@ -19,22 +19,7 @@ struct Question {
 }
 
 extension Question {
-    var image: UIImage? {
-        get {
-            guard let picture = picture else { return nil }
-            
-//            if picture.absoluteString.contains("http") {
-//                do {
-//                    let (data, _) = try await URLSession.shared.data(from: picture)
-//                    return UIImage(data: data)
-//                } catch {
-//                    return nil
-//                }
-//            } else {
-            return UIImage(named: String(picture.split(separator: ".")[0]))
-//            }
-        }
-    }
+    var image: UIImage? { UIImage(named: picture) }
 }
 
 extension Question: Codable { }

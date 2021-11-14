@@ -18,9 +18,8 @@ struct QuestionContent: View {
     
     var body: some View {
         VStack {
-            // FIXME: У всех вопросов есть поле Picture.
-            if let _ = question.picture {
-                Image(uiImage: UIImage(named: "\(1)_\(question.id)")!)
+            if let image = question.image {
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(8)

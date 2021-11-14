@@ -145,20 +145,36 @@ class TrafficRulesExamUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        let rndId = id ?? Int.random(in: 1...2)
+        let rndId = id ?? Int.random(in: 1...20)
 
         os_log("Ticket \(rndId.description) selected")
+                
+        let anyTicket = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет"])
 
         let rndCardPeredicate = NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "Билет \(rndId)"])
         // tap ExamCard
-        let examCard = app.buttons.containing(rndCardPeredicate).firstMatch
+        
+        var examCard: XCUIElement!
+        for i in 1...4 {
+            if app.buttons.containing(rndCardPeredicate).firstMatch.exists {
+                examCard = app.buttons.containing(rndCardPeredicate).firstMatch
+                break
+            }
+            
+            app.scrollViews.otherElements.containing(anyTicket).firstMatch.swipeUp(velocity: XCUIGestureVelocity(500))
+            
+            if i == 4 && examCard == nil {
+                XCTAssert(false, "Can't find Ticket button.")
+            }
+        }
+
         examCard.tap()
         
         return (app, examCard)
     }
     
     private func rndAnswerPredicate() -> NSPredicate {
-        let rndId = Int.random(in: 1...20)
+        let rndId = Int.random(in: 1...2)
         os_log("Answer \(rndId.description) selected")
         // FIXME: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
         return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber" : "\(rndId)."])

@@ -47,6 +47,6 @@ struct QuestionContent_Previews: PreviewProvider {
     static var answer = AnswerID.a
     
     static var previews: some View {
-        QuestionContent(question: cards[1].questions[1], selectedAnswer: $answer, correctAnswer: .c)
+        QuestionContent(question: cards[1].questions[2], selectedAnswer: $answer, correctAnswer: .c)
     }
 }

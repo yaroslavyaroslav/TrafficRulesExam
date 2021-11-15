@@ -43,7 +43,6 @@ struct TotalStats: View {
                             .foregroundColor(.green)
                     }
                     .cornerRadius(8)
-                    .padding()
                     
                     HStack {
                         if successTickets > 0 {
@@ -62,19 +61,11 @@ struct TotalStats: View {
                             Spacer()
                         }
                     }
-                    Text("\(results.items.count.description) билетов от 01.10.2021")
-                        .padding()
                 }
             }
             .frame(width: maxWidth)
             
             let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-            HStack {
-                Text("Билеты")
-                    .padding()
-                    .font(.largeTitle)
-                Spacer()
-            }
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(results.items, id: \.id) { result in

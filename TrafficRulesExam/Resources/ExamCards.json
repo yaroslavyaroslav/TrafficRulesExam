@@ -499,7 +499,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_2/2_1",
+                "picture": "2_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -522,7 +522,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_2/2_2",
+                "picture": "2_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -545,7 +545,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_2/2_3",
+                "picture": "2_3",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -572,7 +572,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_2/2_4",
+                "picture": "2_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -595,7 +595,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_2/2_5",
+                "picture": "2_5",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -618,7 +618,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_2/2_6",
+                "picture": "2_6",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -641,7 +641,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_2/2_7",
+                "picture": "2_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -664,7 +664,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_2/2_8",
+                "picture": "2_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -687,7 +687,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_2/2_9",
+                "picture": "2_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -710,7 +710,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_2/2_10",
+                "picture": "2_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -737,7 +737,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_2/2_11",
+                "picture": "2_11",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -760,7 +760,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_2/2_12",
+                "picture": "2_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -783,7 +783,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_2/2_13",
+                "picture": "2_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -806,7 +806,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_2/2_14",
+                "picture": "2_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -829,7 +829,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_2/2_15",
+                "picture": "2_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -848,7 +848,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_2/2_16",
+                "picture": "2_16",
                 "topic": "Движение через железнодорожные пути",
                 "answers":
                 [
@@ -871,7 +871,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_2/2_17",
+                "picture": "2_17",
                 "topic": "Буксировка механических транспортных средств",
                 "answers":
                 [
@@ -898,7 +898,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_2/2_18",
+                "picture": "2_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -925,7 +925,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_2/2_19",
+                "picture": "2_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -948,7 +948,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_2/2_20",
+                "picture": "2_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -977,7 +977,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_3/3_1",
+                "picture": "3_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -1000,7 +1000,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_3/3_2",
+                "picture": "3_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1023,7 +1023,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_3/3_3",
+                "picture": "3_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1046,7 +1046,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_3/3_4",
+                "picture": "3_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1073,7 +1073,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_3/3_5",
+                "picture": "3_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -1096,7 +1096,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_3/3_6",
+                "picture": "3_6",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -1119,7 +1119,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_3/3_7",
+                "picture": "3_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -1142,7 +1142,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_3/3_8",
+                "picture": "3_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -1165,7 +1165,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_3/3_9",
+                "picture": "3_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -1188,7 +1188,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_3/3_10",
+                "picture": "3_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -1211,7 +1211,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_3/3_11",
+                "picture": "3_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -1234,7 +1234,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_3/3_12",
+                "picture": "3_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -1261,7 +1261,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_3/3_13",
+                "picture": "3_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -1284,7 +1284,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_3/3_14",
+                "picture": "3_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -1307,7 +1307,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_3/3_15",
+                "picture": "3_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -1334,7 +1334,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_3/3_16",
+                "picture": "3_16",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -1357,7 +1357,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_3/3_17",
+                "picture": "3_17",
                 "topic": "Учебная езда и дополнительные требования к движению велосипедистов",
                 "answers":
                 [
@@ -1384,7 +1384,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_3/3_18",
+                "picture": "3_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -1407,7 +1407,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_3/3_19",
+                "picture": "3_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -1434,7 +1434,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_3/3_20",
+                "picture": "3_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -1463,7 +1463,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_4/4_1",
+                "picture": "4_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -1486,7 +1486,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_4/4_2",
+                "picture": "4_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1509,7 +1509,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_4/4_3",
+                "picture": "4_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1532,7 +1532,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_4/4_4",
+                "picture": "4_4",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -1555,7 +1555,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_4/4_5",
+                "picture": "4_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -1578,7 +1578,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_4/4_6",
+                "picture": "4_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -1605,7 +1605,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_4/4_7",
+                "picture": "4_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -1628,7 +1628,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_4/4_8",
+                "picture": "4_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -1647,7 +1647,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_4/4_9",
+                "picture": "4_9",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -1670,7 +1670,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_4/4_10",
+                "picture": "4_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -1693,7 +1693,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_4/4_11",
+                "picture": "4_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -1716,7 +1716,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_4/4_12",
+                "picture": "4_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -1739,7 +1739,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_4/4_13",
+                "picture": "4_13",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -1766,7 +1766,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_4/4_14",
+                "picture": "4_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -1789,7 +1789,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_4/4_15",
+                "picture": "4_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -1812,7 +1812,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_4/4_16",
+                "picture": "4_16",
                 "topic": "Движение в жилых зонах",
                 "answers":
                 [
@@ -1839,7 +1839,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_4/4_17",
+                "picture": "4_17",
                 "topic": "Буксировка механических транспортных средств",
                 "answers":
                 [
@@ -1862,7 +1862,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_4/4_18",
+                "picture": "4_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -1889,7 +1889,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_4/4_19",
+                "picture": "4_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -1912,7 +1912,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_4/4_20",
+                "picture": "4_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -1941,7 +1941,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_5/5_1",
+                "picture": "5_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -1964,7 +1964,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_5/5_2",
+                "picture": "5_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -1991,7 +1991,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_5/5_3",
+                "picture": "5_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2014,7 +2014,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_5/5_4",
+                "picture": "5_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2037,7 +2037,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_5/5_5",
+                "picture": "5_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -2060,7 +2060,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_5/5_6",
+                "picture": "5_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -2083,7 +2083,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_5/5_7",
+                "picture": "5_7",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -2106,7 +2106,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_5/5_8",
+                "picture": "5_8",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -2129,7 +2129,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_5/5_9",
+                "picture": "5_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -2152,7 +2152,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_5/5_10",
+                "picture": "5_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -2183,7 +2183,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_5/5_11",
+                "picture": "5_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -2206,7 +2206,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_5/5_12",
+                "picture": "5_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -2233,7 +2233,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_5/5_13",
+                "picture": "5_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -2256,7 +2256,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_5/5_14",
+                "picture": "5_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -2279,7 +2279,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_5/5_15",
+                "picture": "5_15",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -2302,7 +2302,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_5/5_16",
+                "picture": "5_16",
                 "topic": "Движение через железнодорожные пути",
                 "answers":
                 [
@@ -2325,7 +2325,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_5/5_17",
+                "picture": "5_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -2348,7 +2348,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_5/5_18",
+                "picture": "5_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -2371,7 +2371,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_5/5_19",
+                "picture": "5_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -2394,7 +2394,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_5/5_20",
+                "picture": "5_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -2423,7 +2423,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_6/6_1",
+                "picture": "6_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -2446,7 +2446,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_6/6_2",
+                "picture": "6_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2469,7 +2469,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_6/6_3",
+                "picture": "6_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2496,7 +2496,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_6/6_4",
+                "picture": "6_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2519,7 +2519,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_6/6_5",
+                "picture": "6_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -2542,7 +2542,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_6/6_6",
+                "picture": "6_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -2565,7 +2565,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_6/6_7",
+                "picture": "6_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -2588,7 +2588,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_6/6_8",
+                "picture": "6_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -2611,7 +2611,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_6/6_9",
+                "picture": "6_9",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -2634,7 +2634,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_6/6_10",
+                "picture": "6_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -2657,7 +2657,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_6/6_11",
+                "picture": "6_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -2680,7 +2680,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_6/6_12",
+                "picture": "6_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -2703,7 +2703,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_6/6_13",
+                "picture": "6_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -2726,7 +2726,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_6/6_14",
+                "picture": "6_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -2749,7 +2749,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_6/6_15",
+                "picture": "6_15",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -2772,7 +2772,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_6/6_16",
+                "picture": "6_16",
                 "topic": "Перевозка людей и грузов",
                 "answers":
                 [
@@ -2795,7 +2795,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_6/6_17",
+                "picture": "6_17",
                 "topic": "Учебная езда и дополнительные требования к движению велосипедистов",
                 "answers":
                 [
@@ -2818,7 +2818,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_6/6_18",
+                "picture": "6_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -2845,7 +2845,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_6/6_19",
+                "picture": "6_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -2872,7 +2872,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_6/6_20",
+                "picture": "6_20",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -2901,7 +2901,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_7/7_1",
+                "picture": "7_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -2928,7 +2928,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_7/7_2",
+                "picture": "7_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2951,7 +2951,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_7/7_3",
+                "picture": "7_3",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -2974,7 +2974,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_7/7_4",
+                "picture": "7_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -2997,7 +2997,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_7/7_5",
+                "picture": "7_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -3016,7 +3016,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_7/7_6",
+                "picture": "7_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -3039,7 +3039,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_7/7_7",
+                "picture": "7_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -3062,7 +3062,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_7/7_8",
+                "picture": "7_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -3085,7 +3085,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_7/7_9",
+                "picture": "7_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -3108,7 +3108,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_7/7_10",
+                "picture": "7_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -3131,7 +3131,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_7/7_11",
+                "picture": "7_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -3154,7 +3154,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_7/7_12",
+                "picture": "7_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -3181,7 +3181,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_7/7_13",
+                "picture": "7_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -3204,7 +3204,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_7/7_14",
+                "picture": "7_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -3227,7 +3227,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_7/7_15",
+                "picture": "7_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -3250,7 +3250,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_7/7_16",
+                "picture": "7_16",
                 "topic": "Движение в жилых зонах",
                 "answers":
                 [
@@ -3273,7 +3273,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_7/7_17",
+                "picture": "7_17",
                 "topic": "Перевозка людей и грузов",
                 "answers":
                 [
@@ -3296,7 +3296,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_7/7_18",
+                "picture": "7_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -3323,7 +3323,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_7/7_19",
+                "picture": "7_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -3342,7 +3342,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_7/7_20",
+                "picture": "7_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -3371,7 +3371,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_8/8_1",
+                "picture": "8_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -3394,7 +3394,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_8/8_2",
+                "picture": "8_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3417,7 +3417,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_8/8_3",
+                "picture": "8_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3444,7 +3444,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_8/8_4",
+                "picture": "8_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3467,7 +3467,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_8/8_5",
+                "picture": "8_5",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -3490,7 +3490,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_8/8_6",
+                "picture": "8_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -3513,7 +3513,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_8/8_7",
+                "picture": "8_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -3536,7 +3536,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_8/8_8",
+                "picture": "8_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -3559,7 +3559,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_8/8_9",
+                "picture": "8_9",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3582,7 +3582,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_8/8_10",
+                "picture": "8_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -3605,7 +3605,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_8/8_11",
+                "picture": "8_11",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -3628,7 +3628,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_8/8_12",
+                "picture": "8_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -3651,7 +3651,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_8/8_13",
+                "picture": "8_13",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3678,7 +3678,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_8/8_14",
+                "picture": "8_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -3701,7 +3701,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_8/8_15",
+                "picture": "8_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -3724,7 +3724,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_8/8_16",
+                "picture": "8_16",
                 "topic": "Движение по автомагистралям",
                 "answers":
                 [
@@ -3747,7 +3747,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_8/8_17",
+                "picture": "8_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -3770,7 +3770,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_8/8_18",
+                "picture": "8_18",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -3793,7 +3793,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_8/8_19",
+                "picture": "8_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -3820,7 +3820,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_8/8_20",
+                "picture": "8_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -3849,7 +3849,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_9/9_1",
+                "picture": "9_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -3872,7 +3872,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_9/9_2",
+                "picture": "9_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3895,7 +3895,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_9/9_3",
+                "picture": "9_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3918,7 +3918,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_9/9_4",
+                "picture": "9_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -3941,7 +3941,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_9/9_5",
+                "picture": "9_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -3964,7 +3964,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_9/9_6",
+                "picture": "9_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -3987,7 +3987,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_9/9_7",
+                "picture": "9_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4010,7 +4010,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_9/9_8",
+                "picture": "9_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4033,7 +4033,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_9/9_9",
+                "picture": "9_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4056,7 +4056,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_9/9_10",
+                "picture": "9_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -4079,7 +4079,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_9/9_11",
+                "picture": "9_11",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -4102,7 +4102,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_9/9_12",
+                "picture": "9_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -4125,7 +4125,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_9/9_13",
+                "picture": "9_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4148,7 +4148,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_9/9_14",
+                "picture": "9_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4167,7 +4167,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_9/9_15",
+                "picture": "9_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4190,7 +4190,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_9/9_16",
+                "picture": "9_16",
                 "topic": "Движение по автомагистралям",
                 "answers":
                 [
@@ -4213,7 +4213,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_9/9_17",
+                "picture": "9_17",
                 "topic": "Учебная езда и дополнительные требования к движению велосипедистов",
                 "answers":
                 [
@@ -4240,7 +4240,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_9/9_18",
+                "picture": "9_18",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -4263,7 +4263,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_9/9_19",
+                "picture": "9_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -4286,7 +4286,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_9/9_20",
+                "picture": "9_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -4315,7 +4315,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_10/10_1",
+                "picture": "10_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -4338,7 +4338,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_10/10_2",
+                "picture": "10_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4361,7 +4361,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_10/10_3",
+                "picture": "10_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4384,7 +4384,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_10/10_4",
+                "picture": "10_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4407,7 +4407,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_10/10_5",
+                "picture": "10_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -4426,7 +4426,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_10/10_6",
+                "picture": "10_6",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4453,7 +4453,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_10/10_7",
+                "picture": "10_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4476,7 +4476,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_10/10_8",
+                "picture": "10_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4499,7 +4499,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_10/10_9",
+                "picture": "10_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4522,7 +4522,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_10/10_10",
+                "picture": "10_10",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -4545,7 +4545,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_10/10_11",
+                "picture": "10_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -4568,7 +4568,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_10/10_12",
+                "picture": "10_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -4591,7 +4591,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_10/10_13",
+                "picture": "10_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4614,7 +4614,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_10/10_14",
+                "picture": "10_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4637,7 +4637,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_10/10_15",
+                "picture": "10_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -4660,7 +4660,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_10/10_16",
+                "picture": "10_16",
                 "topic": "Движение через железнодорожные пути",
                 "answers":
                 [
@@ -4683,7 +4683,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_10/10_17",
+                "picture": "10_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -4706,7 +4706,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_10/10_18",
+                "picture": "10_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -4733,7 +4733,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_10/10_19",
+                "picture": "10_19",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -4756,7 +4756,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_10/10_20",
+                "picture": "10_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -4785,7 +4785,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_11/11_1",
+                "picture": "11_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -4808,7 +4808,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_11/11_2",
+                "picture": "11_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4831,7 +4831,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_11/11_3",
+                "picture": "11_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4854,7 +4854,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_11/11_4",
+                "picture": "11_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -4877,7 +4877,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_11/11_5",
+                "picture": "11_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -4900,7 +4900,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_11/11_6",
+                "picture": "11_6",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -4923,7 +4923,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_11/11_7",
+                "picture": "11_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4946,7 +4946,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_11/11_8",
+                "picture": "11_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4969,7 +4969,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_11/11_9",
+                "picture": "11_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -4992,7 +4992,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_11/11_10",
+                "picture": "11_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -5015,7 +5015,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_11/11_11",
+                "picture": "11_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -5038,7 +5038,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_11/11_12",
+                "picture": "11_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -5065,7 +5065,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_11/11_13",
+                "picture": "11_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -5084,7 +5084,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_11/11_14",
+                "picture": "11_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -5107,7 +5107,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_11/11_15",
+                "picture": "11_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -5134,7 +5134,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_11/11_16",
+                "picture": "11_16",
                 "topic": "Движение в жилых зонах",
                 "answers":
                 [
@@ -5157,7 +5157,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_11/11_17",
+                "picture": "11_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -5180,7 +5180,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_11/11_18",
+                "picture": "11_18",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -5203,7 +5203,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_11/11_19",
+                "picture": "11_19",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -5230,7 +5230,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_11/11_20",
+                "picture": "11_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -5259,7 +5259,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_12/12_1",
+                "picture": "12_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -5282,7 +5282,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_12/12_2",
+                "picture": "12_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5305,7 +5305,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_12/12_3",
+                "picture": "12_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5328,7 +5328,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_12/12_4",
+                "picture": "12_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5355,7 +5355,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_12/12_5",
+                "picture": "12_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -5378,7 +5378,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_12/12_6",
+                "picture": "12_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -5401,7 +5401,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_12/12_7",
+                "picture": "12_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5424,7 +5424,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_12/12_8",
+                "picture": "12_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5447,7 +5447,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_12/12_9",
+                "picture": "12_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5470,7 +5470,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_12/12_10",
+                "picture": "12_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -5493,7 +5493,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_12/12_11",
+                "picture": "12_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -5516,7 +5516,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_12/12_12",
+                "picture": "12_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -5539,7 +5539,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_12/12_13",
+                "picture": "12_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -5562,7 +5562,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_12/12_14",
+                "picture": "12_14",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -5585,7 +5585,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_12/12_15",
+                "picture": "12_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -5612,7 +5612,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_12/12_16",
+                "picture": "12_16",
                 "topic": "Движение по автомагистралям",
                 "answers":
                 [
@@ -5635,7 +5635,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_12/12_17",
+                "picture": "12_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -5658,7 +5658,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_12/12_18",
+                "picture": "12_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -5681,7 +5681,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_12/12_19",
+                "picture": "12_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -5704,7 +5704,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_12/12_20",
+                "picture": "12_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -5733,7 +5733,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_13/13_1",
+                "picture": "13_1",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -5756,7 +5756,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_13/13_2",
+                "picture": "13_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5779,7 +5779,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_13/13_3",
+                "picture": "13_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5802,7 +5802,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_13/13_4",
+                "picture": "13_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -5825,7 +5825,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_13/13_5",
+                "picture": "13_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -5848,7 +5848,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_13/13_6",
+                "picture": "13_6",
                 "topic": "Движение через железнодорожные пути",
                 "answers":
                 [
@@ -5871,7 +5871,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_13/13_7",
+                "picture": "13_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5894,7 +5894,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_13/13_8",
+                "picture": "13_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5917,7 +5917,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_13/13_9",
+                "picture": "13_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -5940,7 +5940,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_13/13_10",
+                "picture": "13_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -5967,7 +5967,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_13/13_11",
+                "picture": "13_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -5990,7 +5990,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_13/13_12",
+                "picture": "13_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -6013,7 +6013,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_13/13_13",
+                "picture": "13_13",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -6032,7 +6032,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_13/13_14",
+                "picture": "13_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6055,7 +6055,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_13/13_15",
+                "picture": "13_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6078,7 +6078,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_13/13_16",
+                "picture": "13_16",
                 "topic": "Приоритет маршрутных транспортных средств",
                 "answers":
                 [
@@ -6101,7 +6101,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_13/13_17",
+                "picture": "13_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -6124,7 +6124,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_13/13_18",
+                "picture": "13_18",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -6147,7 +6147,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_13/13_19",
+                "picture": "13_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -6170,7 +6170,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_13/13_20",
+                "picture": "13_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -6199,7 +6199,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_14/14_1",
+                "picture": "14_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -6226,7 +6226,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_14/14_2",
+                "picture": "14_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6249,7 +6249,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_14/14_3",
+                "picture": "14_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6272,7 +6272,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_14/14_4",
+                "picture": "14_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6295,7 +6295,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_14/14_5",
+                "picture": "14_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -6318,7 +6318,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_14/14_6",
+                "picture": "14_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -6341,7 +6341,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_14/14_7",
+                "picture": "14_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -6364,7 +6364,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_14/14_8",
+                "picture": "14_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -6387,7 +6387,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_14/14_9",
+                "picture": "14_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -6410,7 +6410,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_14/14_10",
+                "picture": "14_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -6433,7 +6433,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_14/14_11",
+                "picture": "14_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -6456,7 +6456,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_14/14_12",
+                "picture": "14_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -6479,7 +6479,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_14/14_13",
+                "picture": "14_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6502,7 +6502,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_14/14_14",
+                "picture": "14_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6525,7 +6525,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_14/14_15",
+                "picture": "14_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6548,7 +6548,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_14/14_16",
+                "picture": "14_16",
                 "topic": "Движение по автомагистралям",
                 "answers":
                 [
@@ -6575,7 +6575,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_14/14_17",
+                "picture": "14_17",
                 "topic": "Буксировка механических транспортных средств",
                 "answers":
                 [
@@ -6598,7 +6598,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_14/14_18",
+                "picture": "14_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -6621,7 +6621,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_14/14_19",
+                "picture": "14_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -6644,7 +6644,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_14/14_20",
+                "picture": "14_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -6673,7 +6673,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_15/15_1",
+                "picture": "15_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -6700,7 +6700,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_15/15_2",
+                "picture": "15_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6723,7 +6723,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_15/15_3",
+                "picture": "15_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6746,7 +6746,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_15/15_4",
+                "picture": "15_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -6769,7 +6769,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_15/15_5",
+                "picture": "15_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -6796,7 +6796,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_15/15_6",
+                "picture": "15_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -6819,7 +6819,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_15/15_7",
+                "picture": "15_7",
                 "topic": "Применение аварийной сигнализации и знака аварийной остановки",
                 "answers":
                 [
@@ -6842,7 +6842,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_15/15_8",
+                "picture": "15_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -6865,7 +6865,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_15/15_9",
+                "picture": "15_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -6888,7 +6888,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_15/15_10",
+                "picture": "15_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -6911,7 +6911,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_15/15_11",
+                "picture": "15_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -6938,7 +6938,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_15/15_12",
+                "picture": "15_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -6965,7 +6965,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_15/15_13",
+                "picture": "15_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -6988,7 +6988,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_15/15_14",
+                "picture": "15_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7011,7 +7011,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_15/15_15",
+                "picture": "15_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7034,7 +7034,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_15/15_16",
+                "picture": "15_16",
                 "topic": "Приоритет маршрутных транспортных средств",
                 "answers":
                 [
@@ -7061,7 +7061,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_15/15_17",
+                "picture": "15_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -7088,7 +7088,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_15/15_18",
+                "picture": "15_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -7111,7 +7111,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_15/15_19",
+                "picture": "15_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -7134,7 +7134,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_15/15_20",
+                "picture": "15_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -7163,7 +7163,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_16/16_1",
+                "picture": "16_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -7190,7 +7190,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_16/16_2",
+                "picture": "16_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7217,7 +7217,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_16/16_3",
+                "picture": "16_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7240,7 +7240,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_16/16_4",
+                "picture": "16_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7263,7 +7263,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_16/16_5",
+                "picture": "16_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -7286,7 +7286,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_16/16_6",
+                "picture": "16_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -7309,7 +7309,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_16/16_7",
+                "picture": "16_7",
                 "topic": "Применение аварийной сигнализации и знака аварийной остановки",
                 "answers":
                 [
@@ -7332,7 +7332,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_16/16_8",
+                "picture": "16_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -7351,7 +7351,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_16/16_9",
+                "picture": "16_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -7374,7 +7374,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_16/16_10",
+                "picture": "16_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -7397,7 +7397,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_16/16_11",
+                "picture": "16_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -7420,7 +7420,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_16/16_12",
+                "picture": "16_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -7443,7 +7443,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_16/16_13",
+                "picture": "16_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7466,7 +7466,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_16/16_14",
+                "picture": "16_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7489,7 +7489,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_16/16_15",
+                "picture": "16_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7512,7 +7512,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_16/16_16",
+                "picture": "16_16",
                 "topic": "Движение по автомагистралям",
                 "answers":
                 [
@@ -7535,7 +7535,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_16/16_17",
+                "picture": "16_17",
                 "topic": "Перевозка людей и грузов",
                 "answers":
                 [
@@ -7558,7 +7558,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_16/16_18",
+                "picture": "16_18",
                 "topic": "Неисправности и условия допуска транспортных средств к эксплуатации",
                 "answers":
                 [
@@ -7581,7 +7581,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_16/16_19",
+                "picture": "16_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -7604,7 +7604,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_16/16_20",
+                "picture": "16_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -7633,7 +7633,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_17/17_1",
+                "picture": "17_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -7656,7 +7656,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_17/17_2",
+                "picture": "17_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7679,7 +7679,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_17/17_3",
+                "picture": "17_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7702,7 +7702,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_17/17_4",
+                "picture": "17_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -7725,7 +7725,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_17/17_5",
+                "picture": "17_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -7748,7 +7748,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_17/17_6",
+                "picture": "17_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -7771,7 +7771,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_17/17_7",
+                "picture": "17_7",
                 "topic": "Применение аварийной сигнализации и знака аварийной остановки",
                 "answers":
                 [
@@ -7798,7 +7798,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_17/17_8",
+                "picture": "17_8",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -7821,7 +7821,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_17/17_9",
+                "picture": "17_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -7844,7 +7844,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_17/17_10",
+                "picture": "17_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -7867,7 +7867,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_17/17_11",
+                "picture": "17_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -7890,7 +7890,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_17/17_12",
+                "picture": "17_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -7913,7 +7913,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_17/17_13",
+                "picture": "17_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7932,7 +7932,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_17/17_14",
+                "picture": "17_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7955,7 +7955,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_17/17_15",
+                "picture": "17_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -7978,7 +7978,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_17/17_16",
+                "picture": "17_16",
                 "topic": "Приоритет маршрутных транспортных средств",
                 "answers":
                 [
@@ -8005,7 +8005,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_17/17_17",
+                "picture": "17_17",
                 "topic": "Буксировка механических транспортных средств",
                 "answers":
                 [
@@ -8028,7 +8028,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_17/17_18",
+                "picture": "17_18",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -8051,7 +8051,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_17/17_19",
+                "picture": "17_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -8074,7 +8074,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_17/17_20",
+                "picture": "17_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -8103,7 +8103,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_18/18_1",
+                "picture": "18_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -8126,7 +8126,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_18/18_2",
+                "picture": "18_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8149,7 +8149,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_18/18_3",
+                "picture": "18_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8172,7 +8172,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_18/18_4",
+                "picture": "18_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8195,7 +8195,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_18/18_5",
+                "picture": "18_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -8218,7 +8218,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_18/18_6",
+                "picture": "18_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -8241,7 +8241,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_18/18_7",
+                "picture": "18_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -8264,7 +8264,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_18/18_8",
+                "picture": "18_8",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8287,7 +8287,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_18/18_9",
+                "picture": "18_9",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8314,7 +8314,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_18/18_10",
+                "picture": "18_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -8337,7 +8337,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_18/18_11",
+                "picture": "18_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -8360,7 +8360,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_18/18_12",
+                "picture": "18_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -8387,7 +8387,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_18/18_13",
+                "picture": "18_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8410,7 +8410,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_18/18_14",
+                "picture": "18_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8433,7 +8433,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_18/18_15",
+                "picture": "18_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8452,7 +8452,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_18/18_16",
+                "picture": "18_16",
                 "topic": "Приоритет маршрутных транспортных средств",
                 "answers":
                 [
@@ -8475,7 +8475,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_18/18_17",
+                "picture": "18_17",
                 "topic": "Буксировка механических транспортных средств",
                 "answers":
                 [
@@ -8498,7 +8498,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_18/18_18",
+                "picture": "18_18",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -8525,7 +8525,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_18/18_19",
+                "picture": "18_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -8548,7 +8548,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_18/18_20",
+                "picture": "18_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -8577,7 +8577,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_19/19_1",
+                "picture": "19_1",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -8600,7 +8600,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_19/19_2",
+                "picture": "19_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8623,7 +8623,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_19/19_3",
+                "picture": "19_3",
                 "topic": "Общие положения",
                 "answers":
                 [
@@ -8646,7 +8646,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_19/19_4",
+                "picture": "19_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -8669,7 +8669,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_19/19_5",
+                "picture": "19_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -8692,7 +8692,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_19/19_6",
+                "picture": "19_6",
                 "topic": "Применение специальных сигналов",
                 "answers":
                 [
@@ -8715,7 +8715,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_19/19_7",
+                "picture": "19_7",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -8738,7 +8738,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_19/19_8",
+                "picture": "19_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -8761,7 +8761,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_19/19_9",
+                "picture": "19_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -8784,7 +8784,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_19/19_10",
+                "picture": "19_10",
                 "topic": "Скорость движения",
                 "answers":
                 [
@@ -8807,7 +8807,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_19/19_11",
+                "picture": "19_11",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -8830,7 +8830,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_19/19_12",
+                "picture": "19_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -8857,7 +8857,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_19/19_13",
+                "picture": "19_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8880,7 +8880,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_19/19_14",
+                "picture": "19_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8903,7 +8903,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_19/19_15",
+                "picture": "19_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -8926,7 +8926,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_19/19_16",
+                "picture": "19_16",
                 "topic": "Приоритет маршрутных транспортных средств",
                 "answers":
                 [
@@ -8945,7 +8945,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_19/19_17",
+                "picture": "19_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -8968,7 +8968,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_19/19_18",
+                "picture": "19_18",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -8991,7 +8991,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_19/19_19",
+                "picture": "19_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -9014,7 +9014,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_19/19_20",
+                "picture": "19_20",
                 "topic": "Оказание доврачебной медицинской помощи",
                 "answers":
                 [
@@ -9043,7 +9043,7 @@
         [
             {
                 "id": 1,
-                "picture": "./images/ticket_20/20_1",
+                "picture": "20_1",
                 "topic": "Общие обязанности водителей",
                 "answers":
                 [
@@ -9070,7 +9070,7 @@
             },
             {
                 "id": 2,
-                "picture": "./images/ticket_20/20_2",
+                "picture": "20_2",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -9093,7 +9093,7 @@
             },
             {
                 "id": 3,
-                "picture": "./images/ticket_20/20_3",
+                "picture": "20_3",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -9116,7 +9116,7 @@
             },
             {
                 "id": 4,
-                "picture": "./images/ticket_20/20_4",
+                "picture": "20_4",
                 "topic": "Дорожные знаки",
                 "answers":
                 [
@@ -9143,7 +9143,7 @@
             },
             {
                 "id": 5,
-                "picture": "./images/ticket_20/20_5",
+                "picture": "20_5",
                 "topic": "Дорожная разметка",
                 "answers":
                 [
@@ -9166,7 +9166,7 @@
             },
             {
                 "id": 6,
-                "picture": "./images/ticket_20/20_6",
+                "picture": "20_6",
                 "topic": "Сигналы светофора и регулировщика",
                 "answers":
                 [
@@ -9189,7 +9189,7 @@
             },
             {
                 "id": 7,
-                "picture": "./images/ticket_20/20_7",
+                "picture": "20_7",
                 "topic": "Применение аварийной сигнализации и знака аварийной остановки",
                 "answers":
                 [
@@ -9212,7 +9212,7 @@
             },
             {
                 "id": 8,
-                "picture": "./images/ticket_20/20_8",
+                "picture": "20_8",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -9235,7 +9235,7 @@
             },
             {
                 "id": 9,
-                "picture": "./images/ticket_20/20_9",
+                "picture": "20_9",
                 "topic": "Начало движения, маневрирование",
                 "answers":
                 [
@@ -9258,7 +9258,7 @@
             },
             {
                 "id": 10,
-                "picture": "./images/ticket_20/20_10",
+                "picture": "20_10",
                 "topic": "Расположение транспортных средств на проезжей части",
                 "answers":
                 [
@@ -9285,7 +9285,7 @@
             },
             {
                 "id": 11,
-                "picture": "./images/ticket_20/20_11",
+                "picture": "20_11",
                 "topic": "Обгон, опережение, встречный разъезд",
                 "answers":
                 [
@@ -9308,7 +9308,7 @@
             },
             {
                 "id": 12,
-                "picture": "./images/ticket_20/20_12",
+                "picture": "20_12",
                 "topic": "Остановка и стоянка",
                 "answers":
                 [
@@ -9331,7 +9331,7 @@
             },
             {
                 "id": 13,
-                "picture": "./images/ticket_20/20_13",
+                "picture": "20_13",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -9354,7 +9354,7 @@
             },
             {
                 "id": 14,
-                "picture": "./images/ticket_20/20_14",
+                "picture": "20_14",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -9373,7 +9373,7 @@
             },
             {
                 "id": 15,
-                "picture": "./images/ticket_20/20_15",
+                "picture": "20_15",
                 "topic": "Проезд перекрестков",
                 "answers":
                 [
@@ -9396,7 +9396,7 @@
             },
             {
                 "id": 16,
-                "picture": "./images/ticket_20/20_16",
+                "picture": "20_16",
                 "topic": "Движение через железнодорожные пути",
                 "answers":
                 [
@@ -9419,7 +9419,7 @@
             },
             {
                 "id": 17,
-                "picture": "./images/ticket_20/20_17",
+                "picture": "20_17",
                 "topic": "Пользование внешними световыми приборами и звуковыми сигналами",
                 "answers":
                 [
@@ -9442,7 +9442,7 @@
             },
             {
                 "id": 18,
-                "picture": "./images/ticket_20/20_18",
+                "picture": "20_18",
                 "topic": "Ответственность водителя",
                 "answers":
                 [
@@ -9465,7 +9465,7 @@
             },
             {
                 "id": 19,
-                "picture": "./images/ticket_20/20_19",
+                "picture": "20_19",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [
@@ -9488,7 +9488,7 @@
             },
             {
                 "id": 20,
-                "picture": "./images/ticket_20/20_20",
+                "picture": "20_20",
                 "topic": "Безопасность движения и техника управления автомобилем",
                 "answers":
                 [

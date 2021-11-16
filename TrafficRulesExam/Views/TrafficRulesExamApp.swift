@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-    
+
 //    private var cards = cards
     
 //    @StateObject

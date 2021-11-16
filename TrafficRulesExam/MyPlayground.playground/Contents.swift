@@ -1,8 +1,6 @@
 import SwiftUI
 import PlaygroundSupport
 
-
-
 struct ContentView: View {
     @State private var isShowingDetailView = false
 

@@ -1,0 +1,16 @@
+excluded:
+  - Carthage
+  - Pods
+  - .build
+  - Build
+  - DerivedData
+  - TrafficRulesExamTests
+  - TrafficRulesExamUITests
+
+disabled_rules:
+  - type_name
+  - identifier_name
+  - line_length
+
+force_try:
+  severity: warning 

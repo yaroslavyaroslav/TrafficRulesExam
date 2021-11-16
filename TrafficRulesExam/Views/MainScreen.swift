@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
-    
+
     @GestureState
     var isDetectingSwipe = false
     
@@ -35,34 +35,18 @@ struct MainScreen: View {
     private enum Tabs {
         case cardGalery, totalStatsNavigation
     }
-    
+
     @State
     private var selectedIndex: Tabs = .cardGalery
-    
+
     var body: some View {
         VStack {
-            if #available(iOS 15.0, *) {
-                ControlGroup {
-                    Button("Решать") {
-                        withAnimation {
-                            selectedIndex = .cardGalery
-                        }
-                    }
-                    Button("Статистика") {
-                        withAnimation {
-                            selectedIndex = .totalStatsNavigation
-                        }
-                    }
-                }
-                .gesture(swipeGesture)
-
-            } else {
-                Picker("Tab", selection: $selectedIndex.animation(.default)) {
-                    Text("Решать").tag(Tabs.cardGalery)
-                    Text("Статистика").tag(Tabs.totalStatsNavigation)
-                }
-                .pickerStyle(SegmentedPickerStyle())
+            Picker("Tab", selection: $selectedIndex.animation(.default)) {
+                Text("Решать").tag(Tabs.cardGalery)
+                Text("Статистика").tag(Tabs.totalStatsNavigation)
             }
+            .pickerStyle(SegmentedPickerStyle())
+
             // FIXME: Переписать из двух экранов выезжающих сбоку на
             // один экран, а плашка решать/статистика включает в том вью только блок статистики (и меняет линки с билета на историю).
             switch selectedIndex {
@@ -78,7 +62,6 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
-        
     }
 }
 

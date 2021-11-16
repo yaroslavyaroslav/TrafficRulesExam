@@ -122,7 +122,6 @@ class TrafficRulesExamUITests: XCTestCase {
             let answerButton = app.buttons.containing(answerPredicate).firstMatch
             let nextQuestionButton = app.buttons["Следующий вопрос"]
             
-            // FIXME: Иногда падает здесь на 2 билете на 4 вопросе (выбирает 4 ответ из 3).
             expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerID) in question \(id.description) doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()

@@ -31,10 +31,15 @@ struct CardResults {
     /// This var encodes itsef to the JSON and stores it to the UserDefaults by key ``CardResults``.
     var items: [CardResult] {
         willSet {
-            // FIXME: Disable force unwrap.
-            let data = try! JSONEncoder().encode(newValue)
-            let string = String(data: data, encoding: .utf8)
-            UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
+            let data = try? JSONEncoder().encode(newValue)
+
+            if let data = data {
+                let string = String(data: data, encoding: .utf8)
+                UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
+            // TODO: Make something if data nil
+            } else {
+
+            }
         }
     }
 

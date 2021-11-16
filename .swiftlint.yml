@@ -4,8 +4,6 @@ excluded:
   - .build
   - Build
   - DerivedData
-  - TrafficRulesExamTests
-  - TrafficRulesExamUITests
 
 disabled_rules:
   - type_name

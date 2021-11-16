@@ -11,10 +11,10 @@ import SwiftUI
 struct TrafficRulesExamApp: App {
 
 //    private var cards = cards
-    
+
 //    @StateObject
 //    private var results = CardResults()
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationView {

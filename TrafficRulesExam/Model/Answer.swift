@@ -19,11 +19,11 @@ extension Answer: Codable { }
 
 enum AnswerID: Int {
     case none, a, b, c, d
-    
+
     init(from decoder: Decoder) throws {
-        
+
         let label = try decoder.singleValueContainer().decode(Int.self)
-        
+
         switch label {
         case 1: self = .a
         case 2: self = .b

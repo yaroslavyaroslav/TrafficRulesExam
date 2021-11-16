@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct QuestionContent: View {
-    
+
     var question: Question
-    
+
     @Binding
     var selectedAnswer: AnswerID
-    
+
     let correctAnswer: AnswerID?
-    
+
     var body: some View {
         VStack {
             if let image = question.image {
@@ -25,7 +25,7 @@ struct QuestionContent: View {
                     .cornerRadius(8)
                 Spacer()
             }
-            
+
             Text(question.text)
                 .multilineTextAlignment(.leading)
                 .padding(10)
@@ -33,7 +33,7 @@ struct QuestionContent: View {
                 .background(Color.green)
                 .cornerRadius(8)
             Spacer()
-            
+
             Answers(answers: question.answers, selectedAnswer: $selectedAnswer, correctAnswer: correctAnswer)
             Spacer()
         }
@@ -42,10 +42,10 @@ struct QuestionContent: View {
 }
 
 struct QuestionContent_Previews: PreviewProvider {
-    
+
     @State
     static var answer = AnswerID.a
-    
+
     static var previews: some View {
         QuestionContent(question: cards[1].questions[2], selectedAnswer: $answer, correctAnswer: .c)
     }

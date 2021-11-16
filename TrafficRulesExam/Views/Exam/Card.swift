@@ -13,16 +13,16 @@ struct Card: View {
 
     @Binding
     var result: CardResult
-    
+
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")
 //        .navigationBarBackButtonHidden(true)
     }
-    
+
 }
 
 //struct Card_Previews: PreviewProvider {

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ExamCardStats: View {
-    
+
     var cardResult: CardResult
-    
+
     var body: some View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
@@ -33,25 +33,12 @@ struct ExamCardStats: View {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 struct ExamCardStats_Previews: PreviewProvider {
     static var results: CardResults = {
         let results = (1...2).map { id -> CardResult in
-            
+
             let mistakes = [Mistake(id: 1, wrongAnswer: .b), Mistake(id: 10, wrongAnswer: .c), Mistake(id: 15, wrongAnswer: .a)]
-            
+
             let results = (1...3).map { idx -> Result in
                 if idx == 2 {
                     return Result(mistakes: [], examDate: Date())
@@ -61,10 +48,10 @@ struct ExamCardStats_Previews: PreviewProvider {
             }
             return CardResult(id: id, resultHistory: Results(items: results))
         }
-        
+
         return CardResults(items: results)
     }()
-    
+
     static var previews: some View {
         ExamCardStats(cardResult: results.items[0])
     }

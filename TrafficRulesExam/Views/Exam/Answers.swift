@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct Answers: View {
-    
+
     var answers: [Answer]
-    
+
     @Binding
     var selectedAnswer: AnswerID
-    
+
     let correctAnswer: AnswerID?
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             ForEach(answers) { answer in
@@ -38,7 +38,7 @@ struct Answers: View {
 
 struct AnswerHStack: View {
     var answer: Answer
-    
+
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             Text(answer.id.stringValue)
@@ -49,10 +49,10 @@ struct AnswerHStack: View {
 }
 
 struct Answers_Previews: PreviewProvider {
-    
+
     @State
     static var selAnswer = AnswerID.a
-    
+
     static var previews: some View {
         Answers(answers: cards[1].questions[16].answers, selectedAnswer: $selAnswer, correctAnswer: .b)
     }

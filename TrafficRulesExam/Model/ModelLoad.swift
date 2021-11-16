@@ -9,7 +9,7 @@ import Foundation
 
 var cards: [ExamCard] = load("ExamCards.json")
 
-fileprivate func load<T: Decodable>(_ filename: String) -> T {
+private func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)

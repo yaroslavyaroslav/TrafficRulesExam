@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CardItem: View {
-    
+
     let card: ExamCard
-    
+
     let result: CardResult
-    
+
     var body: some View {
         HStack {
             Spacer()
@@ -25,11 +25,11 @@ struct CardItem: View {
                     Spacer()
                 }
                 Spacer()
-                
+
                 Text(result.resultHistory.items.isEmpty ? "Начать" : "\(20 - result.resultHistory.items.last!.mistakes.count)/20")
                     .font(.system(size: 25))
                 Spacer()
-                
+
                 if let date = result.resultHistory.items.last?.examDate {
                     Text(date.prettyPrint)
                         .font(.system(size: 20))
@@ -51,17 +51,17 @@ struct CardItem: View {
 }
 
 struct CardItem_Previews: PreviewProvider {
-    
+
     private static var results: CardResults = {
         var object: CardResults!
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items: { (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object
     }()
-    
+
     static var previews: some View {
         HStack {
             CardItem(card: cards[0], result: results.items[0])

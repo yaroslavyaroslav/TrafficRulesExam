@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardRow: View {
-    
+
     @State
     var results: CardResults = {
         var object: CardResults!
@@ -17,16 +17,16 @@ struct CardRow: View {
             object = try CardResults()
         } catch {
             UserDefaults.standard.removeObject(forKey: UDKeys.cardResults.rawValue)
-            object = CardResults(items:{ (1...(cards.count)).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items: { (1...(cards.count)).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object
     }()
 
     var locCards: [ExamCard]
-    
+
     var body: some View {
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-        
+
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in

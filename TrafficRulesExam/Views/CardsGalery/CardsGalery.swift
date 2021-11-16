@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CardsGalery: View {
-    
+
     var cards: [ExamCard]
-    
+
     var body: some View {
         CardRow(locCards: cards)
     }

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ExamStats: View {
-    
+
     var result: Result
-    
+
     let cardId: Int
-    
+
     var body: some View {
         VStack {
             Text("Билет 8")
             Text("Решено \(20 - result.mistakes.count)/20")
-            
+
             if result.succeed {
                 Spacer()
                 Text("Решено \(result.examDate.prettyPrint)")
@@ -45,15 +45,15 @@ struct ExamStats: View {
             }
         }
     }
-    
+
     private func getQuestionForStats(_ cardID: Int, _ questionId: Int) -> Question {
         cards.getElementById(cardId).questions.getElementById(result.mistakes[questionId].id)
     }
-    
+
     private func getCorrectAnswerForQuestion(_ cardID: Int, _ questionId: Int) -> AnswerID {
         cards.getElementById(cardId).questions.getElementById(result.mistakes[questionId].id).correctAnswer
     }
-    
+
     private func getSelectedAnswer(_ questionID: Int) -> Binding<AnswerID> {
         Binding<AnswerID>(
             get: { result.mistakes[questionID].wrongAnswer },
@@ -63,10 +63,10 @@ struct ExamStats: View {
 }
 
 struct ExamStats_Previews: PreviewProvider {
-    
+
     static var results: [Result] = {
         let mistakes = [Mistake(id: 1, wrongAnswer: .b), Mistake(id: 10, wrongAnswer: .c), Mistake(id: 15, wrongAnswer: .a)]
-        
+
         let results = (1...3).map { idx -> Result in
             if idx == 2 {
                 return Result(mistakes: [], examDate: Date())
@@ -76,7 +76,7 @@ struct ExamStats_Previews: PreviewProvider {
         }
         return results
     }()
-    
+
     static var previews: some View {
         ExamStats(result: results[2], cardId: 2)
         ExamStats(result: results[1], cardId: 1)

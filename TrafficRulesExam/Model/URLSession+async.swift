@@ -16,10 +16,10 @@ extension URLSession {
                     let error = error ?? URLError(.badServerResponse)
                     return continuation.resume(throwing: error)
                 }
-                
+
                 continuation.resume(returning: (data, response))
             }
-            
+
             task.resume()
         }
     }

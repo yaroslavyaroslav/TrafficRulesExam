@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct TotalStats: View {
-    
+
     var results: CardResults
-    
+
     let graphHeight: CGFloat = 40
-    
+
     let maxWidth: CGFloat = 300
-    
+
     let totalTickets: CGFloat = 20
-    
+
     var triedTickets: CGFloat {
         // 20 билетов - 300px
         // решеноБилетов - х px.
         (CGFloat(results.cardsTried) * maxWidth) / totalTickets
     }
-    
+
     var successTickets: CGFloat {
         (CGFloat(results.cardsSucceed) * maxWidth) / totalTickets
     }
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -43,7 +43,7 @@ struct TotalStats: View {
                             .foregroundColor(.green)
                     }
                     .cornerRadius(8)
-                    
+
                     HStack {
                         if successTickets > 0 {
                             Text("Правильно \(results.cardsSucceed)")
@@ -64,7 +64,7 @@ struct TotalStats: View {
                 }
             }
             .frame(width: maxWidth)
-            
+
             let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
             ScrollView {
                 LazyVGrid(columns: columns) {
@@ -86,19 +86,18 @@ struct TotalStats: View {
     }
 }
 
-
 struct TotalStats_Previews: PreviewProvider {
-    
+
     private static var results: CardResults = {
         var object: CardResults!
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items: { (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
         }
         return object
     }()
-    
+
     static var previews: some View {
         TotalStats(results: results)
     }

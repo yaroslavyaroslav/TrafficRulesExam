@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
         let insertion = AnyTransition.move(edge: .trailing)
@@ -19,24 +18,24 @@ extension AnyTransition {
 }
 
 struct QuestionCard: View {
-    
+
     @State
     private var result = Result(mistakes: [], examDate: Date())
-    
+
     let questions: [Question]
-    
+
     @State
     var questionDetails: Question
-    
+
     @State
     var selectedAnswer: AnswerID = .none
-    
+
     @Binding
     var historyRes: Results
-    
+
     @State
     var answeredQuestions: Set<Int> = []
-    
+
     @Environment(\.presentationMode)
     var presentationMode
 
@@ -66,22 +65,22 @@ struct QuestionCard: View {
                     }
                 }
                 Spacer()
-                
+
                 QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
-                
+
                 Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
                     withAnimation {
                         self.saveAnswer()
                         answeredQuestions.insert(questionDetails.id)
                         print(answeredQuestions.count)
-                        
+
                         if answeredQuestions.count == 20 {
                             historyRes.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return
                         }
-                        
+
                         let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
                         if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
                             questionDetails = questions[questionDetails.id]
@@ -104,7 +103,7 @@ struct QuestionCard: View {
 extension QuestionCard {
     func saveAnswer() {
         guard selectedAnswer != .none else { return }
-            
+
         if questionDetails.correctAnswer != selectedAnswer {
             result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
@@ -113,14 +112,14 @@ extension QuestionCard {
 }
 
 struct QuestionCard_Previews: PreviewProvider {
-    
+
     @State
     static var history: Results = {
         let result = Result(mistakes: [], examDate: Date())
         return Results(items: [result])
     }()
-    
+
     static var previews: some View {
-        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16],  historyRes: $history)
+        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16], historyRes: $history)
     }
 }

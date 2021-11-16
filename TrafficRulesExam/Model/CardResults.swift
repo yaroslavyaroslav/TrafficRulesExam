@@ -7,14 +7,13 @@
 
 import Foundation
 
-
 /// Object to store all results for a given exam card
 struct CardResult {
     /// Result id.
     ///
     /// Is equal to the ``ExamCard.id``.
     let id: Int
-    
+
     /// History of the results processed tests.
     var resultHistory: Results
 }
@@ -38,12 +37,12 @@ struct CardResults {
             UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
         }
     }
-    
+
     /// Number of tickets that user have tried to solve.
     ///
     /// Doesn't matter did them succeed or not.
     var cardsTried: Int { items.filter { $0.resultHistory.items.count > 0 }.count }
-    
+
     /// Number of tickets that user have succeed.
     ///
     /// Counts only if last attemtion were suceessful.
@@ -67,9 +66,9 @@ extension CardResults {
 
 extension CardResults: Codable { }
 
-fileprivate struct InitError:  Error {
+private struct InitError: Error {
     let kind: ErrorKind
-    
+
     enum ErrorKind {
         case emptyUserDefaults
         case notEnoughTickets

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension Date {
     var prettyPrint: String {
         let dateFormatter = DateFormatter()

@@ -11,7 +11,7 @@ struct MainScreen: View {
 
     @GestureState
     var isDetectingSwipe = false
-    
+
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 8)
             .updating($isDetectingSwipe, body: { currentState, gestureState, transation in
@@ -31,7 +31,7 @@ struct MainScreen: View {
                 }
             }
     }
-    
+
     private enum Tabs {
         case cardGalery, totalStatsNavigation
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+    // swiftlint:disable commented_out_code
 @main
 struct TrafficRulesExamApp: App {
 
@@ -25,3 +26,4 @@ struct TrafficRulesExamApp: App {
         }
     }
 }
+// swiftlint:enable commented_out_code

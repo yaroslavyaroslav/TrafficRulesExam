@@ -50,7 +50,9 @@ struct TotalStats: View {
                                 .foregroundColor(.green)
                             Spacer()
                         }
+                        // swiftlint:disable force_unwrap
                         if triedTickets > 0 && triedTickets != successTickets {
+                        // swiftlint:enable force_unwrap
                             Text("Решено \(results.cardsTried)")
                                 .foregroundColor(.red)
                             Spacer()

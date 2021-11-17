@@ -20,13 +20,18 @@ struct Card: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")
-//        .navigationBarBackButtonHidden(true)
     }
-
 }
 
-//struct Card_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Card(card: cards[0], result: CardResult(id: 1, resultHistory: Results(items: [])))
-//    }
-//}
+struct Card_Previews: PreviewProvider {
+    @State
+    static var cardResult: CardResult = {
+        let result = Result(mistakes: [], examDate: Date())
+        let results = Results(items: [result])
+        return CardResult(id: 1, resultHistory: results)
+    }()
+
+    static var previews: some View {
+        Card(card: cards[0], result: $cardResult)
+    }
+}

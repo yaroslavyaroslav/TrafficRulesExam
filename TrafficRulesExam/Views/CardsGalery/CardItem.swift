@@ -26,8 +26,10 @@ struct CardItem: View {
                 }
                 Spacer()
 
+                // swiftlint:disable force_unwrap
                 Text(result.resultHistory.items.isEmpty ? "Начать" : "\(20 - result.resultHistory.items.last!.mistakes.count)/20")
                     .font(.system(size: 25))
+                // swiftlint:enable force_unwrap
                 Spacer()
 
                 if let date = result.resultHistory.items.last?.examDate {
@@ -38,6 +40,7 @@ struct CardItem: View {
             }
             .foregroundColor(.white)
             .frame(height: 200, alignment: .center)
+            // swiftlint:disable force_unwrap
             .background(
                 RoundedRectangle(cornerRadius: 10)
                 // if there's no result — .gray
@@ -45,6 +48,7 @@ struct CardItem: View {
                 // if there is and it is no go-o-od — .red
                     .foregroundColor(result.resultHistory.items.isEmpty ? .gray : (result.resultHistory.items.last!.succeed ? .green : .red))
             )
+            // swiftlint:enable force_unwrap
             Spacer()
         }
     }

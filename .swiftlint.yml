@@ -10,12 +10,12 @@ disabled_rules:
   - identifier_name
   - line_length
   - multiple_closures_with_trailing_closure
+  - todo
 
 # force warnings
 force_cast: error
 force_try: error 
 
-# regex: "(^\\/\\/\\s*.*)" # matching pattern
 custom_rules:
   commented_out_code: # rule identifier
     included: ".*\\.swift" # regex that defines paths to include during linting. optional.

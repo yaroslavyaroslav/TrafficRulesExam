@@ -29,6 +29,7 @@
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
 		5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */; };
+		5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */; };
 		5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81B8C8273ED59C00A7121E /* URLSession+async.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
@@ -114,6 +115,7 @@
 			files = (
 				5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */,
 				5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */,
+				5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,7 @@
 			packageProductDependencies = (
 				5C85387C27158DBB00D8853E /* YandexMobileMetrica */,
 				5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */,
+				5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */,
 			);
 			productName = TrafficRulesExam;
 			productReference = 5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */;
@@ -364,6 +367,7 @@
 			packageReferences = (
 				5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 				5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */,
+				5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 5C453E0E2714730A006BFFCB /* Products */;
 			projectDirPath = "";
@@ -808,6 +812,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yandexmobile/metrica-sdk-ios";
@@ -827,6 +839,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
 		5C85387C27158DBB00D8853E /* YandexMobileMetrica */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;

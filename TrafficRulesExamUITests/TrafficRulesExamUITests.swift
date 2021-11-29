@@ -173,7 +173,7 @@ class TrafficRulesExamUITests: XCTestCase {
     private func rndAnswerPredicate() -> NSPredicate {
         let rndId = Int.random(in: 1...2)
         os_log("Answer \(rndId.description) selected")
-        // FIXME: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
+        // MARK: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
         return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(rndId)."])
     }
 

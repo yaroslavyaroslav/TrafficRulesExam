@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
+        destination: ['OS=15.1, name=iPhone 12']
     steps:
       - uses: actions/checkout@v2
       # - name: Fetch dependencies
@@ -40,7 +40,7 @@ jobs:
       #     bundle exec pod install
       #     swift package update
       - name: Build and test
-        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination platform=iOS\ Simulator, OS=15.0,name=iPhone\ 13 clean test | xcpretty
+        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination {{ matrix.destination }} clean test | xcpretty
   
 
   # macOS_5_5:

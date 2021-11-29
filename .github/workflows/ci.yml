@@ -1,4 +1,4 @@
-name: "Alamofire CI"
+name: "TrafficRulesExam CI"
 
 on: 
   push:

@@ -8,16 +8,9 @@ on:
       - hotfix
       - feature/stats
     paths:
-      - 'Source/**'
-      - 'Tests/**'
+      - TrafficRulesExam*
+      - 'TrafficRulesExam/**'
       - '.github/workflows/**'
-      - 'Package.swift'
-  pull_request:
-    paths:
-      - 'Source/**'
-      - 'Tests/**'
-      - '.github/workflows/**'
-      - 'Package.swift'
 
 concurrency: 
   group: ci
@@ -40,7 +33,7 @@ jobs:
       #     bundle exec pod install
       #     swift package update
       - name: Build and test
-        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination "${{ matrix.destination }}" clean test | xcpretty
+        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination "${{ matrix.destination }}" clean test
   
 
   # macOS_5_5:

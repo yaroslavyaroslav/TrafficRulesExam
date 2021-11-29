@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        destination: ['OS=15.1, name=iPhone 12']
+        destination: ['OS=15.1,name=iPhone 12']
     steps:
       - uses: actions/checkout@v2
       # - name: Fetch dependencies

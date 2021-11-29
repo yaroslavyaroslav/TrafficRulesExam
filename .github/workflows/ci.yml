@@ -1,0 +1,107 @@
+name: "Alamofire CI"
+
+on: 
+  push:
+    branches: 
+      - master
+      - develop
+      - hotfix
+      - feature/stats
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - '.github/workflows/**'
+      - 'Package.swift'
+  pull_request:
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - '.github/workflows/**'
+      - 'Package.swift'
+
+concurrency: 
+  group: ci
+  cancel-in-progress: true
+jobs:
+  macOS_5_4:
+    name: Test macOS 11 (5.4)
+    runs-on: macOS-11
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.5.1.app/Contents/Developer
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fetch dependencies
+        run: |
+          carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+          bundle exec pod install
+          swift package update
+      - name: Build and test
+        run: xcodebuild -project TrafficRulesExam.xcodeproj \
+            -scheme TrafficRulesExam \
+            -destination platform=iOS\ Simulator,OS=15.0,name=iPhone\ 13 \
+            clean test | xcpretty
+  
+
+  # macOS_5_5:
+  #   name: Test macOS 11 (5.5)
+  #   runs-on: firebreak
+  #   env:
+  #     DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  #   timeout-minutes: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install Firewalk
+  #       run: arch -arch arm64e brew install alamofire/alamofire/firewalk || arch -arch arm64e brew upgrade alamofire/alamofire/firewalk && arch -arch x86_64 firewalk &
+  #     - name: macOS 11 (5.5)
+  #       run: set -o pipefail && arch -arch arm64e env NSUnbufferedIO=YES xcodebuild -project "Alamofire.xcodeproj" -scheme "Alamofire macOS" -destination "platform=macOS" clean test | xcpretty
+  # iOS:
+  #   name: Test iOS 15
+  #   runs-on: firebreak
+  #   env:
+  #     DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  #   timeout-minutes: 10
+  #   strategy:
+  #     matrix:
+  #       destination: ["OS=15.0,name=iPhone 13 Pro"]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install Firewalk
+  #       run: arch -arch arm64e brew install alamofire/alamofire/firewalk || arch -arch arm64e brew upgrade alamofire/alamofire/firewalk && arch -arch x86_64 firewalk &
+  #     - name: iOS - ${{ matrix.destination }}
+  #       run: set -o pipefail && arch -arch arm64e env NSUnbufferedIO=YES xcodebuild -project "Alamofire.xcodeproj" -scheme "Alamofire iOS" -destination "${{ matrix.destination }}" clean test | xcpretty
+  # SPM:
+  #   name: Test with SPM
+  #   runs-on: firebreak
+  #   env:
+  #     DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  #   timeout-minutes: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install Firewalk
+  #       run: arch -arch arm64e brew install alamofire/alamofire/firewalk || arch -arch arm64e brew upgrade alamofire/alamofire/firewalk && arch -arch x86_64 firewalk &
+  #     - name: SPM Test
+  #       run: arch -arch arm64e swift test -c debug
+  # Linux:
+  #   name: Linux
+  #   runs-on: ubuntu-20.04
+  #   container:
+  #     image: swift:5.5.1-focal
+  #   timeout-minutes: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: SPM Linux build
+  #       run: swift build --build-tests -c debug
+  # Linux_Nightly:
+  #   name: Linux Nightly
+  #   runs-on: ubuntu-20.04
+  #   container:
+  #     image: swiftlang/swift:nightly-focal
+  #   timeout-minutes: 10
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: SPM Linux build
+  #       run: swift build --build-tests -c debug

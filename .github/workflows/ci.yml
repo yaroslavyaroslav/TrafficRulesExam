@@ -40,7 +40,7 @@ jobs:
       #     bundle exec pod install
       #     swift package update
       - name: Build and test
-        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination {{ matrix.destination }} clean test | xcpretty
+        run: xcodebuild -project TrafficRulesExam.xcodeproj -scheme TrafficRulesExam -destination ${{ matrix.destination }} clean test | xcpretty
   
 
   # macOS_5_5:

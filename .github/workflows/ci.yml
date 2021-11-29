@@ -34,11 +34,11 @@ jobs:
         destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
     steps:
       - uses: actions/checkout@v2
-      - name: Fetch dependencies
-        run: |
-          carthage bootstrap --no-use-binaries --platform iOS --cache-builds
-          bundle exec pod install
-          swift package update
+      # - name: Fetch dependencies
+      #   run: |
+      #     carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+      #     bundle exec pod install
+      #     swift package update
       - name: Build and test
         run: xcodebuild -project TrafficRulesExam.xcodeproj \
             -scheme TrafficRulesExam \

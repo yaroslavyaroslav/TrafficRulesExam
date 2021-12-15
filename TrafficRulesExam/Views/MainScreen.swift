@@ -15,9 +15,9 @@ struct MainScreen: View {
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 8)
             .updating($isDetectingSwipe, body: { currentState, gestureState, transation in
-                print("currentState: \(currentState)")
-                print("gestureState: \(gestureState)")
-                print("transaction: \(transation)")
+//                print("currentState: \(currentState)")
+//                print("gestureState: \(gestureState)")
+//                print("transaction: \(transation)")
             })
             .onChanged {
                 if $0.translation.width > 100 {

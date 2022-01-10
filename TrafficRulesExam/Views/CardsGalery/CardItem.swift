@@ -16,19 +16,28 @@ struct CardItem: View {
         HStack {
             Spacer()
             VStack {
-                Spacer()
+                HStack {
+                    Spacer()
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.purple)
+                            .frame(width: 30, height: 30, alignment: .trailing)
+                        Text("1")
+                        // TODO: Change color based on iOS Theme
+                            .foregroundColor(.black)
+                    }
+                }
                 HStack {
                     Spacer()
                     Text("Билет \(card.id)")
                         .font(.system(size: 30))
                     Spacer()
                 }
+
                 Spacer()
 
-                // swiftlint:disable force_unwrap
                 Text(result.resultHistory.items.isEmpty ? "Начать" : "\(20 - result.resultHistory.items.last!.mistakes.count)/20")
                     .font(.system(size: 25))
-                // swiftlint:enable force_unwrap
                 Spacer()
 
                 if let date = result.resultHistory.items.last?.examDate {

@@ -29,6 +29,8 @@ struct TotalStats: View {
 
     var successTickets: CGFloat {
         // swiftformat:disable --indent --spaceInsideComments
+        // 20 билетов - 300px
+        // успешныхБилетов - х px.
             (CGFloat(results.cardsSucceed) * maxWidth)
         / //------------------------------------------
                         totalTickets
@@ -39,6 +41,22 @@ struct TotalStats: View {
         VStack {
             HStack {
                 VStack {
+                    HStack {
+                        Text("Монет: 20")
+
+                        Spacer()
+
+                        NavigationLink {
+                            Purchase()
+                        } label: {
+                            Text("Купить")
+                        }
+
+                        Spacer()
+
+                        // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
+                        Text("+1: 09:32")
+                    }
                     ZStack(alignment: .topLeading) {
                         Rectangle()
                             .frame(width: maxWidth, height: graphHeight)
@@ -58,9 +76,7 @@ struct TotalStats: View {
                                 .foregroundColor(.green)
                             Spacer()
                         }
-                        // swiftlint:disable force_unwrap
                         if triedTickets > 0 && triedTickets != successTickets {
-                            // swiftlint:enable force_unwrap
                             Text("Решено \(results.cardsTried)/10")
                                 .foregroundColor(.red)
                             Spacer()

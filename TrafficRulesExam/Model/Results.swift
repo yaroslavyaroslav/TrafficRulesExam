@@ -14,13 +14,12 @@ struct Results {
     var items: [Result]
 }
 
-extension Results: Codable { }
+extension Results: Codable {}
 
 /// Result data stores data about one piece of a one testing
 ///
 /// The most atomic kind of result
 struct Result {
-
     /// Dictionary of the mistakes which user have made during one test
     private(set) var mistakes: [Mistake]
 
@@ -32,7 +31,7 @@ struct Result {
     /// Additional questions fires when user makes a 2 or less mistakes during the main test part (20 questions).
     /// In that case after the main part app provides additional questions in theme where user have mistaken.
     /// It's 5 more questions for each given mistake, 10 at max.
-    var additionalQuestionsFired: Bool { mistakes.count > 0 ? true : false }
+    var additionalQuestionsFired: Bool { !mistakes.isEmpty ? true : false }
 
     /// Did test succeed
     ///
@@ -40,7 +39,7 @@ struct Result {
     /// - user takes no mistakes at all;
     /// - user takes 2 or less mistakes on main test part and no mistakes at all on additional part.
     var succeed: Bool {
-        guard mistakes.count > 0 else { return true }
+        guard !mistakes.isEmpty else { return true }
 
         return mistakes.count > 2 ? false : true
     }
@@ -54,7 +53,7 @@ extension Result {
     }
 }
 
-extension Result: Codable { }
+extension Result: Codable {}
 
 extension Result: Identifiable {
     /// ID to conform Identifiable — it's the examDate.
@@ -72,4 +71,4 @@ struct Mistake {
     let wrongAnswer: AnswerID
 }
 
-extension Mistake: Codable, Identifiable { }
+extension Mistake: Codable, Identifiable {}

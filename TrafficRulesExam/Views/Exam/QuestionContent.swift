@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct QuestionContent: View {
-
     var question: Question
 
     @Binding
@@ -42,7 +41,6 @@ struct QuestionContent: View {
 }
 
 struct QuestionContent_Previews: PreviewProvider {
-
     @State
     static var answer = AnswerID.a
 

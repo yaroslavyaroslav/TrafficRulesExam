@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CardItem: View {
-
     let card: ExamCard
 
     let result: CardResult
@@ -43,9 +42,9 @@ struct CardItem: View {
             // swiftlint:disable force_unwrap
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                // if there's no result — .gray
-                // if there is and it's good — .green
-                // if there is and it is no go-o-od — .red
+                    // if there's no result — .gray
+                    // if there is and it's good — .green
+                    // if there is and it is no go-o-od — .red
                     .foregroundColor(result.resultHistory.items.isEmpty ? .gray : (result.resultHistory.items.last!.succeed ? .green : .red))
             )
             // swiftlint:enable force_unwrap
@@ -55,13 +54,12 @@ struct CardItem: View {
 }
 
 struct CardItem_Previews: PreviewProvider {
-
     private static var results: CardResults = {
         var object: CardResults!
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items: { (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items: (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) })
         }
         return object
     }()

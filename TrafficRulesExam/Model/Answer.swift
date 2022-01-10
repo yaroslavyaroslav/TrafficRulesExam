@@ -13,15 +13,14 @@ struct Answer {
     let text: String
 }
 
-extension Answer: Identifiable { }
+extension Answer: Identifiable {}
 
-extension Answer: Codable { }
+extension Answer: Codable {}
 
 enum AnswerID: Int {
     case none, a, b, c, d
 
     init(from decoder: Decoder) throws {
-
         let label = try decoder.singleValueContainer().decode(Int.self)
 
         switch label {
@@ -48,4 +47,4 @@ extension AnswerID {
 
 extension AnswerID: Identifiable { var id: Self { self }}
 
-extension AnswerID: Codable { }
+extension AnswerID: Codable {}

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Answers: View {
-
     var answers: [Answer]
 
     @Binding
@@ -49,7 +48,6 @@ struct AnswerHStack: View {
 }
 
 struct Answers_Previews: PreviewProvider {
-
     @State
     static var selAnswer = AnswerID.a
 

@@ -5,19 +5,14 @@
 //  Created by Yaroslav on 04.11.2021.
 //
 
-import XCTest
 import Nimble
 import OSLog
+import XCTest
 
 class TrafficRulesExamUITests: XCTestCase {
+    private lazy var cards: [ExamCard] = cardsSource.map { ExamCard(source: $0) }
 
-    private lazy var cards: [ExamCard] = {
-        cardsSource.map { ExamCard(source: $0) }
-    }()
-
-    private lazy var cardsSource: [ExamCardSource] = {
-        load("ExamCards.json")
-    }()
+    private lazy var cardsSource: [ExamCardSource] = load("ExamCards.json")
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -104,7 +99,6 @@ class TrafficRulesExamUITests: XCTestCase {
     }
 
     func testExamSucceedStraightforwardWalktrough() {
-
         let randomCard = Int.random(in: 1...20)
 
         let (app, examCard) = startExam(randomCard)
@@ -173,7 +167,9 @@ class TrafficRulesExamUITests: XCTestCase {
     private func rndAnswerPredicate() -> NSPredicate {
         let rndId = Int.random(in: 1...2)
         os_log("Answer \(rndId.description) selected")
+
         // MARK: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
+
         return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(rndId)."])
     }
 

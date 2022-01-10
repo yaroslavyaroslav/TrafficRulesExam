@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct MainScreen: View {
-
     @GestureState
     var isDetectingSwipe = false
 
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 8)
-            .updating($isDetectingSwipe, body: { currentState, gestureState, transaction in
+            .updating($isDetectingSwipe, body: { _, _, _ in
 //                print("currentState: \(currentState)")
 //                print("gestureState: \(gestureState)")
 //                print("transaction: \(transation)")
@@ -53,13 +52,13 @@ struct MainScreen: View {
             // Анимация перезаписывается при отработке свитча.
             // Поэтому вьюха въезжает слева и уезжает вправо.
             case .cardGalery: CardsGalery(cards: cards)
-                    .padding()
-                    .highPriorityGesture(swipeGesture)
-                    .transition(.move(edge: .leading))
+                .padding()
+                .highPriorityGesture(swipeGesture)
+                .transition(.move(edge: .leading))
             case .totalStatsNavigation: TotalStatsNavigation(cards: cards)
-                    .padding()
-                    .highPriorityGesture(swipeGesture)
-                    .transition(.move(edge: .trailing))
+                .padding()
+                .highPriorityGesture(swipeGesture)
+                .transition(.move(edge: .trailing))
             }
         }
     }

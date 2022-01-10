@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TotalStats: View {
-
     var results: CardResults
 
     let graphHeight: CGFloat = 40
@@ -18,17 +17,22 @@ struct TotalStats: View {
     let totalTickets: CGFloat = 20
 
     var triedTickets: CGFloat {
+        // swiftformat:disable --indent --spaceInsideComments
+
         // 20 билетов - 300px
         // решеноБилетов - х px.
             (CGFloat(results.cardsTried) * maxWidth)
         / //----------------------------------------
                         totalTickets
+        // swiftformat:enable --indent
     }
 
     var successTickets: CGFloat {
+        // swiftformat:disable --indent --spaceInsideComments
             (CGFloat(results.cardsSucceed) * maxWidth)
         / //------------------------------------------
                         totalTickets
+        // swiftformat:enable --indent --spaceAroundComments
     }
 
     var body: some View {
@@ -56,7 +60,7 @@ struct TotalStats: View {
                         }
                         // swiftlint:disable force_unwrap
                         if triedTickets > 0 && triedTickets != successTickets {
-                        // swiftlint:enable force_unwrap
+                            // swiftlint:enable force_unwrap
                             Text("Решено \(results.cardsTried)/10")
                                 .foregroundColor(.red)
                             Spacer()
@@ -93,13 +97,12 @@ struct TotalStats: View {
 }
 
 struct TotalStats_Previews: PreviewProvider {
-
     private static var results: CardResults = {
         var object: CardResults!
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items: { (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            object = CardResults(items: (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) })
         }
         return object
     }()

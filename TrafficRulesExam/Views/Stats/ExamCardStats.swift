@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ExamCardStats: View {
-
     var cardResult: CardResult
 
     var body: some View {

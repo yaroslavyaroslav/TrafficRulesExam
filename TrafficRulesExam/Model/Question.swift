@@ -22,10 +22,10 @@ extension Question {
     var image: UIImage? { UIImage(named: picture) }
 }
 
-extension Question: Codable { }
+extension Question: Codable {}
 
-extension Question: Identifiable { }
+extension Question: Identifiable {}
 
-extension Question: Equatable { static func == (lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id } }
+extension Question: Equatable { static func ==(lhs: Question, rhs: Question) -> Bool { lhs.id == rhs.id } }
 
 extension Question: Hashable { func hash(into hasher: inout Hasher) { hasher.combine(id) } }

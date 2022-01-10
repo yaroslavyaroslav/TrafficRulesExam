@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Card: View {
-
     var card: ExamCard
 
     @Binding

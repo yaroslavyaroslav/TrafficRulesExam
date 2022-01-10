@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ExamStats: View {
-
     var result: Result
 
     let cardId: Int
@@ -26,14 +25,14 @@ struct ExamStats: View {
                     .padding()
                 Spacer()
             } else {
-                List((0..<result.mistakes.count)) { mistakeIdx in
+                List(0..<result.mistakes.count) { mistakeIdx in
                     NavigationLink {
                         QuestionContent(
                             question: getQuestionForStats(cardId, mistakeIdx),
                             selectedAnswer: getSelectedAnswer(mistakeIdx),
                             correctAnswer: getCorrectAnswerForQuestion(cardId, mistakeIdx)
                         )
-                            .navigationBarTitle(Text("Вопрос \(result.mistakes[mistakeIdx].id.description)"))
+                        .navigationBarTitle(Text("Вопрос \(result.mistakes[mistakeIdx].id.description)"))
                     } label: {
                         VStack {
                             Text("Ошибка в \(result.mistakes[mistakeIdx].id.description) вопросе")
@@ -63,7 +62,6 @@ struct ExamStats: View {
 }
 
 struct ExamStats_Previews: PreviewProvider {
-
     static var results: [Result] = {
         let mistakes = [Mistake(id: 1, wrongAnswer: .b), Mistake(id: 10, wrongAnswer: .c), Mistake(id: 15, wrongAnswer: .a)]
 

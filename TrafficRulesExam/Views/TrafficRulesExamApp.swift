@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-    // swiftlint:disable commented_out_code
+// swiftlint:disable commented_out_code
 @main
 struct TrafficRulesExamApp: App {
-
 //    private var cards = cards
 
 //    @StateObject
@@ -26,4 +25,5 @@ struct TrafficRulesExamApp: App {
         }
     }
 }
+
 // swiftlint:enable commented_out_code

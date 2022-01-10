@@ -19,10 +19,10 @@ struct CardResult {
 }
 
 extension CardResult: Equatable {
-    static func == (lhs: CardResult, rhs: CardResult) -> Bool { lhs.id == rhs.id }
+    static func ==(lhs: CardResult, rhs: CardResult) -> Bool { lhs.id == rhs.id }
 }
 
-extension CardResult: Codable { }
+extension CardResult: Codable {}
 
 /// Object to store CardResult objects for being compatiable with SwiftUI dataflow.
 struct CardResults {
@@ -36,17 +36,15 @@ struct CardResults {
             if let data = data {
                 let string = String(data: data, encoding: .utf8)
                 UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
-            // TODO: Make something if data nil
-            } else {
-
-            }
+                // TODO: Make something if data nil
+            } else {}
         }
     }
 
     /// Number of tickets that user have tried to solve.
     ///
     /// Doesn't matter did them succeed or not.
-    var cardsTried: Int { items.filter { $0.resultHistory.items.count > 0 }.count }
+    var cardsTried: Int { items.filter { !$0.resultHistory.items.isEmpty }.count }
 
     /// Number of tickets that user have succeed.
     ///
@@ -69,7 +67,7 @@ extension CardResults {
     }
 }
 
-extension CardResults: Codable { }
+extension CardResults: Codable {}
 
 private struct InitError: Error {
     let kind: ErrorKind

@@ -1,7 +1,6 @@
 import SwiftUI
 import PlaygroundSupport
 
-
 struct MeasureBehavior<Content: View>: View {
     @State private var width: CGFloat = 100
     @State private var height: CGFloat = 100

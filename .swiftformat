@@ -1,0 +1,22 @@
+# file options
+
+--symlinks ignore
+--swiftversion 5.3
+
+# rules
+--enable isEmpty
+--disable andOperator
+--disable wrapMultilineStatementBraces
+
+# format options
+
+--binarygrouping none 
+--commas inline 
+--decimalgrouping 3,4 
+--hexgrouping none 
+--ifdef no-indent 
+--nospaceoperators ...,..< 
+--octalgrouping none 
+--operatorfunc no-space 
+--self init-only 
+--stripunusedargs closure-only

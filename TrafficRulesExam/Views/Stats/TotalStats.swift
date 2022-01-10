@@ -20,11 +20,15 @@ struct TotalStats: View {
     var triedTickets: CGFloat {
         // 20 билетов - 300px
         // решеноБилетов - х px.
-        (CGFloat(results.cardsTried) * maxWidth) / totalTickets
+            (CGFloat(results.cardsTried) * maxWidth)
+        / //----------------------------------------
+                        totalTickets
     }
 
     var successTickets: CGFloat {
-        (CGFloat(results.cardsSucceed) * maxWidth) / totalTickets
+            (CGFloat(results.cardsSucceed) * maxWidth)
+        / //------------------------------------------
+                        totalTickets
     }
 
     var body: some View {
@@ -53,7 +57,7 @@ struct TotalStats: View {
                         // swiftlint:disable force_unwrap
                         if triedTickets > 0 && triedTickets != successTickets {
                         // swiftlint:enable force_unwrap
-                            Text("Решено \(results.cardsTried)")
+                            Text("Решено \(results.cardsTried)/10")
                                 .foregroundColor(.red)
                             Spacer()
                         }

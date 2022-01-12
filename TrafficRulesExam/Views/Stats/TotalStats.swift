@@ -10,6 +10,12 @@ import SwiftUI
 struct TotalStats: View {
     var results: CardResults
 
+    @State
+    var isModalViewPresented = false
+
+    @EnvironmentObject
+    var coins: Coin
+
     let graphHeight: CGFloat = 40
 
     let maxWidth: CGFloat = 300
@@ -42,14 +48,17 @@ struct TotalStats: View {
             HStack {
                 VStack {
                     HStack {
-                        Text("Монет: 20")
+                        Text("Монет: \(coins.amount)")
 
                         Spacer()
 
-                        NavigationLink {
-                            Purchase()
+                        Button {
+                            self.isModalViewPresented = true
                         } label: {
                             Text("Купить")
+                        }
+                        .sheet(isPresented: $isModalViewPresented) {
+                            Purchase(isPresented: $isModalViewPresented)
                         }
 
                         Spacer()

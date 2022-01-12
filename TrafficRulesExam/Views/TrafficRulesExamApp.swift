@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
-// swiftlint:disable commented_out_code
 @main
 struct TrafficRulesExamApp: App {
 //    private var cards = cards
@@ -22,8 +22,7 @@ struct TrafficRulesExamApp: App {
 //                    .environmentObject(cards)
 //                    .environmentObject(results)
             }
+            .environmentObject(Coin())
         }
     }
 }
-
-// swiftlint:enable commented_out_code

@@ -51,14 +51,16 @@ struct MainScreen: View {
             switch selectedIndex {
             // Анимация перезаписывается при отработке свитча.
             // Поэтому вьюха въезжает слева и уезжает вправо.
-            case .cardGalery: CardsGalery(cards: cards)
-                .padding()
-                .highPriorityGesture(swipeGesture)
-                .transition(.move(edge: .leading))
-            case .totalStatsNavigation: TotalStatsNavigation(cards: cards)
-                .padding()
-                .highPriorityGesture(swipeGesture)
-                .transition(.move(edge: .trailing))
+            case .cardGalery:
+                CardsGalery(cards: cards)
+                    .padding()
+                    .highPriorityGesture(swipeGesture)
+                    .transition(.move(edge: .leading))
+            case .totalStatsNavigation:
+                TotalStatsNavigation(cards: cards)
+                    .padding()
+                    .highPriorityGesture(swipeGesture)
+                    .transition(.move(edge: .trailing))
             }
         }
     }

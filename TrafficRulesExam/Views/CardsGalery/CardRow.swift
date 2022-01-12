@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct CardRow: View {
+
+    @EnvironmentObject
+    var coins: Coin
+
     @State
     var results: CardResults = {
         var object: CardResults!
@@ -41,6 +45,8 @@ struct CardRow: View {
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
+                    // TODO: Make views blurred or transparent.
+                    .disabled(coins.amount <= 100 ? true : false)
                 }
             }
         }

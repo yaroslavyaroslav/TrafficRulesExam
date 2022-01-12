@@ -48,7 +48,6 @@ struct CardItem: View {
             }
             .foregroundColor(.white)
             .frame(height: 200, alignment: .center)
-            // swiftlint:disable force_unwrap
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     // if there's no result — .gray
@@ -56,7 +55,6 @@ struct CardItem: View {
                     // if there is and it is no go-o-od — .red
                     .foregroundColor(result.resultHistory.items.isEmpty ? .gray : (result.resultHistory.items.last!.succeed ? .green : .red))
             )
-            // swiftlint:enable force_unwrap
             Spacer()
         }
     }

@@ -30,6 +30,8 @@ struct CardResults {
     ///
     /// This var encodes itsef to the JSON and stores it to the UserDefaults by key ``CardResults``.
     var items: [CardResult] {
+        /// Since this data is static (never changes within runtime) reading from UserDefaults
+        /// are happening in init (following CardResults extension).
         willSet {
             let data = try? JSONEncoder().encode(newValue)
 

@@ -30,6 +30,7 @@
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
 		5C53ED5127340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */; };
 		5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */; };
+		5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A6217278EC05C00A630FA /* Purchases.swift */; };
 		5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81B8C8273ED59C00A7121E /* URLSession+async.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
@@ -96,6 +97,7 @@
 		5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITests.swift; sourceTree = "<group>"; };
 		5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C7A6217278EC05C00A630FA /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
 		5C81B8C8273ED59C00A7121E /* URLSession+async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+async.swift"; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				5C85388A27183D5900D8853E /* ExamCard.swift */,
+				5C7A6217278EC05C00A630FA /* Purchases.swift */,
 				5CDB6375272DC36200E888F7 /* Answer.swift */,
 				5CDB6373272DC30D00E888F7 /* Question.swift */,
 				5C81B8C8273ED59C00A7121E /* URLSession+async.swift */,
@@ -438,6 +441,7 @@
 				5C45EBBC2739968600C90977 /* ExamCardStats.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
+				5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

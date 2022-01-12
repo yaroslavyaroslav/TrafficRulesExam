@@ -21,6 +21,9 @@ struct QuestionCard: View {
     @State
     private var result = Result(mistakes: [], examDate: Date())
 
+    @EnvironmentObject
+    var coins: Coin
+
     let questions: [Question]
 
     @State
@@ -75,15 +78,15 @@ struct QuestionCard: View {
                         print(answeredQuestions.count)
 
                         if answeredQuestions.count == 20 {
+                            coins.amount -= 1
                             historyRes.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return
                         }
 
                         let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
-                        // swiftlint:disable force_unwrap
+
                         if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
-                            // swiftlint:enable force_unwrap
                             questionDetails = questions[questionDetails.id]
                             if questionDetails.id < 20 {
                                 proxy.scrollTo(questionDetails.id + 1)

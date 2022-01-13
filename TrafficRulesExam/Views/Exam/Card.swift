@@ -15,7 +15,7 @@ struct Card: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            QuestionCard(questions: card.questions, questionDetails: card.questions[0], historyRes: $result.resultHistory)
+            QuestionCard(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")

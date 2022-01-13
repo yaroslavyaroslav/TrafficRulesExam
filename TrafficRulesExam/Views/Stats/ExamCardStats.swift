@@ -47,7 +47,6 @@ struct ExamCardStats_Previews: PreviewProvider {
             }
             return CardResult(id: id, resultHistory: Results(items: results))
         }
-
         return CardResults(items: results)
     }()
 

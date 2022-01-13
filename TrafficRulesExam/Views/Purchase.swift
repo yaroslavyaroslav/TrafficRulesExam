@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Purchase: View {
-
     @Binding
     var isPresented: Bool
 
@@ -27,7 +26,6 @@ struct Purchase: View {
             Spacer()
 
             VStack(spacing: 10) {
-
                 VStack {
                     Text("Безлимитный тариф")
                     Text("This is some more text with unlimited tariffs about this one")

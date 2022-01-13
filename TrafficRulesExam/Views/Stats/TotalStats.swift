@@ -134,5 +134,6 @@ struct TotalStats_Previews: PreviewProvider {
 
     static var previews: some View {
         TotalStats(results: results)
+            .environmentObject(Coin())
     }
 }

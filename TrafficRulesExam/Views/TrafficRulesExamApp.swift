@@ -5,8 +5,8 @@
 //  Created by Yaroslav on 11.10.2021.
 //
 
-import SwiftUI
 import SwiftKeychainWrapper
+import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {

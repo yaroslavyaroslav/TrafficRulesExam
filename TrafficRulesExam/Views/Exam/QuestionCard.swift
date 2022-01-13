@@ -33,7 +33,7 @@ struct QuestionCard: View {
     var selectedAnswer: AnswerID = .none
 
     @Binding
-    var historyRes: Results
+    var resultsHistory: Results
 
     @State
     var answeredQuestions: Set<Int> = []
@@ -79,7 +79,7 @@ struct QuestionCard: View {
 
                         if answeredQuestions.count == 20 {
                             coins.amount -= 1
-                            historyRes.items.append(result)
+                            resultsHistory.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return
                         }
@@ -123,6 +123,6 @@ struct QuestionCard_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16], historyRes: $history)
+        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16], resultsHistory: $history)
     }
 }

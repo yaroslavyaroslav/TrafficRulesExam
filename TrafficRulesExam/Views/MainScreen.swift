@@ -5,6 +5,7 @@
 //  Created by Yaroslav on 10.11.2021.
 //
 
+import SwiftKeychainWrapper
 import SwiftUI
 
 struct MainScreen: View {
@@ -13,11 +14,6 @@ struct MainScreen: View {
 
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 8)
-            .updating($isDetectingSwipe, body: { _, _, _ in
-//                print("currentState: \(currentState)")
-//                print("gestureState: \(gestureState)")
-//                print("transaction: \(transation)")
-            })
             .onChanged {
                 if $0.translation.width > 100 {
                     withAnimation {
@@ -40,6 +36,11 @@ struct MainScreen: View {
 
     var body: some View {
         VStack {
+#if DEBUG
+            Button("Drop to 0") {
+                KeychainWrapper.standard[.coinsAmount] = 0
+            }
+#endif
             Picker("Tab", selection: $selectedIndex.animation(.default)) {
                 Text("Решать").tag(Tabs.cardGalery)
                 Text("Статистика").tag(Tabs.totalStatsNavigation)
@@ -69,5 +70,6 @@ struct MainScreen: View {
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
         MainScreen()
+            .environmentObject(Coin())
     }
 }

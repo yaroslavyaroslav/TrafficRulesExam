@@ -23,7 +23,7 @@ struct CardItem: View {
                             .foregroundColor(.purple)
                             .frame(width: 30, height: 30, alignment: .trailing)
                         Text("1")
-                        // TODO: Change color based on iOS Theme
+                            // TODO: Change color based on iOS Theme
                             .foregroundColor(.black)
                     }
                 }

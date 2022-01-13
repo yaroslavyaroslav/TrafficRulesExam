@@ -39,6 +39,7 @@ struct MainScreen: View {
 #if DEBUG
             Button("Drop to 0") {
                 KeychainWrapper.standard[.coinsAmount] = 0
+                KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
             }
 #endif
             Picker("Tab", selection: $selectedIndex.animation(.default)) {

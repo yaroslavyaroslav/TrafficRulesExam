@@ -53,7 +53,13 @@ struct CardItem: View {
                     // if there's no result — .gray
                     // if there is and it's good — .green
                     // if there is and it is no go-o-od — .red
-                    .foregroundColor(result.resultHistory.items.isEmpty ? .gray : (result.resultHistory.items.last!.succeed ? .green : .red))
+                    .foregroundColor(result.resultHistory.items.isEmpty
+                        ? .gray
+                        : (result.resultHistory.items.last!.succeed
+                            ? .green
+                            : .red
+                        )
+                    )
             )
             Spacer()
         }

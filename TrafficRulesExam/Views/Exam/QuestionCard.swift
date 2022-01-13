@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -77,8 +78,12 @@ struct QuestionCard: View {
                         answeredQuestions.insert(questionDetails.id)
                         print(answeredQuestions.count)
 
-                        if answeredQuestions.count == 20 {
+                        if answeredQuestions.count > 5 {
                             coins.amount -= 1
+                            KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+                        }
+
+                        if answeredQuestions.count == 20 {
                             resultsHistory.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return

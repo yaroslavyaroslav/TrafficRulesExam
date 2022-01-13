@@ -14,10 +14,10 @@
 --binarygrouping none 
 --commas inline 
 --decimalgrouping 3,4 
---hexgrouping none 
---ifdef no-indent 
+--hexgrouping none
 --nospaceoperators ...,..< 
 --octalgrouping none 
 --operatorfunc no-space 
 --self init-only 
 --stripunusedargs closure-only
+--ifdef outdent

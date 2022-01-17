@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct CardsGalery: View {
-    
     var cards: [ExamCard]
-    
+
     var body: some View {
-        NavigationView {
-            CardRow(cards: cards)
-                .padding()
-        }
+        CardRow(locCards: cards)
     }
 }
 

@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct AnswerButton<Content: View>: View {
-        
     var action: () -> Void
-    
+
     var label: () -> Content
-    
+
     var isSelected = false
-    
+
     init(isSelected: Bool = false, action: @escaping () -> Void, @ViewBuilder label: @escaping () -> Content) {
         self.isSelected = isSelected
         self.label = label
         self.action = action
     }
-    
+
     var body: some View {
         Button(action: action, label: label)
             .buttonStyle(AnswerButtonStyle(isSelected: isSelected))
@@ -28,11 +27,10 @@ struct AnswerButton<Content: View>: View {
 }
 
 struct AnswerButtonStyle: ButtonStyle {
-    
     let isSelected: Bool
-    
+
     func makeBody(configuration: Self.Configuration) -> some View {
-        return configuration.label
+        configuration.label
             .foregroundColor(Color.white)
             .opacity(isSelected ? 0.7 : (configuration.isPressed ? 0.7 : 1))
             .scaleEffect(isSelected ? 0.8 : (configuration.isPressed ? 0.8 : 1))

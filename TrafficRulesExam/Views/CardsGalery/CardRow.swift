@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct CardRow: View {
-    
+    @EnvironmentObject
+    var coins: Coin
+
     @State
     var results: CardResults = {
         var object: CardResults!
+
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            UserDefaults.standard.removeObject(forKey: UDKeys.cardResults.rawValue)
+            object = CardResults(items: (1...(cards.count)).map { CardResult(id: $0, resultHistory: Results(items: [])) })
         }
         return object
     }()
-    
-    @State var isShowingExamCard = false
 
-    var cards: [ExamCard]
-    
+    var locCards: [ExamCard]
+
     var body: some View {
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-        
+
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in
@@ -36,12 +38,14 @@ struct CardRow: View {
                      метода @Environment(\.presentationMode) переменной dismiss()
                      */
                     NavigationLink {
-                        Card(card: cards.getElementById(id: result.id), result: $result)
+                        Card(card: locCards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: cards.getElementById(id: result.id), results: result)
+                        CardItem(card: locCards.getElementById(result.id), result: result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
+                    // TODO: Make views blurred or transparent.
+                    .disabled(coins.amount <= 0 ? true : false)
                 }
             }
         }
@@ -50,6 +54,6 @@ struct CardRow: View {
 
 struct CardRow_Previews: PreviewProvider {
     static var previews: some View {
-        CardRow(cards: cards)
+        CardRow(locCards: cards)
     }
 }

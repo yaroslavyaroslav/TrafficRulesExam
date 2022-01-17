@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct Answers: View {
-    
     var answers: [Answer]
-    
-    @ObservedObject
-    var selectedAnswer: SelectedAnswer
-    
+
+    @Binding
+    var selectedAnswer: AnswerID
+
+    let correctAnswer: AnswerID?
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            ForEach(answers, id: \.id) { answer in
-                AnswerButton(isSelected: selectedAnswer.answer == answer.id) {
-                    selectedAnswer.answer = answer.id
-                    
-                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+            ForEach(answers) { answer in
+                AnswerButton(isSelected: selectedAnswer == answer.id) {
+                    selectedAnswer = answer.id
+                    UIImpactFeedbackGenerator(style: .soft)
+                        .impactOccurred()
                 } label: {
                     AnswerHStack(answer: answer)
+                        .padding(10)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, idealHeight: 200, alignment: .leading)
+                        .background(answer.id == correctAnswer?.id ? Color.green : Color.yellow)
+                        .cornerRadius(4)
                 }
             }
         }
@@ -31,23 +37,21 @@ struct Answers: View {
 
 struct AnswerHStack: View {
     var answer: Answer
-    
+
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
             Text(answer.id.stringValue)
             Text(answer.text)
                 .multilineTextAlignment(.leading)
         }
-        .padding(10)
-        .foregroundColor(.black)
-        .frame(maxWidth: .infinity, minHeight: 50, idealHeight: 100, alignment: .leading)
-        .background(Color.yellow)
-        .cornerRadius(8)
     }
 }
 
 struct Answers_Previews: PreviewProvider {
+    @State
+    static var selAnswer = AnswerID.a
+
     static var previews: some View {
-        Answers(answers: cards[0].questions[6].answers, selectedAnswer: SelectedAnswer())
+        Answers(answers: cards[1].questions[16].answers, selectedAnswer: $selAnswer, correctAnswer: .b)
     }
 }

@@ -7,19 +7,22 @@
 
 import Foundation
 
-
 /// Object to store all results for a given exam card
 struct CardResult {
     /// Result id.
     ///
     /// Is equal to the ``ExamCard.id``.
     let id: Int
-    
+
     /// History of the results processed tests.
-    var resultHistory: Results { didSet { print("CardResult.resultHistory did updated. ") } }
+    var resultHistory: Results
 }
 
-extension CardResult: Codable { }
+extension CardResult: Equatable {
+    static func ==(lhs: CardResult, rhs: CardResult) -> Bool { lhs.id == rhs.id }
+}
+
+extension CardResult: Codable {}
 
 /// Object to store CardResult objects for being compatiable with SwiftUI dataflow.
 struct CardResults {
@@ -27,14 +30,28 @@ struct CardResults {
     ///
     /// This var encodes itsef to the JSON and stores it to the UserDefaults by key ``CardResults``.
     var items: [CardResult] {
+        /// Since this data is static (never changes within runtime) reading from UserDefaults
+        /// are happening in init (following CardResults extension).
         willSet {
-            // FIXME: Disable force unwrap.
-            let data = try! JSONEncoder().encode(newValue)
-            let string = String(data: data, encoding: .utf8)
-            UserDefaults.standard.set(string, forKey: "CardResults")
+            let data = try? JSONEncoder().encode(newValue)
+
+            if let data = data {
+                let string = String(data: data, encoding: .utf8)
+                UserDefaults.standard.set(string, forKey: UDKeys.cardResults.rawValue)
+                // TODO: Make something if data nil
+            } else {}
         }
-        didSet { print("CardResults.items did updated.") }
     }
+
+    /// Number of tickets that user have tried to solve.
+    ///
+    /// Doesn't matter did them succeed or not.
+    var cardsTried: Int { items.filter { !$0.resultHistory.items.isEmpty }.count }
+
+    /// Number of tickets that user have succeed.
+    ///
+    /// Counts only if last attemtion were suceessful.
+    var cardsSucceed: Int { items.filter { $0.resultHistory.items.last?.succeed ?? false }.count }
 }
 
 extension CardResults {
@@ -44,18 +61,21 @@ extension CardResults {
     ///
     /// - Throws: ``InitError.emptyUserDefaults``: on empty UserDefaults storage by key ``CardResults`` on init.
     init() throws {
-        let userDefaults = UserDefaults.standard.string(forKey: "CardResults")
+        let userDefaults = UserDefaults.standard.string(forKey: UDKeys.cardResults.rawValue)
         guard let data = userDefaults?.data(using: .utf8) else { throw InitError(kind: .emptyUserDefaults) }
-        self.items = try JSONDecoder().decode([CardResult].self, from: data)
+        let items = try JSONDecoder().decode([CardResult].self, from: data)
+        guard items.count == 20 else { throw InitError(kind: .notEnoughTickets) }
+        self.items = items
     }
 }
 
-extension CardResults: Codable { }
+extension CardResults: Codable {}
 
-fileprivate struct InitError:  Error {
+private struct InitError: Error {
     let kind: ErrorKind
-    
+
     enum ErrorKind {
         case emptyUserDefaults
+        case notEnoughTickets
     }
 }

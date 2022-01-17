@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftKeychainWrapper
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -19,24 +19,26 @@ extension AnyTransition {
 }
 
 struct QuestionCard: View {
-    
     @State
-    private var result = Result(mistakes: [:], examDate: Date())
-    
+    private var result = Result(mistakes: [], examDate: Date())
+
+    @EnvironmentObject
+    var coins: Coin
+
     let questions: [Question]
-    
+
     @State
     var questionDetails: Question
-    
-    @StateObject
-    var selectedAnswer: SelectedAnswer = SelectedAnswer()
-    
+
+    @State
+    var selectedAnswer: AnswerID = .none
+
     @Binding
-    var historyRes: Results
-    
+    var resultsHistory: Results
+
     @State
     var answeredQuestions: Set<Int> = []
-    
+
     @Environment(\.presentationMode)
     var presentationMode
 
@@ -66,24 +68,28 @@ struct QuestionCard: View {
                     }
                 }
                 Spacer()
-                
-                QuestionContent(question: questionDetails, selectedAnswer: selectedAnswer)
+
+                QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
-                    .padding(8)
-                
+
                 Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
                     withAnimation {
                         self.saveAnswer()
                         answeredQuestions.insert(questionDetails.id)
                         print(answeredQuestions.count)
-                        
+
                         if answeredQuestions.count == 20 {
-                            historyRes.items.append(result)
+                            if !result.mistakes.isEmpty {
+                                coins.amount -= 1
+                            }
+                            KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+                            resultsHistory.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return
                         }
-                        
+
                         let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
+
                         if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
                             questionDetails = questions[questionDetails.id]
                             if questionDetails.id < 20 {
@@ -95,7 +101,7 @@ struct QuestionCard: View {
                         }
                     }
                 }
-                .disabled(selectedAnswer.answer == AnswerID.none)
+                .disabled(selectedAnswer == AnswerID.none)
                 .padding(10)
             }
         }
@@ -104,17 +110,23 @@ struct QuestionCard: View {
 
 extension QuestionCard {
     func saveAnswer() {
-        guard selectedAnswer.answer != .none else { return }
-            
-        if questionDetails.correctAnswer != selectedAnswer.answer {
-            result.addMistake(mistake: (questionDetails.id, selectedAnswer.answer))
+        guard selectedAnswer != .none else { return }
+
+        if questionDetails.correctAnswer != selectedAnswer {
+            result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
-        selectedAnswer.answer = .none
+        selectedAnswer = .none
     }
 }
 
-//struct QuestionCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionCard(questions: cards[0].questions, questionDetails: cards[0].questions[3], resultHistory: Results(items: []), historyRes: <#Binding<Results>#>)
-//    }
-//}
+struct QuestionCard_Previews: PreviewProvider {
+    @State
+    static var history: Results = {
+        let result = Result(mistakes: [], examDate: Date())
+        return Results(items: [result])
+    }()
+
+    static var previews: some View {
+        QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16], resultsHistory: $history)
+    }
+}

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
-  <head><!-- <editor>
+  <head><!-- <editor scale-mac="1.5">
       <sidebar width="197"/>
-      <column name="text" width="739"/>
+      <column name="text" width="729"/>
     </editor> -->
     <title>Приложение iOS</title>
-    <expansionState>0,1,3,10,14,19,20,24,25,32,33,37,38,39,47,48,50,54,55,57,58,62,63,66,67,69,70</expansionState>
+    <expansionState>0,1,3,10,14,19,20,24,25,31,32,34,35,39,40,48,49,53,54,58,62,64,65,67,68,80,81,82</expansionState>
     <vertScrollState>0</vertScrollState>
     <windowTop>252</windowTop>
     <windowLeft>0</windowLeft>
-    <windowRight>760</windowRight>
+    <windowRight>759</windowRight>
     <windowBottom>1196</windowBottom>
   </head>
   <body>
@@ -46,11 +46,42 @@
             </outline>
           </outline>
         </outline>
-        <outline text="0.3">
-          <outline text="0.3.0">
-            <outline text="Экран результатов теста"/>
-            <outline text="Экран списка тем билетов (Б1)"/>
-            <outline text="Текст ПДД"/>
+        <outline text="0.3" _status="checked">
+          <outline text="0.3.0" _status="checked">
+            <outline text="Бензин для решения" _status="checked"/>
+            <outline text="Ежедневный бесплатный бензин" _status="checked"/>
+            <outline text="Если решил правильно — бензин не расходуется" _status="checked"/>
+            <outline text="Экран результатов теста" _status="checked"/>
+            <outline text="Добавить все билеты" _status="checked"/>
+          </outline>
+        </outline>
+        <outline text="0.4">
+          <outline text="0.4.0">
+            <outline text="Покрыть тестами статистику."/>
+          </outline>
+        </outline>
+        <outline text="0.5">
+          <outline text="0.5.0">
+            <outline text="Аналитика">
+              <outline text="Аппметрика">
+                <outline text="Статистика использования">
+                  <outline text="Покупки"/>
+                  <outline text="Успешное решение билетов"/>
+                  <outline text="Неуспешное решение билетов"/>
+                </outline>
+                <outline text="Отслеживание установок"/>
+              </outline>
+            </outline>
+            <outline text="Экран статистики решенных билетов">
+              <outline text="Бензин"/>
+              <outline text="Статистика правильных ответов"/>
+              <outline text="Статистика неправильных ответов"/>
+            </outline>
+            <outline text="Встроенные покупки"/>
+          </outline>
+        </outline>
+        <outline text="0.6">
+          <outline text="0.6.0">
             <outline text="Экран настроек приложения">
               <outline text="Тема оформления">
                 <outline text="Светлая"/>
@@ -63,49 +94,13 @@
               <outline text="Случайный порядок вопросов в билете"/>
               <outline text="Случайные ответы в билете"/>
             </outline>
-          </outline>
-        </outline>
-        <outline text="0.4">
-          <outline text="0.4.0">
             <outline text="Экран статистики теста"/>
-            <outline text="Режим решения">
-              <outline text="Как на экзамене" _note="20 вопросов из одного билета"/>
-              <outline text="Решение по темам"/>
-              <outline text="Случайный порядок вопросов">
-                <outline text="Билет из случайных вопросов"/>
-                <outline text="Бесконечные вопросы"/>
-              </outline>
-            </outline>
-          </outline>
-        </outline>
-        <outline text="0.5">
-          <outline text="0.5.0">
-            <outline text="Экран статистики решенных билетов">
-              <outline text="Бензин"/>
-              <outline text="Статистика правильных ответов"/>
-              <outline text="Статистика неправильных ответов"/>
-            </outline>
-            <outline text="Встроенные покупки"/>
-          </outline>
-        </outline>
-        <outline text="0.6">
-          <outline text="0.6.0">
+            <outline text="Поправить отображение экрана вопроса билета" _note="В статистике нет padding().&#10;Нужно инкапсулировать стили вопроса."/>
             <outline text="Интеграция с Game Center"/>
           </outline>
         </outline>
         <outline text="0.7">
-          <outline text="0.7.0">
-            <outline text="Аналитика">
-              <outline text="Аппметрика">
-                <outline text="Статистика использования">
-                  <outline text="Покупки"/>
-                  <outline text="Успешное решение билетов"/>
-                  <outline text="Неуспешное решение билетов"/>
-                </outline>
-                <outline text="Отслеживание установок"/>
-              </outline>
-            </outline>
-          </outline>
+          <outline text="0.7.0"/>
         </outline>
         <outline text="0.8">
           <outline text="0.8.0">
@@ -114,6 +109,17 @@
         </outline>
         <outline text="0.9">
           <outline text="0.9.0">
+            <outline text="Экран списка тем билетов (Б1)"/>
+            <outline text="Текст ПДД"/>
+            <outline text="Режим решения">
+              <outline text="Как на экзамене" _note="20 вопросов из одного билета"/>
+              <outline text="Решение по темам"/>
+              <outline text="Случайный порядок вопросов">
+                <outline text="Билет из случайных вопросов"/>
+                <outline text="Бесконечные вопросы"/>
+              </outline>
+            </outline>
+            <outline text="Сделать рефакторинг экранов" _note="Код сейчас сильно запутан."/>
             <outline text="Анимация элементов" _note="Должно быть красиво"/>
             <outline text="Оптимизация производительности" _note="Не должно лагать или греть телефон"/>
           </outline>
@@ -122,11 +128,7 @@
       <outline text="1">
         <outline text="1.0">
           <outline text="1.0.0">
-            <outline text="Настройка геймификации">
-              <outline text="Очки за правильно решённые"/>
-              <outline text="Бензин для решения"/>
-              <outline text="Ежедневный бесплатный бензин"/>
-            </outline>
+            <outline text="Настройка геймификации"/>
             <outline text="Релиз со всеми функциями версии 0.*.*"/>
           </outline>
         </outline>

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ExamCardSource: Codable {
     let id: Int
     let questions: [Question]
@@ -20,18 +19,18 @@ extension ExamCard {
 extension TrafficRulesExamUITests {
     func load<T: Decodable>(_ filename: String) -> T {
         let data: Data
-        
+
         guard let file = Bundle(identifier: "ru.neantess.TrafficRulesExamUITests")?.url(forResource: filename, withExtension: nil)
         else {
             fatalError("Couldn't find \(filename) in main bundle.")
         }
-        
+
         do {
             data = try Data(contentsOf: file)
         } catch {
             fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
         }
-        
+
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

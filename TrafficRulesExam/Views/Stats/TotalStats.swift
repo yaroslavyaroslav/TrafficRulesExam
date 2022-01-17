@@ -58,6 +58,7 @@ struct TotalStats: View {
                 VStack {
                     HStack {
                         Text("Монет: \(coins.amount)")
+                            .frame(width: 80)
 
                         Spacer()
 
@@ -65,19 +66,18 @@ struct TotalStats: View {
                             self.isModalViewPresented = true
                         } label: {
                             Text("Купить")
+                                .frame(width: 80)
                         }
                         .sheet(isPresented: $isModalViewPresented) {
                             Purchase(isPresented: $isModalViewPresented)
                         }
 
-                        Spacer()
 
                         // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
-                        if let timer = timer {
-                            Text("+1: \(timer)")
-//                                .onReceive(updateUITimer) { _ in
-//
-//                                }
+                        if !countdownString.isEmpty {
+                            Spacer()
+                            Text("+1: \(countdownString)")
+                                .frame(width: 80)
                         } else {
                             EmptyView()
                         }
@@ -114,7 +114,9 @@ struct TotalStats: View {
                     }
                 }
                 .onReceive(timer) { _ in
-                    updateTimer()
+                    withAnimation {
+                        updateTimer()
+                    }
                 }
             }
             .frame(width: maxWidth)

@@ -12,6 +12,9 @@ struct MainScreen: View {
     @GestureState
     var isDetectingSwipe = false
 
+    @EnvironmentObject
+    var coins: Coin
+
     var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 8)
             .onChanged {
@@ -65,6 +68,7 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
+        .environmentObject(CoinsTimer(coins))
     }
 }
 

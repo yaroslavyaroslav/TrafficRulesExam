@@ -47,7 +47,7 @@
 		5C900ED3278C7AFA004E9198 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C900ED2278C7AF9004E9198 /* Purchase.swift */; };
 		5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelLoad.swift */; };
 		5C97B49827197EEF0017723A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* Card.swift */; };
-		5CAD344F27902C2200D919DD /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD344E27902C2200D919DD /* RepeatingTimer.swift */; };
+		5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD344E27902C2200D919DD /* CoinsTimer.swift */; };
 		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
 		5CDB6372272D946700E888F7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
 		5CDB6374272DC30E00E888F7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
@@ -106,7 +106,7 @@
 		5C900ED2278C7AF9004E9198 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
 		5C97B49727197EEF0017723A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		5CAD344E27902C2200D919DD /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
+		5CAD344E27902C2200D919DD /* CoinsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTimer.swift; sourceTree = "<group>"; };
 		5CDB6371272D946700E888F7 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		5CDB6373272DC30D00E888F7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5CDB6375272DC36200E888F7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 				5C53ECFE2733F5700044905A /* CardResults.swift */,
 				5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */,
 				5C121918272ED02D00DB4826 /* RawRepresentable.swift */,
-				5CAD344E27902C2200D919DD /* RepeatingTimer.swift */,
+				5CAD344E27902C2200D919DD /* CoinsTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 				5CDB6372272D946700E888F7 /* Results.swift in Sources */,
 				5C97B49827197EEF0017723A /* Card.swift in Sources */,
 				5C45EBBC2739968600C90977 /* ExamCardStats.swift in Sources */,
-				5CAD344F27902C2200D919DD /* RepeatingTimer.swift in Sources */,
+				5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
 				5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */,

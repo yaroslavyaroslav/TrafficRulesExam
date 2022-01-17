@@ -11,7 +11,8 @@ struct Purchase: View {
     @Binding
     var isPresented: Bool
 
-    @EnvironmentObject var coins: Coin
+    @EnvironmentObject
+    var coins: Coin
 
     var body: some View {
         VStack {

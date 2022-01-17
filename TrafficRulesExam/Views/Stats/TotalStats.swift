@@ -11,44 +11,19 @@ import SwiftUI
 struct TotalStats: View {
     var results: CardResults
 
-    let updateUITimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State
+    var countdownString: String = ""
+
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     @State
     var isModalViewPresented = false
 
     @EnvironmentObject
+    var countdownTimer: CoinsTimer
+
+    @EnvironmentObject
     var coins: Coin
-
-    var timer: String? {
-        guard let initTimeInterval = KeychainWrapper.standard.double(forKey: .ticketUsed) else { return nil }
-        guard coins.amount < 5 else { return nil }
-
-        let timerAmount: TimeInterval = 600
-
-        let ticketUsage = Date(timeIntervalSinceReferenceDate: initTimeInterval)
-        let currentDate = Date()
-        let ticketArrive = ticketUsage.addingTimeInterval(timerAmount)
-
-        if currentDate > ticketArrive {
-            let distance = ticketArrive.distance(to: currentDate)
-            var multiplyer = 1
-            multiplyer += Int(distance) / Int(timerAmount)
-
-            multiplyer += coins.amount
-
-            if multiplyer > 5 { coins.amount = 5; return nil }
-
-            // Add one coin if currentDate pass ticketArrive date
-            // Add more coins if currentDate pass ticketArrive date more than 10 minutes.
-            coins.amount = multiplyer
-
-            // Multiplyer is not 1 here, it's arithmetic progression.
-            // Since timerAmount multiplies on all available coins.
-            let newTicketUsageDate = ticketArrive + TimeInterval(multiplyer) * timerAmount
-            KeychainWrapper.standard[.ticketUsed] = newTicketUsageDate.timeIntervalSinceReferenceDate
-        }
-        return Date().secondsLasts(to: ticketArrive)
-    }
 
     let graphHeight: CGFloat = 40
 
@@ -61,8 +36,8 @@ struct TotalStats: View {
 
         // 20 билетов - 300px
         // решеноБилетов - х px.
-            (CGFloat(results.cardsTried) * maxWidth)
-        / //----------------------------------------
+            (CGFloat(results.cardsTried) * maxWidth) /
+        //------------------------------------------
                         totalTickets
         // swiftformat:enable --indent
     }
@@ -71,8 +46,8 @@ struct TotalStats: View {
         // swiftformat:disable --indent --spaceInsideComments
         // 20 билетов - 300px
         // успешныхБилетов - х px.
-            (CGFloat(results.cardsSucceed) * maxWidth)
-        / //------------------------------------------
+            (CGFloat(results.cardsSucceed) * maxWidth) /
+        //--------------------------------------------
                         totalTickets
         // swiftformat:enable --indent --spaceAroundComments
     }
@@ -138,6 +113,9 @@ struct TotalStats: View {
                         }
                     }
                 }
+                .onReceive(timer) { _ in
+                    updateTimer()
+                }
             }
             .frame(width: maxWidth)
 
@@ -160,6 +138,10 @@ struct TotalStats: View {
             }
         }
     }
+
+    private func updateTimer() {
+        self.countdownString = countdownTimer.calculateCoundownTimerText()
+    }
 }
 
 struct TotalStats_Previews: PreviewProvider {
@@ -176,19 +158,5 @@ struct TotalStats_Previews: PreviewProvider {
     static var previews: some View {
         TotalStats(results: results)
             .environmentObject(Coin())
-    }
-}
-
-
-extension Date {
-    func secondsLasts(to nextDate: Date) -> String {
-        let newDateSeconds = nextDate.timeIntervalSinceReferenceDate
-        let difference = newDateSeconds - self.timeIntervalSinceReferenceDate
-
-        let intervalFormatter = DateComponentsFormatter()
-        intervalFormatter.zeroFormattingBehavior = .pad
-        intervalFormatter.allowedUnits = [.minute, .second]
-        intervalFormatter.unitsStyle = .positional
-        return difference >= 0 ? intervalFormatter.string(from: difference)! : "10:00"
     }
 }

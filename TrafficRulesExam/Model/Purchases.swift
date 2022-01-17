@@ -20,13 +20,6 @@ class Coin: ObservableObject {
     }
 }
 
-//struct Purchases {
-//    /// Store purchases log.
-//    static var log: [Date: Int] {
-//        set { KeychainWrapper.standard[.purchases] = newValue }
-//        get { KeychainWrapper.standard. }
-//    }
-//}
 
 extension KeychainWrapper.Key {
     static let coinsAmount: KeychainWrapper.Key = "CoinsAmount"

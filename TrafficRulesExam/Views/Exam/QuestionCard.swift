@@ -22,6 +22,9 @@ struct QuestionCard: View {
     @State
     private var result = Result(mistakes: [], examDate: Date())
 
+    @State
+    private var isHintShown = false
+
     @EnvironmentObject
     var coins: Coin
 
@@ -69,8 +72,27 @@ struct QuestionCard: View {
                 }
                 Spacer()
 
-                QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
-                    .transition(.moveAndFade)
+
+                ZStack(alignment: .bottom) {
+                    QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
+                        .transition(.moveAndFade)
+
+                    if isHintShown {
+                        Text(questionDetails.hint)
+                        Button("X") {
+                            withAnimation {
+                                self.isHintShown.toggle()
+                            }
+                        }
+                    } else {
+                        Button("Hint") {
+                            withAnimation {
+                                self.isHintShown.toggle()
+                            }
+                        }
+                        .disabled(coins.amount == 0 ? true : false)
+                    }
+                }
 
                 Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
                     withAnimation {

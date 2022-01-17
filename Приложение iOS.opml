@@ -5,7 +5,7 @@
       <column name="text" width="729"/>
     </editor> -->
     <title>Приложение iOS</title>
-    <expansionState>0,1,3,10,14,19,20,25,31,32,35,36,40,41,45,50,51,54,55,63,65,66,68,69,81,82,83</expansionState>
+    <expansionState>0,1,3,10,14,19,20,25,31,32,36,37,38,42,43,47,52,53,56,57,65,67,68,70,71,83,84,85</expansionState>
     <vertScrollState>0</vertScrollState>
     <windowTop>252</windowTop>
     <windowLeft>0</windowLeft>
@@ -59,11 +59,13 @@
           <outline text="0.4.0">
             <outline text="Покрыть тестами статистику."/>
             <outline text="Покрыть тестами Coin flow"/>
+            <outline text="Подсказки в билетах за бензин"/>
           </outline>
         </outline>
         <outline text="0.5">
           <outline text="0.5.0">
             <outline text="Экран настроек приложения">
+              <outline text="Переключатель подсказок" _note="Если подсказки доступны — попытка 5 монет&#10;Если недоступны — 1 монета."/>
               <outline text="Тема оформления">
                 <outline text="Светлая"/>
                 <outline text="Темная"/>
@@ -165,5 +167,6 @@
         </outline>
       </outline>
     </outline>
+    <outline text=""/>
   </body>
 </opml>

@@ -5,8 +5,8 @@
 //  Created by Yaroslav on 15.10.2021.
 //
 
-import SwiftUI
 import SwiftKeychainWrapper
+import SwiftUI
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {

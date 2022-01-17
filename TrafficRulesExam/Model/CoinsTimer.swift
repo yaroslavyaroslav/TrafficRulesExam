@@ -8,10 +8,8 @@
 import Foundation
 import SwiftKeychainWrapper
 
-
 /// Timer that implements coins adding logic
 class CoinsTimer: ObservableObject {
-
     private var coins: Coin
 
     private var coinsLimit: Int
@@ -69,11 +67,10 @@ class CoinsTimer: ObservableObject {
     }
 }
 
-
 extension Date {
     func secondsLasts(to nextDate: Date) -> String {
         let newDateSeconds = nextDate.timeIntervalSinceReferenceDate
-        let difference = newDateSeconds - self.timeIntervalSinceReferenceDate
+        let difference = newDateSeconds - timeIntervalSinceReferenceDate
 
         let intervalFormatter = DateComponentsFormatter()
         intervalFormatter.zeroFormattingBehavior = .pad

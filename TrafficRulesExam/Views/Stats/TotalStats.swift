@@ -72,7 +72,6 @@ struct TotalStats: View {
                             Purchase(isPresented: $isModalViewPresented)
                         }
 
-
                         // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
                         if !countdownString.isEmpty {
                             Spacer()
@@ -143,7 +142,7 @@ struct TotalStats: View {
     }
 
     private func updateTimer() {
-        self.countdownString = countdownTimer.calculateCoundownTimerText()
+        countdownString = countdownTimer.calculateCoundownTimerText()
     }
 }
 

@@ -79,7 +79,9 @@ struct QuestionCard: View {
                         print(answeredQuestions.count)
 
                         if answeredQuestions.count == 20 {
-                            coins.amount -= 1
+                            if !result.mistakes.isEmpty {
+                                coins.amount -= 1
+                            }
                             KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
                             resultsHistory.items.append(result)
                             presentationMode.wrappedValue.dismiss()

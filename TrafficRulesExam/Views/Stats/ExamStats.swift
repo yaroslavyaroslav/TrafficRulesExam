@@ -14,8 +14,8 @@ struct ExamStats: View {
 
     var body: some View {
         VStack {
-            Text("Билет 8")
-            Text("Решено \(20 - result.mistakes.count)/20")
+            Text("Билет \(cardId)")
+            Text("Ошибок \(result.mistakes.count)/20")
 
             if result.succeed {
                 Spacer()

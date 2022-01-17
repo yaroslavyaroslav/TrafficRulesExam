@@ -135,6 +135,7 @@ struct TotalStats: View {
                         } label: {
                             CardItem(card: cards.getElementById(result.id), result: result)
                         }
+                        .disabled(result.resultHistory.items.isEmpty ? true : false)
                     }
                 }
             }

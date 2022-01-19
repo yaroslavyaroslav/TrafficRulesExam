@@ -79,14 +79,14 @@ struct QuestionCard: View {
                 Spacer()
 
 
-                ZStack(alignment: .bottom) {
+                ZStack(alignment: .center) {
                     QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                         .transition(.moveAndFade)
 
                     Text("\(coins.amount)")
-                        .alignmentGuide(.top, computeValue: { _ in 640 })
-                        .alignmentGuide(.trailing, computeValue: { _ in -150 })
-                        .frame(width: 20, height: 20, alignment: .topTrailing)
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background(Color.purple)
+                        .position(x: 20, y: 20)
 
                     if isHintShown {
                         Text(questionDetails.hint)
@@ -95,6 +95,7 @@ struct QuestionCard: View {
                                 self.isHintShown.toggle()
                             }
                         }
+                        .background(Color.purple)
                     } else {
                         Button("Hint") {
                             if !hintPurchased {
@@ -106,6 +107,9 @@ struct QuestionCard: View {
                             }
                         }
                         .disabled(coins.amount == 0 ? true : false)
+                        .padding()
+                        .background(Color.purple)
+                        .position(x: 150, y: 600)
                     }
                 }
 

@@ -61,9 +61,12 @@ class CoinsTimer: ObservableObject {
             KeychainWrapper.standard[.ticketUsed] = newTicketUsageDate.timeIntervalSinceReferenceDate
         }
 
-        let countdownValue = Date().secondsLasts(to: coinDrop)
+        return Date().secondsLasts(to: coinDrop)
+    }
 
-        return countdownValue
+    func spendCoin() {
+        KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+        coins.amount -= 1
     }
 }
 

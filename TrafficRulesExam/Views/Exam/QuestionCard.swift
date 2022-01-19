@@ -25,8 +25,14 @@ struct QuestionCard: View {
     @State
     private var isHintShown = false
 
+    @State
+    private var hintPurchased = false
+
     @EnvironmentObject
     var coins: Coin
+
+    @EnvironmentObject
+    var coinsTimer: CoinsTimer
 
     let questions: [Question]
 
@@ -77,6 +83,11 @@ struct QuestionCard: View {
                     QuestionContent(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                         .transition(.moveAndFade)
 
+                    Text("\(coins.amount)")
+                        .alignmentGuide(.top, computeValue: { _ in 640 })
+                        .alignmentGuide(.trailing, computeValue: { _ in -150 })
+                        .frame(width: 20, height: 20, alignment: .topTrailing)
+
                     if isHintShown {
                         Text(questionDetails.hint)
                         Button("X") {
@@ -86,6 +97,10 @@ struct QuestionCard: View {
                         }
                     } else {
                         Button("Hint") {
+                            if !hintPurchased {
+                                self.hintPurchased = true
+                                coinsTimer.spendCoin()
+                            }
                             withAnimation {
                                 self.isHintShown.toggle()
                             }
@@ -100,11 +115,12 @@ struct QuestionCard: View {
                         answeredQuestions.insert(questionDetails.id)
                         print(answeredQuestions.count)
 
+                        self.hintPurchased = false
+
                         if answeredQuestions.count == 20 {
                             if !result.mistakes.isEmpty {
-                                coins.amount -= 1
+                                coinsTimer.spendCoin()
                             }
-                            KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
                             resultsHistory.items.append(result)
                             presentationMode.wrappedValue.dismiss()
                             return
@@ -150,5 +166,6 @@ struct QuestionCard_Previews: PreviewProvider {
 
     static var previews: some View {
         QuestionCard(questions: cards[1].questions, questionDetails: cards[1].questions[16], resultsHistory: $history)
+            .environmentObject(Coin())
     }
 }

@@ -10,10 +10,7 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-//    private var cards = cards
-
-//    @StateObject
-//    private var results = CardResults()
+    var coin: Coin = Coin()
 
     var body: some Scene {
         WindowGroup {
@@ -22,7 +19,8 @@ struct TrafficRulesExamApp: App {
 //                    .environmentObject(cards)
 //                    .environmentObject(results)
             }
-            .environmentObject(Coin())
+            .environmentObject(coin)
+            .environmentObject(CoinsTimer(coin))
         }
     }
 }

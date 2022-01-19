@@ -68,7 +68,6 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
-        .environmentObject(CoinsTimer(coins))
     }
 }
 

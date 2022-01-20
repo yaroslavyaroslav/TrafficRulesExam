@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ru.neatness.TrafficRulesExam.10coins</key>
+	<string>10 🪙</string>
+	<key>ru.neatness.TrafficRulesExam.15coins</key>
+	<string>15 🪙</string>
+	<key>ru.neatness.TrafficRulesExam.20coins</key>
+	<string>20 🪙</string>
+	<key>ru.neatness.TrafficRulesExam.OneMonthCoins</key>
+	<string>1 🗓</string>
+	<key>ru.neatness.TrafficRulesExam.ThreeMonthCoins</key>
+	<string>3 🗓</string>
+	<key>ru.neatness.TrafficRulesExam.SixMonthCoins</key>
+	<string>6 🗓</string>
+</dict>
+</plist>

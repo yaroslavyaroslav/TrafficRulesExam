@@ -69,7 +69,13 @@ struct TotalStats: View {
                                 .frame(width: 80)
                         }
                         .sheet(isPresented: $isModalViewPresented) {
-                            Purchase(isPresented: $isModalViewPresented)
+                            if #available(iOS 15.0, *) {
+                                StoreView()
+//                                Purchase(isPresented: $isModalViewPresented)
+                            } else {
+                                EmptyView()
+                                // Fallback on earlier versions
+                            }
                         }
 
                         // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00

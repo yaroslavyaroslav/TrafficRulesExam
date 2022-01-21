@@ -120,6 +120,7 @@ struct QuestionCard: View {
                         print(answeredQuestions.count)
 
                         self.hintPurchased = false
+                        self.isHintShown = false
 
                         if answeredQuestions.count == 20 {
                             if !result.mistakes.isEmpty {

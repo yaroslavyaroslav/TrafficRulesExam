@@ -60,6 +60,7 @@
             <outline text="Покрыть тестами статистику."/>
             <outline text="Покрыть тестами Coin flow"/>
             <outline text="Подсказки в билетах за бензин" _status="checked"/>
+            <outline text="Подсказки убираются при открытии следующего вопроса"/>
           </outline>
         </outline>
         <outline text="0.5">

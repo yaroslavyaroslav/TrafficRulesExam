@@ -10,8 +10,7 @@ import StoreKit
 
 @available (iOS 15.0, *)
 struct StoreView: View {
-    @StateObject
-    var store: Store = Store()
+    @EnvironmentObject var store: Store
 
     var body: some View {
         List {

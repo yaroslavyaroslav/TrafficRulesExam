@@ -22,6 +22,5 @@ class Coin: ObservableObject {
 
 extension KeychainWrapper.Key {
     static let coinsAmount: KeychainWrapper.Key = "CoinsAmount"
-    static let purchases: KeychainWrapper.Key = "Purchases"
     static let ticketUsed: KeychainWrapper.Key = "LastCoinSpentDateTime"
 }

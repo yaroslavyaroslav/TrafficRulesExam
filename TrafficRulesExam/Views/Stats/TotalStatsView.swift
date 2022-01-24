@@ -9,27 +9,23 @@ import SwiftKeychainWrapper
 import SwiftUI
 
 struct TotalStatsView: View {
-    var results: CardResults
-
-    @State
-    var countdownString: String = ""
-
-    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    @State
-    var isModalViewPresented = false
-
-    @EnvironmentObject
-    var countdownTimer: CoinsTimer
-
-    @EnvironmentObject
-    var coins: Coin
-
     let graphHeight: CGFloat = 40
 
     let maxWidth: CGFloat = 300
 
     let totalTickets: CGFloat = 20
+
+    var results: CardResults
+
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    @State var countdownString: String = ""
+
+    @State var isModalViewPresented = false
+
+    @EnvironmentObject var countdownTimer: CoinsTimer
+
+    @EnvironmentObject var coins: Coin
 
     var triedTickets: CGFloat {
         // swiftformat:disable --indent --spaceInsideComments

@@ -19,37 +19,27 @@ extension AnyTransition {
 }
 
 struct QuestionCardView: View {
-    @State
-    private var result = Result(mistakes: [], examDate: Date())
-
-    @State
-    private var isHintShown = false
-
-    @State
-    private var hintPurchased = false
-
-    @EnvironmentObject
-    var coins: Coin
-
-    @EnvironmentObject
-    var coinsTimer: CoinsTimer
-
     let questions: [Question]
 
-    @State
-    var questionDetails: Question
+    @State private var result = Result(mistakes: [], examDate: Date())
 
-    @State
-    var selectedAnswer: AnswerID = .none
+    @State private var isHintShown = false
 
-    @Binding
-    var resultsHistory: Results
+    @State private var hintPurchased = false
 
-    @State
-    var answeredQuestions: Set<Int> = []
+    @State var questionDetails: Question
 
-    @Environment(\.presentationMode)
-    var presentationMode
+    @State var selectedAnswer: AnswerID = .none
+
+    @State var answeredQuestions: Set<Int> = []
+
+    @Binding var resultsHistory: Results
+
+    @EnvironmentObject var coins: Coin
+
+    @EnvironmentObject var coinsTimer: CoinsTimer
+
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {

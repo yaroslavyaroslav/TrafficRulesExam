@@ -10,10 +10,11 @@ import StoreKit
 
 @available (iOS 15.0, *)
 struct StatusInfoView: View {
-    @EnvironmentObject var store: Store
-
     let product: Product
+
     let status: Product.SubscriptionInfo.Status
+
+    @EnvironmentObject var store: Store
 
     var body: some View {
         Text(statusDescription())

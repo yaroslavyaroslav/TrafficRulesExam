@@ -10,8 +10,7 @@ import SwiftUI
 struct QuestionContentView: View {
     var question: Question
 
-    @Binding
-    var selectedAnswer: AnswerID
+    @Binding var selectedAnswer: AnswerID
 
     let correctAnswer: AnswerID?
 
@@ -33,7 +32,7 @@ struct QuestionContentView: View {
                 .cornerRadius(8)
             Spacer()
 
-            AnswersView(answers: question.answers, selectedAnswer: $selectedAnswer, correctAnswer: correctAnswer)
+            AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
             Spacer()
         }
         .padding(8)

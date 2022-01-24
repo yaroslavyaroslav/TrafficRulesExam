@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TotalStatsNavigationView: View {
-    @State
-    var results: CardResults = {
+    @State var results: CardResults = {
         var object: CardResults!
         do {
             object = try CardResults()

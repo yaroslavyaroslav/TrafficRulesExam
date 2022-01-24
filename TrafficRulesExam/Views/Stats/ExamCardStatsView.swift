@@ -1,5 +1,5 @@
 //
-//  ExamCardStats.swift
+//  ExamCardStatsView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 08.11.2021.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ExamCardStats: View {
+struct ExamCardStatsView: View {
     var cardResult: CardResult
 
     var body: some View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
-                ExamStats(result: result, cardId: cardResult.id)
+                ExamStatsView(result: result, cardId: cardResult.id)
                     .navigationBarTitle(Text("Билет \(cardResult.id)"))
             } label: {
                 VStack(alignment: .leading, spacing: 10) {
@@ -51,6 +51,6 @@ struct ExamCardStats_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        ExamCardStats(cardResult: results.items[0])
+        ExamCardStatsView(cardResult: results.items[0])
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ExamStats.swift
+//  ExamStatsView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 08.11.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExamStats: View {
+struct ExamStatsView: View {
     var result: Result
 
     let cardId: Int
@@ -27,7 +27,7 @@ struct ExamStats: View {
             } else {
                 List(0..<result.mistakes.count) { mistakeIdx in
                     NavigationLink {
-                        QuestionContent(
+                        QuestionContentView(
                             question: getQuestionForStats(cardId, mistakeIdx),
                             selectedAnswer: getSelectedAnswer(mistakeIdx),
                             correctAnswer: getCorrectAnswerForQuestion(cardId, mistakeIdx)
@@ -76,7 +76,7 @@ struct ExamStats_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        ExamStats(result: results[2], cardId: 2)
-        ExamStats(result: results[1], cardId: 1)
+        ExamStatsView(result: results[2], cardId: 2)
+        ExamStatsView(result: results[1], cardId: 1)
     }
 }

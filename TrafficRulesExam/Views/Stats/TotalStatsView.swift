@@ -1,5 +1,5 @@
 //
-//  TotalStats.swift
+//  TotalStatsView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 10.11.2021.
@@ -8,7 +8,7 @@
 import SwiftKeychainWrapper
 import SwiftUI
 
-struct TotalStats: View {
+struct TotalStatsView: View {
     var results: CardResults
 
     @State
@@ -136,7 +136,7 @@ struct TotalStats: View {
                          метода @Environment(\.presentationMode) переменной dismiss()
                          */
                         NavigationLink {
-                            ExamCardStats(cardResult: result)
+                            ExamCardStatsView(cardResult: result)
                         } label: {
                             CardItem(card: cards.getElementById(result.id), result: result)
                         }
@@ -164,7 +164,7 @@ struct TotalStats_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        TotalStats(results: results)
+        TotalStatsView(results: results)
             .environmentObject(Coin())
     }
 }

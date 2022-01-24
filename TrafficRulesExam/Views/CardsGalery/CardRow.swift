@@ -38,7 +38,7 @@ struct CardRow: View {
                      метода @Environment(\.presentationMode) переменной dismiss()
                      */
                     NavigationLink {
-                        Card(card: locCards.getElementById(result.id), result: $result)
+                        CardView(card: locCards.getElementById(result.id), result: $result)
                     } label: {
                         CardItem(card: locCards.getElementById(result.id), result: result)
                     }

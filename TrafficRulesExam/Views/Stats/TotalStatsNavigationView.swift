@@ -1,5 +1,5 @@
 //
-//  TotalStatsNavigation.swift
+//  TotalStatsNavigationView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 08.11.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TotalStatsNavigation: View {
+struct TotalStatsNavigationView: View {
     @State
     var results: CardResults = {
         var object: CardResults!
@@ -22,7 +22,7 @@ struct TotalStatsNavigation: View {
     var cards: [ExamCard]
 
     var body: some View {
-        TotalStats(results: results)
+        TotalStatsView(results: results)
             .navigationTitle(Text("Статистика"))
             .navigationBarTitleDisplayMode(.large)
     }
@@ -30,6 +30,6 @@ struct TotalStatsNavigation: View {
 
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
-        TotalStatsNavigation(cards: cards)
+        TotalStatsNavigationView(cards: cards)
     }
 }

@@ -59,7 +59,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.10coins",
+      "productID" : "ru.neatness.TrafficRulesExam.10",
       "referenceName" : "10 Coins",
       "type" : "Consumable"
     },
@@ -74,7 +74,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.15coins",
+      "productID" : "ru.neatness.TrafficRulesExam.15",
       "referenceName" : "15 Coins",
       "type" : "Consumable"
     },
@@ -89,7 +89,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.20coins",
+      "productID" : "ru.neatness.TrafficRulesExam.20",
       "referenceName" : "20 Coins",
       "type" : "Consumable"
     }

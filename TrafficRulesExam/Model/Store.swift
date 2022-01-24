@@ -19,6 +19,7 @@ typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 public enum StoreError: Error {
     case failedVerification
+    case wrongPurchaseId(id: String)
 }
 
 public enum SubscriptionTier: Int, Comparable {

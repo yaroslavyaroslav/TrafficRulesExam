@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ru.neatness.TrafficRulesExam.10coins</key>
+	<key>ru.neatness.TrafficRulesExam.10</key>
 	<string>10 🪙</string>
-	<key>ru.neatness.TrafficRulesExam.15coins</key>
+	<key>ru.neatness.TrafficRulesExam.15</key>
 	<string>15 🪙</string>
-	<key>ru.neatness.TrafficRulesExam.20coins</key>
+	<key>ru.neatness.TrafficRulesExam.20</key>
 	<string>20 🪙</string>
 	<key>ru.neatness.TrafficRulesExam.OneMonthCoins</key>
 	<string>1 🗓</string>

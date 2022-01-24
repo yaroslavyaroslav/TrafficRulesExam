@@ -128,20 +128,19 @@ struct ListCellView: View {
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
-                withAnimation {
-                    if transaction.productID == "ru.neatness.TrafficRulesExam.10coins" {
-                        coins.amount += 10
-                    } else if transaction.productID == "ru.neatness.TrafficRulesExam.15coins" {
-                        coins.amount += 15
-                    } else if transaction.productID == "ru.neatness.TrafficRulesExam.20coins" {
-                        coins.amount += 20
-                    }
-                }
+                guard let coinsString = transaction.productID.split(separator: ".").last,
+                      let coinsAmount = Int(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+
+                withAnimation { coins.amount += coinsAmount }
             }
         } catch StoreError.failedVerification {
             errorTitle = "Your purchase could not be verified by the App Store."
             isShowingError = true
-        } catch {
+        } catch StoreError.wrongPurchaseId(let productId) {
+            errorTitle = "Could not provide coins with such amount as: \(productId)"
+            isShowingError = true
+        }
+        catch {
             print("Failed purchase for \(product.id): \(error)")
         }
     }

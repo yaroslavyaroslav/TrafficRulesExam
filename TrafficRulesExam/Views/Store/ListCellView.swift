@@ -13,6 +13,7 @@ struct ListCellView: View {
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
+    @EnvironmentObject var coins: Coin
 
     let product: Product
     let purchasingEnabled: Bool
@@ -126,9 +127,15 @@ struct ListCellView: View {
 
     func buy() async {
         do {
-            if try await store.purchase(product) != nil {
+            if let transaction = try await store.purchase(product) {
                 withAnimation {
-                    isPurchased = true
+                    if transaction.productID == "ru.neatness.TrafficRulesExam.10coins" {
+                        coins.amount += 10
+                    } else if transaction.productID == "ru.neatness.TrafficRulesExam.15coins" {
+                        coins.amount += 15
+                    } else if transaction.productID == "ru.neatness.TrafficRulesExam.20coins" {
+                        coins.amount += 20
+                    }
                 }
             }
         } catch StoreError.failedVerification {

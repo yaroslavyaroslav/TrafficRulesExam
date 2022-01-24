@@ -12,6 +12,8 @@ import StoreKit
 struct StoreView: View {
     @EnvironmentObject var store: Store
 
+    @Binding var isPresented: Bool
+
     var body: some View {
         List {
             Section(header: Text("Cars")) {

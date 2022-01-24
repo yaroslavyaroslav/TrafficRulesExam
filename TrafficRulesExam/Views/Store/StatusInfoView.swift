@@ -5,10 +5,10 @@
 //  Created by Yaroslav on 20.01.2022.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct StatusInfoView: View {
     let product: Product
 
@@ -22,10 +22,10 @@ struct StatusInfoView: View {
             .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    //Build a string description of the subscription status to display to the user.
+    // Build a string description of the subscription status to display to the user.
     fileprivate func statusDescription() -> String {
-        guard case .verified(let renewalInfo) = status.renewalInfo,
-              case .verified(let transaction) = status.transaction else {
+        guard case let .verified(renewalInfo) = status.renewalInfo,
+              case let .verified(transaction) = status.transaction else {
             return "The App Store could not verify your subscription status."
         }
 
@@ -73,7 +73,7 @@ struct StatusInfoView: View {
     }
 
     fileprivate func subscribedDescription() -> String {
-        return "You are currently subscribed to \(product.displayName)."
+        "You are currently subscribed to \(product.displayName)."
     }
 
     fileprivate func renewalDescription(_ renewalInfo: RenewalInfo, _ expirationDate: Date) -> String {
@@ -91,7 +91,7 @@ struct StatusInfoView: View {
         return description
     }
 
-    //Build a string description of the `expirationReason` to display to the user.
+    // Build a string description of the `expirationReason` to display to the user.
     fileprivate func expirationDescription(_ expirationReason: RenewalInfo.ExpirationReason, expirationDate: Date) -> String {
         var description = ""
 

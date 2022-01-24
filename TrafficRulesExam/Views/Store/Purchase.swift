@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct Purchase: View {
     @Binding
     var isPresented: Bool
@@ -75,7 +75,7 @@ struct Purchase: View {
     }
 }
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct Purchase_Previews: PreviewProvider {
     @State
     static var isPresentedPreview = true

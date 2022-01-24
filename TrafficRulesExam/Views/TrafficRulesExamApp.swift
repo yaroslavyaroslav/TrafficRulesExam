@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-    var coin: Coin = Coin()
+    var coin: Coin = .init()
 
     var body: some Scene {
         WindowGroup {

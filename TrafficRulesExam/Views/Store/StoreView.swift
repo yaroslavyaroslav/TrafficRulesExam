@@ -5,10 +5,10 @@
 //  Created by Yaroslav on 20.01.2022.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct StoreView: View {
     @EnvironmentObject var store: Store
 

@@ -8,7 +8,7 @@
 import StoreKit
 import SwiftUI
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct SubscriptionsView: View {
     @EnvironmentObject var store: Store
 
@@ -23,11 +23,11 @@ struct SubscriptionsView: View {
         Group {
             if let currentSubscription = currentSubscription {
                 Section(header: Text("My Subscription")) {
-                   ListCellView(product: currentSubscription, purchasingEnabled: false)
+                    ListCellView(product: currentSubscription, purchasingEnabled: false)
 
                     if let status = status {
                         StatusInfoView(product: currentSubscription,
-                                        status: status)
+                                       status: status)
                     }
                 }
                 .listStyle(GroupedListStyle())
@@ -42,13 +42,13 @@ struct SubscriptionsView: View {
         }
         .onAppear {
             Task {
-                //When this view appears, get the latest subscription status.
+                // When this view appears, get the latest subscription status.
                 await updateSubscriptionStatus()
             }
         }
         .onChange(of: store.purchasedIdentifiers) { _ in
             Task {
-                //When `purchasedIdentifiers` changes, get the latest subscription status.
+                // When `purchasedIdentifiers` changes, get the latest subscription status.
                 await updateSubscriptionStatus()
             }
         }
@@ -57,20 +57,20 @@ struct SubscriptionsView: View {
     @MainActor
     func updateSubscriptionStatus() async {
         do {
-            //This app has only one subscription group so products in the subscriptions
-            //array all belong to the same group. The statuses returned by
-            //`product.subscription.status` apply to the entire subscription group.
+            // This app has only one subscription group so products in the subscriptions
+            // array all belong to the same group. The statuses returned by
+            // `product.subscription.status` apply to the entire subscription group.
             guard let product = store.subscriptions.first,
                   let statuses = try await product.subscription?.status else {
                 return
             }
 
-            var highestStatus: Product.SubscriptionInfo.Status? = nil
-            var highestProduct: Product? = nil
+            var highestStatus: Product.SubscriptionInfo.Status?
+            var highestProduct: Product?
 
-            //Iterate through `statuses` for this subscription group and find
-            //the `Status` with the highest level of service which isn't
-            //expired or revoked.
+            // Iterate through `statuses` for this subscription group and find
+            // the `Status` with the highest level of service which isn't
+            // expired or revoked.
             for status in statuses {
                 switch status.state {
                 case .expired, .revoked:

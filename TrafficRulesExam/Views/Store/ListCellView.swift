@@ -4,10 +4,10 @@
 //
 //  Created by Yaroslav on 20.01.2022.
 //
-import SwiftUI
 import StoreKit
+import SwiftUI
 
-@available (iOS 15.0, *)
+@available(iOS 15.0, *)
 struct ListCellView: View {
     @EnvironmentObject var store: Store
     @State var isPurchased: Bool = false
@@ -65,8 +65,8 @@ struct ListCellView: View {
 
     func subscribeButton(_ subscription: Product.SubscriptionInfo) -> some View {
         let unit: String
-        let plural = 1 < subscription.subscriptionPeriod.value
-            switch subscription.subscriptionPeriod.unit {
+        let plural = subscription.subscriptionPeriod.value > 1
+        switch subscription.subscriptionPeriod.unit {
         case .day:
             unit = plural ? "\(subscription.subscriptionPeriod.value) days" : "day"
         case .week:
@@ -136,11 +136,10 @@ struct ListCellView: View {
         } catch StoreError.failedVerification {
             errorTitle = "Your purchase could not be verified by the App Store."
             isShowingError = true
-        } catch StoreError.wrongPurchaseId(let productId) {
+        } catch let StoreError.wrongPurchaseId(productId) {
             errorTitle = "Could not provide coins with such amount as: \(productId)"
             isShowingError = true
-        }
-        catch {
+        } catch {
             print("Failed purchase for \(product.id): \(error)")
         }
     }

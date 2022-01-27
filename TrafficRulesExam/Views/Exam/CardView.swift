@@ -10,13 +10,15 @@ import SwiftUI
 struct CardView: View {
     var card: ExamCard
 
-    @Binding
-    var result: CardResult
+    @Binding var result: CardResult
+
+    @EnvironmentObject var coins: Coin
 
     var body: some View {
         VStack(alignment: .leading) {
             QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
         }
+        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")
     }

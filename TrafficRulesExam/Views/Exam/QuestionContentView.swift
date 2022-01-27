@@ -33,6 +33,7 @@ struct QuestionContentView: View {
             Spacer()
 
             AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
+
             Spacer()
         }
         .padding(8)

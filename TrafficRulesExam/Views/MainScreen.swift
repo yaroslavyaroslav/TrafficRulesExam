@@ -68,6 +68,7 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
+        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
     }
 }
 

@@ -23,4 +23,16 @@ class Coin: ObservableObject {
 extension KeychainWrapper.Key {
     static let coinsAmount: KeychainWrapper.Key = "CoinsAmount"
     static let ticketUsed: KeychainWrapper.Key = "LastCoinSpentDateTime"
+    static let profileId: KeychainWrapper.Key = "ProfileId"
+}
+
+extension KeychainWrapper {
+    static var profileId: String {
+        guard let profileId = KeychainWrapper.standard.string(forKey: .profileId) else {
+            let newId = UUID().uuidString
+            KeychainWrapper.standard[.profileId] = newId
+            return newId
+        }
+        return profileId
+    }
 }

@@ -113,16 +113,6 @@ struct ListCellView: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                isPurchased = (try? await store.isPurchased(product.id)) ?? false
-            }
-        }
-        .onChange(of: store.purchasedIdentifiers) { identifiers in
-            Task {
-                isPurchased = identifiers.contains(product.id)
-            }
-        }
     }
 
     func buy() async {

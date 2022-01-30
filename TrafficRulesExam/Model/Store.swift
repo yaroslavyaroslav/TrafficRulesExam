@@ -7,6 +7,8 @@
 
 import Foundation
 import StoreKit
+import YandexMobileMetrica
+import SwiftKeychainWrapper
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -24,9 +26,9 @@ public enum StoreError: Error {
 
 public enum SubscriptionTier: Int, Comparable {
     case none = 0
-    case standard = 1
-    case premium = 2
-    case pro = 3
+    case month = 1
+    case quater = 2
+    case halfYear = 3
 
     public static func <(lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue < rhs.rawValue
@@ -48,10 +50,41 @@ class Store: ObservableObject {
     private let productIdToEmoji: [String: String]
 
     private static let subscriptionTier: [String: SubscriptionTier] = [
-        "subscription.standard": .standard,
-        "subscription.premium": .premium,
-        "subscription.pro": .pro
+        "subscription.standard": .month,
+        "subscription.premium": .quater,
+        "subscription.pro": .halfYear
     ]
+
+    class func register(_ conversion: Conversion) {
+
+        switch conversion {
+        case .firstRun:
+            SKAdNetwork.registerAppForAdNetworkAttribution()
+        case .initPurchase(let string):
+            SKAdNetwork.updateConversionValue(conversion.toInt)
+//        case .completePurchase(let string):
+//            <#code#>
+//        case .cancelPurchase(let string):
+//            <#code#>
+//        case .initSubscription(let string):
+//            <#code#>
+//        case .completeSubscription(let string):
+//            <#code#>
+//        case .cancelSubscription(let string):
+//            <#code#>
+//        case .ticketStarted(let id):
+//            <#code#>
+//        case .ticketCompleted(let id):
+//            <#code#>
+//        case .ticketCanceled(let id, let answers):
+//            <#code#>
+//        case .hintTaken(let ticket, let question):
+//            <#code#>
+        default:
+            SKAdNetwork.updateConversionValue(conversion.toInt)
+
+        }
+    }
 
     init() {
         if let path = Bundle.main.path(forResource: "Products", ofType: "plist"),
@@ -72,6 +105,16 @@ class Store: ObservableObject {
             // Initialize the store by starting a product request.
             await requestProducts()
         }
+
+        let configuration = YMMYandexMetricaConfiguration(apiKey: "d1bdcdf9-e810-4052-8631-c99702f002b2")
+
+        configuration?.userProfileID = KeychainWrapper.profileId
+
+        if let configuration = configuration {
+            YMMYandexMetrica.activate(with: configuration)
+        }
+
+        Store.register(.firstRun)
     }
 
     deinit {
@@ -201,13 +244,46 @@ class Store: ObservableObject {
     func tier(for productId: String) -> SubscriptionTier {
         switch productId {
         case "subscription.standard":
-            return .standard
+            return .month
         case "subscription.premium":
-            return .premium
+            return .quater
         case "subscription.pro":
-            return .pro
+            return .halfYear
         default:
             return .none
+        }
+    }
+}
+
+@available(iOS 15.0, *)
+extension Store {
+    enum Conversion {
+        // MARK: - Conversions
+        case firstRun
+
+        // MARK: - Purchases
+        case initPurchase(String)
+        case completePurchase(String)
+        case cancelPurchase(String)
+
+        // MARK: - Subscriptions
+        case initSubscription(String)
+        case completeSubscription(String)
+        case cancelSubscription(String)
+
+        // MARK: - Inapp Actions
+        case ticketStarted(id: Int)
+        case ticketCompleted(id: Int)
+        case ticketCanceled(id: Int, answers: Int)
+        case hintTaken(ticket: Int, question: Int)
+    }
+}
+
+@available(iOS 15.0, *)
+extension Store.Conversion {
+    var toInt: Int {
+        switch self {
+        default: return 1
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TotalStats.swift
+//  TotalStatsView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 10.11.2021.
@@ -8,28 +8,24 @@
 import SwiftKeychainWrapper
 import SwiftUI
 
-struct TotalStats: View {
-    var results: CardResults
-
-    @State
-    var countdownString: String = ""
-
-    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    @State
-    var isModalViewPresented = false
-
-    @EnvironmentObject
-    var countdownTimer: CoinsTimer
-
-    @EnvironmentObject
-    var coins: Coin
-
+struct TotalStatsView: View {
     let graphHeight: CGFloat = 40
 
     let maxWidth: CGFloat = 300
 
     let totalTickets: CGFloat = 20
+
+    var results: CardResults
+
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    @State var countdownString: String = ""
+
+    @State var isModalViewPresented = false
+
+    @EnvironmentObject var countdownTimer: CoinsTimer
+
+    @EnvironmentObject var coins: Coin
 
     var triedTickets: CGFloat {
         // swiftformat:disable --indent --spaceInsideComments
@@ -69,9 +65,14 @@ struct TotalStats: View {
                                 .frame(width: 80)
                         }
                         .sheet(isPresented: $isModalViewPresented) {
-                            Purchase(isPresented: $isModalViewPresented)
+                            if #available(iOS 15.0, *) {
+                                StoreView(isPresented: $isModalViewPresented)
+//                                Purchase(isPresented: $isModalViewPresented)
+                            } else {
+                                EmptyView()
+                                // Fallback on earlier versions
+                            }
                         }
-
 
                         // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
                         if !countdownString.isEmpty {
@@ -131,7 +132,7 @@ struct TotalStats: View {
                          метода @Environment(\.presentationMode) переменной dismiss()
                          */
                         NavigationLink {
-                            ExamCardStats(cardResult: result)
+                            ExamCardStatsView(cardResult: result)
                         } label: {
                             CardItem(card: cards.getElementById(result.id), result: result)
                         }
@@ -143,7 +144,7 @@ struct TotalStats: View {
     }
 
     private func updateTimer() {
-        self.countdownString = countdownTimer.calculateCoundownTimerText()
+        countdownString = countdownTimer.calculateCoundownTimerText()
     }
 }
 
@@ -159,7 +160,7 @@ struct TotalStats_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        TotalStats(results: results)
+        TotalStatsView(results: results)
             .environmentObject(Coin())
     }
 }

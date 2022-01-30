@@ -1,5 +1,5 @@
 //
-//  QuestionContent.swift
+//  QuestionContentView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 15.10.2021.
@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct QuestionContent: View {
+struct QuestionContentView: View {
     var question: Question
 
-    @Binding
-    var selectedAnswer: AnswerID
+    @Binding var selectedAnswer: AnswerID
 
     let correctAnswer: AnswerID?
 
@@ -33,7 +32,8 @@ struct QuestionContent: View {
                 .cornerRadius(8)
             Spacer()
 
-            Answers(answers: question.answers, selectedAnswer: $selectedAnswer, correctAnswer: correctAnswer)
+            AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
+
             Spacer()
         }
         .padding(8)
@@ -45,6 +45,6 @@ struct QuestionContent_Previews: PreviewProvider {
     static var answer = AnswerID.a
 
     static var previews: some View {
-        QuestionContent(question: cards[1].questions[2], selectedAnswer: $answer, correctAnswer: .c)
+        QuestionContentView(question: cards[1].questions[2], selectedAnswer: $answer, correctAnswer: .c)
     }
 }

@@ -13,16 +13,14 @@ import SwiftUI
 class Coin: ObservableObject {
     var amount: Int {
         set {
-            objectWillChange.send()
+            DispatchQueue.main.async(flags: [.barrier]) { [weak self] in self?.objectWillChange.send() }
             KeychainWrapper.standard[.coinsAmount] = newValue
         }
         get { KeychainWrapper.standard.integer(forKey: .coinsAmount) ?? 0 }
     }
 }
 
-
 extension KeychainWrapper.Key {
     static let coinsAmount: KeychainWrapper.Key = "CoinsAmount"
-    static let purchases: KeychainWrapper.Key = "Purchases"
     static let ticketUsed: KeychainWrapper.Key = "LastCoinSpentDateTime"
 }

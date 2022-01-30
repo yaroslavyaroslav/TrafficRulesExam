@@ -5,12 +5,12 @@
       <column name="text" width="729"/>
     </editor> -->
     <title>Приложение iOS</title>
-    <expansionState>0,1,3,10,14,19,20,25,31,32,36,37,38,42,43,47,52,53,56,57,65,67,68,70,71,83,84,85</expansionState>
-    <vertScrollState>0</vertScrollState>
-    <windowTop>252</windowTop>
+    <expansionState>0,1,3,10,14,19,20,25,31,32,36,37,38,40,44,47,48,51,52,60,61,62,67,68,70,71,83,84,85</expansionState>
+    <vertScrollState>31</vertScrollState>
+    <windowTop>272</windowTop>
     <windowLeft>0</windowLeft>
     <windowRight>759</windowRight>
-    <windowBottom>1196</windowBottom>
+    <windowBottom>1216</windowBottom>
   </head>
   <body>
     <outline text="Релизы" _status="indeterminate">
@@ -55,11 +55,12 @@
             <outline text="Добавить все билеты" _status="checked"/>
           </outline>
         </outline>
-        <outline text="0.4">
-          <outline text="0.4.0">
+        <outline text="0.4" _status="indeterminate">
+          <outline text="0.4.0" _status="indeterminate">
             <outline text="Покрыть тестами статистику."/>
             <outline text="Покрыть тестами Coin flow"/>
-            <outline text="Подсказки в билетах за бензин"/>
+            <outline text="Подсказки в билетах за бензин" _status="checked"/>
+            <outline text="Подсказки убираются при открытии следующего вопроса" _status="checked"/>
           </outline>
         </outline>
         <outline text="0.5">
@@ -70,12 +71,6 @@
                 <outline text="Светлая"/>
                 <outline text="Темная"/>
               </outline>
-              <outline text="Стиль рисунков">
-                <outline text="Как на экзамене" _note="стремные"/>
-                <outline text="Перерисованные" _note="красивые"/>
-              </outline>
-              <outline text="Случайный порядок вопросов в билете"/>
-              <outline text="Случайные ответы в билете"/>
             </outline>
             <outline text="Встроенные покупки"/>
             <outline text="Аналитика">
@@ -103,7 +98,15 @@
           </outline>
         </outline>
         <outline text="0.7">
-          <outline text="0.7.0"/>
+          <outline text="0.7.0">
+            <outline text="Экран настроек приложения">
+              <outline text="Переключатель подсказок" _note="Если подсказки доступны — попытка 5 монет&#10;Если недоступны — 1 монета."/>
+              <outline text="Стиль рисунков">
+                <outline text="Как на экзамене" _note="стремные"/>
+                <outline text="Перерисованные" _note="красивые"/>
+              </outline>
+            </outline>
+          </outline>
         </outline>
         <outline text="0.8">
           <outline text="0.8.0">

@@ -62,13 +62,13 @@ struct MainScreen: View {
                     .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .leading))
             case .totalStatsNavigation:
-                TotalStatsNavigation(cards: cards)
+                TotalStatsNavigationView(cards: cards)
                     .padding()
                     .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .trailing))
             }
         }
-        .environmentObject(CoinsTimer(coins))
+        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
     }
 }
 

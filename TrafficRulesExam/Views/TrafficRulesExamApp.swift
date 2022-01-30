@@ -10,19 +10,24 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-//    private var cards = cards
-
-//    @StateObject
-//    private var results = CardResults()
+    var coin: Coin = .init()
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                MainScreen()
-//                    .environmentObject(cards)
-//                    .environmentObject(results)
+            if #available(iOS 15, *) {
+                NavigationView {
+                    MainScreen()
+                }
+                .environmentObject(coin)
+                .environmentObject(CoinsTimer(coin))
+                .environmentObject(Store())
+            } else {
+                NavigationView {
+                    MainScreen()
+                }
+                .environmentObject(coin)
+                .environmentObject(CoinsTimer(coin))
             }
-            .environmentObject(Coin())
         }
     }
 }

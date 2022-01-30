@@ -1,0 +1,107 @@
+{
+  "identifier" : "9D6113FF",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "D6DB3E3A",
+      "localizations" : [
+        {
+          "description" : "Чтобы подтянуть перед экзаменом",
+          "displayName" : "1 месяц",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.OneMonthCoins",
+      "referenceName" : "1 month subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "15.99",
+      "familyShareable" : false,
+      "internalID" : "4001CC38",
+      "localizations" : [
+        {
+          "description" : "Чтобы не забыть билеты пока сдаешь город",
+          "displayName" : "3 месяца",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
+      "referenceName" : "3 months subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "20.99",
+      "familyShareable" : false,
+      "internalID" : "C1888D84",
+      "localizations" : [
+        {
+          "description" : "Для тех кто только пришел в автошколу",
+          "displayName" : "Полгода",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.SixMonthCoins",
+      "referenceName" : "6 months subscription",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "026D0256",
+      "localizations" : [
+        {
+          "description" : "Маленький пак монет",
+          "displayName" : "10 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.10",
+      "referenceName" : "10 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "F5A6074E",
+      "localizations" : [
+        {
+          "description" : "Средний пак монет",
+          "displayName" : "15 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.15",
+      "referenceName" : "15 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "B1407256",
+      "localizations" : [
+        {
+          "description" : "Большой пак монет",
+          "displayName" : "20 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.20",
+      "referenceName" : "20 Coins",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

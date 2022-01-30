@@ -1,5 +1,5 @@
 //
-//  Answers.swift
+//  AnswersView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 15.10.2021.
@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct Answers: View {
+struct AnswersView: View {
     var answers: [Answer]
 
-    @Binding
-    var selectedAnswer: AnswerID
-
     let correctAnswer: AnswerID?
+
+    @Binding var selectedAnswer: AnswerID
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -52,6 +51,6 @@ struct Answers_Previews: PreviewProvider {
     static var selAnswer = AnswerID.a
 
     static var previews: some View {
-        Answers(answers: cards[1].questions[16].answers, selectedAnswer: $selAnswer, correctAnswer: .b)
+        AnswersView(answers: cards[1].questions[16].answers, correctAnswer: .b, selectedAnswer: $selAnswer)
     }
 }

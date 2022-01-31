@@ -53,7 +53,7 @@ class Store: ObservableObject {
 
         os_log("Analytics initialyzation \(result ? "successful" : "failed")")
         
-        Analytics.register(.firstRun)
+        Analytics.fire(.firstRun)
         
         if let path = Bundle.main.path(forResource: "Products", ofType: "plist"),
            let plist = FileManager.default.contents(atPath: path) {

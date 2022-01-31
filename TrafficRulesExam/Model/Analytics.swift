@@ -20,14 +20,14 @@ class Analytics {
             guard let configuration = configuration else { return false }
             YMMYandexMetrica.activate(with: configuration)
 
-            Analytics.register(.firstRun)
+            Analytics.fire(.firstRun)
 
             return true
         case .sigment: return false
         }
     }
 
-    class func register(_ conversion: Conversion) {
+    class func fire(_ conversion: Conversion) {
         switch conversion {
         case .firstRun:
             SKAdNetwork.registerAppForAdNetworkAttribution()

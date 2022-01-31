@@ -55,37 +55,6 @@ class Store: ObservableObject {
         "subscription.pro": .halfYear
     ]
 
-    class func register(_ conversion: Conversion) {
-
-        switch conversion {
-        case .firstRun:
-            SKAdNetwork.registerAppForAdNetworkAttribution()
-        case .initPurchase(let string):
-            SKAdNetwork.updateConversionValue(conversion.toInt)
-//        case .completePurchase(let string):
-//            <#code#>
-//        case .cancelPurchase(let string):
-//            <#code#>
-//        case .initSubscription(let string):
-//            <#code#>
-//        case .completeSubscription(let string):
-//            <#code#>
-//        case .cancelSubscription(let string):
-//            <#code#>
-//        case .ticketStarted(let id):
-//            <#code#>
-//        case .ticketCompleted(let id):
-//            <#code#>
-//        case .ticketCanceled(let id, let answers):
-//            <#code#>
-//        case .hintTaken(let ticket, let question):
-//            <#code#>
-        default:
-            SKAdNetwork.updateConversionValue(conversion.toInt)
-
-        }
-    }
-
     init() {
         if let path = Bundle.main.path(forResource: "Products", ofType: "plist"),
            let plist = FileManager.default.contents(atPath: path) {
@@ -114,7 +83,7 @@ class Store: ObservableObject {
             YMMYandexMetrica.activate(with: configuration)
         }
 
-        Store.register(.firstRun)
+        Analytics.register(.firstRun)
     }
 
     deinit {
@@ -251,39 +220,6 @@ class Store: ObservableObject {
             return .halfYear
         default:
             return .none
-        }
-    }
-}
-
-@available(iOS 15.0, *)
-extension Store {
-    enum Conversion {
-        // MARK: - Conversions
-        case firstRun
-
-        // MARK: - Purchases
-        case initPurchase(String)
-        case completePurchase(String)
-        case cancelPurchase(String)
-
-        // MARK: - Subscriptions
-        case initSubscription(String)
-        case completeSubscription(String)
-        case cancelSubscription(String)
-
-        // MARK: - Inapp Actions
-        case ticketStarted(id: Int)
-        case ticketCompleted(id: Int)
-        case ticketCanceled(id: Int, answers: Int)
-        case hintTaken(ticket: Int, question: Int)
-    }
-}
-
-@available(iOS 15.0, *)
-extension Store.Conversion {
-    var toInt: Int {
-        switch self {
-        default: return 1
         }
     }
 }

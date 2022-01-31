@@ -12,21 +12,23 @@ import SwiftUI
 struct TrafficRulesExamApp: App {
     var coin: Coin = .init()
 
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
             if #available(iOS 15, *) {
                 NavigationView {
                     MainScreen()
                 }
-                .environmentObject(coin)
-                .environmentObject(CoinsTimer(coin))
-                .environmentObject(Store())
+                .environmentObject(appDelegate.coin)
+                .environmentObject(appDelegate.coinsTimer)
+                .environmentObject(appDelegate.store)
             } else {
                 NavigationView {
                     MainScreen()
                 }
-                .environmentObject(coin)
-                .environmentObject(CoinsTimer(coin))
+                .environmentObject(appDelegate.coin)
+                .environmentObject(appDelegate.coinsTimer)
             }
         }
     }

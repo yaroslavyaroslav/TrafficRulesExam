@@ -9,6 +9,7 @@ import Foundation
 import StoreKit
 import YandexMobileMetrica
 import SwiftKeychainWrapper
+import os.log
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -24,7 +25,7 @@ public enum StoreError: Error {
     case wrongPurchaseId(id: String)
 }
 
-public enum SubscriptionTier: Int, Comparable {
+public enum SubscriptionTime: Int, Comparable {
     case none = 0
     case month = 1
     case quater = 2
@@ -37,25 +38,23 @@ public enum SubscriptionTier: Int, Comparable {
 
 @available(iOS 15.0, *)
 class Store: ObservableObject {
-    @Published
-    private(set) var fuel: [Product]
-    @Published
-    private(set) var subscriptions: [Product]
+    @Published private(set) var fuel: [Product]
 
-    @Published
-    private(set) var purchasedIdentifiers = Set<String>()
+    @Published private(set) var subscriptions: [Product]
+
+    @Published private(set) var purchasedIdentifiers = Set<String>()
 
     var updateListenerTask: Task<Void, Error>?
 
     private let productIdToEmoji: [String: String]
 
-    private static let subscriptionTier: [String: SubscriptionTier] = [
-        "subscription.standard": .month,
-        "subscription.premium": .quater,
-        "subscription.pro": .halfYear
-    ]
-
     init() {
+        let result = Analytics.initAnalytics()
+
+        os_log("Analytics initialyzation \(result ? "successful" : "failed")")
+        
+        Analytics.register(.firstRun)
+        
         if let path = Bundle.main.path(forResource: "Products", ofType: "plist"),
            let plist = FileManager.default.contents(atPath: path) {
             self.productIdToEmoji = (try? PropertyListSerialization.propertyList(from: plist, format: nil) as? [String: String]) ?? [:]
@@ -75,15 +74,6 @@ class Store: ObservableObject {
             await requestProducts()
         }
 
-        let configuration = YMMYandexMetricaConfiguration(apiKey: "d1bdcdf9-e810-4052-8631-c99702f002b2")
-
-        configuration?.userProfileID = KeychainWrapper.profileId
-
-        if let configuration = configuration {
-            YMMYandexMetrica.activate(with: configuration)
-        }
-
-        Analytics.register(.firstRun)
     }
 
     deinit {
@@ -113,27 +103,32 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            // Request products from the App Store using the identifiers defined in the Products.plist file.
-            let storeProducts = try await Product.products(for: productIdToEmoji.keys)
 
-            var newFuel: [Product] = []
+            let products = ["ru.neatness.TrafficRulesExam.10",
+                            "ru.neatness.TrafficRulesExam.15",
+                            "ru.neatness.TrafficRulesExam.20",
+
+                            "ru.neatness.TrafficRulesExam.OneMonthCoins",
+                            "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
+                            "ru.neatness.TrafficRulesExam.SixMonthCoins"]
+            
+            let storeProducts = try await Product.products(for: products)
+
+            var newCoins: [Product] = []
             var newSubscriptions: [Product] = []
 
             // Filter the products into different categories based on their type.
             for product in storeProducts {
                 switch product.type {
-                case .consumable:
-                    newFuel.append(product)
-                case .nonRenewable:
-                    newSubscriptions.append(product)
-                default:
-                    // Ignore this product.
-                    print("Unknown product")
+                case .consumable: newCoins.append(product)
+                case .nonRenewable: newSubscriptions.append(product)
+                // Ignore another products
+                default: print("Unknown product")
                 }
             }
 
             // Sort each product category by price, lowest to highest, to update the store.
-            fuel = sortByPrice(newFuel)
+            fuel = sortByPrice(newCoins)
             subscriptions = sortByPrice(newSubscriptions)
         } catch {
             print("Failed product request: \(error)")
@@ -150,6 +145,8 @@ class Store: ObservableObject {
 
             // Deliver content to the user.
             await updatePurchasedIdentifiers(transaction)
+
+            Analytics.sendRevenue(product: product, transaction: transaction)
 
             // Always finish a transaction.
             await transaction.finish()
@@ -202,15 +199,11 @@ class Store: ObservableObject {
         }
     }
 
-    func emoji(for productId: String) -> String {
-        productIdToEmoji[productId]!
-    }
-
     func sortByPrice(_ products: [Product]) -> [Product] {
         products.sorted(by: { $0.price < $1.price })
     }
 
-    func tier(for productId: String) -> SubscriptionTier {
+    func tier(for productId: String) -> SubscriptionTime {
         switch productId {
         case "subscription.standard":
             return .month
@@ -220,6 +213,19 @@ class Store: ObservableObject {
             return .halfYear
         default:
             return .none
+        }
+    }
+}
+
+extension Analytics {
+    @available(iOS 15, *)
+    class func sendRevenue(product: Product, transaction: Transaction) {
+        let revenueInfo = YMMMutableRevenueInfo(priceDecimal: NSDecimalNumber(decimal: product.price), currency: "RUB")
+        revenueInfo.productID = product.displayName
+        revenueInfo.quantity = UInt(transaction.purchasedQuantity)
+
+        YMMYandexMetrica.reportRevenue(revenueInfo) { error in
+            os_log("Purchse failed")
         }
     }
 }

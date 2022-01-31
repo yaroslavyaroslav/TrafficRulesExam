@@ -18,10 +18,6 @@ struct ListCellView: View {
     let product: Product
     let purchasingEnabled: Bool
 
-    var emoji: String {
-        store.emoji(for: product.id)
-    }
-
     init(product: Product, purchasingEnabled: Bool = true) {
         self.product = product
         self.purchasingEnabled = purchasingEnabled
@@ -29,7 +25,7 @@ struct ListCellView: View {
 
     var body: some View {
         HStack {
-            Text(emoji)
+            Text("this")
                 .font(.system(size: 50))
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
@@ -118,6 +114,8 @@ struct ListCellView: View {
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
+
+                // FIXME: Working only with coins purchase, not working with subscription.
                 guard let coinsString = transaction.productID.split(separator: ".").last,
                       let coinsAmount = Int(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
 

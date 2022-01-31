@@ -18,7 +18,6 @@
 		5C1AAC5D2799BA10002046DE /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5C2799BA10002046DE /* ListCellView.swift */; };
 		5C1AAC5F2799BA24002046DE /* BuyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5E2799BA24002046DE /* BuyButtonStyle.swift */; };
 		5C1AAC612799BB7B002046DE /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC602799BB7B002046DE /* StatusInfoView.swift */; };
-		5C1AAC652799C1B5002046DE /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C1AAC642799C1B5002046DE /* Products.plist */; };
 		5C1AAC6727A70477002046DE /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC6627A70477002046DE /* Analytics.swift */; };
 		5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */; };
 		5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E122714730A006BFFCB /* CardsGalery.swift */; };
@@ -33,6 +32,8 @@
 		5C45EBC7273C4FBB00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
 		5C45EBC8273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
 		5C45EBC9273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
+		5C47E8B427A7D72B009E9F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */; };
+		5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */; };
 		5C53ECFF2733F5700044905A /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
@@ -94,7 +95,6 @@
 		5C1AAC5C2799BA10002046DE /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
 		5C1AAC5E2799BA24002046DE /* BuyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonStyle.swift; sourceTree = "<group>"; };
 		5C1AAC602799BB7B002046DE /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
-		5C1AAC642799C1B5002046DE /* Products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		5C1AAC6627A70477002046DE /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficRulesExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamApp.swift; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+PrittyPrint.swift"; sourceTree = "<group>"; };
 		5C45EBC4273C4CF200C90977 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+iOS14.swift"; sourceTree = "<group>"; };
 		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C53ECFE2733F5700044905A /* CardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResults.swift; sourceTree = "<group>"; };
 		5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,10 +208,10 @@
 		5C453E0F2714730A006BFFCB /* TrafficRulesExam */ = {
 			isa = PBXGroup;
 			children = (
+				5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */,
 				5C97B49627197E610017723A /* Views */,
 				5C97B49427197BDC0017723A /* Model */,
 				5C453E142714730D006BFFCB /* Assets.xcassets */,
-				5C1AAC642799C1B5002046DE /* Products.plist */,
 				5C1AAC51279950DB002046DE /* Products.storekit */,
 				5C53ECF82732C54D0044905A /* MyPlayground.playground */,
 				5C453E162714730D006BFFCB /* Preview Content */,
@@ -272,6 +274,7 @@
 				5CAD344E27902C2200D919DD /* CoinsTimer.swift */,
 				5C1AAC5427996340002046DE /* Store.swift */,
 				5C1AAC6627A70477002046DE /* Analytics.swift */,
+				5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,7 +429,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C1AAC652799C1B5002046DE /* Products.plist in Resources */,
 				5C85388927182F3900D8853E /* ExamCards.json in Resources */,
 				5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */,
 				5C453E152714730D006BFFCB /* Assets.xcassets in Resources */,
@@ -463,6 +465,7 @@
 				5C1AAC5D2799BA10002046DE /* ListCellView.swift in Sources */,
 				5C0F75B2271A07F1004473EA /* AnswersView.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
+				5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */,
 				5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */,
 				5C1AAC5527996340002046DE /* Store.swift in Sources */,
@@ -473,6 +476,7 @@
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C1AAC6727A70477002046DE /* Analytics.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
+				5C47E8B427A7D72B009E9F93 /* AppDelegate.swift in Sources */,
 				5C53ECFF2733F5700044905A /* CardResults.swift in Sources */,
 				5C45EBBE2739969600C90977 /* ExamStatsView.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,

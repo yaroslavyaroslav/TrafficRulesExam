@@ -10,8 +10,6 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-    var coin: Coin = .init()
-
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {

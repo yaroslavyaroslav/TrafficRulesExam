@@ -147,11 +147,10 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchasing: break
             case .purchased: purchased(transaction)
             case .failed: failed(transaction)
             case .restored: restored(transaction)
-            case .deferred: break
+            case .deferred, .purchasing: break
             }
         }
     }
@@ -204,19 +203,4 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func deferred(_ transaction: SKPaymentTransaction) {
 
     }
-
-//    private func deliverPurchaseNotificationFor(identifier: String?) {
-//        guard let identifier = identifier else { return }
-//        if identifier == AppStoreProductIdentifier.allEmbrioPacks.rawValue {
-//            for productIdentifier in AppStoreProductIdentifier.allCases {
-//                purchasedProductIdentifiers.insert(productIdentifier.rawValue)
-//                UserDefaults.standard.set(true, forKey: productIdentifier.rawValue)
-//            }
-//         } else {
-//            purchasedProductIdentifiers.insert(identifier)
-//            UserDefaults.standard.set(true, forKey: identifier)
-//        }
-//        NotificationCenter.default.post(name: .PGIAPHelperPurchaseNotification, object: identifier)
-//    }
-
 }

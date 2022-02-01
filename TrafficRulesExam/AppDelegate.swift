@@ -16,8 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 15.0, *)
     lazy var store: Store = { Store() }()
 
+    var currentTicket = CurrentValues()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         return true
     }
 
+}
+
+class CurrentValues: ObservableObject {
+    var ticket: UInt = 0
+    var question: UInt = 0
 }

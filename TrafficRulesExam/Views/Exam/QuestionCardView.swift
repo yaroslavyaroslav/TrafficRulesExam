@@ -7,6 +7,7 @@
 
 import SwiftKeychainWrapper
 import SwiftUI
+import YandexMobileMetrica
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -38,6 +39,8 @@ struct QuestionCardView: View {
     @EnvironmentObject var coins: Coin
 
     @EnvironmentObject var coinsTimer: CoinsTimer
+
+    @EnvironmentObject var currentValues: CurrentValues
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -86,6 +89,10 @@ struct QuestionCardView: View {
                 withAnimation {
                     self.isHintShown.toggle()
                 }
+
+                let product = YMMECommerceProduct(sku: "\(currentValues.ticket)/\(currentValues.question)/hint")
+
+                Analytics.fire(.hintTaken(product: product))
             }
             .disabled(coins.amount == 0 ? true : false)
             .padding()
@@ -135,6 +142,7 @@ struct QuestionCardView: View {
                         coinsTimer.spendCoin()
                     }
                     resultsHistory.items.append(result)
+                    Analytics.fire(.ticketCompleted(ticketId: 1))
                     presentationMode.wrappedValue.dismiss()
                     return
                 }
@@ -142,15 +150,20 @@ struct QuestionCardView: View {
                 let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
 
                 if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
+                    // Id 1 based, array 0 based, so to get next element of array need to do this array[id]
                     questionDetails = questions[questionDetails.id]
                     if questionDetails.id < 20 {
                         proxy.scrollTo(questionDetails.id + 1)
                     }
+                    currentValues.question = UInt(questionDetails.id)
                 } else {
                     questionDetails = questions[notAnswered[0] - 1]
                     proxy.scrollTo(questionDetails.id)
+                    currentValues.question = UInt(questionDetails.id)
                 }
             }
+            let product = YMMECommerceProduct(sku: "\(currentValues.ticket)/\(currentValues.question)")
+            Analytics.fire(.questionAnswered(product: product))
         }
     }
 }

@@ -63,6 +63,9 @@ struct CardItem: View {
             )
             Spacer()
         }
+        .onAppear {
+            Analytics.fire(.ticketCardShown(name: "Карточка \(card.id)"))
+        }
     }
 }
 

@@ -21,12 +21,14 @@ struct TrafficRulesExamApp: App {
                 .environmentObject(appDelegate.coin)
                 .environmentObject(appDelegate.coinsTimer)
                 .environmentObject(appDelegate.store)
+                .environmentObject(appDelegate.currentTicket)
             } else {
                 NavigationView {
                     MainScreen()
                 }
                 .environmentObject(appDelegate.coin)
                 .environmentObject(appDelegate.coinsTimer)
+                .environmentObject(appDelegate.currentTicket)
             }
         }
     }

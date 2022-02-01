@@ -12,7 +12,36 @@ import YandexMobileMetrica
 import os.log
 
 
+extension Analytics {
+    enum Conversion {
+        // MARK: - Conversions
+        case firstRun
+
+        // MARK: - Purchases
+        case completePurchase(revenue: YMMRevenueInfo)
+        case refundPurchase(revenue: YMMRevenueInfo)
+
+        // MARK: - Exam Actions
+        case ticketStarted(ticketId: UInt)
+        case ticketCompleted(ticketId: UInt)
+        case questionAnswered(product: YMMECommerceProduct)
+        case hintTaken(product: YMMECommerceProduct)
+
+        // MARK: - Navigation
+        case screenShown(name: String)
+        case ticketCardShown(name: String)
+    }
+}
+
 class Analytics {
+    struct Payload: Encodable {
+        let coinsAmount: UInt
+        let solvedTickets: Set<UInt>
+        let succedTickets: Set<UInt>
+        let purchases: [String]
+    }
+
+    @discardableResult
     class func initAnalytics(_ system: System = .appMetrica) -> Bool {
         switch system {
         case .appMetrica:
@@ -29,71 +58,53 @@ class Analytics {
     }
 
     class func fire(_ conversion: Conversion) {
+        let fiat0 = YMMECommerceAmount(unit: "coin", value: 0)
+        let fiat1 = YMMECommerceAmount(unit: "coin", value: 1)
+        let price0 = YMMECommercePrice(fiat: fiat0)
+        let price1 = YMMECommercePrice(fiat: fiat1)
+
+        print("\(conversion)")
+
         switch conversion {
-        case .firstRun:
-            SKAdNetwork.registerAppForAdNetworkAttribution()
-        case .initPurchase(let productID):
-            let purchaseIdentifier = UUID().uuidString
-//            YMMYandexMetrica.report(eCommerce: <#T##YMMECommerce#>, onFailure: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-//            YMMYandexMetrica.reportEvent(<#T##message: String##String#>, onFailure: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-//            YMMYandexMetrica.reportRevenue(<#T##revenueInfo: YMMRevenueInfo##YMMRevenueInfo#>, onFailure: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
+        case .firstRun: SKAdNetwork.registerAppForAdNetworkAttribution()
 
-            SKAdNetwork.updateConversionValue(conversion.appStoreValue)
-//        case .cancelPurchase(let string):
-//            <#code#>
-        case .completePurchase(let revenueObject):
-            YMMYandexMetrica.reportRevenue(revenueObject) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
-            SKAdNetwork.updateConversionValue(conversion.appStoreValue)
-//        case .initSubscription(let string):
-//            <#code#>
-//        case .completeSubscription(let string):
-//            <#code#>
-//        case .cancelSubscription(let string):
-//            <#code#>
-//        case .ticketStarted(let id):
-//            <#code#>
-//        case .ticketCompleted(let id):
-//            <#code#>
-//        case .ticketCanceled(let id, let answers):
-//            <#code#>
-//        case .hintTaken(let ticket, let question):
-//            <#code#>
-        default:
-            SKAdNetwork.updateConversionValue(conversion.appStoreValue)
+        case let .completePurchase(revenueObject), let .refundPurchase(revenueObject):
+            sendRevenueEvent(revenueObject)
+
+        case .ticketStarted(let ticket):
+            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [])
+            sendECommerceEvent(YMMECommerce.beginCheckoutEvent(order: order))
+
+        case .ticketCompleted(let ticket):
+            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [])
+            sendECommerceEvent(YMMECommerce.purchaseEvent(order: order))
+
+        case let .questionAnswered(question):
+            let cartItem = YMMECommerceCartItem(product: question, quantity: 1, revenue: price0, referrer: nil)
+            sendECommerceEvent(YMMECommerce.addCartItemEvent(cartItem: cartItem))
+
+        case let .hintTaken(hint):
+            let cartItem = YMMECommerceCartItem(product: hint, quantity: 1, revenue: price1, referrer: nil)
+            sendECommerceEvent(YMMECommerce.addCartItemEvent(cartItem: cartItem))
+
+            // FIXME: Make ticketCardShown to eCommerceCard event.
+        case let .screenShown(name):
+            let screen = YMMECommerceScreen(name: name)
+            sendECommerceEvent(.showScreenEvent(screen: screen))
+        case let .ticketCardShown(name):
+            let product = YMMECommerceProduct(sku: name)
+            let screen = YMMECommerceScreen(name: "Решать")
+            sendECommerceEvent(.showProductCardEvent(product: product, screen: screen))
         }
     }
-}
 
-extension Analytics {
-    enum Conversion {
-        // MARK: - Conversions
-        case firstRun
-
-        // MARK: - Purchases
-        case initPurchase(product: String)
-        case cancelPurchase(product: String)
-        case completePurchase(revenue: YMMRevenueInfo)
-        case refundPurchase(revenue: YMMRevenueInfo)
-
-        // MARK: - Subscriptions
-        case initSubscription(product: String)
-        case completeSubscription(product: String)
-        case cancelSubscription(product: String)
-
-        // MARK: - Inapp Actions
-        case ticketStarted(id: Int)
-        case questionShown(id: Int)
-        case ticketCompleted(id: Int)
-        case ticketCanceled(id: Int, answers: Int)
-        case hintTaken(ticket: Int, question: Int)
+    // FIXME: Make me universal send method.
+    private static func sendECommerceEvent(_ event: YMMECommerce) {
+        YMMYandexMetrica.report(eCommerce: event) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }
-}
 
-extension Analytics.Conversion {
-    var appStoreValue: Int {
-        switch self {
-        default: return 1
-        }
+    private static func sendRevenueEvent(_ event: YMMRevenueInfo) {
+        YMMYandexMetrica.reportRevenue(event) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }
 }
 
@@ -101,5 +112,19 @@ extension Analytics {
     enum System {
         case appMetrica
         case segment
+    }
+}
+
+extension Analytics {
+    @available(iOS 15, *)
+    class func createRevenueObject(for product: Product, _ result: VerificationResult<Transaction>) -> YMMRevenueInfo? {
+        guard case let .verified(transaction) = result else { return nil }
+
+        let revenueInfo = YMMMutableRevenueInfo(priceDecimal: product.price as NSDecimalNumber, currency: "RUB")
+        revenueInfo.productID = product.displayName
+        revenueInfo.quantity = UInt(transaction.purchasedQuantity)
+
+        // Todo: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
+        return revenueInfo
     }
 }

@@ -47,8 +47,7 @@ class Store: ObservableObject {
     var updateListenerTask: Task<Void, Error>?
 
     init() {
-        let result = Analytics.initAnalytics()
-        os_log("Analytics initialyzation \(result ? "successful" : "failed")")
+        Analytics.initAnalytics()
         Analytics.fire(.firstRun)
 
         // Initialize empty products then do a product request asynchronously to fill them in.
@@ -178,27 +177,5 @@ class Store: ObservableObject {
         case "ru.neatness.TrafficRulesExam.SixMonthCoins": return .halfYear
         default: return .none
         }
-    }
-}
-
-extension Analytics {
-    @available(iOS 15, *)
-    class func createRevenueObject(for product: Product, _ result: VerificationResult<Transaction>) -> YMMRevenueInfo? {
-        guard case let .verified(transaction) = result else { return nil }
-
-        let revenueInfo = YMMMutableRevenueInfo(priceDecimal: NSDecimalNumber(decimal: product.price), currency: "RUB")
-        revenueInfo.productID = product.displayName
-        revenueInfo.quantity = UInt(transaction.purchasedQuantity)
-
-        //        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL, FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
-        //            do {
-        // FIXME: Not sure that i've pass correct data to metrica to sign receipt.
-        revenueInfo.transactionID = transaction.id.description
-        revenueInfo.receiptData = result.signedData
-        //            }
-        //            catch { os_log("Couldn't read receipt data with error: \(error.localizedDescription)") }
-        //        }
-
-        return revenueInfo
     }
 }

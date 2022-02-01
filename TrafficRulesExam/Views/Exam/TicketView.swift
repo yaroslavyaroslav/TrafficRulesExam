@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  TicketView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 15.10.2021.
@@ -7,16 +7,22 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct TicketView: View {
     var card: ExamCard
 
     @Binding var result: CardResult
 
     @EnvironmentObject var coins: Coin
 
+    @EnvironmentObject var currentTicket: CurrentValues
+
     var body: some View {
         VStack(alignment: .leading) {
             QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
+                .onAppear {
+                    currentTicket.ticket = UInt(card.id)
+                    Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
+                }
         }
         .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
         .navigationBarTitleDisplayMode(.inline)
@@ -33,6 +39,7 @@ struct Card_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        CardView(card: cards[0], result: $cardResult)
+        TicketView(card: cards[0], result: $cardResult)
+            .environmentObject(Coin())
     }
 }

@@ -12,11 +12,15 @@ struct CardsGalery: View {
 
     var body: some View {
         CardRow(locCards: cards)
+            .onAppear {
+                Analytics.fire(.screenShown(name: "Решать"))
+            }
     }
 }
 
 struct CardsGalery_Previews: PreviewProvider {
     static var previews: some View {
         CardsGalery(cards: cards)
+            .environmentObject(Coin())
     }
 }

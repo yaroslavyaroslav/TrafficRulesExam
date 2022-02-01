@@ -17,7 +17,7 @@ struct StoreView: View {
     var body: some View {
         List {
             Section(header: Text("Cars")) {
-                ForEach(store.fuel, id: \.id) { car in
+                ForEach(store.availableCoinPacks, id: \.id) { car in
                     ListCellView(product: car)
                 }
             }
@@ -25,6 +25,5 @@ struct StoreView: View {
 
             SubscriptionsView()
         }
-        .environmentObject(store)
     }
 }

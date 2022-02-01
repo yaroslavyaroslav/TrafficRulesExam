@@ -9,6 +9,7 @@ import Foundation
 import StoreKit
 import SwiftKeychainWrapper
 import YandexMobileMetrica
+import os.log
 
 
 class Analytics {
@@ -23,7 +24,7 @@ class Analytics {
             Analytics.fire(.firstRun)
 
             return true
-        case .sigment: return false
+        case .segment: return false
         }
     }
 
@@ -38,10 +39,11 @@ class Analytics {
 //            YMMYandexMetrica.reportRevenue(<#T##revenueInfo: YMMRevenueInfo##YMMRevenueInfo#>, onFailure: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
 
             SKAdNetwork.updateConversionValue(conversion.appStoreValue)
-        case .completePurchase(let string):
-            SKAdNetwork.updateConversionValue(conversion.appStoreValue)
 //        case .cancelPurchase(let string):
 //            <#code#>
+        case .completePurchase(let revenueObject):
+            YMMYandexMetrica.reportRevenue(revenueObject) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
+            SKAdNetwork.updateConversionValue(conversion.appStoreValue)
 //        case .initSubscription(let string):
 //            <#code#>
 //        case .completeSubscription(let string):
@@ -69,8 +71,9 @@ extension Analytics {
 
         // MARK: - Purchases
         case initPurchase(product: String)
-        case completePurchase(product: String)
         case cancelPurchase(product: String)
+        case completePurchase(revenue: YMMRevenueInfo)
+        case refundPurchase(revenue: YMMRevenueInfo)
 
         // MARK: - Subscriptions
         case initSubscription(product: String)
@@ -97,6 +100,6 @@ extension Analytics.Conversion {
 extension Analytics {
     enum System {
         case appMetrica
-        case sigment
+        case segment
     }
 }

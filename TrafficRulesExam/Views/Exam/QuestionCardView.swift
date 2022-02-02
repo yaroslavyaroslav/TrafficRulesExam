@@ -140,11 +140,14 @@ struct QuestionCardView: View {
                 self.isHintShown = false
 
                 if answeredQuestions.count == 20 {
+                    // If user made a mistake
                     if !result.mistakes.isEmpty {
                         coinsTimer.spendCoin()
+                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+                    } else {
+                        // if user don't made any mistakes.
                         Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
                     }
-                    Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
                     resultsHistory.items.append(result)
                     presentationMode.wrappedValue.dismiss()
                     return

@@ -18,7 +18,7 @@ extension Answer: Identifiable {}
 extension Answer: Codable {}
 
 enum AnswerID: Int {
-    case none, a, b, c, d
+    case none, a, b, c, d, e
 
     init(from decoder: Decoder) throws {
         let label = try decoder.singleValueContainer().decode(Int.self)
@@ -28,6 +28,7 @@ enum AnswerID: Int {
         case 2: self = .b
         case 3: self = .c
         case 4: self = .d
+        case 5: self = .e
         default: self = .none
         }
     }
@@ -40,6 +41,7 @@ extension AnswerID {
         case .b: return "2."
         case .c: return "3."
         case .d: return "4."
+        case .e: return "5."
         case .none: return "none"
         }
     }

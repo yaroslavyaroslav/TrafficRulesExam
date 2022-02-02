@@ -113,7 +113,6 @@ class Analytics {
         }
     }
 
-
     private static func sendECommerceEvent(_ event: YMMECommerce) {
         YMMYandexMetrica.report(eCommerce: event) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }

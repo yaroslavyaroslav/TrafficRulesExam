@@ -54,10 +54,6 @@ struct QuestionCardView: View {
                 ZStack(alignment: .center) {
                     QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                         .transition(.moveAndFade)
-                        .onAppear {
-                            currentValues.question = UInt(questionDetails.id)
-                            Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
-                        }
 
                     Text("\(coins.amount)")
                         .frame(width: 20, height: 20, alignment: .center)
@@ -134,6 +130,10 @@ struct QuestionCardView: View {
             withAnimation {
                 self.saveAnswer()
                 answeredQuestions.insert(questionDetails.id)
+
+                print("question.id: \(questionDetails.id)")
+                currentValues.question = UInt(questionDetails.id)
+                Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
                 print(answeredQuestions.count)
 
                 self.hintPurchased = false
@@ -142,9 +142,10 @@ struct QuestionCardView: View {
                 if answeredQuestions.count == 20 {
                     if !result.mistakes.isEmpty {
                         coinsTimer.spendCoin()
+                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
                     }
+                    Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
                     resultsHistory.items.append(result)
-                    Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket))
                     presentationMode.wrappedValue.dismiss()
                     return
                 }

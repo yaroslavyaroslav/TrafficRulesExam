@@ -23,7 +23,7 @@ extension Analytics {
 
         // MARK: - Exam Actions
         case ticketStarted(ticketId: UInt)
-        case ticketCompleted(ticketId: UInt)
+        case ticketCompleted(ticketId: UInt, success: Bool)
         case questionShown(ticket: UInt, question: UInt)
         case hintTaken(ticket: UInt, question: UInt)
 
@@ -57,6 +57,9 @@ class Analytics {
     }
 
     class func fire(_ conversion: Conversion) {
+        let fiat0 = YMMECommerceAmount(unit: "USD", value: 0)
+        let zedoUSD = YMMECommercePrice(fiat: fiat0)
+
         let fiat1 = YMMECommerceAmount(unit: "USD", value: 1)
         let oneUSD = YMMECommercePrice(fiat: fiat1)
 
@@ -72,13 +75,13 @@ class Analytics {
             let product = YMMECommerceProduct(sku: "Билет \(ticket)")
             sendECommerceEvent(.showProductDetailsEvent(product: product, referrer: nil))
 
-        case .ticketCompleted(let ticket):
+        case .ticketCompleted(let ticket, let success):
             let product = YMMECommerceProduct(sku: "Билет \(ticket)",
                                               name: "Билет \(ticket)",
                                               categoryComponents: nil,
                                               payload: nil,
-                                              actualPrice: oneUSD,
-                                              originalPrice: oneUSD,
+                                              actualPrice: success ? zedoUSD : oneUSD,
+                                              originalPrice: success ? zedoUSD : oneUSD,
                                               promoCodes: nil)
 
             let cartItem = YMMECommerceCartItem(product: product, quantity: 1, revenue: product.actualPrice ?? oneUSD, referrer: nil)

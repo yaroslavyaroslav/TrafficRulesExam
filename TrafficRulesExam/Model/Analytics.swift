@@ -86,9 +86,8 @@ class Analytics {
             sendECommerceEvent(.purchaseEvent(order: order))
 
         case let .questionShown(ticket, question):
-            print("sdf")
-            let product = YMMECommerceProduct(sku: "\(ticket)_\(question)")
-            let screen = YMMECommerceScreen(name: "Билет \(ticket)")
+            let product = YMMECommerceProduct(sku: "Билет \(ticket)")
+            let screen = YMMECommerceScreen(name: "Вопрос \(question)")
             sendECommerceEvent(.showProductCardEvent(product: product, screen: screen))
 
         case let .hintTaken(ticket, question):

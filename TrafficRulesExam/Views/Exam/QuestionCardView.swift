@@ -54,6 +54,10 @@ struct QuestionCardView: View {
                 ZStack(alignment: .center) {
                     QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                         .transition(.moveAndFade)
+                        .onAppear {
+                            currentValues.question = UInt(questionDetails.id)
+                            Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
+                        }
 
                     Text("\(coins.amount)")
                         .frame(width: 20, height: 20, alignment: .center)
@@ -154,14 +158,11 @@ struct QuestionCardView: View {
                     if questionDetails.id < 20 {
                         proxy.scrollTo(questionDetails.id + 1)
                     }
-                    currentValues.question = UInt(questionDetails.id)
                 } else {
                     questionDetails = questions[notAnswered[0] - 1]
                     proxy.scrollTo(questionDetails.id)
-                    currentValues.question = UInt(questionDetails.id)
                 }
             }
-            Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
         }
     }
 }

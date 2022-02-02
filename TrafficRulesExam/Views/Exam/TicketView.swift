@@ -14,13 +14,13 @@ struct TicketView: View {
 
     @EnvironmentObject var coins: Coin
 
-    @EnvironmentObject var currentTicket: CurrentValues
+    @EnvironmentObject var currentValues: CurrentValues
 
     var body: some View {
         VStack(alignment: .leading) {
             QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
                 .onAppear {
-                    currentTicket.ticket = UInt(card.id)
+                    currentValues.ticket = UInt(card.id)
                     Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
                 }
         }

@@ -24,12 +24,11 @@ extension Analytics {
         // MARK: - Exam Actions
         case ticketStarted(ticketId: UInt)
         case ticketCompleted(ticketId: UInt)
-        case questionAnswered(product: YMMECommerceProduct)
-        case hintTaken(product: YMMECommerceProduct)
+        case questionShown(ticket: UInt, question: UInt)
+        case hintTaken(ticket: UInt, question: UInt)
 
         // MARK: - Navigation
         case screenShown(name: String)
-        case ticketCardShown(name: String)
     }
 }
 
@@ -58,10 +57,8 @@ class Analytics {
     }
 
     class func fire(_ conversion: Conversion) {
-        let fiat0 = YMMECommerceAmount(unit: "coin", value: 0)
-        let fiat1 = YMMECommerceAmount(unit: "coin", value: 1)
-        let price0 = YMMECommercePrice(fiat: fiat0)
-        let price1 = YMMECommercePrice(fiat: fiat1)
+        let fiat1 = YMMECommerceAmount(unit: "USD", value: 1)
+        let oneUSD = YMMECommercePrice(fiat: fiat1)
 
         print("\(conversion)")
 
@@ -72,33 +69,49 @@ class Analytics {
             sendRevenueEvent(revenueObject)
 
         case .ticketStarted(let ticket):
-            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [])
-            sendECommerceEvent(YMMECommerce.beginCheckoutEvent(order: order))
+            let product = YMMECommerceProduct(sku: "Билет \(ticket)")
+            sendECommerceEvent(.showProductDetailsEvent(product: product, referrer: nil))
 
         case .ticketCompleted(let ticket):
-            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [])
-            sendECommerceEvent(YMMECommerce.purchaseEvent(order: order))
+            let product = YMMECommerceProduct(sku: "Билет \(ticket)",
+                                              name: "Билет \(ticket)",
+                                              categoryComponents: nil,
+                                              payload: nil,
+                                              actualPrice: oneUSD,
+                                              originalPrice: oneUSD,
+                                              promoCodes: nil)
 
-        case let .questionAnswered(question):
-            let cartItem = YMMECommerceCartItem(product: question, quantity: 1, revenue: price0, referrer: nil)
-            sendECommerceEvent(YMMECommerce.addCartItemEvent(cartItem: cartItem))
+            let cartItem = YMMECommerceCartItem(product: product, quantity: 1, revenue: product.actualPrice ?? oneUSD, referrer: nil)
+            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [cartItem])
+            sendECommerceEvent(.purchaseEvent(order: order))
 
-        case let .hintTaken(hint):
-            let cartItem = YMMECommerceCartItem(product: hint, quantity: 1, revenue: price1, referrer: nil)
-            sendECommerceEvent(YMMECommerce.addCartItemEvent(cartItem: cartItem))
+        case let .questionShown(ticket, question):
+            print("sdf")
+            let product = YMMECommerceProduct(sku: "\(ticket)_\(question)")
+            let screen = YMMECommerceScreen(name: "Билет \(ticket)")
+            sendECommerceEvent(.showProductCardEvent(product: product, screen: screen))
+
+        case let .hintTaken(ticket, question):
+            let product = YMMECommerceProduct(sku: "\(ticket)_\(question)",
+                                              name: "Подсказка \(ticket) \(question)",
+                                              categoryComponents: nil,
+                                              payload: nil,
+                                              actualPrice: oneUSD,
+                                              originalPrice: oneUSD,
+                                              promoCodes: nil)
+
+            let cartItem = YMMECommerceCartItem(product: product, quantity: 1, revenue: product.actualPrice ?? oneUSD, referrer: nil)
+            let order = YMMECommerceOrder(identifier: "Подсказка_\(ticket)_\(question)", cartItems: [cartItem])
+            sendECommerceEvent(.purchaseEvent(order: order))
 
             // FIXME: Make ticketCardShown to eCommerceCard event.
         case let .screenShown(name):
             let screen = YMMECommerceScreen(name: name)
             sendECommerceEvent(.showScreenEvent(screen: screen))
-        case let .ticketCardShown(name):
-            let product = YMMECommerceProduct(sku: name)
-            let screen = YMMECommerceScreen(name: "Решать")
-            sendECommerceEvent(.showProductCardEvent(product: product, screen: screen))
         }
     }
 
-    // FIXME: Make me universal send method.
+
     private static func sendECommerceEvent(_ event: YMMECommerce) {
         YMMYandexMetrica.report(eCommerce: event) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }

@@ -90,9 +90,7 @@ struct QuestionCardView: View {
                     self.isHintShown.toggle()
                 }
 
-                let product = YMMECommerceProduct(sku: "\(currentValues.ticket)/\(currentValues.question)/hint")
-
-                Analytics.fire(.hintTaken(product: product))
+                Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
             }
             .disabled(coins.amount == 0 ? true : false)
             .padding()
@@ -142,11 +140,12 @@ struct QuestionCardView: View {
                         coinsTimer.spendCoin()
                     }
                     resultsHistory.items.append(result)
-                    Analytics.fire(.ticketCompleted(ticketId: 1))
+                    Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket))
                     presentationMode.wrappedValue.dismiss()
                     return
                 }
 
+                // FIXME: Crashes if skip 20 question.
                 let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
 
                 if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
@@ -162,8 +161,7 @@ struct QuestionCardView: View {
                     currentValues.question = UInt(questionDetails.id)
                 }
             }
-            let product = YMMECommerceProduct(sku: "\(currentValues.ticket)/\(currentValues.question)")
-            Analytics.fire(.questionAnswered(product: product))
+            Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
         }
     }
 }

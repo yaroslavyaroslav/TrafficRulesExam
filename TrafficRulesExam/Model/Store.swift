@@ -48,7 +48,6 @@ class Store: ObservableObject {
 
     init() {
         Analytics.initAnalytics()
-        Analytics.fire(.firstRun)
 
         // Initialize empty products then do a product request asynchronously to fill them in.
         self.availableCoinPacks = []

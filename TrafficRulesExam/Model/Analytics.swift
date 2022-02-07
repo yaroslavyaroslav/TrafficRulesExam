@@ -141,4 +141,15 @@ extension Analytics {
         // Todo: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
         return revenueInfo
     }
+
+    @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
+    class func createRevenueObject(for product: Decimal, _ result: String) -> YMMRevenueInfo? {
+
+        let revenueInfo = YMMMutableRevenueInfo(priceDecimal: product as NSDecimalNumber, currency: "RUB")
+        revenueInfo.productID = "(product)"
+        revenueInfo.quantity = 1
+
+        // Todo: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
+        return revenueInfo
+    }
 }

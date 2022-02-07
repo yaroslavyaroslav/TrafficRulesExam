@@ -27,7 +27,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
+      "productID" : "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",
       "referenceName" : "3 months subscription",
       "type" : "NonRenewingSubscription"
     },
@@ -42,7 +42,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.SixMonthCoins",
+      "productID" : "ru.neatness.TrafficRulesExam.SixMonthsCoins",
       "referenceName" : "6 months subscription",
       "type" : "NonRenewingSubscription"
     }

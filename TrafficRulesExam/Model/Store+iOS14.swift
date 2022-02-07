@@ -10,84 +10,102 @@ import StoreKit
 import SwiftKeychainWrapper
 import os.log
 
-public typealias ProductIdentifier = String
-public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
-public typealias ProductPurchaseCompletionHandler = (_ success: Bool) -> Void
-
-public typealias PurchasesRestorationCompletionHandler = (_ success: Bool) -> Void
-
-
-extension Notification.Name {
-    static let PGIAPHelperPurchaseNotification = Notification.Name("PGIAPHelperPurchaseNotification")
-    static let PGIAPHelperProductsInfoDeliveredNotification = Notification.Name("PGIAPHelperProductsInfoDeliveredNotification")
-    static let PGShortTrialPeriodTimerFireNotification = Notification.Name("PGShortTrialPeriodStateNotification")
-    static let PGLongTrialPeriodTimerFireNotification = Notification.Name("PGLongTrialPeriodStateNotification")
-    static let PGPromoTimerFireNotification = Notification.Name("PGPromoTimerFireNotification")
-    static let PGRateUsTimerFireNotification = Notification.Name("PGRateUsTimerFireNotification")
-}
-
-
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 open class IAPHelper: NSObject  {
     private let productIdentifiers: Set<ProductIdentifier>
-    private(set) var purchasedProductIdentifiers: Set<ProductIdentifier> = []
+    private(set) var purchasedSubscriptions: Set<ProductIdentifier> = []
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     private var productPurchaseCompletionHandler: ProductPurchaseCompletionHandler?
     private var purchasesRestorationCompletionHandler: PurchasesRestorationCompletionHandler?
 
+    public typealias ProductIdentifier = String
+    public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
+    public typealias ProductPurchaseCompletionHandler = (_ success: Bool) -> Void
+
+    public typealias PurchasesRestorationCompletionHandler = (_ productIds: [String]) -> Void
+
     private var didRestoreSuccessful = false
 
     public init(productIds: Set<ProductIdentifier>) {
-        productIds.forEach { (id) in
-            os_log("IAPHelper.init productId: %@", id)
-        }
+        productIds.forEach { os_log("IAPHelper.init productId: %@", $0) }
+
         productIdentifiers = productIds
-        for productIdentifier in productIds {
-            let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
-            if purchased {
-                purchasedProductIdentifiers.insert(productIdentifier)
-            } else {
-            }
-        }
+
+        // Filter subscription from all available purchases.
+        let subscriptions = productIds.filter { $0.split(separator: ".").last?.contains(_:"Month") ?? false }
+
+        // if there's record in UserDefaults with subscription ID — it's purchased.
+        purchasedSubscriptions = subscriptions.filter{ UserDefaults.standard.bool(forKey: $0) }
+
         super.init()
         SKPaymentQueue.default().add(self)
     }
 
     @objc func handlePaymentNotification(_ notification: Notification) {
 //        guard customKeychainInstance.set(ApplicaitonState.purchased.rawValue, forKey: KeychainKeys.applicationState.rawValue) else { fatalError("ApplicationState key isn't stored") }
-        os_log("purchasedProductIdentifiers contains: %@", purchasedProductIdentifiers)
+        os_log("purchasedProductIdentifiers contains: %@", purchasedSubscriptions)
     }
 }
 
-
-// MARK: - StoreKit API
-
+// MARK: - Async client methods
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 extension IAPHelper {
+    func requestProducts() async -> [SKProduct]? {
+        await withCheckedContinuation { (continuation: CheckedContinuation<[SKProduct]?, Never>) in
+            requestProducts { _, products in continuation.resume(returning: products) }
+        }
+    }
 
+    func buy(product: SKProduct) async throws -> Bool {
+        await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
+            do {
+                try buyProduct(product) { succeess in
+                    if succeess {
+                        continuation.resume(returning: true)
+                    } else {
+                        continuation.resume(returning: false)
+                    }
+                }
+            }
+            catch {
+                continuation.resume(returning: false)
+            }
+        }
+    }
+
+    func restoreProduct() async -> [String] {
+        await withCheckedContinuation { (continuation: CheckedContinuation<[String], Never>) in
+            restorePurchases { productIds in
+                continuation.resume(returning: productIds)
+            }
+        }
+    }
+
+    private func buyProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) throws {
+        productPurchaseCompletionHandler = completionHandler
+
+        let payment = SKPayment(product: product)
+        guard SKPaymentQueue.canMakePayments() else { throw PurchaseError.PurchasesAreLocked }
+        SKPaymentQueue.default().add(payment)
+    }
+}
+
+// MARK: - SKProductsRequestDelegate
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
+extension IAPHelper: SKProductsRequestDelegate {
     public func requestProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
         productsRequest?.cancel()
         productsRequestCompletionHandler = completionHandler
-        productIdentifiers.forEach { (id) in
-            os_log(OSLogType.info, "IAPHelper product to request: %@", id)
-        }
+
+        productIdentifiers.forEach { os_log(OSLogType.info, "IAPHelper product to request: %@", $0) }
+
         productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+
         os_log(OSLogType.info, "IAPHelper requested product: %@", productsRequest ?? "none")
+
         productsRequest!.delegate = self
         productsRequest!.start()
-    }
-
-    public func buyProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) {
-        productPurchaseCompletionHandler = completionHandler
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
-    }
-
-    public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
-        return purchasedProductIdentifiers.contains(productIdentifier)
-    }
-
-    public class func canMakePayments() -> Bool {
-        return SKPaymentQueue.canMakePayments()
     }
 
     public func restorePurchases(_ completionHandler: @escaping PurchasesRestorationCompletionHandler ) {
@@ -95,17 +113,11 @@ extension IAPHelper {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
-
-}
-
-// MARK: - SKProductsRequestDelegate
-
-extension IAPHelper: SKProductsRequestDelegate {
-
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let products = response.products
         os_log(OSLogType.info,
-               "IAPHelper.SKProductsRequestDelegate.response call, products.length: %d", response.products.count)
+               "IAPHelper.SKProductsRequestDelegate.response call, products.length: %d",
+               response.products.count)
         response.products.forEach { (product) in
             os_log(OSLogType.info,
                    "IAPHelper.SKProductsRequestDelegate.response.product.productIdentifier: %@",
@@ -118,9 +130,6 @@ extension IAPHelper: SKProductsRequestDelegate {
         }
 
         clearRequestAndHandler()
-        NotificationCenter.default.addObserver(self, selector: #selector(handlePaymentNotification(_:)),
-                                               name: .PGIAPHelperPurchaseNotification,
-                                               object: nil)
     }
 
     public func request(_ request: SKRequest, didFailWithError error: Error) {
@@ -136,15 +145,16 @@ extension IAPHelper: SKProductsRequestDelegate {
     }
 }
 
-
+// MARK: - SKPaymentTransactionObserver
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 extension IAPHelper: SKPaymentTransactionObserver {
-
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach { (transaction) in
             if let identifier = transaction.transactionIdentifier {
                 os_log(OSLogType.info, "IAPHelper.SKPaymentTransactionObserver.transaction", identifier)
             }
         }
+
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased: purchased(transaction)
@@ -155,11 +165,9 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
     }
 
-
     private func purchased(_ transaction: SKPaymentTransaction) {
         os_log("%@ purchased", transaction.payment.productIdentifier)
 
-//        deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
         productPurchaseCompletionHandler?(true)
     }
@@ -179,28 +187,21 @@ extension IAPHelper: SKPaymentTransactionObserver {
 
     }
 
-    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        os_log("paymentQueueRestoreCompletedTransactionsFinished")
-        if didRestoreSuccessful {
-            purchasesRestorationCompletionHandler?(true)
-        } else {
-            purchasesRestorationCompletionHandler?(false)
-        }
-    }
-
     public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         os_log(OSLogType.error, "IAPHelper.SKPaymentTransactionObserver.paymentQueue.error %@", error.localizedDescription)
-        purchasesRestorationCompletionHandler?(false)
+        purchasesRestorationCompletionHandler?([])
     }
 
     private func restored(_ transaction: SKPaymentTransaction) {
         os_log("%@ restored", transaction.payment.productIdentifier)
-//        deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
-        didRestoreSuccessful = true
+
+        // FIXME: This returns only one ID not all.
+        purchasesRestorationCompletionHandler?([transaction.payment.productIdentifier])
         SKPaymentQueue.default().finishTransaction(transaction)
     }
+}
 
-    private func deferred(_ transaction: SKPaymentTransaction) {
-
-    }
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
+enum PurchaseError: Error {
+    case PurchasesAreLocked
 }

@@ -13,13 +13,15 @@ struct ListCellView: View {
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
+    @Binding var isPresented: Bool
     @EnvironmentObject var coins: Coin
 
     let product: Product
     let purchasingEnabled: Bool
 
-    init(product: Product, purchasingEnabled: Bool = true) {
+    init(product: Product, isPresented: Binding<Bool>, purchasingEnabled: Bool = true) {
         self.product = product
+        self._isPresented = isPresented
         self.purchasingEnabled = purchasingEnabled
     }
 
@@ -35,14 +37,13 @@ struct ListCellView: View {
                 Spacer()
                 buyButton
                     .buttonStyle(BuyButtonStyle(isPurchased: isPurchased))
-                    .disabled(isPurchased)
             } else {
                 productDetail
             }
         }
-        .alert(isPresented: $isShowingError, content: {
+        .alert(isPresented: $isShowingError) {
             Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
-        })
+        }
     }
 
     @ViewBuilder
@@ -59,6 +60,7 @@ struct ListCellView: View {
         }
     }
 
+    @available(iOS 15.0, *)
     func subscribeButton(_ subscription: Product.SubscriptionInfo) -> some View {
         let unit: String
         let plural = subscription.subscriptionPeriod.value > 1
@@ -90,27 +92,20 @@ struct ListCellView: View {
     }
 
     var buyButton: some View {
-        Button(action: {
-            Task {
-                await buy()
-            }
-        }) {
-            if isPurchased {
-                Text(Image(systemName: "checkmark"))
-                    .bold()
-                    .foregroundColor(.white)
+        Button {
+            Task { await buy() }
+        } label: {
+            if let subscription = product.subscription {
+                subscribeButton(subscription)
             } else {
-                if let subscription = product.subscription {
-                    subscribeButton(subscription)
-                } else {
-                    Text(product.displayPrice)
-                        .foregroundColor(.white)
-                        .bold()
-                }
+                Text(product.displayPrice)
+                    .foregroundColor(.white)
+                    .bold()
             }
         }
     }
 
+    @available(iOS 15.0, *)
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
@@ -119,7 +114,10 @@ struct ListCellView: View {
                 guard let coinsString = transaction.productID.split(separator: ".").last,
                       let coinsAmount = Int(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
 
-                withAnimation { coins.amount += coinsAmount }
+                withAnimation {
+                    coins.amount += coinsAmount
+                    isPresented = false
+                }
             }
         } catch StoreError.failedVerification {
             errorTitle = "Your purchase could not be verified by the App Store."

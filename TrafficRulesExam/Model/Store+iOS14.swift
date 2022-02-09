@@ -57,10 +57,10 @@ extension IAPHelper {
         }
     }
 
-    func buy(product: SKProduct) async throws -> Bool {
+    func purchase(product: SKProduct) async -> Bool {
         await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
             do {
-                try buyProduct(product) { succeess in
+                try purchaseProduct(product) { succeess in
                     if succeess {
                         continuation.resume(returning: true)
                     } else {
@@ -82,7 +82,7 @@ extension IAPHelper {
         }
     }
 
-    private func buyProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) throws {
+    private func purchaseProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) throws {
         productPurchaseCompletionHandler = completionHandler
 
         let payment = SKPayment(product: product)

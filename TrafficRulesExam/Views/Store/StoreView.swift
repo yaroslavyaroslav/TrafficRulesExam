@@ -18,12 +18,12 @@ struct StoreView: View {
         List {
             Section(header: Text("Cars")) {
                 ForEach(store.availableCoinPacks, id: \.id) { car in
-                    ListCellView(product: car)
+                    ListCellView(product: car, isPresented: $isPresented)
                 }
             }
             .listStyle(GroupedListStyle())
 
-            SubscriptionsView()
+            SubscriptionsView(isPresented: $isPresented)
         }
     }
 }

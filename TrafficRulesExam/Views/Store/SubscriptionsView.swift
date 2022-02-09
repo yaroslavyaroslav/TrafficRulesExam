@@ -14,16 +14,15 @@ struct SubscriptionsView: View {
 
     @State var currentSubscription: Product?
     @State var status: Product.SubscriptionInfo.Status?
+    @Binding var isPresented: Bool
 
-    var availableSubscriptions: [Product] {
-        store.availableSubscriptions.filter { $0.id != currentSubscription?.id }
-    }
+    var availableSubscriptions: [Product] { store.availableSubscriptions.filter { $0.id != currentSubscription?.id } }
 
     var body: some View {
         Group {
             if let currentSubscription = currentSubscription {
                 Section(header: Text("My Subscription")) {
-                    ListCellView(product: currentSubscription, purchasingEnabled: false)
+                    ListCellView(product: currentSubscription, isPresented: $isPresented, purchasingEnabled: false)
 
                     if let status = status {
                         StatusInfoView(product: currentSubscription,
@@ -35,7 +34,7 @@ struct SubscriptionsView: View {
 
             Section(header: Text("Navigation Options")) {
                 ForEach(availableSubscriptions, id: \.id) { product in
-                    ListCellView(product: product)
+                    ListCellView(product: product, isPresented: $isPresented)
                 }
             }
             .listStyle(GroupedListStyle())

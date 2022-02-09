@@ -53,18 +53,16 @@ extension IAPHelper {
         }
     }
 
-    func purchase(product: SKProduct) async -> Bool {
-        await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
-            do {
-                try purchaseProduct(product) { succeess in
-                    if succeess {
-                        continuation.resume(returning: true)
-                    } else {
-                        continuation.resume(returning: false)
-                    }
+    func purchase(product: SKProduct) async throws -> Bool {
+        guard SKPaymentQueue.canMakePayments() else { throw PurchaseError.PurchasesAreLocked }
+
+        return await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
+            purchaseProduct(product) { succeess in
+                if succeess {
+                    continuation.resume(returning: true)
+                } else {
+                    continuation.resume(returning: false)
                 }
-            } catch {
-                continuation.resume(returning: false)
             }
         }
     }
@@ -77,11 +75,10 @@ extension IAPHelper {
         }
     }
 
-    private func purchaseProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) throws {
+    private func purchaseProduct(_ product: SKProduct, with completionHandler: @escaping ProductPurchaseCompletionHandler) {
         productPurchaseCompletionHandler = completionHandler
-
         let payment = SKPayment(product: product)
-        guard SKPaymentQueue.canMakePayments() else { throw PurchaseError.PurchasesAreLocked }
+
         SKPaymentQueue.default().add(payment)
     }
 }

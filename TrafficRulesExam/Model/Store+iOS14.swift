@@ -41,11 +41,6 @@ open class IAPHelper: NSObject {
         super.init()
         SKPaymentQueue.default().add(self)
     }
-
-    @objc func handlePaymentNotification(_ notification: Notification) {
-//        guard customKeychainInstance.set(ApplicaitonState.purchased.rawValue, forKey: KeychainKeys.applicationState.rawValue) else { fatalError("ApplicationState key isn't stored") }
-        os_log("purchasedProductIdentifiers contains: %@", purchasedSubscriptions)
-    }
 }
 
 // MARK: - Async client methods
@@ -155,14 +150,12 @@ extension IAPHelper: SKPaymentTransactionObserver {
             if let identifier = transaction.transactionIdentifier {
                 os_log(OSLogType.info, "IAPHelper.SKPaymentTransactionObserver.transaction", identifier)
             }
-        }
-
-        for transaction in transactions {
             switch transaction.transactionState {
             case .purchased: purchased(transaction)
             case .failed: failed(transaction)
             case .restored: restored(transaction)
             case .deferred, .purchasing: break
+            @unknown default: fatalError()
             }
         }
     }
@@ -175,7 +168,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
 
     private func purchasing(_ transaction: SKPaymentTransaction) {
-        os_log(OSLogType.info, "IAPHelper.SKPaymentTransactionObserver.purchasing")
+        os_log(.info, "IAPHelper.SKPaymentTransactionObserver.purchasing")
     }
 
     private func failed(_ transaction: SKPaymentTransaction) {
@@ -185,7 +178,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
 
     public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        os_log(OSLogType.error, "IAPHelper.SKPaymentTransactionObserver.paymentQueue.error %@", error.localizedDescription)
+        os_log(.error, "IAPHelper.SKPaymentTransactionObserver.paymentQueue.error %@", error.localizedDescription)
         purchasesRestorationCompletionHandler?([])
     }
 

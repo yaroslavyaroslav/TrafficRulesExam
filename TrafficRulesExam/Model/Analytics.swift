@@ -6,28 +6,31 @@
 //
 
 import Foundation
+import os.log
 import StoreKit
 import SwiftKeychainWrapper
 import YandexMobileMetrica
-import os.log
-
 
 extension Analytics {
     enum Conversion {
         // MARK: - Conversions
+
         case firstRun
 
         // MARK: - Purchases
+
         case completePurchase(revenue: YMMRevenueInfo)
         case refundPurchase(revenue: YMMRevenueInfo)
 
         // MARK: - Exam Actions
+
         case ticketStarted(ticketId: UInt)
         case ticketCompleted(ticketId: UInt, success: Bool)
         case questionShown(ticket: UInt, question: UInt)
         case hintTaken(ticket: UInt, question: UInt)
 
         // MARK: - Navigation
+
         case screenShown(name: String)
     }
 }
@@ -71,11 +74,11 @@ class Analytics {
         case let .completePurchase(revenueObject), let .refundPurchase(revenueObject):
             sendRevenueEvent(revenueObject)
 
-        case .ticketStarted(let ticket):
+        case let .ticketStarted(ticket):
             let product = YMMECommerceProduct(sku: "Билет \(ticket)")
             sendECommerceEvent(.showProductDetailsEvent(product: product, referrer: nil))
 
-        case .ticketCompleted(let ticket, let success):
+        case let .ticketCompleted(ticket, success):
             let product = YMMECommerceProduct(sku: "Билет \(ticket)",
                                               name: "Билет \(ticket)",
                                               categoryComponents: nil,
@@ -106,7 +109,7 @@ class Analytics {
             let order = YMMECommerceOrder(identifier: "Подсказка_\(ticket)_\(question)", cartItems: [cartItem])
             sendECommerceEvent(.purchaseEvent(order: order))
 
-            // FIXME: Make ticketCardShown to eCommerceCard event.
+        // FIXME: Make ticketCardShown to eCommerceCard event.
         case let .screenShown(name):
             let screen = YMMECommerceScreen(name: name)
             sendECommerceEvent(.showScreenEvent(screen: screen))
@@ -138,18 +141,17 @@ extension Analytics {
         revenueInfo.productID = product.displayName
         revenueInfo.quantity = UInt(transaction.purchasedQuantity)
 
-        // Todo: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
+        // TODO: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
         return revenueInfo
     }
 
     @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
     class func createRevenueObject(for product: Decimal, _ result: String) -> YMMRevenueInfo? {
-
         let revenueInfo = YMMMutableRevenueInfo(priceDecimal: product as NSDecimalNumber, currency: "RUB")
         revenueInfo.productID = "(product)"
         revenueInfo.quantity = 1
 
-        // Todo: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
+        // TODO: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
         return revenueInfo
     }
 }

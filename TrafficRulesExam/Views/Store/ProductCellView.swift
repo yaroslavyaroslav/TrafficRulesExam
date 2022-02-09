@@ -109,7 +109,6 @@ struct ProductCellView: View {
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
-
                 // FIXME: Working only with coins purchase, not working with subscription.
                 guard let coinsString = transaction.productID.split(separator: ".").last,
                       let coinsAmount = UInt(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }

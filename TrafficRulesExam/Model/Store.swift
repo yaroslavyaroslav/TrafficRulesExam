@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import StoreKit
-import YandexMobileMetrica
-import SwiftKeychainWrapper
 import os.log
+import StoreKit
+import SwiftKeychainWrapper
+import YandexMobileMetrica
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -61,7 +61,6 @@ class Store: ObservableObject {
             // Initialize the store by starting a product request.
             await requestProducts()
         }
-
     }
 
     deinit {
@@ -97,7 +96,7 @@ class Store: ObservableObject {
                             "ru.neatness.TrafficRulesExam.OneMonthCoins",
                             "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
                             "ru.neatness.TrafficRulesExam.SixMonthCoins"]
-            
+
             let storeProducts = try await Product.products(for: products)
 
             var newCoins: [Product] = []
@@ -108,7 +107,7 @@ class Store: ObservableObject {
                 switch product.type {
                 case .consumable: newCoins.append(product)
                 case .nonRenewable: newSubscriptions.append(product)
-                    // Ignore another products
+                // Ignore another products
                 default: os_log("Unknown product \(product.id)")
                 }
             }
@@ -129,7 +128,7 @@ class Store: ObservableObject {
 
         let transaction = try checkVerified(verification)
 
-        await self.updateSubscriptionStatus(transaction)
+        await updateSubscriptionStatus(transaction)
 
         if let revenueObject = Analytics.createRevenueObject(for: product, verification) {
             Analytics.fire(.completePurchase(revenue: revenueObject))

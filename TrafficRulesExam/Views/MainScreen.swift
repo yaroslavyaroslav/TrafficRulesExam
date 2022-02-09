@@ -73,7 +73,6 @@ struct MainScreen: View {
 }
 
 struct CoinAmountView: View {
-
     var coinsAmount: UInt
 
     var body: some View {

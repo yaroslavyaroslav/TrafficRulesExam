@@ -22,7 +22,7 @@ struct SubscriptionsView: View {
         Group {
             if let currentSubscription = currentSubscription {
                 Section(header: Text("My Subscription")) {
-                    ListCellView(product: currentSubscription, isPresented: $isPresented, purchasingEnabled: false)
+                    ProductCellView(product: currentSubscription, isPresented: $isPresented, purchasingEnabled: false)
 
                     if let status = status {
                         StatusInfoView(product: currentSubscription,
@@ -34,7 +34,7 @@ struct SubscriptionsView: View {
 
             Section(header: Text("Navigation Options")) {
                 ForEach(availableSubscriptions, id: \.id) { product in
-                    ListCellView(product: product, isPresented: $isPresented)
+                    ProductCellView(product: product, isPresented: $isPresented)
                 }
             }
             .listStyle(GroupedListStyle())

@@ -1,5 +1,5 @@
 //
-//  ListCellView.swift
+//  ProductCellView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 20.01.2022.
@@ -8,7 +8,7 @@ import StoreKit
 import SwiftUI
 
 @available(iOS 15.0, *)
-struct ListCellView: View {
+struct ProductCellView: View {
     @EnvironmentObject var store: Store
     @State var isPurchased: Bool = false
     @State var errorTitle = ""

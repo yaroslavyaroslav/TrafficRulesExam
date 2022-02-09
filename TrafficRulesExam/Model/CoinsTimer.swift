@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 class CoinsTimer: ObservableObject {
     private var coins: Coin
 
-    private var coinsLimit: Int
+    private var coinsLimit: UInt
 
     private var timeLimit: TimeInterval
 
@@ -27,7 +27,7 @@ class CoinsTimer: ObservableObject {
     ///   - coins: Coin object wich are stores actual coins amount status in runtime
     ///   - coinsLimit: Maximum amount of a free coins
     ///   - timerLimit: Time amount until a next free coin drops in seconds
-    init(_ coins: Coin, coinsLimit: Int = 5, timeLimit: TimeInterval = 600, update frequency: TimeInterval = 1) {
+    init(_ coins: Coin, coinsLimit: UInt = 5, timeLimit: TimeInterval = 600, update frequency: TimeInterval = 1) {
         self.coins = coins
         self.coinsLimit = coinsLimit
         self.timeLimit = timeLimit
@@ -42,21 +42,26 @@ class CoinsTimer: ObservableObject {
         let currentDate = Date()
         let coinDrop = ticketUsage.addingTimeInterval(timeLimit)
 
+        /// If current time (`currentDistance`) > than time of the last coin drop time (`coinDrop`)
         if currentDate > coinDrop {
+            /// `distance` always > 0
             let distance = coinDrop.distance(to: currentDate)
-            var multiplier = 1
-            multiplier += Int(distance) / Int(timeLimit)
+            /// How much times `timelimit` (default 10:00) stores in `distance`
+            var multiplier: UInt = 1
+            multiplier += UInt(distance) / UInt(timeLimit)
 
+            /// Add coins that user have yet to `multiplier`
             multiplier += coins.amount
 
+            /// `multiplier` should not be greater than `coinsLimit`
             if multiplier > coinsLimit { coins.amount = coinsLimit; return "" }
 
-            // Add one coin if currentDate pass ticketArrive date
-            // Add more coins if currentDate pass ticketArrive date more than 10 minutes.
+            /// Add one coin if `currentDate` pass `ticketArrive` date
+            /// Add more coins if `currentDate` pass `ticketArrive` date more than 10 minutes.
             coins.amount = multiplier
 
-            // Multiplyer is not 1 here, it's arithmetic progression.
-            // Since timerAmount multiplies on all available coins.
+            /// `multiplyer` is not 1 here, it's arithmetic progression.
+            /// Since `timerAmount` multiplies on all available coins.
             let newTicketUsageDate = coinDrop + TimeInterval(multiplier) * timeLimit
             KeychainWrapper.standard[.ticketUsed] = newTicketUsageDate.timeIntervalSinceReferenceDate
         }

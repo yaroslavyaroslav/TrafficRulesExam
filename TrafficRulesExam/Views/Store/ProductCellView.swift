@@ -27,7 +27,7 @@ struct ProductCellView: View {
 
     var body: some View {
         HStack {
-            Text("this")
+            Image(systemName: "coloncurrencysign.circle.fill")
                 .font(.system(size: 50))
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
@@ -112,7 +112,7 @@ struct ProductCellView: View {
 
                 // FIXME: Working only with coins purchase, not working with subscription.
                 guard let coinsString = transaction.productID.split(separator: ".").last,
-                      let coinsAmount = Int(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                      let coinsAmount = UInt(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
 
                 withAnimation {
                     coins.amount += coinsAmount

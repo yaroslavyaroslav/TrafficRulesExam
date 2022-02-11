@@ -11,6 +11,7 @@ import YandexMobileMetrica
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var coin: Coin = {
+        /// If there's no such record in UserDefaults — app is running in the first time.
         if !UserDefaults.standard.bool(forKey: UDKeys.didRan.rawValue) {
             DispatchQueue.global().async(flags: [.barrier]) {
                 UserDefaults.standard.set(true, forKey: UDKeys.didRan.rawValue)

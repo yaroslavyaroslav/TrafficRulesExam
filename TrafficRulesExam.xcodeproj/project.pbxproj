@@ -403,11 +403,10 @@
 			};
 			buildConfigurationList = 5C453E082714730A006BFFCB /* Build configuration list for PBXProject "TrafficRulesExam" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
-				Base,
+				ru,
 			);
 			mainGroup = 5C453E042714730A006BFFCB;
 			packageReferences = (

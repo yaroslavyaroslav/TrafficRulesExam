@@ -49,7 +49,7 @@
   ],
   "products" : [
     {
-      "displayPrice" : "59",
+      "displayPrice" : "15",
       "familyShareable" : false,
       "internalID" : "026D0256",
       "localizations" : [
@@ -64,7 +64,7 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "99",
+      "displayPrice" : "29",
       "familyShareable" : false,
       "internalID" : "F5A6074E",
       "localizations" : [
@@ -74,23 +74,23 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.15",
-      "referenceName" : "15 Coins",
+      "productID" : "ru.neatness.TrafficRulesExam.20",
+      "referenceName" : "20 Coins",
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "159",
+      "displayPrice" : "99",
       "familyShareable" : false,
       "internalID" : "B1407256",
       "localizations" : [
         {
           "description" : "Большой пак монет",
-          "displayName" : "20 Монет",
+          "displayName" : "40 Монет",
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.20",
-      "referenceName" : "20 Coins",
+      "productID" : "ru.neatness.TrafficRulesExam.40",
+      "referenceName" : "40 Coins",
       "type" : "Consumable"
     }
   ],

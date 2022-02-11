@@ -7,8 +7,18 @@
 
 import SwiftUI
 
-@available(iOS 15.0, *)
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase: View {
+
+    lazy var iAPHelper: IAPHelper = .init(productIds: [
+        "ru.neatness.TrafficRulesExam.10",
+        "ru.neatness.TrafficRulesExam.20",
+        "ru.neatness.TrafficRulesExam.40",
+        "ru.neatness.TrafficRulesExam.OneMonthCoins",
+        "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",
+        "ru.neatness.TrafficRulesExam.SixMonthsCoins"
+    ])
+
     @Binding
     var isPresented: Bool
 
@@ -19,9 +29,7 @@ struct Purchase: View {
         VStack {
             HStack {
                 Spacer()
-                Button("X") {
-                    isPresented = false
-                }
+                Button("X") { isPresented = false }
                 .padding()
             }
 
@@ -35,6 +43,7 @@ struct Purchase: View {
                         .multilineTextAlignment(.center)
 
                     Button("Buy") {
+                        
                         coins.amount += 10
                         isPresented = false
                         print("purchase Unilimted")
@@ -75,7 +84,7 @@ struct Purchase: View {
     }
 }
 
-@available(iOS 15.0, *)
+@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase_Previews: PreviewProvider {
     @State
     static var isPresentedPreview = true

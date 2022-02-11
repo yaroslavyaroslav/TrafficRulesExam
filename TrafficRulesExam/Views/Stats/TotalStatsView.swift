@@ -67,9 +67,8 @@ struct TotalStatsView: View {
                         .sheet(isPresented: $isModalViewPresented) {
                             if #available(iOS 15.0, *) {
                                 StoreView(isPresented: $isModalViewPresented)
-//                                Purchase(isPresented: $isModalViewPresented)
                             } else {
-                                EmptyView()
+                                Purchase(isPresented: $isModalViewPresented)
                                 // Fallback on earlier versions
                             }
                         }

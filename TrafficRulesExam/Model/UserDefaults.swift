@@ -9,4 +9,5 @@ import Foundation
 
 enum UDKeys: String {
     case cardResults
+    case didRan
 }

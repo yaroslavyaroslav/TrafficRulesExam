@@ -5,11 +5,21 @@
 //  Created by Yaroslav on 31.01.2022.
 //
 
+import SwiftKeychainWrapper
 import UIKit
 import YandexMobileMetrica
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var coin = Coin()
+    lazy var coin: Coin = {
+        if !UserDefaults.standard.bool(forKey: UDKeys.didRan.rawValue) {
+            DispatchQueue.global().async(flags: [.barrier]) {
+                UserDefaults.standard.set(true, forKey: UDKeys.didRan.rawValue)
+                KeychainWrapper.standard[.coinsAmount] = 20
+                KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+            }
+        }
+        return Coin()
+    }()
 
     lazy var coinsTimer: CoinsTimer = .init(coin)
 

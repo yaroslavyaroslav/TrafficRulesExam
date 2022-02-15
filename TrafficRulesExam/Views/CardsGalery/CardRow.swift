@@ -27,7 +27,7 @@ struct CardRow: View {
     var locCards: [ExamCard]
 
     var body: some View {
-        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+        let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: 160, maximum: 170)), count: 2)
 
         ScrollView {
             LazyVGrid(columns: columns) {

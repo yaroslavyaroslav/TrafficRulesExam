@@ -45,11 +45,6 @@ struct MainScreen: View {
                 KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
             }
 #endif
-            Picker("Tab", selection: $selectedIndex.animation(.default)) {
-                Text("Решать").tag(Tabs.cardGalery)
-                Text("Статистика").tag(Tabs.totalStatsNavigation)
-            }
-            .pickerStyle(SegmentedPickerStyle())
 
             // FIXME: Переписать из двух экранов выезжающих сбоку на
             // один экран, а плашка решать/статистика включает в том вью только блок статистики (и меняет линки с билета на историю).
@@ -68,7 +63,23 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
-        .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+        .navigationBarItems(leading: button, trailing: CoinAmountView(coinsAmount: coins.amount))
+    }
+
+
+    var button: some View {
+        Button {
+            if case .cardGalery = selectedIndex {
+                selectedIndex = .totalStatsNavigation
+            } else if case .totalStatsNavigation = selectedIndex {
+                selectedIndex = .cardGalery
+            }
+        } label: {
+            switch selectedIndex {
+            case .cardGalery: Text("Статистика")
+            case .totalStatsNavigation: Text("Билеты")
+            }
+        }
     }
 }
 
@@ -78,10 +89,21 @@ struct CoinAmountView: View {
     var body: some View {
         HStack {
             Image(systemName: "coloncurrencysign.circle.fill")
+                .font(.system(size: 17))
+                .padding(.trailing, 0)
             Text("\(coinsAmount)")
-            Spacer()
+                .font(.system(size: 17))
+                .padding(.leading, 0)
             Text("+")
+                .font(.system(size: 22))
         }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 32)
+                .foregroundColor(Color.blue)
+        )
     }
 }
 

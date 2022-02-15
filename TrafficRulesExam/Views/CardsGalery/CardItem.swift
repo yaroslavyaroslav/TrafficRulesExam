@@ -14,42 +14,52 @@ struct CardItem: View {
 
     var body: some View {
         HStack {
-            Spacer()
             VStack {
+                let horisontalPadding: CGFloat = 10
                 HStack {
+                    Text("Билет \(card.id)")
+                        .font(.system(size: 17))
                     Spacer()
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.purple)
-                            .frame(width: 30, height: 30, alignment: .trailing)
-                        Text("1")
-                            // TODO: Change color based on iOS Theme
-                            .foregroundColor(.black)
+                    Image(systemName: "info.circle")
+                        .font(.system(size: 22))
+                }
+                .padding(.top)
+                .padding(.horizontal, horisontalPadding)
+                HStack {
+                    ZStack(alignment: .center) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color.green)
+                        Image(systemName: "info.circle")
                     }
                 }
+                .padding(.top, 16)
+                .padding(.horizontal, horisontalPadding * 2)
+                .padding(.bottom, 20)
+
                 HStack {
+                    Image(systemName: "info.circle")
+                    Text("1")
                     Spacer()
-                    Text("Билет \(card.id)")
-                        .font(.system(size: 30))
-                    Spacer()
+                    Text(result.resultHistory.items.last?.examDate.prettyPrint ?? "Вчера")
                 }
+                .padding(.horizontal, horisontalPadding)
 
                 Spacer()
 
-                Text(result.resultHistory.items.isEmpty ? "Начать" : "\(20 - result.resultHistory.items.last!.mistakes.count)/20")
-                    .font(.system(size: 25))
-                Spacer()
-
-                if let date = result.resultHistory.items.last?.examDate {
-                    Text(date.prettyPrint)
-                        .font(.system(size: 20))
-                    Spacer()
-                }
+//                Text(result.resultHistory.items.isEmpty ? "Начать" : "\(20 - result.resultHistory.items.last!.mistakes.count)/20")
+//                    .font(.system(size: 25))
+//                Spacer()
+//
+//                if let date = result.resultHistory.items.last?.examDate {
+//                    Text(date.prettyPrint)
+//                        .font(.system(size: 20))
+//                    Spacer()
+//                }
             }
             .foregroundColor(.white)
             .frame(height: 200, alignment: .center)
             .background(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 12)
                     // if there's no result — .gray
                     // if there is and it's good — .green
                     // if there is and it is no go-o-od — .red
@@ -61,7 +71,6 @@ struct CardItem: View {
                         )
                     )
             )
-            Spacer()
         }
     }
 }

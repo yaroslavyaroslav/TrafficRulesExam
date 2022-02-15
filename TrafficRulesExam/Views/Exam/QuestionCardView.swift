@@ -7,6 +7,7 @@
 
 import SwiftKeychainWrapper
 import SwiftUI
+import YandexMobileMetrica
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -38,6 +39,8 @@ struct QuestionCardView: View {
     @EnvironmentObject var coins: Coin
 
     @EnvironmentObject var coinsTimer: CoinsTimer
+
+    @EnvironmentObject var currentValues: CurrentValues
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -86,6 +89,8 @@ struct QuestionCardView: View {
                 withAnimation {
                     self.isHintShown.toggle()
                 }
+
+                Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
             }
             .disabled(coins.amount == 0 ? true : false)
             .padding()
@@ -125,23 +130,34 @@ struct QuestionCardView: View {
             withAnimation {
                 self.saveAnswer()
                 answeredQuestions.insert(questionDetails.id)
+
+                print("question.id: \(questionDetails.id)")
+                currentValues.question = UInt(questionDetails.id)
+                Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
                 print(answeredQuestions.count)
 
                 self.hintPurchased = false
                 self.isHintShown = false
 
                 if answeredQuestions.count == 20 {
+                    // If user made a mistake
                     if !result.mistakes.isEmpty {
                         coinsTimer.spendCoin()
+                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+                    } else {
+                        // if user don't made any mistakes.
+                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
                     }
                     resultsHistory.items.append(result)
                     presentationMode.wrappedValue.dismiss()
                     return
                 }
 
+                // FIXME: Crashes if skip 20 question.
                 let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
 
                 if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
+                    // Id 1 based, array 0 based, so to get next element of array need to do this array[id]
                     questionDetails = questions[questionDetails.id]
                     if questionDetails.id < 20 {
                         proxy.scrollTo(questionDetails.id + 1)

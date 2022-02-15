@@ -38,7 +38,7 @@ struct CardRow: View {
                      метода @Environment(\.presentationMode) переменной dismiss()
                      */
                     NavigationLink {
-                        CardView(card: locCards.getElementById(result.id), result: $result)
+                        TicketView(card: locCards.getElementById(result.id), result: $result)
                     } label: {
                         CardItem(card: locCards.getElementById(result.id), result: result)
                     }
@@ -55,5 +55,6 @@ struct CardRow: View {
 struct CardRow_Previews: PreviewProvider {
     static var previews: some View {
         CardRow(locCards: cards)
+            .environmentObject(Coin())
     }
 }

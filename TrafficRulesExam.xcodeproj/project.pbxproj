@@ -15,10 +15,10 @@
 		5C1AAC5527996340002046DE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5427996340002046DE /* Store.swift */; };
 		5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC582799B9C2002046DE /* StoreView.swift */; };
 		5C1AAC5B2799B9E4002046DE /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5A2799B9E4002046DE /* SubscriptionsView.swift */; };
-		5C1AAC5D2799BA10002046DE /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5C2799BA10002046DE /* ListCellView.swift */; };
+		5C1AAC5D2799BA10002046DE /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5C2799BA10002046DE /* ProductCellView.swift */; };
 		5C1AAC5F2799BA24002046DE /* BuyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5E2799BA24002046DE /* BuyButtonStyle.swift */; };
 		5C1AAC612799BB7B002046DE /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC602799BB7B002046DE /* StatusInfoView.swift */; };
-		5C1AAC652799C1B5002046DE /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C1AAC642799C1B5002046DE /* Products.plist */; };
+		5C1AAC6727A70477002046DE /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC6627A70477002046DE /* Analytics.swift */; };
 		5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */; };
 		5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C453E122714730A006BFFCB /* CardsGalery.swift */; };
 		5C453E152714730D006BFFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C453E142714730D006BFFCB /* Assets.xcassets */; };
@@ -32,6 +32,8 @@
 		5C45EBC7273C4FBB00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
 		5C45EBC8273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
 		5C45EBC9273C52AF00C90977 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */; };
+		5C47E8B427A7D72B009E9F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */; };
+		5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */; };
 		5C53ECFF2733F5700044905A /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C53ED4227340BBE0044905A /* TrafficRulesExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4127340BBE0044905A /* TrafficRulesExamTests.swift */; };
 		5C53ED4F27340BCE0044905A /* TrafficRulesExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ED4E27340BCE0044905A /* TrafficRulesExamUITests.swift */; };
@@ -53,7 +55,7 @@
 		5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */; };
 		5C900ED3278C7AFA004E9198 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C900ED2278C7AF9004E9198 /* Purchase.swift */; };
 		5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelLoad.swift */; };
-		5C97B49827197EEF0017723A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* CardView.swift */; };
+		5C97B49827197EEF0017723A /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* TicketView.swift */; };
 		5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD344E27902C2200D919DD /* CoinsTimer.swift */; };
 		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
 		5CDB6372272D946700E888F7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
@@ -86,14 +88,15 @@
 		5C0F75B3271A086A004473EA /* QuestionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContentView.swift; sourceTree = "<group>"; };
 		5C121918272ED02D00DB4826 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		5C12191F272F2B6100DB4826 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
-		5C1AAC51279950DB002046DE /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = Products.storekit; path = TrafficRulesExam/Products.storekit; sourceTree = SOURCE_ROOT; };
+		5C1AAC51279950DB002046DE /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = TrafficRulesExam/Products.storekit; sourceTree = SOURCE_ROOT; };
 		5C1AAC5427996340002046DE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		5C1AAC582799B9C2002046DE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		5C1AAC5A2799B9E4002046DE /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
-		5C1AAC5C2799BA10002046DE /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		5C1AAC5C2799BA10002046DE /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		5C1AAC5E2799BA24002046DE /* BuyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonStyle.swift; sourceTree = "<group>"; };
 		5C1AAC602799BB7B002046DE /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
-		5C1AAC642799C1B5002046DE /* Products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
+		5C1AAC6627A70477002046DE /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		5C392B4527B406C600427D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficRulesExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamApp.swift; sourceTree = "<group>"; };
 		5C453E122714730A006BFFCB /* CardsGalery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGalery.swift; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 		5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+PrittyPrint.swift"; sourceTree = "<group>"; };
 		5C45EBC4273C4CF200C90977 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		5C45EBC6273C4FBB00C90977 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+iOS14.swift"; sourceTree = "<group>"; };
 		5C53ECF82732C54D0044905A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C53ECFE2733F5700044905A /* CardResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResults.swift; sourceTree = "<group>"; };
 		5C53ED3F27340BBE0044905A /* TrafficRulesExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficRulesExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +125,7 @@
 		5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtilityDataModel.swift; sourceTree = "<group>"; };
 		5C900ED2278C7AF9004E9198 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
-		5C97B49727197EEF0017723A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5C97B49727197EEF0017723A /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		5CAD344E27902C2200D919DD /* CoinsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTimer.swift; sourceTree = "<group>"; };
 		5CDB6371272D946700E888F7 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		5CDB6373272DC30D00E888F7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -175,7 +180,7 @@
 				5C900ED2278C7AF9004E9198 /* Purchase.swift */,
 				5C1AAC582799B9C2002046DE /* StoreView.swift */,
 				5C1AAC5A2799B9E4002046DE /* SubscriptionsView.swift */,
-				5C1AAC5C2799BA10002046DE /* ListCellView.swift */,
+				5C1AAC5C2799BA10002046DE /* ProductCellView.swift */,
 				5C1AAC5E2799BA24002046DE /* BuyButtonStyle.swift */,
 			);
 			path = Store;
@@ -204,10 +209,11 @@
 		5C453E0F2714730A006BFFCB /* TrafficRulesExam */ = {
 			isa = PBXGroup;
 			children = (
+				5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */,
 				5C97B49627197E610017723A /* Views */,
 				5C97B49427197BDC0017723A /* Model */,
 				5C453E142714730D006BFFCB /* Assets.xcassets */,
-				5C1AAC642799C1B5002046DE /* Products.plist */,
+				5C392B4527B406C600427D47 /* Info.plist */,
 				5C1AAC51279950DB002046DE /* Products.storekit */,
 				5C53ECF82732C54D0044905A /* MyPlayground.playground */,
 				5C453E162714730D006BFFCB /* Preview Content */,
@@ -269,6 +275,8 @@
 				5C121918272ED02D00DB4826 /* RawRepresentable.swift */,
 				5CAD344E27902C2200D919DD /* CoinsTimer.swift */,
 				5C1AAC5427996340002046DE /* Store.swift */,
+				5C1AAC6627A70477002046DE /* Analytics.swift */,
+				5C47E8B527A83B40009E9F93 /* Store+iOS14.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,7 +305,7 @@
 		5CDE11D12720A79800981225 /* Exam */ = {
 			isa = PBXGroup;
 			children = (
-				5C97B49727197EEF0017723A /* CardView.swift */,
+				5C97B49727197EEF0017723A /* TicketView.swift */,
 				5C0F75AF271A0558004473EA /* QuestionCardView.swift */,
 				5C0F75B3271A086A004473EA /* QuestionContentView.swift */,
 				5C0F75B1271A07F1004473EA /* AnswersView.swift */,
@@ -395,11 +403,10 @@
 			};
 			buildConfigurationList = 5C453E082714730A006BFFCB /* Build configuration list for PBXProject "TrafficRulesExam" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
-				Base,
+				ru,
 			);
 			mainGroup = 5C453E042714730A006BFFCB;
 			packageReferences = (
@@ -423,7 +430,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C1AAC652799C1B5002046DE /* Products.plist in Resources */,
 				5C85388927182F3900D8853E /* ExamCards.json in Resources */,
 				5C453E182714730D006BFFCB /* Preview Assets.xcassets in Resources */,
 				5C453E152714730D006BFFCB /* Assets.xcassets in Resources */,
@@ -457,9 +463,10 @@
 				5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */,
 				5C1AAC5B2799B9E4002046DE /* SubscriptionsView.swift in Sources */,
 				5C45EBC1273BF1FD00C90977 /* TotalStatsView.swift in Sources */,
-				5C1AAC5D2799BA10002046DE /* ListCellView.swift in Sources */,
+				5C1AAC5D2799BA10002046DE /* ProductCellView.swift in Sources */,
 				5C0F75B2271A07F1004473EA /* AnswersView.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
+				5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */,
 				5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */,
 				5C1AAC5527996340002046DE /* Store.swift in Sources */,
@@ -468,7 +475,9 @@
 				5C45EBC3273C07A000C90977 /* Date+PrittyPrint.swift in Sources */,
 				5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
+				5C1AAC6727A70477002046DE /* Analytics.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
+				5C47E8B427A7D72B009E9F93 /* AppDelegate.swift in Sources */,
 				5C53ECFF2733F5700044905A /* CardResults.swift in Sources */,
 				5C45EBBE2739969600C90977 /* ExamStatsView.swift in Sources */,
 				5C85388B27183D5900D8853E /* ExamCard.swift in Sources */,
@@ -478,7 +487,7 @@
 				5C453E112714730A006BFFCB /* TrafficRulesExamApp.swift in Sources */,
 				5CDB6372272D946700E888F7 /* Results.swift in Sources */,
 				5C1AAC612799BB7B002046DE /* StatusInfoView.swift in Sources */,
-				5C97B49827197EEF0017723A /* CardView.swift in Sources */,
+				5C97B49827197EEF0017723A /* TicketView.swift in Sources */,
 				5C45EBBC2739968600C90977 /* ExamCardStatsView.swift in Sources */,
 				5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
@@ -581,7 +590,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -636,7 +645,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -652,17 +661,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficRulesExam/Preview Content\"";
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = TrafficRulesExam/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ПДД";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,7 +682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
@@ -683,17 +693,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficRulesExam/Preview Content\"";
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = TrafficRulesExam/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ПДД";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,7 +714,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;

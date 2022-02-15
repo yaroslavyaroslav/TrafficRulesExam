@@ -17,14 +17,13 @@ struct StoreView: View {
     var body: some View {
         List {
             Section(header: Text("Cars")) {
-                ForEach(store.fuel, id: \.id) { car in
-                    ListCellView(product: car)
+                ForEach(store.availableCoinPacks, id: \.id) { car in
+                    ProductCellView(product: car, isPresented: $isPresented)
                 }
             }
             .listStyle(GroupedListStyle())
 
-            SubscriptionsView()
+            SubscriptionsView(isPresented: $isPresented)
         }
-        .environmentObject(store)
     }
 }

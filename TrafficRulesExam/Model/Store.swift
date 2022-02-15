@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import os.log
 import StoreKit
+import SwiftKeychainWrapper
+import YandexMobileMetrica
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -22,11 +25,11 @@ public enum StoreError: Error {
     case wrongPurchaseId(id: String)
 }
 
-public enum SubscriptionTier: Int, Comparable {
+public enum SubscriptionTime: Int, Comparable {
     case none = 0
-    case standard = 1
-    case premium = 2
-    case pro = 3
+    case month = 1
+    case quater = 3
+    case halfYear = 6
 
     public static func <(lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue < rhs.rawValue
@@ -35,35 +38,21 @@ public enum SubscriptionTier: Int, Comparable {
 
 @available(iOS 15.0, *)
 class Store: ObservableObject {
-    @Published
-    private(set) var fuel: [Product]
-    @Published
-    private(set) var subscriptions: [Product]
+    @Published private(set) var availableCoinPacks: [Product]
 
-    @Published
-    private(set) var purchasedIdentifiers = Set<String>()
+    @Published private(set) var availableSubscriptions: [Product]
+
+    @Published private(set) var currentSubscriptions = Set<String>()
 
     var updateListenerTask: Task<Void, Error>?
 
-    private let productIdToEmoji: [String: String]
-
-    private static let subscriptionTier: [String: SubscriptionTier] = [
-        "subscription.standard": .standard,
-        "subscription.premium": .premium,
-        "subscription.pro": .pro
-    ]
-
     init() {
-        if let path = Bundle.main.path(forResource: "Products", ofType: "plist"),
-           let plist = FileManager.default.contents(atPath: path) {
-            self.productIdToEmoji = (try? PropertyListSerialization.propertyList(from: plist, format: nil) as? [String: String]) ?? [:]
-        } else {
-            self.productIdToEmoji = [:]
-        }
+        Analytics.initAnalytics()
 
         // Initialize empty products then do a product request asynchronously to fill them in.
-        self.fuel = []
-        self.subscriptions = []
+        self.availableCoinPacks = []
+        self.availableSubscriptions = []
+        self.currentSubscriptions = []
 
         // Start a transaction listener as close to app launch as possible so you don't miss any transactions.
         self.updateListenerTask = listenForTransactions()
@@ -85,8 +74,7 @@ class Store: ObservableObject {
                 do {
                     let transaction = try self.checkVerified(result)
 
-                    // Deliver content to the user.
-                    await self.updatePurchasedIdentifiers(transaction)
+                    await self.updateSubscriptionStatus(transaction)
 
                     // Always finish a transaction.
                     await transaction.finish()
@@ -101,28 +89,32 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            // Request products from the App Store using the identifiers defined in the Products.plist file.
-            let storeProducts = try await Product.products(for: productIdToEmoji.keys)
+            let products = ["ru.neatness.TrafficRulesExam.10",
+                            "ru.neatness.TrafficRulesExam.15",
+                            "ru.neatness.TrafficRulesExam.20",
 
-            var newFuel: [Product] = []
+                            "ru.neatness.TrafficRulesExam.OneMonthCoins",
+                            "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
+                            "ru.neatness.TrafficRulesExam.SixMonthCoins"]
+
+            let storeProducts = try await Product.products(for: products)
+
+            var newCoins: [Product] = []
             var newSubscriptions: [Product] = []
 
             // Filter the products into different categories based on their type.
             for product in storeProducts {
                 switch product.type {
-                case .consumable:
-                    newFuel.append(product)
-                case .nonRenewable:
-                    newSubscriptions.append(product)
-                default:
-                    // Ignore this product.
-                    print("Unknown product")
+                case .consumable: newCoins.append(product)
+                case .nonRenewable: newSubscriptions.append(product)
+                // Ignore another products
+                default: os_log("Unknown product \(product.id)")
                 }
             }
 
             // Sort each product category by price, lowest to highest, to update the store.
-            fuel = sortByPrice(newFuel)
-            subscriptions = sortByPrice(newSubscriptions)
+            availableCoinPacks = newCoins.sorted { $0.price < $1.price }
+            availableSubscriptions = newSubscriptions.sorted { $0.price < $1.price }
         } catch {
             print("Failed product request: \(error)")
         }
@@ -132,39 +124,20 @@ class Store: ObservableObject {
         // Begin a purchase.
         let result = try await product.purchase()
 
-        switch result {
-        case let .success(verification):
-            let transaction = try checkVerified(verification)
+        guard case let .success(verification) = result else { return nil }
 
-            // Deliver content to the user.
-            await updatePurchasedIdentifiers(transaction)
+        let transaction = try checkVerified(verification)
 
-            // Always finish a transaction.
-            await transaction.finish()
+        await updateSubscriptionStatus(transaction)
 
-            return transaction
-        case .userCancelled, .pending:
-            return nil
-        default:
-            return nil
-        }
-    }
-
-    func isPurchased(_ productIdentifier: String) async throws -> Bool {
-        // Get the most recent transaction receipt for this `productIdentifier`.
-        guard let result = await Transaction.latest(for: productIdentifier) else {
-            // If there is no latest transaction, the product has not been purchased.
-            return false
+        if let revenueObject = Analytics.createRevenueObject(for: product, verification) {
+            Analytics.fire(.completePurchase(revenue: revenueObject))
         }
 
-        let transaction = try checkVerified(result)
+        // Always finish a transaction.
+        await transaction.finish()
 
-        // Ignore revoked transactions, they're no longer purchased.
-
-        // For subscriptions, a user can upgrade in the middle of their subscription period. The lower service
-        // tier will then have the `isUpgraded` flag set and there will be a new transaction for the higher service
-        // tier. Ignore the lower service tier transactions which have been upgraded.
-        return transaction.revocationDate == nil && !transaction.isUpgraded
+        return transaction
     }
 
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
@@ -180,34 +153,27 @@ class Store: ObservableObject {
     }
 
     @MainActor
-    func updatePurchasedIdentifiers(_ transaction: Transaction) async {
+    /// Updates subscriptions purchased or refunded by user
+    /// - Parameter transaction: StoreKit 2 nonRenewable transaction (all other types will be ignored).
+    private func updateSubscriptionStatus(_ transaction: Transaction) async {
+        guard case .nonRenewable = transaction.productType else { return }
+
+        // TODO: Move Purchase and refund analytics here.
         if transaction.revocationDate == nil {
             // If the App Store has not revoked the transaction, add it to the list of `purchasedIdentifiers`.
-            purchasedIdentifiers.insert(transaction.productID)
+            currentSubscriptions.insert(transaction.productID)
         } else {
             // If the App Store has revoked this transaction, remove it from the list of `purchasedIdentifiers`.
-            purchasedIdentifiers.remove(transaction.productID)
+            currentSubscriptions.remove(transaction.productID)
         }
     }
 
-    func emoji(for productId: String) -> String {
-        productIdToEmoji[productId]!
-    }
-
-    func sortByPrice(_ products: [Product]) -> [Product] {
-        products.sorted(by: { $0.price < $1.price })
-    }
-
-    func tier(for productId: String) -> SubscriptionTier {
+    func tier(for productId: String) -> SubscriptionTime {
         switch productId {
-        case "subscription.standard":
-            return .standard
-        case "subscription.premium":
-            return .premium
-        case "subscription.pro":
-            return .pro
-        default:
-            return .none
+        case "ru.neatness.TrafficRulesExam.OneMonthCoins": return .month
+        case "ru.neatness.TrafficRulesExam.ThreeMonthCoins": return .quater
+        case "ru.neatness.TrafficRulesExam.SixMonthCoins": return .halfYear
+        default: return .none
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ListCellView.swift
+//  ProductCellView.swift
 //  TrafficRulesExam
 //
 //  Created by Yaroslav on 20.01.2022.
@@ -8,28 +8,26 @@ import StoreKit
 import SwiftUI
 
 @available(iOS 15.0, *)
-struct ListCellView: View {
+struct ProductCellView: View {
     @EnvironmentObject var store: Store
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
+    @Binding var isPresented: Bool
     @EnvironmentObject var coins: Coin
 
     let product: Product
     let purchasingEnabled: Bool
 
-    var emoji: String {
-        store.emoji(for: product.id)
-    }
-
-    init(product: Product, purchasingEnabled: Bool = true) {
+    init(product: Product, isPresented: Binding<Bool>, purchasingEnabled: Bool = true) {
         self.product = product
+        self._isPresented = isPresented
         self.purchasingEnabled = purchasingEnabled
     }
 
     var body: some View {
         HStack {
-            Text(emoji)
+            Image(systemName: "coloncurrencysign.circle.fill")
                 .font(.system(size: 50))
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
@@ -39,14 +37,13 @@ struct ListCellView: View {
                 Spacer()
                 buyButton
                     .buttonStyle(BuyButtonStyle(isPurchased: isPurchased))
-                    .disabled(isPurchased)
             } else {
                 productDetail
             }
         }
-        .alert(isPresented: $isShowingError, content: {
+        .alert(isPresented: $isShowingError) {
             Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
-        })
+        }
     }
 
     @ViewBuilder
@@ -63,6 +60,7 @@ struct ListCellView: View {
         }
     }
 
+    @available(iOS 15.0, *)
     func subscribeButton(_ subscription: Product.SubscriptionInfo) -> some View {
         let unit: String
         let plural = subscription.subscriptionPeriod.value > 1
@@ -94,44 +92,31 @@ struct ListCellView: View {
     }
 
     var buyButton: some View {
-        Button(action: {
-            Task {
-                await buy()
-            }
-        }) {
-            if isPurchased {
-                Text(Image(systemName: "checkmark"))
-                    .bold()
-                    .foregroundColor(.white)
+        Button {
+            Task { await buy() }
+        } label: {
+            if let subscription = product.subscription {
+                subscribeButton(subscription)
             } else {
-                if let subscription = product.subscription {
-                    subscribeButton(subscription)
-                } else {
-                    Text(product.displayPrice)
-                        .foregroundColor(.white)
-                        .bold()
-                }
-            }
-        }
-        .onAppear {
-            Task {
-                isPurchased = (try? await store.isPurchased(product.id)) ?? false
-            }
-        }
-        .onChange(of: store.purchasedIdentifiers) { identifiers in
-            Task {
-                isPurchased = identifiers.contains(product.id)
+                Text(product.displayPrice)
+                    .foregroundColor(.white)
+                    .bold()
             }
         }
     }
 
+    @available(iOS 15.0, *)
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
+                // FIXME: Working only with coins purchase, not working with subscription.
                 guard let coinsString = transaction.productID.split(separator: ".").last,
-                      let coinsAmount = Int(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                      let coinsAmount = UInt(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
 
-                withAnimation { coins.amount += coinsAmount }
+                withAnimation {
+                    coins.amount += coinsAmount
+                    isPresented = false
+                }
             }
         } catch StoreError.failedVerification {
             errorTitle = "Your purchase could not be verified by the App Store."

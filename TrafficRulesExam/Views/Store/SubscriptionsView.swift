@@ -14,16 +14,15 @@ struct SubscriptionsView: View {
 
     @State var currentSubscription: Product?
     @State var status: Product.SubscriptionInfo.Status?
+    @Binding var isPresented: Bool
 
-    var availableSubscriptions: [Product] {
-        store.subscriptions.filter { $0.id != currentSubscription?.id }
-    }
+    var availableSubscriptions: [Product] { store.availableSubscriptions.filter { $0.id != currentSubscription?.id } }
 
     var body: some View {
         Group {
             if let currentSubscription = currentSubscription {
                 Section(header: Text("My Subscription")) {
-                    ListCellView(product: currentSubscription, purchasingEnabled: false)
+                    ProductCellView(product: currentSubscription, isPresented: $isPresented, purchasingEnabled: false)
 
                     if let status = status {
                         StatusInfoView(product: currentSubscription,
@@ -35,7 +34,7 @@ struct SubscriptionsView: View {
 
             Section(header: Text("Navigation Options")) {
                 ForEach(availableSubscriptions, id: \.id) { product in
-                    ListCellView(product: product)
+                    ProductCellView(product: product, isPresented: $isPresented)
                 }
             }
             .listStyle(GroupedListStyle())
@@ -46,7 +45,7 @@ struct SubscriptionsView: View {
                 await updateSubscriptionStatus()
             }
         }
-        .onChange(of: store.purchasedIdentifiers) { _ in
+        .onChange(of: store.currentSubscriptions) { _ in
             Task {
                 // When `purchasedIdentifiers` changes, get the latest subscription status.
                 await updateSubscriptionStatus()
@@ -60,7 +59,7 @@ struct SubscriptionsView: View {
             // This app has only one subscription group so products in the subscriptions
             // array all belong to the same group. The statuses returned by
             // `product.subscription.status` apply to the entire subscription group.
-            guard let product = store.subscriptions.first,
+            guard let product = store.availableSubscriptions.first,
                   let statuses = try await product.subscription?.status else {
                 return
             }
@@ -78,7 +77,7 @@ struct SubscriptionsView: View {
                 default:
                     let renewalInfo = try store.checkVerified(status.renewalInfo)
 
-                    guard let newSubscription = store.subscriptions.first(where: { $0.id == renewalInfo.currentProductID }) else {
+                    guard let newSubscription = store.availableSubscriptions.first(where: { $0.id == renewalInfo.currentProductID }) else {
                         continue
                     }
 

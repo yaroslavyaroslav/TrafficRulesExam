@@ -24,6 +24,9 @@ struct TotalStatsNavigationView: View {
         TotalStatsView(results: results)
             .navigationTitle(Text("Статистика"))
             .navigationBarTitleDisplayMode(.large)
+            .onAppear {
+                Analytics.fire(.screenShown(name: "Статистика"))
+            }
     }
 }
 

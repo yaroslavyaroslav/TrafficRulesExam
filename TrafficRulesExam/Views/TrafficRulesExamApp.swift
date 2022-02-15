@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct TrafficRulesExamApp: App {
-    var coin: Coin = .init()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {
         WindowGroup {
@@ -18,15 +18,17 @@ struct TrafficRulesExamApp: App {
                 NavigationView {
                     MainScreen()
                 }
-                .environmentObject(coin)
-                .environmentObject(CoinsTimer(coin))
-                .environmentObject(Store())
+                .environmentObject(appDelegate.coin)
+                .environmentObject(appDelegate.coinsTimer)
+                .environmentObject(appDelegate.store)
+                .environmentObject(appDelegate.currentTicket)
             } else {
                 NavigationView {
                     MainScreen()
                 }
-                .environmentObject(coin)
-                .environmentObject(CoinsTimer(coin))
+                .environmentObject(appDelegate.coin)
+                .environmentObject(appDelegate.coinsTimer)
+                .environmentObject(appDelegate.currentTicket)
             }
         }
     }

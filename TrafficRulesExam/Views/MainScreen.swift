@@ -68,7 +68,20 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
-        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
+        .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+    }
+}
+
+struct CoinAmountView: View {
+    var coinsAmount: UInt
+
+    var body: some View {
+        HStack {
+            Image(systemName: "coloncurrencysign.circle.fill")
+            Text("\(coinsAmount)")
+            Spacer()
+            Text("+")
+        }
     }
 }
 

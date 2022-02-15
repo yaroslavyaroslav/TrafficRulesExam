@@ -80,7 +80,7 @@ struct StatusInfoView: View {
         var description = ""
 
         if let newProductID = renewalInfo.autoRenewPreference {
-            if let newProduct = store.subscriptions.first(where: { $0.id == newProductID }) {
+            if let newProduct = store.availableSubscriptions.first(where: { $0.id == newProductID }) {
                 description += "\nYour subscription to \(newProduct.displayName)"
                 description += " will begin when your current subscription expires on \(expirationDate.formattedDate())."
             }

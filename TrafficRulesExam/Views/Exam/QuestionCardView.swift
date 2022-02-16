@@ -45,27 +45,37 @@ struct QuestionCardView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            ScrollViewReader { proxy in
+        ScrollViewReader { proxy in
+            VStack(spacing: 0) {
                 questionList
+                    .padding(.vertical, 12)
 
-                Spacer()
+                QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
+                    .transition(.moveAndFade)
+                    .background(Color.orange)
 
-                ZStack(alignment: .center) {
-                    QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
-                        .transition(.moveAndFade)
+                HStack(spacing: 16) {
+                    Button {
+                        self.isHintShown.toggle()
+                    } label: {
+                        ZStack(alignment: .center) {
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(height: 52, alignment: .center)
+                                .foregroundColor(.purple)
 
-                    Text("\(coins.amount)")
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .background(Color.purple)
-                        .position(x: 20, y: 20)
+                            HStack {
+                                Text("Подсказка за 1")
+                                Image(systemName: "info.circle")
+                            }
+                            .foregroundColor(.black)
+                        }
+                    }
 
-                    questionHint
+                    nextQuestionButton(proxy)
+                        .disabled(selectedAnswer == AnswerID.none)
                 }
-
-                nextQuestionButton(proxy)
-                    .disabled(selectedAnswer == AnswerID.none)
-                    .padding(10)
+                .padding(16)
+                .background(Color.yellow.edgesIgnoringSafeArea(.bottom))
             }
         }
     }
@@ -95,14 +105,13 @@ struct QuestionCardView: View {
             .disabled(coins.amount == 0 ? true : false)
             .padding()
             .background(Color.purple)
-            .position(x: 150, y: 600)
         }
     }
 
     @ViewBuilder
     var questionList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .center, spacing: 3) {
+            HStack(alignment: .center, spacing: 6) {
                 ForEach(questions, id: \.id) { question in
                     Button {
                         withAnimation {
@@ -113,7 +122,7 @@ struct QuestionCardView: View {
                         Text(question.id.description)
                             .foregroundColor(.black)
                     }
-                    .frame(width: 40, height: 40, alignment: .center)
+                    .frame(width: 44, height: 44, alignment: .center)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(question == questionDetails ? .green : (answeredQuestions.contains(question.id) ? .yellow : .gray))
@@ -126,7 +135,8 @@ struct QuestionCardView: View {
     }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
-        Button(answeredQuestions.count == 19 ? "Завершить" : "Следующий вопрос") {
+
+        Button {
             withAnimation {
                 self.saveAnswer()
                 answeredQuestions.insert(questionDetails.id)
@@ -145,6 +155,7 @@ struct QuestionCardView: View {
                         coinsTimer.spendCoin()
                         Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
                     } else {
+                        // FIXME: Give him some price
                         // if user don't made any mistakes.
                         Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
                     }
@@ -166,6 +177,16 @@ struct QuestionCardView: View {
                     questionDetails = questions[notAnswered[0] - 1]
                     proxy.scrollTo(questionDetails.id)
                 }
+            }
+        }  label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 52, height: 52, alignment: .center)
+                    .foregroundColor(.purple)
+                HStack {
+                    Image(systemName: "arrow.right")
+                }
+                .foregroundColor(.black)
             }
         }
     }
@@ -190,7 +211,7 @@ struct QuestionCard_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        QuestionCardView(questions: cards[1].questions, questionDetails: cards[1].questions[16], resultsHistory: $history)
+        QuestionCardView(questions: cards[1].questions, questionDetails: cards[1].questions[14], resultsHistory: $history)
             .environmentObject(Coin())
     }
 }

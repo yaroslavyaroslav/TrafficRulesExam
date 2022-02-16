@@ -24,9 +24,10 @@ struct TicketView: View {
                     Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
                 }
         }
-        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
+        .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Билет \(card.id)")
+        .background(Color.gray.ignoresSafeArea())
     }
 }
 
@@ -41,5 +42,6 @@ struct Card_Previews: PreviewProvider {
     static var previews: some View {
         TicketView(card: cards[0], result: $cardResult)
             .environmentObject(Coin())
+            .environmentObject(CurrentValues())
     }
 }

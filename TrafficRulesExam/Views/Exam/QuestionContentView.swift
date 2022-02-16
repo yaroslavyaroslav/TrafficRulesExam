@@ -16,27 +16,42 @@ struct QuestionContentView: View {
 
     var body: some View {
         VStack {
-            if let image = question.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                Spacer()
+            VStack {
+                if let image = question.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(12)
+                        .padding(.horizontal, 16)
+                }
+
+                Text(question.text)
+                    .multilineTextAlignment(.center)
+                    .padding(16)
             }
+            .padding(.top, 10)
 
-            Text(question.text)
-                .multilineTextAlignment(.leading)
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.green)
-                .cornerRadius(8)
-            Spacer()
+            ZStack(alignment: .bottom) {
+                AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                Button {
+                    print("ScrollToDown")
+                } label: {
+                    ZStack(alignment: .center) {
+                        Circle()
+                        Image(systemName: "arrow.down")
+                            .foregroundColor(.black)
+                    }
+                    .frame(width: 24, height: 24, alignment: .top)
+                    .padding(12)
+                }
+            }
+            .background(Color.white)
 
-            AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
 
-            Spacer()
+//            Spacer()
         }
-        .padding(8)
     }
 }
 

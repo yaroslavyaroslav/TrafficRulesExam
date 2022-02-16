@@ -48,6 +48,7 @@ struct CardRow: View {
                     .disabled(coins.amount <= 0 ? true : false)
                 }
             }
+            .background(Color.gray)
         }
     }
 }

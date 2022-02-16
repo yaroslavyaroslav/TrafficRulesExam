@@ -63,6 +63,8 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
+        .ignoresSafeArea(.container, edges: .bottom)
+        .background(Color.gray.ignoresSafeArea())
         .navigationBarItems(leading: button, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 
@@ -109,7 +111,10 @@ struct CoinAmountView: View {
 
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MainScreen()
-            .environmentObject(Coin())
+        NavigationView {
+            MainScreen()
+                .environmentObject(Coin())
+                .background(Color.gray)
+        }
     }
 }

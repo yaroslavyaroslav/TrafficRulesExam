@@ -39,13 +39,6 @@ struct MainScreen: View {
 
     var body: some View {
         VStack {
-#if DEBUG
-            Button("Drop to 0") {
-                KeychainWrapper.standard[.coinsAmount] = 0
-                KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
-            }
-#endif
-
             // FIXME: Переписать из двух экранов выезжающих сбоку на
             // один экран, а плашка решать/статистика включает в том вью только блок статистики (и меняет линки с билета на историю).
             switch selectedIndex {
@@ -88,24 +81,41 @@ struct MainScreen: View {
 struct CoinAmountView: View {
     var coinsAmount: UInt
 
+    @State var isModalViewPresented = false
+
     var body: some View {
-        HStack {
-            Image(systemName: "coloncurrencysign.circle.fill")
-                .font(.system(size: 17))
-                .padding(.trailing, 0)
-            Text("\(coinsAmount)")
-                .font(.system(size: 17))
-                .padding(.leading, 0)
-            Text("+")
-                .font(.system(size: 22))
+        Button {
+            self.isModalViewPresented = true
+            Analytics.fire(.screenShown(name: "Покупки"))
+        } label: {
+            HStack {
+                Image(systemName: "coloncurrencysign.circle.fill")
+                    .font(.system(size: 17))
+                    .padding(.trailing, 0)
+                Text("\(coinsAmount)")
+                    .font(.system(size: 17))
+                    .padding(.leading, 0)
+                Text("+")
+                    .font(.system(size: 22))
+            }
+
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .foregroundColor(.black)
+            .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 32)
+                    .foregroundColor(Color.blue)
+            )
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
-        .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: 32)
-                .foregroundColor(Color.blue)
-        )
+        .sheet(isPresented: $isModalViewPresented) {
+            if #available(iOS 15.0, *) {
+                StoreView(isPresented: $isModalViewPresented)
+            } else {
+                Purchase(isPresented: $isModalViewPresented)
+                // Fallback on earlier versions
+            }
+        }
     }
 }
 

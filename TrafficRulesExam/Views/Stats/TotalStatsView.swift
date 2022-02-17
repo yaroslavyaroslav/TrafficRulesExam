@@ -58,21 +58,6 @@ struct TotalStatsView: View {
 
                         Spacer()
 
-                        Button {
-                            self.isModalViewPresented = true
-                        } label: {
-                            Text("Купить")
-                                .frame(width: 80)
-                        }
-                        .sheet(isPresented: $isModalViewPresented) {
-                            if #available(iOS 15.0, *) {
-                                StoreView(isPresented: $isModalViewPresented)
-                            } else {
-                                Purchase(isPresented: $isModalViewPresented)
-                                // Fallback on earlier versions
-                            }
-                        }
-
                         // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
                         if !countdownString.isEmpty {
                             Spacer()
@@ -94,6 +79,13 @@ struct TotalStatsView: View {
                             .foregroundColor(.green)
                     }
                     .cornerRadius(8)
+#if DEBUG
+                    .onTapGesture(count: 2) {
+                        print("drop to 0")
+                        coins.amount = 0
+                        KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+                    }
+#endif
 
                     HStack {
                         if successTickets > 0 {

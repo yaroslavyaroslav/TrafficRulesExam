@@ -28,8 +28,8 @@ struct ProductCellView: View {
     var body: some View {
         HStack {
             Image(systemName: "coloncurrencysign.circle.fill")
-                .font(.system(size: 50))
-                .frame(width: 50, height: 50)
+//                .font(.system(size: 50))
+                .frame(width: 34)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 .padding(.trailing, 20)
             if purchasingEnabled {
@@ -48,19 +48,13 @@ struct ProductCellView: View {
 
     @ViewBuilder
     var productDetail: some View {
-        if product.type == .autoRenewable {
-            VStack(alignment: .leading) {
-                Text(product.displayName)
-                    .bold()
-                Text(product.description)
-            }
-        } else {
+        VStack(alignment: .leading) {
             Text(product.description)
-                .frame(alignment: .leading)
+                .bold()
+            Text(product.displayName)
         }
     }
 
-    @available(iOS 15.0, *)
     func subscribeButton(_ subscription: Product.SubscriptionInfo) -> some View {
         let unit: String
         let plural = subscription.subscriptionPeriod.value > 1
@@ -105,7 +99,6 @@ struct ProductCellView: View {
         }
     }
 
-    @available(iOS 15.0, *)
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {

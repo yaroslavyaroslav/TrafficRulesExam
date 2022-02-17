@@ -69,9 +69,17 @@ class CoinsTimer: ObservableObject {
         return Date().secondsLasts(to: coinDrop)
     }
 
-    func spendCoin() {
-        KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
-        coins.amount -= 1
+    func spendCoin(_ amount: UInt = 1) {
+        // This will restart timer only when user spend first coin which less then coinsLimit
+        // Without this condition timer will restart on each not success result.
+        if coins.amount == coinsLimit {
+            KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
+        }
+        coins.amount -= amount
+    }
+
+    func rewardCoin(_ amount: UInt = 1) {
+        coins.amount += amount
     }
 }
 

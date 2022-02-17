@@ -56,7 +56,15 @@ struct QuestionCardView: View {
 
                 HStack(spacing: 16) {
                     Button {
-                        self.isHintShown.toggle()
+                        if !hintPurchased {
+                            self.hintPurchased = true
+                            coinsTimer.spendCoin()
+                        }
+                        withAnimation {
+                            self.isHintShown.toggle()
+                        }
+
+                        Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
                     } label: {
                         ZStack(alignment: .center) {
                             RoundedRectangle(cornerRadius: 8)
@@ -155,8 +163,7 @@ struct QuestionCardView: View {
                         coinsTimer.spendCoin()
                         Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
                     } else {
-                        // FIXME: Give him some price
-                        // if user don't made any mistakes.
+                        coinsTimer.rewardCoin()
                         Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
                     }
                     resultsHistory.items.append(result)

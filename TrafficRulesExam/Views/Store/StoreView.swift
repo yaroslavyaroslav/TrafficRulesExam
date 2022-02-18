@@ -15,15 +15,25 @@ struct StoreView: View {
     @Binding var isPresented: Bool
 
     var body: some View {
-        List {
-            Section(header: Text("Cars")) {
-                ForEach(store.availableCoinPacks, id: \.id) { car in
-                    ProductCellView(product: car, isPresented: $isPresented)
-                }
+        VStack(alignment: .trailing, spacing: 0) {
+            Button {
+                isPresented = false
+            } label: {
+                Image(systemName: "xmark.circle")
+                    .font(.system(size: 22))
             }
-            .listStyle(GroupedListStyle())
+            .padding()
+            List {
+                Section(header: Text("Купить монеты")) {
+                    ForEach(store.availableCoinPacks, id: \.id) { coinPack in
+                        ProductCellView(product: coinPack, isPresented: $isPresented)
+                    }
+                }
+                .listStyle(GroupedListStyle())
 
-            SubscriptionsView(isPresented: $isPresented)
+                SubscriptionsView(isPresented: $isPresented)
+            }
         }
+        .background(Color.gray)
     }
 }

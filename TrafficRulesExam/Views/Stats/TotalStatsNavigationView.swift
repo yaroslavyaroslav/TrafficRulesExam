@@ -33,5 +33,6 @@ struct TotalStatsNavigationView: View {
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
         TotalStatsNavigationView(cards: cards)
+            .environmentObject(Coin())
     }
 }

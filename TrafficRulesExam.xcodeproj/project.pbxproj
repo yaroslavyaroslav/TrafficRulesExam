@@ -12,6 +12,7 @@
 		5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B3271A086A004473EA /* QuestionContentView.swift */; };
 		5C121919272ED02D00DB4826 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C121918272ED02D00DB4826 /* RawRepresentable.swift */; };
 		5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C12191F272F2B6100DB4826 /* AnswerButton.swift */; };
+		5C1674EC27BF91D0003F15E7 /* StatsDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */; };
 		5C1AAC5527996340002046DE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5427996340002046DE /* Store.swift */; };
 		5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC582799B9C2002046DE /* StoreView.swift */; };
 		5C1AAC5B2799B9E4002046DE /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5A2799B9E4002046DE /* SubscriptionsView.swift */; };
@@ -53,6 +54,7 @@
 		5C8A6C72273849FE00572459 /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C8A6C7327384AA000572459 /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
 		5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */; };
+		5C8B201A27BFFDD4003446F7 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8B201927BFFDD4003446F7 /* PopupView */; };
 		5C900ED3278C7AFA004E9198 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C900ED2278C7AF9004E9198 /* Purchase.swift */; };
 		5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelLoad.swift */; };
 		5C97B49827197EEF0017723A /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* TicketView.swift */; };
@@ -89,6 +91,7 @@
 		5C0F75B3271A086A004473EA /* QuestionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContentView.swift; sourceTree = "<group>"; };
 		5C121918272ED02D00DB4826 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		5C12191F272F2B6100DB4826 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDiagram.swift; sourceTree = "<group>"; };
 		5C1AAC51279950DB002046DE /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = TrafficRulesExam/Products.storekit; sourceTree = SOURCE_ROOT; };
 		5C1AAC5427996340002046DE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		5C1AAC582799B9C2002046DE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8B201A27BFFDD4003446F7 /* PopupView in Frameworks */,
 				5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */,
 				5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */,
 				5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */,
@@ -238,6 +242,7 @@
 			children = (
 				5C45EBB92739964D00C90977 /* TotalStatsNavigationView.swift */,
 				5C45EBC0273BF1FD00C90977 /* TotalStatsView.swift */,
+				5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */,
 				5C45EBBB2739968600C90977 /* ExamCardStatsView.swift */,
 				5C45EBBD2739969600C90977 /* ExamStatsView.swift */,
 			);
@@ -337,6 +342,7 @@
 				5C85387C27158DBB00D8853E /* YandexMobileMetrica */,
 				5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */,
 				5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */,
+				5C8B201927BFFDD4003446F7 /* PopupView */,
 			);
 			productName = TrafficRulesExam;
 			productReference = 5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */;
@@ -416,6 +422,7 @@
 				5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 				5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */,
 				5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 5C453E0E2714730A006BFFCB /* Products */;
 			projectDirPath = "";
@@ -468,6 +475,7 @@
 				5C45EBC1273BF1FD00C90977 /* TotalStatsView.swift in Sources */,
 				5C1AAC5D2799BA10002046DE /* ProductCellView.swift in Sources */,
 				5C0F75B2271A07F1004473EA /* AnswersView.swift in Sources */,
+				5C1674EC27BF91D0003F15E7 /* StatsDiagram.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
 				5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */,
@@ -859,6 +867,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Quick/Nimble";
@@ -884,6 +900,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
 			productName = YandexMobileMetricaCrashes;
+		};
+		5C8B201927BFFDD4003446F7 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		5CD7A849273411CD007E1F4F /* Nimble */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -5,6 +5,7 @@
 //  Created by Yaroslav on 15.10.2021.
 //
 
+import PopupView
 import SwiftKeychainWrapper
 import SwiftUI
 import YandexMobileMetrica
@@ -61,7 +62,7 @@ struct QuestionCardView: View {
                             coinsTimer.spendCoin()
                         }
                         withAnimation {
-                            self.isHintShown.toggle()
+                            self.isHintShown = true
                         }
 
                         Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
@@ -79,40 +80,27 @@ struct QuestionCardView: View {
                         }
                     }
 
+
                     nextQuestionButton(proxy)
                         .disabled(selectedAnswer == AnswerID.none)
                 }
                 .padding(16)
                 .background(Color.yellow.edgesIgnoringSafeArea(.bottom))
             }
-        }
-    }
+            .popup(isPresented: $isHintShown, type: .toast, position: .bottom, closeOnTap: false) {
+                VStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(width: 30, height: 8)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 16)
 
-    @ViewBuilder
-    var questionHint: some View {
-        if isHintShown {
-            Text(questionDetails.hint)
-            Button("X") {
-                withAnimation {
-                    self.isHintShown.toggle()
+                    Text(questionDetails.hint)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 40)
                 }
+                .background(Color(red: 0.85, green: 0.8, blue: 0.95)).ignoresSafeArea(.all, edges: .bottom)
+                .cornerRadius(30.0)
             }
-            .background(Color.purple)
-        } else {
-            Button("Hint") {
-                if !hintPurchased {
-                    self.hintPurchased = true
-                    coinsTimer.spendCoin()
-                }
-                withAnimation {
-                    self.isHintShown.toggle()
-                }
-
-                Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
-            }
-            .disabled(coins.amount == 0 ? true : false)
-            .padding()
-            .background(Color.purple)
         }
     }
 
@@ -207,6 +195,16 @@ extension QuestionCardView {
             result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
         selectedAnswer = .none
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }
 

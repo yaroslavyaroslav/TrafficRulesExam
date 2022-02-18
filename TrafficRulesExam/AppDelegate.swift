@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentTicket = CurrentValues()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        true
+        UITableView.appearance().backgroundColor = UIColor.clear
+        return true
     }
 }
 

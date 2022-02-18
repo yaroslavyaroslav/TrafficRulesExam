@@ -27,6 +27,7 @@ struct TotalStatsNavigationView: View {
             .onAppear {
                 Analytics.fire(.screenShown(name: "Статистика"))
             }
+            .background(Color.DesignSystem.defaultLightBackground)
     }
 }
 

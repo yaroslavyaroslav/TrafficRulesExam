@@ -50,35 +50,37 @@ struct StatsDiagram: View {
 
     var body: some View {
         HStack {
-            VStack {
+            VStack(spacing: 15) {
                 HStack {
                     Text("Монет: \(coins.amount)")
-                        .frame(width: 80)
+                        .font(UIFont.sfTitle3.asFont)
+                        .foregroundColor(.DesignSystem.greysGrey3Dark)
 
                     Spacer()
 
                     // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00
                     if !countdownString.isEmpty {
                         Spacer()
+                        Image("Coin")
                         Text("+1: \(countdownString)")
-                            .frame(width: 80)
+                            .font(UIFont.sfCaption.asFont)
                     } else {
                         EmptyView()
                     }
                 }
+
                 ZStack(alignment: .topLeading) {
                     Rectangle()
                         .frame(width: maxWidth, height: graphHeight)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.DesignSystem.greysGrey6Light)
                     Rectangle()
                         .frame(width: triedTickets, height: graphHeight)
-                        .foregroundColor(.red)
+                        .foregroundColor(.DesignSystem.tintsPinkLight)
                     Rectangle()
                         .frame(width: successTickets, height: graphHeight)
-                        .foregroundColor(.green)
+                        .foregroundColor(.DesignSystem.tintsGreenLight)
                 }
                 .cornerRadius(16)
-                .padding(.bottom, 15)
 #if DEBUG
                 .onTapGesture(count: 2) {
                     print("drop to 0")
@@ -89,29 +91,32 @@ struct StatsDiagram: View {
 
                 HStack {
                     if successTickets > 0 {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 2) {
                             Text("Правильно")
-                                .padding(.bottom, 5)
+                                .font(UIFont.sfCaption.asFont)
                             Text("\(results.cardsSucceed)")
-                                .foregroundColor(.green)
+                                .font(UIFont.sfCallout.asFont)
+                                .foregroundColor(.DesignSystem.tintsGreenLight)
                         }
                         Spacer()
 
                     }
                     if triedTickets > 0 && triedTickets != successTickets {
-                        VStack(alignment: .center) {
+                        VStack(alignment: .center, spacing: 2) {
                             Text("Решено")
-                                .padding(.bottom, 5)
+                                .font(UIFont.sfCaption.asFont)
                             Text("\(results.cardsTried)")
-                                .foregroundColor(.red)
+                                .font(UIFont.sfCallout.asFont)
+                                .foregroundColor(.DesignSystem.tintsPinkLight)
                         }
                         Spacer()
                     }
-                    VStack(alignment: .trailing) {
+                    VStack(alignment: .trailing, spacing: 2) {
                         Text("Всего")
-                            .padding(.bottom, 5)
+                            .font(UIFont.sfCaption.asFont)
                         Text(" \(cards.count)")
-                            .foregroundColor(.gray)
+                            .font(UIFont.sfCallout.asFont)
+                            .foregroundColor(.DesignSystem.greysGrey2Dark)
                     }
                     if successTickets == 0 && triedTickets == 0 {
                         Spacer()

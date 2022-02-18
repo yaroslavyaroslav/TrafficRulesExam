@@ -57,7 +57,7 @@ struct MainScreen: View {
             }
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .background(Color.gray.ignoresSafeArea())
+        .background(Color.DesignSystem.defaultLightBackground.ignoresSafeArea())
         .navigationBarItems(leading: button, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 
@@ -124,7 +124,7 @@ struct MainScreen_Previews: PreviewProvider {
         NavigationView {
             MainScreen()
                 .environmentObject(Coin())
-                .background(Color.gray)
+                .background(Color.DesignSystem.defaultLightBackground)
         }
     }
 }

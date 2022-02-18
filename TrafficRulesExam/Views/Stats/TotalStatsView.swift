@@ -13,10 +13,14 @@ struct TotalStatsView: View {
     var results: CardResults
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             StatsDiagram(results: results)
+                .padding(16)
+                .background(Color.DesignSystem.bgLightPrimary)
+                .cornerRadius(16)
 
             let notEmptyResult = results.items.filter { !$0.resultHistory.items.isEmpty }
+
             List {
                 ForEach(notEmptyResult, id: \.id) { result in
                     /*
@@ -27,28 +31,68 @@ struct TotalStatsView: View {
                     NavigationLink {
                         ExamCardStatsView(cardResult: result)
                     } label: {
-                        HStack {
-                            ZStack(alignment: .center) {
-                                Circle()
-                                Text("\(cards.getElementById(result.id).id)")
-                                    .foregroundColor(.white)
-                            }
-                            .foregroundColor(.red)
-                            .frame(width: 44, height: 44)
-
-                            Image(systemName: "info.circle")
-                            Text("1")
-
-                            Spacer()
-                            Text("\(result.resultHistory.items.last!.mistakes.count)/20")
-
-                            Spacer()
-                            Text(result.resultHistory.items.last!.examDate.shortDate)
+                        if result.resultHistory.items.last!.succeed {
+                            succeessCell(result: result)
+                        } else {
+                            failedCell(result: result)
                         }
                     }
-                    .disabled(result.resultHistory.items.isEmpty ? true : false)
+
                 }
             }
+            .listStyle(DefaultListStyle())
+        }
+        .background(Color.DesignSystem.defaultLightBackground.ignoresSafeArea())
+    }
+
+
+
+    private func succeessCell(result: CardResult) -> some View {
+        HStack(alignment: .center) {
+            ZStack(alignment: .center) {
+                Circle()
+                    .stroke(Color.DesignSystem.tintsGreenLight, lineWidth: 1)
+                    .foregroundColor(.clear)
+                Text("\(cards.getElementById(result.id).id)")
+                    .font(UIFont.sfBody.asFont)
+                    .foregroundColor(.DesignSystem.tintsGreenLight)
+            }
+            .frame(width: 44, height: 44)
+
+            Spacer()
+
+            Image("SuccessSign")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 44, height: 44)
+
+            Spacer()
+            Text(result.resultHistory.items.last!.examDate.shortDate)
+                .font(UIFont.sfFootnote.asFont)
+                .foregroundColor(.DesignSystem.greysGrey3Dark)
+        }
+    }
+
+    private func failedCell(result: CardResult) -> some View {
+        HStack {
+            ZStack(alignment: .center) {
+                Circle()
+                Text("\(cards.getElementById(result.id).id)")
+                    .font(UIFont.sfBody.asFont)
+                    .foregroundColor(.white)
+            }
+            .foregroundColor(.DesignSystem.tintsPinkLight)
+            .frame(width: 44, height: 44)
+
+            Spacer()
+            Text("\(result.resultHistory.items.last!.mistakes.count)/20")
+                .font(UIFont.sfTitle1.asFont)
+                .foregroundColor(.DesignSystem.tintsPinkDark)
+
+            Spacer()
+            Text(result.resultHistory.items.last!.examDate.shortDate)
+                .font(UIFont.sfFootnote.asFont)
+                .foregroundColor(.DesignSystem.greysGrey3Dark)
         }
     }
 }

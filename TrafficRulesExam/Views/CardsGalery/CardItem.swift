@@ -33,9 +33,9 @@ struct CardItem: View {
             VStack {
                 HStack {
                     Text("Билет \(card.id)")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
+                        .font(UIFont.sfBodySemibold.asFont)
+                        .foregroundColor(.DesignSystem.bgLightPrimary)
+
                     Spacer()
                     Image(systemName: "info.circle")
                         .font(.system(size: 22))
@@ -46,8 +46,10 @@ struct CardItem: View {
                 HStack {
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.blue)
-                        Image(systemName: "info.circle")
+                            .foregroundColor(.DesignSystem.bgLightPrimary)
+                            .opacity(0.1)
+                        Image(systemName: "checkmark.seal.fill")
+                            .font(.system(size: 24))
                     }
                 }
                 .padding(.top, 16)
@@ -55,20 +57,23 @@ struct CardItem: View {
                 .padding(.bottom, 20)
 
                 HStack {
-                    Image(systemName: "info.circle")
+                    Image("Coin")
                     Text("1")
+                        .font(UIFont.sfFootnote.asFont)
                     Spacer()
                     Text("Вчера")
+                        .font(UIFont.sfFootnote.asFont)
+                        .opacity(0.8)
                 }
                 .padding(.horizontal, insideHorisontalPadding)
 
                 Spacer()
             }
-            .foregroundColor(.white)
+            .foregroundColor(.DesignSystem.bgLightPrimary)
             .frame(height: cardHeight, alignment: .center)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.green)
+                    .foregroundColor(.DesignSystem.tintsGreenLight)
             )
         }
     }
@@ -78,13 +83,12 @@ struct CardItem: View {
             VStack {
                 HStack {
                     Text("Билет \(card.id)")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.black)
+                        .font(UIFont.sfBodySemibold.asFont)
+                        .foregroundColor(.DesignSystem.greysGrey3Dark)
                     Spacer()
                     Image(systemName: "info.circle")
                         .font(.system(size: 22))
-                        .foregroundColor(.black)
+                        .foregroundColor(.DesignSystem.tintsPurpleLight)
                 }
                 .padding(.top)
                 .padding(.horizontal, insideHorisontalPadding)
@@ -92,8 +96,10 @@ struct CardItem: View {
                 HStack {
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.red)
-                        Text("\(result.resultHistory.items.last?.mistakes.count.description ?? "")/20")
+                            .foregroundColor(.DesignSystem.tintsPinkLight)
+                            .opacity(0.08)
+                        Text("\(result.resultHistory.items.last!.mistakes.count.description)/20")
+                            .foregroundColor(.DesignSystem.tintsPinkLight)
                     }
                 }
                 .padding(.top, 16)
@@ -101,10 +107,13 @@ struct CardItem: View {
                 .padding(.bottom, 20)
 
                 HStack {
-                    Image(systemName: "info.circle")
+                    Image("Coin")
                     Text("1")
+                        .font(UIFont.sfFootnote.asFont)
                     Spacer()
                     Text("Вчера")
+                        .font(UIFont.sfFootnote.asFont)
+                        .opacity(0.8)
                 }
                 .foregroundColor(.black)
                 .padding(.horizontal, insideHorisontalPadding)
@@ -125,11 +134,10 @@ struct CardItem: View {
             VStack {
                 HStack {
                     Text("Билет \(card.id)")
-                        .font(.system(size: 17))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.black)
+                        .font(UIFont.sfBodySemibold.asFont)
+                        .foregroundColor(.DesignSystem.greysGrey3Dark)
                     Spacer()
-                    Image(systemName: "info.circle")
+                    Image("Coin")
                         .font(.system(size: 22))
                         .hidden()
                 }
@@ -139,8 +147,10 @@ struct CardItem: View {
                 HStack {
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.purple)
+                            .stroke(Color.DesignSystem.tintsPurpleLight, lineWidth: 2)
+
                         Text("Начать")
+                            .foregroundColor(.DesignSystem.tintsPurpleLight)
                     }
                 }
                 .padding(.top, 16)
@@ -148,7 +158,7 @@ struct CardItem: View {
                 .padding(.bottom, 20)
 
                 HStack {
-                    Image(systemName: "info.circle")
+                    Image("Coin")
                     Text("1")
                     Spacer()
                 }

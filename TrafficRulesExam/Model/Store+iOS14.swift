@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 open class IAPHelper: NSObject {
-    private let productIdentifiers: Set<ProductIdentifier>
+    private let productIdentifiers = AppStore.products
     private(set) var purchasedSubscriptions: Set<ProductIdentifier> = []
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
@@ -27,13 +27,11 @@ open class IAPHelper: NSObject {
 
     private var didRestoreSuccessful = false
 
-    public init(productIds: Set<ProductIdentifier>) {
-        productIds.forEach { os_log("IAPHelper.init productId: %@", $0) }
-
-        self.productIdentifiers = productIds
+    override public init() {
+        productIdentifiers.forEach { os_log("IAPHelper.init productId: %@", $0) }
 
         // Filter subscription from all available purchases.
-        let subscriptions = productIds.filter { $0.split(separator: ".").last?.contains(_: "Month") ?? false }
+        let subscriptions = productIdentifiers.filter { $0.split(separator: ".").last?.contains(_: "Month") ?? false }
 
         // if there's record in UserDefaults with subscription ID — it's purchased.
         self.purchasedSubscriptions = subscriptions.filter { UserDefaults.standard.bool(forKey: $0) }

@@ -22,6 +22,7 @@ struct TrafficRulesExamApp: App {
                 .environmentObject(appDelegate.coinsTimer)
                 .environmentObject(appDelegate.store)
                 .environmentObject(appDelegate.currentTicket)
+                .tint(.DesignSystem.tintsPurpleLight)
             } else {
                 NavigationView {
                     MainScreen()
@@ -29,6 +30,7 @@ struct TrafficRulesExamApp: App {
                 .environmentObject(appDelegate.coin)
                 .environmentObject(appDelegate.coinsTimer)
                 .environmentObject(appDelegate.currentTicket)
+                .accentColor(.DesignSystem.tintsPurpleLight)
             }
         }
     }

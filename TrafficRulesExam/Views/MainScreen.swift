@@ -89,23 +89,20 @@ struct CoinAmountView: View {
             Analytics.fire(.screenShown(name: "Покупки"))
         } label: {
             HStack {
-                Image(systemName: "coloncurrencysign.circle.fill")
-                    .font(.system(size: 17))
+                Image("Coin")
                     .padding(.trailing, 0)
                 Text("\(coinsAmount)")
-                    .font(.system(size: 17))
                     .padding(.leading, 0)
                 Text("+")
-                    .font(.system(size: 22))
             }
-
+            .font(UIFont.sfSubheadline.asFont)
+            .foregroundColor(.DesignSystem.bgLightPrimary)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
-            .foregroundColor(.black)
             .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
             .background(
                 RoundedRectangle(cornerRadius: 32)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(.DesignSystem.tintsPurpleLight)
             )
         }
         .sheet(isPresented: $isModalViewPresented) {

@@ -67,6 +67,7 @@
 		5CDB6376272DC36200E888F7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6375272DC36200E888F7 /* Answer.swift */; };
 		5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6379272DD0AD00E888F7 /* CardItem.swift */; };
 		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
+		5CFB1FDD27C16BAC00E8B7CF /* CoinsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		5CDB6375272DC36200E888F7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		5CDB6379272DD0AD00E888F7 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 		5CDE11D22720A7C700981225 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
+		5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				5C45EBB92739964D00C90977 /* TotalStatsNavigationView.swift */,
 				5C45EBC0273BF1FD00C90977 /* TotalStatsView.swift */,
 				5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */,
+				5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */,
 				5C45EBBB2739968600C90977 /* ExamCardStatsView.swift */,
 				5C45EBBD2739969600C90977 /* ExamStatsView.swift */,
 			);
@@ -515,6 +518,7 @@
 				5C45EBBC2739968600C90977 /* ExamCardStatsView.swift in Sources */,
 				5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
+				5CFB1FDD27C16BAC00E8B7CF /* CoinsStackView.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
 				5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCardView.swift in Sources */,

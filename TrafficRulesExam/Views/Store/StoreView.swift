@@ -34,6 +34,6 @@ struct StoreView: View {
                 SubscriptionsView(isPresented: $isPresented)
             }
         }
-        .background(Color.gray)
+        .background(Color.DesignSystem.defaultLightBackground)
     }
 }

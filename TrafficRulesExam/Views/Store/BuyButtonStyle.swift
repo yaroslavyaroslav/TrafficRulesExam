@@ -16,12 +16,12 @@ struct BuyButtonStyle: ButtonStyle {
     }
 
     func makeBody(configuration: Self.Configuration) -> some View {
-        var bgColor: Color = isPurchased ? Color.green : Color.blue
+        var bgColor: Color = isPurchased ? .DesignSystem.tintsPurpleDark : .DesignSystem.tintsPurpleLight
         bgColor = configuration.isPressed ? bgColor.opacity(0.7) : bgColor.opacity(1)
 
         return configuration.label
-            .frame(width: 80)
-            .padding(10)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
             .background(bgColor)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)

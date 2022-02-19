@@ -74,7 +74,7 @@ struct QuestionCardView: View {
 
                             HStack {
                                 Text("Подсказка за 1")
-                                Image(systemName: "info.circle")
+                                Image("Coin")
                             }
                             .foregroundColor(.black)
                         }

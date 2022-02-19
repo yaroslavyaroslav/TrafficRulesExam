@@ -27,11 +27,7 @@ struct ProductCellView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "coloncurrencysign.circle.fill")
-//                .font(.system(size: 50))
-                .frame(width: 34)
-                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                .padding(.trailing, 20)
+            CoinsStackView(.init(rawValue: product.id) ?? .one)
             if purchasingEnabled {
                 productDetail
                 Spacer()
@@ -48,10 +44,26 @@ struct ProductCellView: View {
 
     @ViewBuilder
     var productDetail: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(product.description)
-                .bold()
+                .font(UIFont.sfCallout.asFont)
             Text(product.displayName)
+                .font(UIFont.sfFootnote.asFont)
+                .foregroundColor(.DesignSystem.greysGreyDark)
+        }
+    }
+
+    var buyButton: some View {
+        Button {
+            Task { await buy() }
+        } label: {
+            if let subscription = product.subscription {
+                subscribeButton(subscription)
+            } else {
+                Text(product.displayPrice)
+                    .foregroundColor(.white)
+                    .font(UIFont.sfCallout.asFont)
+            }
         }
     }
 
@@ -82,20 +94,6 @@ struct ProductCellView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 12))
                 .padding(EdgeInsets(top: -8.0, leading: 0.0, bottom: -4.0, trailing: 0.0))
-        }
-    }
-
-    var buyButton: some View {
-        Button {
-            Task { await buy() }
-        } label: {
-            if let subscription = product.subscription {
-                subscribeButton(subscription)
-            } else {
-                Text(product.displayPrice)
-                    .foregroundColor(.white)
-                    .bold()
-            }
         }
     }
 

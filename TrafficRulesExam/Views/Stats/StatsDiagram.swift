@@ -55,7 +55,7 @@ struct StatsDiagram: View {
                     Text("Монет: \(coins.amount)")
                         .font(UIFont.sfTitle3.asFont)
                         .foregroundColor(.DesignSystem.greysGrey3Dark)
-
+                    
                     Spacer()
 
                     // Прогрессивная шкала плюсования монет: 10:00 -> 20:00 -> 30:00 -> 40:00

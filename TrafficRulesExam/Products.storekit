@@ -7,8 +7,8 @@
       "internalID" : "D6DB3E3A",
       "localizations" : [
         {
-          "description" : "Чтобы подтянуть перед экзаменом",
-          "displayName" : "1 месяц",
+          "description" : "1 месяц",
+          "displayName" : "Для пересдачи",
           "locale" : "ru"
         }
       ],
@@ -22,8 +22,8 @@
       "internalID" : "4001CC38",
       "localizations" : [
         {
-          "description" : "Чтобы не забыть билеты пока сдаешь город",
-          "displayName" : "3 месяца",
+          "description" : "3 месяца",
+          "displayName" : "Пока сдаешь город",
           "locale" : "ru"
         }
       ],
@@ -37,8 +37,8 @@
       "internalID" : "C1888D84",
       "localizations" : [
         {
-          "description" : "Для тех кто только пришел в автошколу",
-          "displayName" : "Полгода",
+          "description" : "Полгода",
+          "displayName" : "Когда пришел в автошколу",
           "locale" : "ru"
         }
       ],
@@ -59,7 +59,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.10",
+      "productID" : "ru.neatness.TrafficRulesExam.Mini",
       "referenceName" : "10 Coins",
       "type" : "Consumable"
     },
@@ -74,7 +74,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.20",
+      "productID" : "ru.neatness.TrafficRulesExam.Middle",
       "referenceName" : "20 Coins",
       "type" : "Consumable"
     },
@@ -89,7 +89,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.40",
+      "productID" : "ru.neatness.TrafficRulesExam.Max",
       "referenceName" : "40 Coins",
       "type" : "Consumable"
     }

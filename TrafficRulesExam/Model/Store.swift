@@ -22,9 +22,9 @@ typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 struct AppStore {
     static let products: Set<String> = [
-        "ru.neatness.TrafficRulesExam.10",
-        "ru.neatness.TrafficRulesExam.20",
-        "ru.neatness.TrafficRulesExam.40",
+        "ru.neatness.TrafficRulesExam.Mini",
+        "ru.neatness.TrafficRulesExam.Middle",
+        "ru.neatness.TrafficRulesExam.Max",
 
         "ru.neatness.TrafficRulesExam.OneMonthCoins",
         "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",

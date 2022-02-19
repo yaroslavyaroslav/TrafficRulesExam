@@ -12,7 +12,7 @@ struct CardItem: View {
 
     let result: CardResult
 
-    let cardHeight: CGFloat = 200
+    let cardHeight: CGFloat = 172
 
     let insideHorisontalPadding: CGFloat = 10
 
@@ -37,7 +37,7 @@ struct CardItem: View {
                         .foregroundColor(.DesignSystem.bgLightPrimary)
 
                     Spacer()
-                    Image(systemName: "info.circle")
+                    statsButton
                         .font(.system(size: 22))
                 }
                 .padding(.top)
@@ -86,7 +86,7 @@ struct CardItem: View {
                         .font(UIFont.sfBodySemibold.asFont)
                         .foregroundColor(.DesignSystem.greysGrey3Dark)
                     Spacer()
-                    Image(systemName: "info.circle")
+                    statsButton
                         .font(.system(size: 22))
                         .foregroundColor(.DesignSystem.tintsPurpleLight)
                 }
@@ -115,7 +115,7 @@ struct CardItem: View {
                         .font(UIFont.sfFootnote.asFont)
                         .opacity(0.8)
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.DesignSystem.bgDarkBasePrimary)
                 .padding(.horizontal, insideHorisontalPadding)
 
                 Spacer()
@@ -160,9 +160,10 @@ struct CardItem: View {
                 HStack {
                     Image("Coin")
                     Text("1")
+                        .font(UIFont.sfFootnote.asFont)
                     Spacer()
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.DesignSystem.bgDarkBasePrimary)
                 .padding(.horizontal, insideHorisontalPadding)
 
                 Spacer()
@@ -173,6 +174,14 @@ struct CardItem: View {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(.white)
             )
+        }
+    }
+
+    var statsButton: some View {
+        NavigationLink {
+            ExamCardStatsView(cardResult: result)
+        } label: {
+            Image(systemName: "info.circle")
         }
     }
 }

@@ -21,14 +21,7 @@ typealias RenewalInfo = StoreKit.Product.SubscriptionInfo.RenewalInfo
 typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 struct AppStore {
-    static let products: Set<String> = [
-        "ru.neatness.TrafficRulesExam.Mini",
-        "ru.neatness.TrafficRulesExam.Middle",
-        "ru.neatness.TrafficRulesExam.Max",
-
-        "ru.neatness.TrafficRulesExam.OneMonthCoins",
-        "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",
-        "ru.neatness.TrafficRulesExam.SixMonthsCoins"]
+    static let products: Set<PurchasesID> = Set(PurchasesID.allCases)
 }
 
 public enum StoreError: Error {
@@ -100,7 +93,7 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            let storeProducts = try await Product.products(for: AppStore.products)
+            let storeProducts = try await Product.products(for: Set(AppStore.products.map { $0.rawValue }))
 
             var newCoins: [Product] = []
             var newSubscriptions: [Product] = []

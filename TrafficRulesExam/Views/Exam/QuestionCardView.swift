@@ -111,8 +111,8 @@ struct QuestionCardView: View {
                 ForEach(questions, id: \.id) { question in
                     Button {
                         withAnimation {
-                            questionDetails = question
                             self.saveAnswer()
+                            questionDetails = question
                         }
                     } label: {
                         Text(question.id.description)
@@ -132,47 +132,9 @@ struct QuestionCardView: View {
     }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
-
         Button {
             withAnimation {
-                self.saveAnswer()
-                answeredQuestions.insert(questionDetails.id)
-
-                print("question.id: \(questionDetails.id)")
-                currentValues.question = UInt(questionDetails.id)
-                Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
-                print(answeredQuestions.count)
-
-                self.hintPurchased = false
-                self.isHintShown = false
-
-                if answeredQuestions.count == 20 {
-                    // If user made a mistake
-                    if !result.mistakes.isEmpty {
-                        coinsTimer.spendCoin()
-                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
-                    } else {
-                        coinsTimer.rewardCoin()
-                        Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
-                    }
-                    resultsHistory.items.append(result)
-                    presentationMode.wrappedValue.dismiss()
-                    return
-                }
-
-                // FIXME: Crashes if skip 20 question.
-                let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
-
-                if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
-                    // Id 1 based, array 0 based, so to get next element of array need to do this array[id]
-                    questionDetails = questions[questionDetails.id]
-                    if questionDetails.id < 20 {
-                        proxy.scrollTo(questionDetails.id + 1)
-                    }
-                } else {
-                    questionDetails = questions[notAnswered[0] - 1]
-                    proxy.scrollTo(questionDetails.id)
-                }
+                self.saveAnswer(proxy)
             }
         }  label: {
             ZStack(alignment: .center) {
@@ -182,20 +144,63 @@ struct QuestionCardView: View {
                 HStack {
                     Image(systemName: "arrow.right")
                 }
-                .foregroundColor(.black)
             }
         }
     }
 }
 
 extension QuestionCardView {
-    func saveAnswer() {
-        guard selectedAnswer != .none else { return }
+    func saveAnswer(_ proxy: ScrollViewProxy? = nil) {
+        guard selectedAnswer != .none else { dropHint(); return }
 
         if questionDetails.correctAnswer != selectedAnswer {
             result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
         selectedAnswer = .none
+
+        answeredQuestions.insert(questionDetails.id)
+
+        print("question.id: \(questionDetails.id)")
+        currentValues.question = UInt(questionDetails.id)
+        Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
+        print(answeredQuestions.count)
+
+        dropHint()
+
+        if answeredQuestions.count == 20 {
+            // If user made a mistake
+            if !result.mistakes.isEmpty {
+                coinsTimer.spendCoin()
+                Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+            } else {
+                coinsTimer.rewardCoin()
+                Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
+            }
+            resultsHistory.items.append(result)
+            presentationMode.wrappedValue.dismiss()
+            return
+        }
+
+        // FIXME: Crashes if skip 20 question.
+        let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
+
+        guard let proxy = proxy else { return }
+
+        if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
+            // Id 1 based, array 0 based, so to get next element of array need to do this array[id]
+            questionDetails = questions[questionDetails.id]
+            if questionDetails.id < 20 {
+                proxy.scrollTo(questionDetails.id + 1)
+            }
+        } else {
+            questionDetails = questions[notAnswered[0] - 1]
+            proxy.scrollTo(questionDetails.id)
+        }
+    }
+
+    private func dropHint() {
+        isHintShown = false
+        hintPurchased = false
     }
 }
 

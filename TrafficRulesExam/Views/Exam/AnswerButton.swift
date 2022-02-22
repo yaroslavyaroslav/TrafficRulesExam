@@ -31,7 +31,7 @@ struct AnswerButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(Color.white)
+            .foregroundColor(Color.DS.bgDarkBasePrimary)
 //            .opacity(isSelected ? 0.7 : (configuration.isPressed ? 0.7 : 1))
 //            .scaleEffect(isSelected ? 0.8 : (configuration.isPressed ? 0.8 : 1))
             .animation(.easeInOut(duration: 0.2))

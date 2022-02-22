@@ -54,7 +54,7 @@ struct StatsDiagram: View {
                 HStack {
                     Text("Монет: \(coins.amount)")
                         .font(UIFont.sfTitle3.asFont)
-                        .foregroundColor(.DesignSystem.greysGrey3Dark)
+                        .foregroundColor(.DS.greysGrey3Dark)
                     
                     Spacer()
 
@@ -72,13 +72,13 @@ struct StatsDiagram: View {
                 ZStack(alignment: .topLeading) {
                     Rectangle()
                         .frame(width: maxWidth, height: graphHeight)
-                        .foregroundColor(.DesignSystem.greysGrey6Light)
+                        .foregroundColor(.DS.greysGrey6Light)
                     Rectangle()
                         .frame(width: triedTickets, height: graphHeight)
-                        .foregroundColor(.DesignSystem.tintsPinkLight)
+                        .foregroundColor(.DS.tintsPinkLight)
                     Rectangle()
                         .frame(width: successTickets, height: graphHeight)
-                        .foregroundColor(.DesignSystem.tintsGreenLight)
+                        .foregroundColor(.DS.tintsGreenLight)
                 }
                 .cornerRadius(16)
 #if DEBUG
@@ -96,7 +96,7 @@ struct StatsDiagram: View {
                                 .font(UIFont.sfCaption.asFont)
                             Text("\(results.cardsSucceed)")
                                 .font(UIFont.sfCallout.asFont)
-                                .foregroundColor(.DesignSystem.tintsGreenLight)
+                                .foregroundColor(.DS.tintsGreenLight)
                         }
                         Spacer()
 
@@ -107,7 +107,7 @@ struct StatsDiagram: View {
                                 .font(UIFont.sfCaption.asFont)
                             Text("\(results.cardsTried)")
                                 .font(UIFont.sfCallout.asFont)
-                                .foregroundColor(.DesignSystem.tintsPinkLight)
+                                .foregroundColor(.DS.tintsPinkLight)
                         }
                         Spacer()
                     }
@@ -116,7 +116,7 @@ struct StatsDiagram: View {
                             .font(UIFont.sfCaption.asFont)
                         Text(" \(cards.count)")
                             .font(UIFont.sfCallout.asFont)
-                            .foregroundColor(.DesignSystem.greysGrey2Dark)
+                            .foregroundColor(.DS.greysGrey2Dark)
                     }
                     if successTickets == 0 && triedTickets == 0 {
                         Spacer()

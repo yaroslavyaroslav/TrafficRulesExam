@@ -57,7 +57,7 @@ struct MainScreen: View {
             }
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .background(Color.DesignSystem.defaultLightBackground.ignoresSafeArea())
+        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
         .navigationBarItems(leading: button, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 
@@ -96,13 +96,13 @@ struct CoinAmountView: View {
                 Text("+")
             }
             .font(UIFont.sfSubheadline.asFont)
-            .foregroundColor(.DesignSystem.bgLightPrimary)
+            .foregroundColor(.DS.bgLightPrimary)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
             .background(
                 RoundedRectangle(cornerRadius: 32)
-                    .foregroundColor(.DesignSystem.tintsPurpleLight)
+                    .foregroundColor(.DS.tintsPurpleLight)
             )
         }
         .sheet(isPresented: $isModalViewPresented) {
@@ -121,7 +121,7 @@ struct MainScreen_Previews: PreviewProvider {
         NavigationView {
             MainScreen()
                 .environmentObject(Coin())
-                .background(Color.DesignSystem.defaultLightBackground)
+                .background(Color.DS.bgLightPrimary)
         }
     }
 }

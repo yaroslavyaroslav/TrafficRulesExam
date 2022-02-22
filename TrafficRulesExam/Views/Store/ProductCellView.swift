@@ -49,7 +49,7 @@ struct ProductCellView: View {
                 .font(UIFont.sfCallout.asFont)
             Text(product.displayName)
                 .font(UIFont.sfFootnote.asFont)
-                .foregroundColor(.DesignSystem.greysGreyDark)
+                .foregroundColor(.DS.greysGreyDark)
         }
     }
 

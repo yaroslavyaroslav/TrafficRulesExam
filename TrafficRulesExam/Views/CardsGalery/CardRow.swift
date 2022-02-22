@@ -48,7 +48,7 @@ struct CardRow: View {
                     .disabled(coins.amount <= 0 ? true : false)
                 }
             }
-            .background(Color.DesignSystem.defaultLightBackground)
+            .background(Color.DS.bgLightPrimary)
         }
     }
 }

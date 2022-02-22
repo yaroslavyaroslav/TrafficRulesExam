@@ -53,15 +53,15 @@ struct AnswerHStack: View {
         HStack(alignment: .top, spacing: 12) {
             ZStack {
                 Circle()
-                    .foregroundColor(.gray)
+                    .foregroundColor(.DS.bgGroupedLightPrimary)
                 Text(answer.id.stringValue)
-                    .font(.system(size: 16))
+                    .font(UIFont.sfCaption.asFont)
             }
             .frame(width: 24, height: 24, alignment: .center)
 
             Text(answer.text)
                 .multilineTextAlignment(.leading)
-                .font(.system(size: 16))
+                .font(UIFont.sfCallout.asFont)
         }
         .padding(12)
     }

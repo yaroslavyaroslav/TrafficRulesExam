@@ -16,7 +16,7 @@ struct BuyButtonStyle: ButtonStyle {
     }
 
     func makeBody(configuration: Self.Configuration) -> some View {
-        var bgColor: Color = isPurchased ? .DesignSystem.tintsPurpleDark : .DesignSystem.tintsPurpleLight
+        var bgColor: Color = isPurchased ? .DS.tintsPurpleDark : .DS.tintsPurpleLight
         bgColor = configuration.isPressed ? bgColor.opacity(0.7) : bgColor.opacity(1)
 
         return configuration.label

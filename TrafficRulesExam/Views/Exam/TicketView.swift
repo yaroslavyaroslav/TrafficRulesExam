@@ -17,17 +17,15 @@ struct TicketView: View {
     @EnvironmentObject var currentValues: CurrentValues
 
     var body: some View {
-        VStack(alignment: .leading) {
-            QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
-                .onAppear {
-                    currentValues.ticket = UInt(card.id)
-                    Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
-                }
-        }
-        .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Билет \(card.id)")
-        .background(Color.gray.ignoresSafeArea())
+        QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
+            .onAppear {
+                currentValues.ticket = UInt(card.id)
+                Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
+            }
+            .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Билет \(card.id)")
+            .background(Color.DS.bgLightPrimary.ignoresSafeArea())
     }
 }
 

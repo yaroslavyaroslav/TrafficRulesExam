@@ -34,15 +34,35 @@ struct ExamStatsView: View {
                         )
                         .navigationBarTitle(Text("Вопрос \(result.mistakes[mistakeIdx].id.description)"))
                     } label: {
-                        VStack {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text("Ошибка в \(result.mistakes[mistakeIdx].id.description) вопросе")
-                            Text("Вы ответили \(result.mistakes[mistakeIdx].wrongAnswer.stringValue)")
-                            Text("Правильный ответ \(getCorrectAnswerForQuestion(cardId, mistakeIdx).stringValue)")
+                                .font(UIFont.sfBody.asFont)
+
+                            HStack(spacing: 0) {
+                                Text("Вы ответили: ")
+                                    .font(UIFont.sfCaption.asFont)
+                                Text(result.mistakes[mistakeIdx].wrongAnswer.stringValue)
+                                    .foregroundColor(.DS.tintsPinkLight)
+                                    .padding(.trailing, 12)
+
+                                Circle()
+                                    .foregroundColor(.DS.greysGrey5Light)
+                                    .frame(width: 5, height: 5)
+                                    .padding(.trailing, 12)
+
+                                Text("Правильный ответ: ")
+                                Text(getCorrectAnswerForQuestion(cardId, mistakeIdx).stringValue)
+                                    .font(UIFont.sfCaptionMedium.asFont)
+                                    .foregroundColor(.DS.tintsGreenLight)
+                            }
+                            .font(UIFont.sfCaptionMedium.asFont)
+                            .foregroundColor(.DS.greysGrey2Dark)
                         }
                     }
                 }
             }
         }
+        .navigationBarTitle(result.examDate.shortDate)
     }
 
     private func getQuestionForStats(_ cardID: Int, _ questionId: Int) -> Question {

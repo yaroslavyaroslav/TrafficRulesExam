@@ -53,7 +53,6 @@ struct QuestionCardView: View {
 
                 QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
-                    .background(Color.orange)
 
                 HStack(spacing: 16) {
                     Button {
@@ -70,13 +69,12 @@ struct QuestionCardView: View {
                         ZStack(alignment: .center) {
                             RoundedRectangle(cornerRadius: 8)
                                 .frame(height: 52, alignment: .center)
-                                .foregroundColor(.purple)
+                                .foregroundColor(.DS.tintsPurpleLight)
 
                             HStack {
-                                Text("Подсказка за 1")
                                 Image("Coin")
+                                Text("Подсказка за 1")
                             }
-                            .foregroundColor(.black)
                         }
                     }
 
@@ -84,8 +82,10 @@ struct QuestionCardView: View {
                     nextQuestionButton(proxy)
                         .disabled(selectedAnswer == AnswerID.none)
                 }
+                .font(UIFont.sfBodySemibold.asFont)
+                .foregroundColor(.DS.bgGroupedLightSecondary)
                 .padding(16)
-                .background(Color.yellow.edgesIgnoringSafeArea(.bottom))
+                .background(Color.DS.bgLightPrimary.edgesIgnoringSafeArea(.bottom))
             }
             .popup(isPresented: $isHintShown, type: .toast, position: .bottom, closeOnTap: false) {
                 VStack {
@@ -116,13 +116,14 @@ struct QuestionCardView: View {
                         }
                     } label: {
                         Text(question.id.description)
-                            .foregroundColor(.black)
+                            .font(UIFont.sfBody.asFont)
+                            .foregroundColor(question == questionDetails ? .DS.bgLightPrimary : .DS.greysGrey3Dark)
                     }
                     .frame(width: 44, height: 44, alignment: .center)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(question == questionDetails ? .green : (answeredQuestions.contains(question.id) ? .yellow : .gray))
-                    )
+                    .background(question == questionDetails
+                                ? Color.DS.tintsPurpleDark : (answeredQuestions.contains(question.id)
+                                   ? Color.DS.bgLightSecondary : Color.DS.bgLightPrimary))
+                    .roundBorder(question == questionDetails ? Color.DS.tintsPurpleLight : Color.DS.bgLightSecondary, cornerRadius: 12)
                     .disabled(answeredQuestions.contains(question.id))
                 }
                 .cornerRadius(8)
@@ -177,7 +178,7 @@ struct QuestionCardView: View {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 52, height: 52, alignment: .center)
-                    .foregroundColor(.purple)
+                    .foregroundColor(.DS.tintsPurpleLight)
                 HStack {
                     Image(systemName: "arrow.right")
                 }

@@ -15,14 +15,15 @@ struct TotalStatsView: View {
     var body: some View {
         VStack(spacing: 0) {
             StatsDiagram(results: results)
-                .padding(16)
-                .background(Color.DesignSystem.bgLightPrimary)
-                .cornerRadius(16)
+                .padding(.vertical, 16)
+                .padding(.horizontal, 16)
+                .background(Color.DS.bgLightPrimary)
+                .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
 
             let notEmptyResult = results.items.filter { !$0.resultHistory.items.isEmpty }
 
-            List {
-                ForEach(notEmptyResult, id: \.id) { result in
+            if #available(iOS 15.0, *) {
+                List(notEmptyResult, id: \.id) { result in
                     /*
                      Если использовать NavigationLink(isActive:) в ForEach тап на кнопку открывает рандомный destination.
                      Проблема закрытия DestinationView по тапу на кнопку решается через вызов в DestinationView
@@ -38,11 +39,16 @@ struct TotalStatsView: View {
                         }
                     }
 
+                    //                }
+                    .listRowBackground(Color.clear)
                 }
-            }
-            .listStyle(DefaultListStyle())
+                .listSectionSeparator(.hidden, edges: .all)
+                .listStyle(.inset)
+            } else {
+                // Fallback on earlier versions
+            } // .grouped — will give padding around 44 px.
         }
-        .background(Color.DesignSystem.defaultLightBackground.ignoresSafeArea())
+        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
     }
 
 
@@ -51,11 +57,11 @@ struct TotalStatsView: View {
         HStack(alignment: .center) {
             ZStack(alignment: .center) {
                 Circle()
-                    .stroke(Color.DesignSystem.tintsGreenLight, lineWidth: 1)
+                    .stroke(Color.DS.tintsGreenLight, lineWidth: 1)
                     .foregroundColor(.clear)
                 Text("\(cards.getElementById(result.id).id)")
                     .font(UIFont.sfBody.asFont)
-                    .foregroundColor(.DesignSystem.tintsGreenLight)
+                    .foregroundColor(.DS.tintsGreenLight)
             }
             .frame(width: 44, height: 44)
 
@@ -69,7 +75,7 @@ struct TotalStatsView: View {
             Spacer()
             Text(result.resultHistory.items.last!.examDate.shortDate)
                 .font(UIFont.sfFootnote.asFont)
-                .foregroundColor(.DesignSystem.greysGrey3Dark)
+                .foregroundColor(.DS.greysGrey3Dark)
         }
     }
 
@@ -81,18 +87,18 @@ struct TotalStatsView: View {
                     .font(UIFont.sfBody.asFont)
                     .foregroundColor(.white)
             }
-            .foregroundColor(.DesignSystem.tintsPinkLight)
+            .foregroundColor(.DS.tintsPinkLight)
             .frame(width: 44, height: 44)
 
             Spacer()
             Text("\(result.resultHistory.items.last!.mistakes.count)/20")
                 .font(UIFont.sfTitle1.asFont)
-                .foregroundColor(.DesignSystem.tintsPinkDark)
+                .foregroundColor(.DS.tintsPinkDark)
 
             Spacer()
             Text(result.resultHistory.items.last!.examDate.shortDate)
                 .font(UIFont.sfFootnote.asFont)
-                .foregroundColor(.DesignSystem.greysGrey3Dark)
+                .foregroundColor(.DS.greysGrey3Dark)
         }
     }
 }

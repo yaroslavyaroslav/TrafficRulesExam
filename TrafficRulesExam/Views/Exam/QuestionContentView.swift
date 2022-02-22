@@ -28,8 +28,10 @@ struct QuestionContentView: View {
                 Text(question.text)
                     .multilineTextAlignment(.center)
                     .padding(16)
+                    .font(UIFont.sfHeadline.asFont)
             }
             .padding(.top, 10)
+            .background(Color.clear)
 
             ZStack(alignment: .bottom) {
                 AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)

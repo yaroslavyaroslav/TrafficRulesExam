@@ -37,22 +37,26 @@ struct QuestionContentView: View {
                 AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
                     .padding(.horizontal, 16)
                     .padding(.top, 16)
-                Button {
-                    print("ScrollToDown")
-                } label: {
-                    ZStack(alignment: .center) {
-                        Circle()
-                        Image(systemName: "arrow.down")
-                            .foregroundColor(.black)
-                    }
-                    .frame(width: 24, height: 24, alignment: .top)
-                    .padding(12)
-                }
+
+                // TODO: Add scroll to borrom button.
+//                if correctAnswer == nil {
+//                    Button {
+//                        print("ScrollToDown")
+//                    } label: {
+//                        ZStack(alignment: .center) {
+//                            Circle()
+//                                .foregroundColor(.DS.bgLightPrimary)
+//                                .frame(width: 48, height: 48)
+//                            Image(systemName: "arrow.down.circle.fill")
+//                                .foregroundColor(.DS.tintsOrangeDark)
+//                                .font(.system(size: 31))
+//                        }
+//                        .frame(width: 48, height: 48, alignment: .top)
+//                        .padding(8)
+//                    }
+//                }
             }
-            .background(Color.white)
-
-
-//            Spacer()
+            .background(Color.DS.bgLightPrimary)
         }
     }
 }

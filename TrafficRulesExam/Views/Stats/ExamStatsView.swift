@@ -14,9 +14,6 @@ struct ExamStatsView: View {
 
     var body: some View {
         VStack {
-            Text("Билет \(cardId)")
-            Text("Ошибок \(result.mistakes.count)/20")
-
             if result.succeed {
                 Spacer()
                 Text("Решено \(result.examDate.prettyPrint)")
@@ -25,6 +22,12 @@ struct ExamStatsView: View {
                     .padding()
                 Spacer()
             } else {
+                Text("🙁")
+                    .font(.system(size: 64))
+                    .padding(.bottom, 12)
+                Text("Ошибок \(result.mistakes.count)/20")
+                    .font(UIFont.sfTitle2Bold.asFont)
+
                 List(0..<result.mistakes.count) { mistakeIdx in
                     NavigationLink {
                         QuestionContentView(

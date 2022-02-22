@@ -14,7 +14,7 @@ struct ExamCardStatsView: View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
                 ExamStatsView(result: result, cardId: cardResult.id)
-                    .navigationBarTitle(Text("Билет \(cardResult.id)"))
+                    
             } label: {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
@@ -29,6 +29,8 @@ struct ExamCardStatsView: View {
             }
             .listRowBackground(result.succeed ? Color.green : Color.red)
         }
+        .navigationBarTitle("Билет \(cardResult.id.description)")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

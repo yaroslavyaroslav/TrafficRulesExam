@@ -14,6 +14,8 @@ struct AnswersView: View {
 
     @Binding var selectedAnswer: AnswerID
 
+
+
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView(.vertical, showsIndicators: true) {
@@ -26,14 +28,22 @@ struct AnswersView: View {
                         } label: {
                             AnswerHStack(answer: answer)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(.black)
-                                .background(Color.white)
-                                .roundBorder(selectedAnswer.id == answer.id ? Color.purple : Color.black, cornerRadius: 8)
+                                .foregroundColor(answer.id == selectedAnswer ? .DS.tintsPurpleLight : .DS.bgDarkBasePrimary)
+                                .background(answer.id == correctAnswer ? Color.DS.tintsGreenLight : Color.DS.bgLightPrimary)
+                                .roundBorder(answer.id == selectedAnswer ? Color.DS.tintsPurpleLight : Color.DS.greysGrey6Light, width: setBorderLine(answer), cornerRadius: 8)
                         }
                     }
                 }
             }
         }
+    }
+
+    private func setTintColor(_ answer: Answer) -> Color {
+        selectedAnswer.id == answer.id ? .DS.tintsPurpleLight : .DS.greysGrey6Light
+    }
+
+    private func setBorderLine(_ answer: Answer) -> CGFloat {
+        selectedAnswer.id == answer.id ? 2 : 1
     }
 }
 

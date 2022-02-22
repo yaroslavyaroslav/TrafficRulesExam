@@ -186,6 +186,7 @@
 		5C1AAC572799B9A3002046DE /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */,
 				5C1AAC602799BB7B002046DE /* StatusInfoView.swift */,
 				5C900ED2278C7AF9004E9198 /* Purchase.swift */,
 				5C1AAC582799B9C2002046DE /* StoreView.swift */,
@@ -247,7 +248,6 @@
 				5C45EBB92739964D00C90977 /* TotalStatsNavigationView.swift */,
 				5C45EBC0273BF1FD00C90977 /* TotalStatsView.swift */,
 				5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */,
-				5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */,
 				5C45EBBB2739968600C90977 /* ExamCardStatsView.swift */,
 				5C45EBBD2739969600C90977 /* ExamStatsView.swift */,
 			);

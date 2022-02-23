@@ -58,11 +58,11 @@ struct MainScreen: View {
         }
         .ignoresSafeArea(.container, edges: .bottom)
         .background(Color.DS.bgLightPrimary.ignoresSafeArea())
-        .navigationBarItems(leading: button, trailing: CoinAmountView(coinsAmount: coins.amount))
+        .navigationBarItems(leading: modeToggleButton, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 
 
-    var button: some View {
+    var modeToggleButton: some View {
         Button {
             if case .cardGalery = selectedIndex {
                 selectedIndex = .totalStatsNavigation
@@ -73,44 +73,6 @@ struct MainScreen: View {
             switch selectedIndex {
             case .cardGalery: Text("Статистика")
             case .totalStatsNavigation: Text("Билеты")
-            }
-        }
-    }
-}
-
-struct CoinAmountView: View {
-    var coinsAmount: UInt
-
-    @State var isModalViewPresented = false
-
-    var body: some View {
-        Button {
-            self.isModalViewPresented = true
-            Analytics.fire(.screenShown(name: "Покупки"))
-        } label: {
-            HStack {
-                Image("Coin")
-                    .padding(.trailing, 0)
-                Text("\(coinsAmount)")
-                    .padding(.leading, 0)
-                Text("+")
-            }
-            .font(UIFont.sfSubheadline.asFont)
-            .foregroundColor(.DS.bgLightPrimary)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .frame(minWidth: 90, maxWidth: 150, maxHeight: 36, alignment: .leading)
-            .background(
-                RoundedRectangle(cornerRadius: 32)
-                    .foregroundColor(.DS.tintsPurpleLight)
-            )
-        }
-        .sheet(isPresented: $isModalViewPresented) {
-            if #available(iOS 15.0, *) {
-                StoreView(isPresented: $isModalViewPresented)
-            } else {
-                Purchase(isPresented: $isModalViewPresented)
-                // Fallback on earlier versions
             }
         }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct CardItem: View {
     let card: ExamCard
 
-    let result: CardResult
+    @Binding var result: CardResult
 
     let cardHeight: CGFloat = 172
 
@@ -186,7 +186,7 @@ struct CardItem: View {
 }
 
 struct CardItem_Previews: PreviewProvider {
-    private static var results: CardResults = {
+    @State private static var results: CardResults = {
         var object = CardResults(items: (1...3).map { CardResult(id: $0, resultHistory: Results(items: [])) })
 
         let resultSuccess = Result(mistakes: [], examDate: Date())
@@ -205,13 +205,13 @@ struct CardItem_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                CardItem(card: cards[0], result: results.items[0])
-                CardItem(card: cards[1], result: results.items[1])
+                CardItem(card: cards[0], result: $results.items[0])
+                CardItem(card: cards[1], result: $results.items[1])
             }
 
             HStack {
-                CardItem(card: cards[2], result: results.items[2])
-                CardItem(card: cards[2], result: results.items[2])
+                CardItem(card: cards[2], result: $results.items[2])
+                CardItem(card: cards[2], result: $results.items[2])
             }
         }
     }

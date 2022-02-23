@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct CardRow: View {
-    @EnvironmentObject
-    var coins: Coin
+    @EnvironmentObject var coins: Coin
 
-    @State
-    var results: CardResults = {
+    @State var results: CardResults = {
         var object: CardResults!
 
         do {
@@ -40,7 +38,7 @@ struct CardRow: View {
                     NavigationLink {
                         TicketView(card: locCards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: locCards.getElementById(result.id), result: result)
+                        CardItem(card: locCards.getElementById(result.id), result: $result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)

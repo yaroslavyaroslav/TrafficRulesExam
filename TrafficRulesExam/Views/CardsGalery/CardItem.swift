@@ -21,10 +21,13 @@ struct CardItem: View {
 
         if result.resultHistory.items.isEmpty {
             emptyItem
+                .defaultShadow()
         } else if succeed {
             succeedItem
+                .defaultShadow()
         } else {
             failedItem
+                .defaultShadow()
         }
     }
 

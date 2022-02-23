@@ -19,6 +19,7 @@ struct TotalStatsView: View {
                 .padding(.horizontal, 16)
                 .background(Color.DS.bgLightPrimary)
                 .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
+                .defaultShadow()
 
             let notEmptyResult = results.items.filter { !$0.resultHistory.items.isEmpty }
 

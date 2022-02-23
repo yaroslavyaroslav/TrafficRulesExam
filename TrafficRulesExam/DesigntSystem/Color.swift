@@ -1,12 +1,103 @@
 import SwiftUI
 
-public extension Color {
+enum ShadowType {
+    case down
+    case up
+    case inner
+
+}
+
+
+// FIXME: Make this protocol with default implementation.
+extension View {
+    func defaultShadow(_ type: ShadowType = .down) -> some View {
+        var y: CGFloat
+        var x: CGFloat
+        var radius: CGFloat
+        switch type {
+        case .down:
+            y = 4
+            x = 0
+            radius = 8
+        case .up:
+            y = -4
+            x = 0
+            radius = 8
+        case .inner:
+            y = -4
+            x = 0
+            radius = 8
+        }
+
+        return self.compositingGroup().shadow(color: .DS.shadowLight, radius: radius, x: x, y: y)
+    }
+}
+
+extension VStack where Content: View {
+    func defaultShadow(_ type: ShadowType = .down) -> some View {
+        var y: CGFloat
+        var x: CGFloat
+        switch type {
+        case .down:
+            y = 4
+            x = 0
+        case .up:
+            y = -4
+            x = 0
+        case .inner:
+            y = -4
+            x = -4
+        }
+        return self.compositingGroup().shadow(color: .DS.shadowLight, radius: 8, x: x, y: y)
+    }
+}
+
+extension HStack where Content: View {
+    func defaultShadow(_ type: ShadowType = .down) -> some View {
+        var y: CGFloat
+        var x: CGFloat
+        switch type {
+        case .down:
+            y = 4
+            x = 0
+        case .up:
+            y = -4
+            x = 0
+        case .inner:
+            y = -4
+            x = -4
+        }
+        return self.compositingGroup().shadow(color: .DS.shadowLight, radius: 8, x: x, y: y)
+    }
+}
+
+extension ZStack where Content: View {
+    func defaultShadow(_ type: ShadowType = .down) -> some View {
+        var y: CGFloat
+        var radius: CGFloat
+        switch type {
+        case .down:
+            y = 4
+            radius = 8
+        case .up:
+            y = -4
+            radius = 8
+        case .inner:
+            y = 0
+            radius = -8
+        }
+        return self.compositingGroup().shadow(color: .DS.shadowLight, radius: radius, x: 0, y: y)
+    }
+}
+
+extension Color {
     /// Namespace to prevent naming collisions with static accessors on
     /// SwiftUI's Color.
     ///
     /// Xcode's autocomplete allows for easy discovery of design system colors.
     /// At any call site that requires a color, type `Color.DS.<esc>`
     struct DS {
+        public static let shadowLight = Color(red: 0.8148611187934875, green: 0.8148611187934875, blue: 0.9268055558204651, opacity: 0.2)
         public static let tintsRedLight = Color(red: 1, green: 0.23137255012989044, blue: 0.1882352977991104, opacity: 1)
         public static let tintsRedDark = Color(red: 1, green: 0.2705882489681244, blue: 0.22745098173618317, opacity: 1)
         public static let tintsOrangeLight = Color(red: 1, green: 0.5843137502670288, blue: 0, opacity: 1)

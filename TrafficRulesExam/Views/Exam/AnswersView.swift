@@ -34,6 +34,8 @@ struct AnswersView: View {
                         }
                     }
                 }
+                // To move all list down to question subview.
+                .padding(.top, 16)
             }
         }
     }

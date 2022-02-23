@@ -49,7 +49,6 @@ struct QuestionCardView: View {
         ScrollViewReader { proxy in
             VStack(spacing: 0) {
                 questionList
-                    .padding(.vertical, 12)
 
                 QuestionContentView(question: questionDetails, selectedAnswer: $selectedAnswer, correctAnswer: nil)
                     .transition(.moveAndFade)
@@ -86,6 +85,7 @@ struct QuestionCardView: View {
                 .foregroundColor(.DS.bgGroupedLightSecondary)
                 .padding(16)
                 .background(Color.DS.bgLightPrimary.edgesIgnoringSafeArea(.bottom))
+                .defaultShadow(.up)
             }
             .popup(isPresented: $isHintShown, type: .toast, position: .bottom, closeOnTap: false) {
                 VStack {
@@ -109,6 +109,10 @@ struct QuestionCardView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 6) {
                 ForEach(questions, id: \.id) { question in
+                    let state: TicketButtonStyle.State = question == questionDetails
+                            ? .current : (answeredQuestions.contains(question.id)
+                                  ? .answered : .notAnswered)
+
                     Button {
                         withAnimation {
                             self.saveAnswer()
@@ -119,15 +123,11 @@ struct QuestionCardView: View {
                             .font(UIFont.sfBody.asFont)
                             .foregroundColor(question == questionDetails ? .DS.bgLightPrimary : .DS.greysGrey3Dark)
                     }
-                    .frame(width: 44, height: 44, alignment: .center)
-                    .background(question == questionDetails
-                                ? Color.DS.tintsPurpleDark : (answeredQuestions.contains(question.id)
-                                   ? Color.DS.bgLightSecondary : Color.DS.bgLightPrimary))
-                    .roundBorder(question == questionDetails ? Color.DS.tintsPurpleLight : Color.DS.bgLightSecondary, cornerRadius: 12)
-                    .disabled(answeredQuestions.contains(question.id))
+                    .buttonStyle(TicketButtonStyle(state: state))                    
                 }
                 .cornerRadius(8)
             }
+            .padding(.vertical, 12)
         }
     }
 

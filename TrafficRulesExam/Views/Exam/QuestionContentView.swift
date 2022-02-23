@@ -15,8 +15,8 @@ struct QuestionContentView: View {
     let correctAnswer: AnswerID?
 
     var body: some View {
-        VStack {
-            VStack {
+        VStack(spacing: 0) {
+            VStack(spacing: 0) {
                 if let image = question.image {
                     Image(uiImage: image)
                         .resizable()
@@ -29,14 +29,17 @@ struct QuestionContentView: View {
                     .multilineTextAlignment(.center)
                     .padding(16)
                     .font(UIFont.sfHeadline.asFont)
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.DS.bgLightSecondary)
             }
             .padding(.top, 10)
-            .background(Color.clear)
+            .background(Color.DS.bgLightPrimary)
+            .defaultShadow()
 
             ZStack(alignment: .bottom) {
                 AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
                     .padding(.horizontal, 16)
-                    .padding(.top, 16)
 
                 // TODO: Add scroll to borrom button.
 //                if correctAnswer == nil {

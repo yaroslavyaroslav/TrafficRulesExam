@@ -125,8 +125,8 @@ struct CardItem: View {
             }
             .foregroundColor(.white)
             .frame(height: cardHeight, alignment: .center)
-            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
             .background(Color.DS.bgLightPrimary)
+            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
         }
     }
 
@@ -171,8 +171,8 @@ struct CardItem: View {
             }
             .foregroundColor(.white)
             .frame(height: cardHeight, alignment: .center)
-            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
             .background(Color.DS.bgLightPrimary)
+            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
         }
     }
 

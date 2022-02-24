@@ -54,30 +54,7 @@ struct QuestionCardView: View {
                     .transition(.moveAndFade)
 
                 HStack(spacing: 16) {
-                    Button {
-                        if !hintPurchased {
-                            self.hintPurchased = true
-                            coinsTimer.spendCoin()
-                        }
-                        withAnimation {
-                            self.isHintShown = true
-                        }
-
-                        Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
-                    } label: {
-                        ZStack(alignment: .center) {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(height: 52, alignment: .center)
-                                .foregroundColor(.DS.tintsPurpleLight)
-
-                            HStack {
-                                Image("Coin")
-                                Text("Подсказка за 1")
-                            }
-                        }
-                    }
-
-
+                    hintButton
                     nextQuestionButton(proxy)
                         .disabled(selectedAnswer == AnswerID.none)
                 }
@@ -90,16 +67,18 @@ struct QuestionCardView: View {
             .popup(isPresented: $isHintShown, type: .toast, position: .bottom, closeOnTap: false) {
                 VStack {
                     RoundedRectangle(cornerRadius: 8)
-                        .frame(width: 30, height: 8)
-                        .foregroundColor(.white)
+                        .stroke(Color.DS.tintsDisabledDark, lineWidth: 1)
+                        .frame(width: 40, height: 4)
+                        .background(Color.DS.tintsDisabledDark)
                         .padding(.vertical, 16)
 
                     Text(questionDetails.hint)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 40)
                 }
-                .background(Color(red: 0.85, green: 0.8, blue: 0.95)).ignoresSafeArea(.all, edges: .bottom)
-                .cornerRadius(30.0)
+                .roundBorder(Color.DS.greysGrey6Light, cornerRadius: 30)
+                .background(Color.DS.bgLightPrimary).ignoresSafeArea(.all, edges: .bottom)
+                .defaultShadow()
             }
         }
     }
@@ -131,21 +110,62 @@ struct QuestionCardView: View {
         }
     }
 
-    func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
+    @ViewBuilder
+    var hintButton: some View {
+        let isEnabled = coins.amount != 0
+
         Button {
+            if !hintPurchased {
+                self.hintPurchased = true
+                do {
+                    try coinsTimer.spendCoin()
+                } catch CoinsError.NegativeCoinsAmount {
+                    print("CoinsNegative")
+                } catch {
+                    print("this")
+                }
+            }
+            withAnimation {
+                self.isHintShown = true
+            }
+
+            Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
+        } label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(height: 52, alignment: .center)
+
+                HStack {
+                    Image("Coin")
+                    Text("Подсказка за 1")
+                }
+                .foregroundColor(isEnabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
+            }
+        }
+        .buttonStyle(InExamButtonStyle(isEnabled: isEnabled))
+        .disabled(coins.amount == 0)
+    }
+
+    func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
+        let isEnabled = selectedAnswer != .none
+
+        return Button {
             withAnimation {
                 self.saveAnswer(proxy)
             }
         }  label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 52, height: 52, alignment: .center)
-                    .foregroundColor(.DS.tintsPurpleLight)
+                    .frame(width: 52, height: 52)
                 HStack {
-                    Image(systemName: "arrow.right")
+                    Image(systemName: "arrow.forward")
+                        .font(.system(size: 24))
+                        .foregroundColor(isEnabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
                 }
             }
         }
+        .buttonStyle(InExamButtonStyle(isEnabled: isEnabled))
+        .disabled(!isEnabled)
     }
 }
 
@@ -170,7 +190,13 @@ extension QuestionCardView {
         if answeredQuestions.count == 20 {
             // If user made a mistake
             if !result.mistakes.isEmpty {
-                coinsTimer.spendCoin()
+                do {
+                    try coinsTimer.spendCoin()
+                } catch CoinsError.NegativeCoinsAmount {
+                    print("Not enough coins.")
+                } catch {
+                    print("This")
+                }
                 Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
             } else {
                 coinsTimer.rewardCoin()

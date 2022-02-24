@@ -51,19 +51,6 @@ struct TicketButtonStyle: ButtonStyle {
             .roundBorder(strokeColor, width: 1, cornerRadius: 12)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
             .defaultShadow(shadowType)
-            .overlay(overlay)
             .disabled(state != .notAnswered)
-    }
-
-    @ViewBuilder
-    var overlay: some View {
-        switch state {
-        case .notAnswered:
-            EmptyView()
-        case .current:
-            EmptyView()
-        case .answered:
-            EmptyView()
-        }
     }
 }

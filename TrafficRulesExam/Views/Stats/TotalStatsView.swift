@@ -33,14 +33,8 @@ struct TotalStatsView: View {
                     NavigationLink {
                         ExamCardStatsView(cardResult: result)
                     } label: {
-                        if result.resultHistory.items.last!.succeed {
-                            succeessCell(result: result)
-                        } else {
-                            failedCell(result: result)
-                        }
+                        CardResultCell(result: result)
                     }
-
-                    //                }
                     .listRowBackground(Color.clear)
                 }
                 .listSectionSeparator(.hidden, edges: .all)
@@ -54,54 +48,7 @@ struct TotalStatsView: View {
 
 
 
-    private func succeessCell(result: CardResult) -> some View {
-        HStack(alignment: .center) {
-            ZStack(alignment: .center) {
-                Circle()
-                    .stroke(Color.DS.tintsGreenLight, lineWidth: 1)
-                    .foregroundColor(.clear)
-                Text("\(cards.getElementById(result.id).id)")
-                    .font(UIFont.sfBody.asFont)
-                    .foregroundColor(.DS.tintsGreenLight)
-            }
-            .frame(width: 44, height: 44)
-
-            Spacer()
-
-            Image("SuccessSign")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 44, height: 44)
-
-            Spacer()
-            Text(result.resultHistory.items.last!.examDate.shortDate)
-                .font(UIFont.sfFootnote.asFont)
-                .foregroundColor(.DS.greysGrey3Dark)
-        }
-    }
-
-    private func failedCell(result: CardResult) -> some View {
-        HStack {
-            ZStack(alignment: .center) {
-                Circle()
-                Text("\(cards.getElementById(result.id).id)")
-                    .font(UIFont.sfBody.asFont)
-                    .foregroundColor(.white)
-            }
-            .foregroundColor(.DS.tintsPinkLight)
-            .frame(width: 44, height: 44)
-
-            Spacer()
-            Text("\(result.resultHistory.items.last!.mistakes.count)/20")
-                .font(UIFont.sfTitle1.asFont)
-                .foregroundColor(.DS.tintsPinkDark)
-
-            Spacer()
-            Text(result.resultHistory.items.last!.examDate.shortDate)
-                .font(UIFont.sfFootnote.asFont)
-                .foregroundColor(.DS.greysGrey3Dark)
-        }
-    }
+    
 }
 
 struct TotalStats_Previews: PreviewProvider {

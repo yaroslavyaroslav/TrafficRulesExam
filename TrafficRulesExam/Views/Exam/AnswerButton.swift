@@ -12,7 +12,7 @@ struct AnswerButton<Content: View>: View {
 
     var label: () -> Content
 
-    var isSelected = false
+    var isSelected: Bool
 
     init(isSelected: Bool = false, action: @escaping () -> Void, @ViewBuilder label: @escaping () -> Content) {
         self.isSelected = isSelected

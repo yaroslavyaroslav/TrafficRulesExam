@@ -35,31 +35,12 @@ struct QuestionContentView: View {
             }
             .padding(.top, 10)
             .background(Color.DS.bgLightPrimary)
+            .zIndex(1)
             .defaultShadow()
 
-            ZStack(alignment: .bottom) {
-                AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
-                    .padding(.horizontal, 16)
-
-                // TODO: Add scroll to borrom button.
-//                if correctAnswer == nil {
-//                    Button {
-//                        print("ScrollToDown")
-//                    } label: {
-//                        ZStack(alignment: .center) {
-//                            Circle()
-//                                .foregroundColor(.DS.bgLightPrimary)
-//                                .frame(width: 48, height: 48)
-//                            Image(systemName: "arrow.down.circle.fill")
-//                                .foregroundColor(.DS.tintsOrangeDark)
-//                                .font(.system(size: 31))
-//                        }
-//                        .frame(width: 48, height: 48, alignment: .top)
-//                        .padding(8)
-//                    }
-//                }
-            }
-            .background(Color.DS.bgLightPrimary)
+            AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
+                .padding(.horizontal, 16)
+                .background(Color.DS.bgLightPrimary)
         }
     }
 }

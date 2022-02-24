@@ -63,6 +63,8 @@
 		5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD344E27902C2200D919DD /* CoinsTimer.swift */; };
 		5CB0AEB027C67732007B4810 /* TicketButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */; };
 		5CB0AEB227C6AF65007B4810 /* CoinsAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */; };
+		5CC107D627C7F7D9006A9D73 /* CardResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */; };
+		5CC107D827C7F94E006A9D73 /* InExamButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */; };
 		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
 		5CDB6372272D946700E888F7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
 		5CDB6374272DC30E00E888F7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
@@ -139,6 +141,8 @@
 		5CAD344E27902C2200D919DD /* CoinsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTimer.swift; sourceTree = "<group>"; };
 		5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketButtonStyle.swift; sourceTree = "<group>"; };
 		5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsAmountView.swift; sourceTree = "<group>"; };
+		5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResultCell.swift; sourceTree = "<group>"; };
+		5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InExamButtonStyle.swift; sourceTree = "<group>"; };
 		5CDB6371272D946700E888F7 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		5CDB6373272DC30D00E888F7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5CDB6375272DC36200E888F7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 			children = (
 				5C45EBB92739964D00C90977 /* TotalStatsNavigationView.swift */,
 				5C45EBC0273BF1FD00C90977 /* TotalStatsView.swift */,
+				5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */,
 				5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */,
 				5C45EBBB2739968600C90977 /* ExamCardStatsView.swift */,
 				5C45EBBD2739969600C90977 /* ExamStatsView.swift */,
@@ -338,6 +343,7 @@
 				5C0F75B1271A07F1004473EA /* AnswersView.swift */,
 				5C12191F272F2B6100DB4826 /* AnswerButton.swift */,
 				5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */,
+				5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */,
 			);
 			path = Exam;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC107D827C7F94E006A9D73 /* InExamButtonStyle.swift in Sources */,
 				5C121919272ED02D00DB4826 /* RawRepresentable.swift in Sources */,
 				5C45EBBA2739964D00C90977 /* TotalStatsNavigationView.swift in Sources */,
 				5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */,
@@ -529,6 +536,7 @@
 				5CFB1FDD27C16BAC00E8B7CF /* CoinsStackView.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
 				5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */,
+				5CC107D627C7F7D9006A9D73 /* CardResultCell.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

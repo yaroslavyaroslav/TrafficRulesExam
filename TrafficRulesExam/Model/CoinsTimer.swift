@@ -74,53 +74,63 @@ class CoinsTimer: ObservableObject {
 
 
     class func setSubscriptionKeychainValues(_ subscriptionStartDate: Date?, _ lastRunDate: Date?, _ subscriptionLevelString: String?) {
-        KeychainWrapper.standard[.subscriptionStartDate] = subscriptionStartDate?.timeIntervalSinceReferenceDate ?? 0
-        KeychainWrapper.standard[.coinsDropDate] = lastRunDate?.timeIntervalSinceReferenceDate ?? 0
-        KeychainWrapper.standard[.subscriptionLevel] = subscriptionLevelString ?? ""
+        DispatchQueue.main.async(flags: .barrier) {
+            KeychainWrapper.standard[.subscriptionStartDate] = subscriptionStartDate?.timeIntervalSinceReferenceDate ?? 0
+            KeychainWrapper.standard[.coinsDropDate] = lastRunDate?.timeIntervalSinceReferenceDate ?? 0
+            KeychainWrapper.standard[.subscriptionLevel] = subscriptionLevelString ?? ""
+        }
     }
 
-    class func checkSubscriptionAmount(coin: Coin) -> UInt? {
+    func checkSubscriptionAmount() {
 
         // FIXME: Delete all debug print when cover with unit tests.
         /// Get todays date and time
         let currentDate = Date()
 
-        print(1)
+        print(coins.amount)
         /// Checking if all values in Keychain are set and valid
         /// If there's not full set (3) subscription records in Keychain - return.
         /// All of it (3) must be set on purchase.
         guard let subscriptionStartTimeInterval = KeychainWrapper.standard.double(forKey: .subscriptionStartDate),
               let lastRunDateInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate),
               let subscriptionLevelString = KeychainWrapper.standard.string(forKey: .subscriptionLevel),
-              let subscriptionLevel = PurchasesID(rawValue: subscriptionLevelString) else { return nil }
+              let subscriptionLevel = PurchasesID(rawValue: subscriptionLevelString) else { return }
 
         let subscriptionStartDate = Date(timeIntervalSinceReferenceDate: subscriptionStartTimeInterval)
 
         print(2)
         /// Get subscription period ends date
-        guard let subscriptionEndDate = Calendar.current.date(byAdding: .month, value: subscriptionLevel.subscriptionLength, to: subscriptionStartDate) else { return nil }
+        guard let subscriptionEndDate = Calendar.current.date(byAdding: .month, value: subscriptionLevel.subscriptionLength, to: subscriptionStartDate) else { return  }
 
         print(3)
         /// Continue only if today is the day when the subscription are still active
-        guard Calendar.current.isLowerOrEqual(currentDate, to: subscriptionEndDate, toGranularity: .day) else { return nil }
+        guard Calendar.current.isLowerOrEqual(currentDate, to: subscriptionEndDate, toGranularity: .day) else { return  }
 
         let lastRunDate = Date(timeIntervalSinceReferenceDate: lastRunDateInterval)
 
         print(4)
-        /// Continue only if we didn't give subscription coins to the user today
-        guard Calendar.current.isDateInYesterday(lastRunDate) else { return nil }
+        /// Continue only if we didn't give subscription coins to the user today, otherwise return his amount
+        guard !Calendar.current.isDateInToday(lastRunDate) else { return }
 
         print(5)
         /// Giving coins to a user
         switch subscriptionLevel {
         case .subscriptionOneMonth, .subscriptionThreeMonths, .subscriptionSixMonths:
             /// Check that user have less coins than comes by his subscription
-            guard coin.amount < subscriptionLevel.purchasedCoinsAmount else { return nil }
+            guard coins.amount < subscriptionLevel.purchasedCoinsAmount else { return  }
+
             print(6)
             /// Give user exact coins amount
             KeychainWrapper.standard[.coinsDropDate] = currentDate.timeIntervalSinceReferenceDate
-            return subscriptionLevel.purchasedCoinsAmount
-        default: return nil
+
+            #if DEBUG
+            let someTimeInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate)
+            let someDate = Date(timeIntervalSinceReferenceDate: someTimeInterval ?? 0)
+            print(someDate.prettyPrint)
+            #endif
+            coins.amount = subscriptionLevel.purchasedCoinsAmount
+//            return subscriptionLevel.purchasedCoinsAmount
+        default: return
         }
 
         /// Set new timestamp on the time when coins were provided to the user
@@ -162,7 +172,7 @@ extension Date {
 
 extension Calendar {
     func isLowerOrEqual(_ date1: Date, to date2: Date, toGranularity: Calendar.Component) -> Bool {
-        let answer = self.compare(date1, to: date1, toGranularity: toGranularity)
+        let answer = self.compare(date1, to: date2, toGranularity: toGranularity)
         switch answer {
         case .orderedSame: return true
         case .orderedAscending: return true

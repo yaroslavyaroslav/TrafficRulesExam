@@ -11,11 +11,12 @@ import SwiftKeychainWrapper
 @available(iOS 15.0, *)
 struct ProductCellView: View {
     @EnvironmentObject var store: Store
+    @EnvironmentObject var coinsTimer: CoinsTimer
+    @EnvironmentObject var coins: Coin
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
     @Binding var isPresented: Bool
-    @EnvironmentObject var coins: Coin
 
     let product: Product
     let purchasingEnabled: Bool
@@ -119,9 +120,9 @@ struct ProductCellView: View {
                         if coins.amount < mostSubscription.purchasedCoinsAmount {
                             coins.amount = mostSubscription.purchasedCoinsAmount
                         } else {
-                            coins.amount = CoinsTimer.checkSubscriptionAmount(coin: coins) ?? coins.amount
-                            isPresented = false
+                            coinsTimer.checkSubscriptionAmount()
                         }
+                        isPresented = false
                     }
                 } else {
                     withAnimation {

@@ -30,6 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentTicket = CurrentValues()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+
+        if store.currentSubscriptions.isEmpty {
+            CoinsTimer.setSubscriptionKeychainValues(nil, nil, nil)
+        }
+
+        DispatchQueue.global().async(flags: [.barrier]) { [weak self] in
+            guard let self = self else { return }
+            self.coin.amount = CoinsTimer.checkSubscriptionAmount(coin: self.coin) ?? self.coin.amount
+        }
+
         UITableView.appearance().backgroundColor = UIColor.clear
         return true
     }

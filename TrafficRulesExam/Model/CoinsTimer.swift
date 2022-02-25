@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftKeychainWrapper
+import os.log
 
 /// Timer that implements coins adding logic
 class CoinsTimer: ObservableObject {
@@ -19,7 +20,7 @@ class CoinsTimer: ObservableObject {
     private var updateFrequency: TimeInterval
 
     /// Computed property that provides time that lasts to next free Coin drop
-    /// If free coins linit reached returns nil
+    /// If free coins limit reached returns nil
     var secondsLasts: String { calculateCoundownTimerText() }
 
     /// Free coins timer initializer
@@ -34,6 +35,8 @@ class CoinsTimer: ObservableObject {
         self.updateFrequency = frequency
     }
 
+    /// Computed property that provides time that lasts to next free Coin drop
+    /// If free coins limit reached returns nil
     func calculateCoundownTimerText() -> String {
         guard let initTimeInterval = KeychainWrapper.standard.double(forKey: .ticketUsed) else { return "" }
         guard coins.amount < coinsLimit else { return "" }
@@ -69,6 +72,62 @@ class CoinsTimer: ObservableObject {
         return Date().secondsLasts(to: coinDrop)
     }
 
+
+    class func setSubscriptionKeychainValues(_ subscriptionStartDate: Date?, _ lastRunDate: Date?, _ subscriptionLevelString: String?) {
+        KeychainWrapper.standard[.subscriptionStartDate] = subscriptionStartDate?.timeIntervalSinceReferenceDate ?? 0
+        KeychainWrapper.standard[.coinsDropDate] = lastRunDate?.timeIntervalSinceReferenceDate ?? 0
+        KeychainWrapper.standard[.subscriptionLevel] = subscriptionLevelString ?? ""
+    }
+
+    class func checkSubscriptionAmount(coin: Coin) -> UInt? {
+
+        // FIXME: Delete all debug print when cover with unit tests.
+        /// Get todays date and time
+        let currentDate = Date()
+
+        print(1)
+        /// Checking if all values in Keychain are set and valid
+        /// If there's not full set (3) subscription records in Keychain - return.
+        /// All of it (3) must be set on purchase.
+        guard let subscriptionStartTimeInterval = KeychainWrapper.standard.double(forKey: .subscriptionStartDate),
+              let lastRunDateInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate),
+              let subscriptionLevelString = KeychainWrapper.standard.string(forKey: .subscriptionLevel),
+              let subscriptionLevel = PurchasesID(rawValue: subscriptionLevelString) else { return nil }
+
+        let subscriptionStartDate = Date(timeIntervalSinceReferenceDate: subscriptionStartTimeInterval)
+
+        print(2)
+        /// Get subscription period ends date
+        guard let subscriptionEndDate = Calendar.current.date(byAdding: .month, value: subscriptionLevel.subscriptionLength, to: subscriptionStartDate) else { return nil }
+
+        print(3)
+        /// Continue only if today is the day when the subscription are still active
+        guard Calendar.current.isLowerOrEqual(currentDate, to: subscriptionEndDate, toGranularity: .day) else { return nil }
+
+        let lastRunDate = Date(timeIntervalSinceReferenceDate: lastRunDateInterval)
+
+        print(4)
+        /// Continue only if we didn't give subscription coins to the user today
+        guard Calendar.current.isDateInYesterday(lastRunDate) else { return nil }
+
+        print(5)
+        /// Giving coins to a user
+        switch subscriptionLevel {
+        case .subscriptionOneMonth, .subscriptionThreeMonths, .subscriptionSixMonths:
+            /// Check that user have less coins than comes by his subscription
+            guard coin.amount < subscriptionLevel.purchasedCoinsAmount else { return nil }
+            print(6)
+            /// Give user exact coins amount
+            KeychainWrapper.standard[.coinsDropDate] = currentDate.timeIntervalSinceReferenceDate
+            return subscriptionLevel.purchasedCoinsAmount
+        default: return nil
+        }
+
+        /// Set new timestamp on the time when coins were provided to the user
+        /// This should happened on each new day when app runs.
+        /// It stores in the end to avoid providing coins on purchase event
+    }
+
     func spendCoin(_ amount: UInt = 1) throws {
         // This will restart timer only when user spend first coin which less then coinsLimit
         // Without this condition timer will restart on each not success result.
@@ -98,6 +157,17 @@ extension Date {
         intervalFormatter.allowedUnits = [.minute, .second]
         intervalFormatter.unitsStyle = .positional
         return difference >= 0 ? intervalFormatter.string(from: difference)! : "10:00"
+    }
+}
+
+extension Calendar {
+    func isLowerOrEqual(_ date1: Date, to date2: Date, toGranularity: Calendar.Component) -> Bool {
+        let answer = self.compare(date1, to: date1, toGranularity: toGranularity)
+        switch answer {
+        case .orderedSame: return true
+        case .orderedAscending: return true
+        case .orderedDescending: return false
+        }
     }
 }
 

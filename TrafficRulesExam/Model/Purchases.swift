@@ -26,6 +26,9 @@ extension KeychainWrapper.Key {
     static let coinsAmount: KeychainWrapper.Key = "CoinsAmount"
     static let ticketUsed: KeychainWrapper.Key = "LastCoinSpentDateTime"
     static let profileId: KeychainWrapper.Key = "ProfileId"
+    static let subscriptionStartDate: KeychainWrapper.Key = "SubscriptionStartDate"
+    static let subscriptionLevel: KeychainWrapper.Key = "SubscriptionLevel"
+    static let coinsDropDate: KeychainWrapper.Key = "CoinsDropDate"
 }
 
 extension KeychainWrapper {
@@ -40,12 +43,49 @@ extension KeychainWrapper {
 }
 
 
-enum PurchasesID: String, CaseIterable {
+enum PurchasesID: String, CaseIterable, Comparable {
     case packMini = "ru.neatness.TrafficRulesExam.10"
     case packMiddle = "ru.neatness.TrafficRulesExam.15"
     case packMax = "ru.neatness.TrafficRulesExam.50"
 
     case subscriptionOneMonth = "ru.neatness.TrafficRulesExam.OneMonthCoins"
-    case subscriptionTwoMonths = "ru.neatness.TrafficRulesExam.ThreeMonthsCoins"
-    case subscriptionOneMonths = "ru.neatness.TrafficRulesExam.SixMonthsCoins"
+    case subscriptionThreeMonths = "ru.neatness.TrafficRulesExam.ThreeMonthsCoins"
+    case subscriptionSixMonths = "ru.neatness.TrafficRulesExam.SixMonthsCoins"
+
+    public static func < (lhs: PurchasesID, rhs: PurchasesID) -> Bool {
+        switch (lhs, rhs) {
+        case (.subscriptionOneMonth, .subscriptionThreeMonths): return true
+        case (.subscriptionOneMonth, .subscriptionSixMonths): return true
+        case (.subscriptionThreeMonths, .subscriptionSixMonths): return true
+        default: return false
+        }
+    }
+
+    var isSubscription: Bool {
+        switch self {
+        case .subscriptionOneMonth, .subscriptionThreeMonths, .subscriptionSixMonths: return true
+        default: return false
+        }
+    }
+
+    var purchasedCoinsAmount: UInt {
+        switch self {
+        case .subscriptionOneMonth:
+            return 40
+        case .subscriptionThreeMonths:
+            return 60
+        case .subscriptionSixMonths:
+            return 80
+        default: return UInt(self.rawValue.split(separator: ".").last!)!
+        }
+    }
+
+    var subscriptionLength: Int {
+        switch self {
+        case .subscriptionOneMonth: return 1
+        case .subscriptionThreeMonths: return 3
+        case .subscriptionSixMonths: return 6
+        default: return 0
+        }
+    }
 }

@@ -6,6 +6,7 @@
 //
 import StoreKit
 import SwiftUI
+import SwiftKeychainWrapper
 
 @available(iOS 15.0, *)
 struct ProductCellView: View {
@@ -100,13 +101,33 @@ struct ProductCellView: View {
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
-                // FIXME: Working only with coins purchase, not working with subscription.
-                guard let coinsString = transaction.productID.split(separator: ".").last,
-                      let coinsAmount = UInt(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                guard let purchaseId = PurchasesID(rawValue: transaction.productID) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                if purchaseId.isSubscription {
 
-                withAnimation {
-                    coins.amount += coinsAmount
-                    isPresented = false
+                    var mostSubscription: PurchasesID
+
+                    if let currentSubscriptionString = KeychainWrapper.standard.string(forKey: .subscriptionLevel),
+                        let currentSubscription = PurchasesID(rawValue: currentSubscriptionString) {
+                        mostSubscription = currentSubscription > purchaseId ? currentSubscription : purchaseId
+                    } else {
+                        mostSubscription = purchaseId
+                    }
+
+                    CoinsTimer.setSubscriptionKeychainValues(Date(), Date(), mostSubscription.rawValue)
+
+                    withAnimation {
+                        if coins.amount < mostSubscription.purchasedCoinsAmount {
+                            coins.amount = mostSubscription.purchasedCoinsAmount
+                        } else {
+                            coins.amount = CoinsTimer.checkSubscriptionAmount(coin: coins) ?? coins.amount
+                            isPresented = false
+                        }
+                    }
+                } else {
+                    withAnimation {
+                        coins.amount += purchaseId.purchasedCoinsAmount
+                        isPresented = false
+                    }
                 }
             }
         } catch StoreError.failedVerification {

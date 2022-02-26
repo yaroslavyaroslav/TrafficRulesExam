@@ -28,17 +28,22 @@ struct ProductCellView: View {
     }
 
     var body: some View {
-        HStack {
-            CoinsStackView(.init(rawValue: product.id) ?? .one)
+        HStack(spacing: 0) {
             if purchasingEnabled {
+                CoinsStackView(.init(rawValue: product.id) ?? .one)
+                    .padding(.init(top: 21, leading: 10, bottom: 21, trailing: 10))
                 productDetail
                 Spacer()
                 buyButton
                     .buttonStyle(BuyButtonStyle(isPurchased: isPurchased))
+                    .padding(.trailing, 16)
             } else {
                 productDetail
+                    .padding(.init(top: 21, leading: 21, bottom: 21, trailing: 16))
             }
         }
+        .roundBorder(Color.DS.bgLightSecondary, cornerRadius: 12)
+        .shadow(color: .DS.shadowLight, radius: 8, x: 0, y: 4)
         .alert(isPresented: $isShowingError) {
             Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
         }
@@ -46,9 +51,9 @@ struct ProductCellView: View {
 
     @ViewBuilder
     var productDetail: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(product.description)
-                .font(UIFont.sfCallout.asFont)
+                .font(UIFont.sfBody.asFont)
             Text(product.displayName)
                 .font(UIFont.sfFootnote.asFont)
                 .foregroundColor(.DS.greysGreyDark)

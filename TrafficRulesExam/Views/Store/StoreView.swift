@@ -16,24 +16,38 @@ struct StoreView: View {
 
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
-            Button {
-                isPresented = false
-            } label: {
-                Image(systemName: "xmark.circle")
-                    .font(.system(size: 22))
-            }
-            .padding()
-            List {
-                Section(header: Text("Купить монеты")) {
-                    ForEach(store.availableCoinPacks, id: \.id) { coinPack in
-                        ProductCellView(product: coinPack, isPresented: $isPresented)
-                    }
+            HStack {
+                Text("Купить монеты")
+                    .font(UIFont.sfTitle2Bold.asFont)
+                Spacer()
+                Button {
+                    isPresented = false
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .font(.system(size: 24))
+                        .foregroundColor(.DS.labelLightSecondary)
                 }
-                .listStyle(GroupedListStyle())
+            }
+            .padding(.top, 20)
+            .padding(.bottom, 18)
 
+            VStack(spacing: 8) {
+                ForEach(store.availableCoinPacks, id: \.id) { coinPack in
+                    ProductCellView(product: coinPack, isPresented: $isPresented)
+                }
+
+                HStack {
+                    Text("Абонементы")
+                        .font(UIFont.sfTitle2Bold.asFont)
+                    Spacer()
+                }
+                .padding(.top, 32)
+                .padding(.bottom, 8)
                 SubscriptionsView(isPresented: $isPresented)
             }
+            Spacer()
         }
+        .padding(.horizontal, 16)
         .background(Color.DS.bgLightPrimary)
     }
 }

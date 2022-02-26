@@ -44,9 +44,9 @@ extension KeychainWrapper {
 
 
 enum PurchasesID: String, CaseIterable, Comparable {
-    case packMini = "ru.neatness.TrafficRulesExam.10"
-    case packMiddle = "ru.neatness.TrafficRulesExam.15"
-    case packMax = "ru.neatness.TrafficRulesExam.50"
+    case packMini = "ru.neatness.TrafficRulesExam.Mini"
+    case packMiddle = "ru.neatness.TrafficRulesExam.Middle"
+    case packMax = "ru.neatness.TrafficRulesExam.Max"
 
     case subscriptionOneMonth = "ru.neatness.TrafficRulesExam.OneMonthCoins"
     case subscriptionThreeMonths = "ru.neatness.TrafficRulesExam.ThreeMonthsCoins"

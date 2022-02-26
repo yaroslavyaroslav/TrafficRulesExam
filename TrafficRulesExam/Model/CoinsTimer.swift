@@ -98,28 +98,23 @@ class CoinsTimer: ObservableObject {
 
         let subscriptionStartDate = Date(timeIntervalSinceReferenceDate: subscriptionStartTimeInterval)
 
-        print(2)
         /// Get subscription period ends date
         guard let subscriptionEndDate = Calendar.current.date(byAdding: .month, value: subscriptionLevel.subscriptionLength, to: subscriptionStartDate) else { return  }
 
-        print(3)
         /// Continue only if today is the day when the subscription are still active
         guard Calendar.current.isLowerOrEqual(currentDate, to: subscriptionEndDate, toGranularity: .day) else { return  }
 
         let lastRunDate = Date(timeIntervalSinceReferenceDate: lastRunDateInterval)
 
-        print(4)
         /// Continue only if we didn't give subscription coins to the user today, otherwise return his amount
         guard !Calendar.current.isDateInToday(lastRunDate) else { return }
 
-        print(5)
         /// Giving coins to a user
         switch subscriptionLevel {
         case .subscriptionOneMonth, .subscriptionThreeMonths, .subscriptionSixMonths:
             /// Check that user have less coins than comes by his subscription
             guard coins.amount < subscriptionLevel.purchasedCoinsAmount else { return  }
 
-            print(6)
             /// Give user exact coins amount
             KeychainWrapper.standard[.coinsDropDate] = currentDate.timeIntervalSinceReferenceDate
 

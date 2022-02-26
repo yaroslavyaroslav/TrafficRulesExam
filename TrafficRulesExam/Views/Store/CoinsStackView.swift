@@ -17,7 +17,7 @@ struct CoinsStackView: View {
 
     private let stacksNumber: Int
 
-    init(_ kind: Stack = .largeOne) {
+    init(_ kind: Stack = .one) {
         switch kind {
         case .one:
             self.coinsAmountInStack = 4

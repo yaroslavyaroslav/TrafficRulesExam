@@ -37,7 +37,7 @@
       "internalID" : "C1888D84",
       "localizations" : [
         {
-          "description" : "Полгода",
+          "description" : "6 месяцев",
           "displayName" : "Когда пришел в автошколу",
           "locale" : "ru"
         }
@@ -59,7 +59,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.10",
+      "productID" : "ru.neatness.TrafficRulesExam.Mini",
       "referenceName" : "10 Coins",
       "type" : "Consumable"
     },
@@ -74,7 +74,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.15",
+      "productID" : "ru.neatness.TrafficRulesExam.Middle",
       "referenceName" : "20 Coins",
       "type" : "Consumable"
     },
@@ -89,7 +89,7 @@
           "locale" : "ru"
         }
       ],
-      "productID" : "ru.neatness.TrafficRulesExam.40",
+      "productID" : "ru.neatness.TrafficRulesExam.Max",
       "referenceName" : "40 Coins",
       "type" : "Consumable"
     }

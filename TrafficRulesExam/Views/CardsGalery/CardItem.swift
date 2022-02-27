@@ -12,6 +12,8 @@ struct CardItem: View {
 
     @Binding var result: CardResult
 
+    @EnvironmentObject var coins: Coin
+
     let cardHeight: CGFloat = 172
 
     let insideHorisontalPadding: CGFloat = 10
@@ -61,10 +63,13 @@ struct CardItem: View {
 
                 HStack {
                     Image("Coin")
-                    Text("1")
+                    Text("\(coins.cardCost)")
                         .font(UIFont.sfFootnote.asFont)
                     Spacer()
-                    Text("Вчера")
+
+                    let result = result.resultHistory.items.last!
+                    // TODO: Сделать дату прохождения как в дизайне
+                    Text("\(result.examDate.relativeDate)")
                         .font(UIFont.sfFootnote.asFont)
                         .opacity(0.8)
                 }
@@ -111,10 +116,13 @@ struct CardItem: View {
 
                 HStack {
                     Image("Coin")
-                    Text("1")
+                    Text("\(coins.cardCost)")
                         .font(UIFont.sfFootnote.asFont)
                     Spacer()
-                    Text("Вчера")
+
+                    let result = result.resultHistory.items.last!
+                    // TODO: Сделать дату прохождения как в дизайне
+                    Text("\(result.examDate.relativeDate)")
                         .font(UIFont.sfFootnote.asFont)
                         .opacity(0.8)
                 }
@@ -160,7 +168,7 @@ struct CardItem: View {
 
                 HStack {
                     Image("Coin")
-                    Text("1")
+                    Text("\(coins.cardCost)")
                         .font(UIFont.sfFootnote.asFont)
                     Spacer()
                 }

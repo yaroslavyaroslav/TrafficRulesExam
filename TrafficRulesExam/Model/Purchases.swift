@@ -20,6 +20,10 @@ class Coin: ObservableObject {
         }
         get { UInt(KeychainWrapper.standard.integer(forKey: .coinsAmount) ?? 0) }
     }
+
+    private (set) var cardCost: UInt = 5
+
+    private (set) var hintCost: UInt = 1
 }
 
 extension KeychainWrapper.Key {
@@ -70,13 +74,12 @@ enum PurchasesID: String, CaseIterable, Comparable {
 
     var purchasedCoinsAmount: UInt {
         switch self {
-        case .subscriptionOneMonth:
-            return 40
-        case .subscriptionThreeMonths:
-            return 60
-        case .subscriptionSixMonths:
-            return 80
-        default: return UInt(self.rawValue.split(separator: ".").last!)!
+        case .subscriptionOneMonth: return 40
+        case .subscriptionThreeMonths: return 60
+        case .subscriptionSixMonths: return 80
+        case .packMini: return 10
+        case .packMiddle: return 20
+        case .packMax: return 40
         }
     }
 

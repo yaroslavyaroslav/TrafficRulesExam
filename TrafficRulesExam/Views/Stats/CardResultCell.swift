@@ -39,7 +39,7 @@ struct CardResultCell: View {
                 .frame(width: 44, height: 44)
 
             Spacer()
-            Text(result.resultHistory.items.last!.examDate.shortDate)
+            Text(result.resultHistory.items.last!.examDate.relativeDate)
                 .font(UIFont.sfFootnote.asFont)
                 .foregroundColor(.DS.greysGrey3Dark)
         }
@@ -62,7 +62,7 @@ struct CardResultCell: View {
                 .foregroundColor(.DS.tintsPinkDark)
 
             Spacer()
-            Text(result.resultHistory.items.last!.examDate.shortDate)
+            Text(result.resultHistory.items.last!.examDate.relativeDate)
                 .font(UIFont.sfFootnote.asFont)
                 .foregroundColor(.DS.greysGrey3Dark)
         }

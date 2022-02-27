@@ -65,7 +65,7 @@ struct ExamStatsView: View {
                 }
             }
         }
-        .navigationBarTitle(result.examDate.shortDate)
+        .navigationBarTitle(result.examDate.relativeDate)
     }
 
     private func getQuestionForStats(_ cardID: Int, _ questionId: Int) -> Question {

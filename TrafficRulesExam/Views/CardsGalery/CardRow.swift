@@ -22,6 +22,8 @@ struct CardRow: View {
         return object
     }()
 
+    @State var isErrorPresented = false
+
     var locCards: [ExamCard]
 
     var body: some View {
@@ -42,8 +44,22 @@ struct CardRow: View {
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
+                    .alert("Не хватает монет", isPresented: $isErrorPresented, actions: {
+                        Button {
+                            isErrorPresented = false
+                        } label: {
+                            Text("Ок")
+                        }
+                    }, message: {
+                        Text("Чтобы открыть этот билет нужно больше монет. Их можно купить в магазине.")
+                    })
                     // TODO: Make views blurred or transparent.
-                    .disabled(coins.amount <= 0 ? true : false)
+                    .disabled(coins.amount < coins.cardCost ? true : false)
+                    .onTapGesture {
+                        if coins.amount < coins.cardCost {
+                            isErrorPresented = true
+                        }
+                    }
                 }
             }
             .background(Color.DS.bgLightPrimary)

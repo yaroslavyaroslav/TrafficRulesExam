@@ -35,6 +35,8 @@ struct QuestionCardView: View {
 
     @State var answeredQuestions: Set<Int> = []
 
+    @State var isShowingError = false
+
     @Binding var resultsHistory: Results
 
     @EnvironmentObject var coins: Coin
@@ -80,6 +82,15 @@ struct QuestionCardView: View {
                 .background(Color.DS.bgLightPrimary).ignoresSafeArea(.all, edges: .bottom)
                 .defaultShadow()
             }
+            .alert("Не хватает монет", isPresented: $isShowingError, actions: {
+                Button {
+                    isShowingError = false
+                } label: {
+                    Text("Ок")
+                }
+            }, message: {
+                Text("Чтобы посмотреть подсказку нужно больше монет. Их можно купить в магазине.")
+            })
         }
     }
 
@@ -116,15 +127,16 @@ struct QuestionCardView: View {
 
         Button {
             if !hintPurchased {
-                self.hintPurchased = true
                 do {
-                    try coinsTimer.spendCoin()
+                    try coinsTimer.spendCoin(coins.hintCost)
                 } catch CoinsError.NegativeCoinsAmount {
-                    print("CoinsNegative")
+                    isShowingError = true
+                    return
                 } catch {
                     print("this")
                 }
             }
+
             withAnimation {
                 self.isHintShown = true
             }
@@ -137,7 +149,7 @@ struct QuestionCardView: View {
 
                 HStack {
                     Image("Coin")
-                    Text("Подсказка за 1")
+                    Text("Подсказка за \(coins.hintCost)")
                 }
                 .foregroundColor(isEnabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
             }
@@ -191,15 +203,16 @@ extension QuestionCardView {
             // If user made a mistake
             if !result.mistakes.isEmpty {
                 do {
-                    try coinsTimer.spendCoin()
+                    try coinsTimer.spendCoin(coins.cardCost)
                 } catch CoinsError.NegativeCoinsAmount {
+                    /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
                     print("Not enough coins.")
                 } catch {
                     print("This")
                 }
                 Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
             } else {
-                coinsTimer.rewardCoin()
+                coinsTimer.rewardCoin(coins.cardCost)
                 Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
             }
             resultsHistory.items.append(result)

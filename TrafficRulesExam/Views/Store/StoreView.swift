@@ -43,7 +43,7 @@ struct StoreView: View {
                 }
                 .padding(.top, 32)
                 .padding(.bottom, 8)
-                SubscriptionsView(isPresented: $isPresented)
+//                SubscriptionsView(isPresented: $isPresented)
             }
             Spacer()
         }

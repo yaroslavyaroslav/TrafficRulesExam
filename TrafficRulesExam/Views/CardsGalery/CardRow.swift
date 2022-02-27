@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct CardRow: View {
-    @EnvironmentObject
-    var coins: Coin
+    @EnvironmentObject var coins: Coin
 
-    @State
-    var results: CardResults = {
+    @State var results: CardResults = {
         var object: CardResults!
 
         do {
@@ -24,10 +22,12 @@ struct CardRow: View {
         return object
     }()
 
+    @State var isErrorPresented = false
+
     var locCards: [ExamCard]
 
     var body: some View {
-        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+        let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: 160, maximum: 170)), count: 2)
 
         ScrollView {
             LazyVGrid(columns: columns) {
@@ -40,14 +40,29 @@ struct CardRow: View {
                     NavigationLink {
                         TicketView(card: locCards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: locCards.getElementById(result.id), result: result)
+                        CardItem(card: locCards.getElementById(result.id), result: $result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
+                    .alert("Не хватает монет", isPresented: $isErrorPresented, actions: {
+                        Button {
+                            isErrorPresented = false
+                        } label: {
+                            Text("Ок")
+                        }
+                    }, message: {
+                        Text("Чтобы открыть этот билет нужно больше монет. Их можно купить в магазине.")
+                    })
                     // TODO: Make views blurred or transparent.
-                    .disabled(coins.amount <= 0 ? true : false)
+                    .disabled(coins.amount < coins.cardCost ? true : false)
+                    .onTapGesture {
+                        if coins.amount < coins.cardCost {
+                            isErrorPresented = true
+                        }
+                    }
                 }
             }
+            .background(Color.DS.bgLightPrimary)
         }
     }
 }

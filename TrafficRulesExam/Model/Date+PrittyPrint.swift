@@ -15,6 +15,20 @@ extension Date {
         dateFormatter.locale = Locale(identifier: "RU_ru")
         return dateFormatter.string(from: self)
     }
+
+    var shortDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "RU_ru")
+        return dateFormatter.string(from: self)
+    }
+
+    var relativeDate: String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .short
+        return formatter.localizedString(for: self, relativeTo: Date())
+    }
 }
 
 extension Date {

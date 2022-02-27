@@ -21,7 +21,7 @@ struct SubscriptionsView: View {
     var body: some View {
         Group {
             if let currentSubscription = currentSubscription {
-                Section(header: Text("My Subscription")) {
+                HStack(spacing: 0) {
                     ProductCellView(product: currentSubscription, isPresented: $isPresented, purchasingEnabled: false)
 
                     if let status = status {
@@ -32,7 +32,7 @@ struct SubscriptionsView: View {
                 .listStyle(GroupedListStyle())
             }
 
-            Section(header: Text("Navigation Options")) {
+            VStack(spacing: 8) {
                 ForEach(availableSubscriptions, id: \.id) { product in
                     ProductCellView(product: product, isPresented: $isPresented)
                 }
@@ -56,13 +56,20 @@ struct SubscriptionsView: View {
     @MainActor
     func updateSubscriptionStatus() async {
         do {
+
+            /// Для невозобновляемой подписки ничего тут не работает.
+            /// Нужно хранить хранить/брать дату и ид подписки из магазина
+            /// И/или хранить их в keychain.
+
             // This app has only one subscription group so products in the subscriptions
             // array all belong to the same group. The statuses returned by
             // `product.subscription.status` apply to the entire subscription group.
             guard let product = store.availableSubscriptions.first,
                   let statuses = try await product.subscription?.status else {
+                      print("failed to load subscription")
                 return
             }
+
 
             var highestStatus: Product.SubscriptionInfo.Status?
             var highestProduct: Product?

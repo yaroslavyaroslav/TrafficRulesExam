@@ -27,11 +27,13 @@ struct TotalStatsNavigationView: View {
             .onAppear {
                 Analytics.fire(.screenShown(name: "Статистика"))
             }
+            .background(Color.DS.bgLightPrimary)
     }
 }
 
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
         TotalStatsNavigationView(cards: cards)
+            .environmentObject(Coin())
     }
 }

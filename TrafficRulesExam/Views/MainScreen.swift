@@ -39,18 +39,6 @@ struct MainScreen: View {
 
     var body: some View {
         VStack {
-#if DEBUG
-            Button("Drop to 0") {
-                KeychainWrapper.standard[.coinsAmount] = 0
-                KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
-            }
-#endif
-            Picker("Tab", selection: $selectedIndex.animation(.default)) {
-                Text("Решать").tag(Tabs.cardGalery)
-                Text("Статистика").tag(Tabs.totalStatsNavigation)
-            }
-            .pickerStyle(SegmentedPickerStyle())
-
             // FIXME: Переписать из двух экранов выезжающих сбоку на
             // один экран, а плашка решать/статистика включает в том вью только блок статистики (и меняет линки с билета на историю).
             switch selectedIndex {
@@ -68,26 +56,34 @@ struct MainScreen: View {
                     .transition(.move(edge: .trailing))
             }
         }
-        .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+        .ignoresSafeArea(.container, edges: .bottom)
+        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
+        .navigationBarItems(leading: modeToggleButton, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
-}
 
-struct CoinAmountView: View {
-    var coinsAmount: UInt
 
-    var body: some View {
-        HStack {
-            Image(systemName: "coloncurrencysign.circle.fill")
-            Text("\(coinsAmount)")
-            Spacer()
-            Text("+")
+    var modeToggleButton: some View {
+        Button {
+            if case .cardGalery = selectedIndex {
+                selectedIndex = .totalStatsNavigation
+            } else if case .totalStatsNavigation = selectedIndex {
+                selectedIndex = .cardGalery
+            }
+        } label: {
+            switch selectedIndex {
+            case .cardGalery: Text("Статистика")
+            case .totalStatsNavigation: Text("Билеты")
+            }
         }
     }
 }
 
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MainScreen()
-            .environmentObject(Coin())
+        NavigationView {
+            MainScreen()
+                .environmentObject(Coin())
+                .background(Color.DS.bgLightPrimary)
+        }
     }
 }

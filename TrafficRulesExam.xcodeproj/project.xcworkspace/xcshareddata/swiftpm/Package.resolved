@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "PopupView",
+        "repositoryURL": "git@github.com:exyte/PopupView.git",
+        "state": {
+          "branch": null,
+          "revision": "77c04cef5651a07ab795f8b4edeb39cb231b2411",
+          "version": "1.0.7"
+        }
+      },
+      {
         "package": "SwiftKeychainWrapper",
         "repositoryURL": "https://github.com/jrendel/SwiftKeychainWrapper",
         "state": {

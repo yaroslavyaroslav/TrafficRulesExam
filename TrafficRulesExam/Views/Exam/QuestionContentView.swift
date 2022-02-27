@@ -15,28 +15,33 @@ struct QuestionContentView: View {
     let correctAnswer: AnswerID?
 
     var body: some View {
-        VStack {
-            if let image = question.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                Spacer()
-            }
+        VStack(spacing: 0) {
+            VStack(spacing: 0) {
+                if let image = question.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(12)
+                        .padding(.horizontal, 16)
+                }
 
-            Text(question.text)
-                .multilineTextAlignment(.leading)
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.green)
-                .cornerRadius(8)
-            Spacer()
+                Text(question.text)
+                    .multilineTextAlignment(.center)
+                    .padding(16)
+                    .font(UIFont.sfHeadline.asFont)
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.DS.bgLightSecondary)
+            }
+            .padding(.top, 10)
+            .background(Color.DS.bgLightPrimary)
+            .zIndex(1)
+            .defaultShadow()
 
             AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
-
-            Spacer()
+                .padding(.horizontal, 16)
+                .background(Color.DS.bgLightPrimary)
         }
-        .padding(8)
     }
 }
 

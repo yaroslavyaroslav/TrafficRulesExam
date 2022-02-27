@@ -31,7 +31,7 @@ class TrafficRulesExamUITests: XCTestCase {
         let (app, examCard) = startExam()
 
         let rndArray = [18, 9, 6, 14].shuffled()
-        let nextQuestionButton = app.buttons["Следующий вопрос"]
+        let nextQuestionButton = app.buttons["arrow.forward"]
 
         app.buttons["\(rndArray[0])"].tap()
 
@@ -72,7 +72,7 @@ class TrafficRulesExamUITests: XCTestCase {
 
         // Tap last question and exit.
         app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
-        app.buttons["Завершить"].tap()
+        app.buttons["arrow.forward"].tap()
 
         expect(examCard.exists).to(beTrue(), description: "App didn't go back to exam screen.")
     }
@@ -84,16 +84,17 @@ class TrafficRulesExamUITests: XCTestCase {
         for id in 1...19 {
             os_log("question \(id.description) processing.")
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
-            let nextQuestionButton = app.buttons["Следующий вопрос"]
+            let nextQuestionButton = app.buttons["arrow.forward"]
 
             expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerButton.label) in question \(id.description) doesn't exists")
+
             answerButton.tap()
             nextQuestionButton.tap()
         }
 
         // Tap last question and exit.
         app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
-        app.buttons["Завершить"].tap()
+        app.buttons["arrow.forward"].tap()
 
         expect(examCard.exists).to(beTrue(), description: "App didn't go back to exam screen.")
     }
@@ -113,7 +114,7 @@ class TrafficRulesExamUITests: XCTestCase {
             let answerPredicate = exactAnswerPredicate(answerID)
 
             let answerButton = app.buttons.containing(answerPredicate).firstMatch
-            let nextQuestionButton = app.buttons["Следующий вопрос"]
+            let nextQuestionButton = app.buttons["arrow.forward"]
 
             expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerID) in question \(id.description) doesn't exists")
             answerButton.tap()
@@ -124,7 +125,7 @@ class TrafficRulesExamUITests: XCTestCase {
         let answerID = appExamCard.questions.getElementById(20).correctAnswer.stringValue
         let answerPredicate = exactAnswerPredicate(answerID)
         app.buttons.containing(answerPredicate).firstMatch.tap()
-        app.buttons["Завершить"].tap()
+        app.buttons["arrow.forward"].tap()
 
         expect(examCard.exists).to(beTrue(), description: "App didn't go back to exam screen.")
     }
@@ -170,12 +171,12 @@ class TrafficRulesExamUITests: XCTestCase {
 
         // MARK: В некоторых вопросах только 2 ответа, поэтому пока ограничмся разбросом из 2.
 
-        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(rndId)."])
+        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(rndId),"])
     }
 
     private func exactAnswerPredicate(_ answer: String) -> NSPredicate {
         os_log("Answer \(answer) selected")
-        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(answer)"])
+        return NSPredicate(format: "label BEGINSWITH $someNumber").withSubstitutionVariables(["someNumber": "\(answer),"])
     }
 
 //    func testLaunchPerformance() throws {

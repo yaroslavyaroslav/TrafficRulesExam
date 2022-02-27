@@ -14,21 +14,13 @@ struct ExamCardStatsView: View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
                 ExamStatsView(result: result, cardId: cardResult.id)
-                    .navigationBarTitle(Text("Билет \(cardResult.id)"))
+                    
             } label: {
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack {
-                        Text("Результат: \(result.succeed ? "Успешно" : "Не успешно") (\(20 - result.mistakes.count) из 20)")
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Дата: \(result.examDate.prettyPrint)")
-                        Spacer()
-                    }
-                }
+                CardResultCell(result: cardResult)
             }
-            .listRowBackground(result.succeed ? Color.green : Color.red)
         }
+        .navigationBarTitle("Билет \(cardResult.id.description)")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

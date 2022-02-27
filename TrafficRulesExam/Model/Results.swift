@@ -41,7 +41,9 @@ struct Result {
     var succeed: Bool {
         guard !mistakes.isEmpty else { return true }
 
-        return mistakes.count > 2 ? false : true
+        /// Will work only when comes to additional questions fires.
+//        return mistakes.count > 2 ? false : true
+        return false
     }
 }
 

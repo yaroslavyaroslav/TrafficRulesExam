@@ -12,8 +12,8 @@ import SwiftKeychainWrapper
 
 @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 open class IAPHelper: NSObject {
-    private let productIdentifiers: Set<ProductIdentifier>
-    private(set) var purchasedSubscriptions: Set<ProductIdentifier> = []
+    private let productIdentifiers = AppStore.products
+    private(set) var purchasedSubscriptions: Set<PurchasesID> = []
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     private var productPurchaseCompletionHandler: ProductPurchaseCompletionHandler?
@@ -27,16 +27,14 @@ open class IAPHelper: NSObject {
 
     private var didRestoreSuccessful = false
 
-    public init(productIds: Set<ProductIdentifier>) {
-        productIds.forEach { os_log("IAPHelper.init productId: %@", $0) }
-
-        self.productIdentifiers = productIds
+    override public init() {
+        productIdentifiers.forEach { os_log("IAPHelper.init productId: %@", $0.rawValue) }
 
         // Filter subscription from all available purchases.
-        let subscriptions = productIds.filter { $0.split(separator: ".").last?.contains(_: "Month") ?? false }
+        let subscriptions = productIdentifiers.filter { $0.rawValue.split(separator: ".").last?.contains(_: "Month") ?? false }
 
         // if there's record in UserDefaults with subscription ID — it's purchased.
-        self.purchasedSubscriptions = subscriptions.filter { UserDefaults.standard.bool(forKey: $0) }
+        self.purchasedSubscriptions = subscriptions.filter { UserDefaults.standard.bool(forKey: $0.rawValue) }
 
         super.init()
         SKPaymentQueue.default().add(self)
@@ -91,9 +89,9 @@ extension IAPHelper: SKProductsRequestDelegate {
         productsRequest?.cancel()
         productsRequestCompletionHandler = completionHandler
 
-        productIdentifiers.forEach { os_log(OSLogType.info, "IAPHelper product to request: %@", $0) }
+        productIdentifiers.forEach { os_log(OSLogType.info, "IAPHelper product to request: %@", $0.rawValue) }
 
-        productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+        productsRequest = SKProductsRequest(productIdentifiers: Set(productIdentifiers.map{ $0.rawValue }))
 
         os_log(OSLogType.info, "IAPHelper requested product: %@", productsRequest ?? "none")
 

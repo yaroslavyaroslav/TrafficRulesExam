@@ -6,15 +6,17 @@
 //
 import StoreKit
 import SwiftUI
+import SwiftKeychainWrapper
 
 @available(iOS 15.0, *)
 struct ProductCellView: View {
     @EnvironmentObject var store: Store
+    @EnvironmentObject var coinsTimer: CoinsTimer
+    @EnvironmentObject var coins: Coin
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
     @Binding var isPresented: Bool
-    @EnvironmentObject var coins: Coin
 
     let product: Product
     let purchasingEnabled: Bool
@@ -26,21 +28,22 @@ struct ProductCellView: View {
     }
 
     var body: some View {
-        HStack {
-            Image(systemName: "coloncurrencysign.circle.fill")
-                .font(.system(size: 50))
-                .frame(width: 50, height: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                .padding(.trailing, 20)
+        HStack(spacing: 0) {
             if purchasingEnabled {
+                CoinsStackView(.init(rawValue: product.id) ?? .one)
+                    .padding(.init(top: 21, leading: 10, bottom: 21, trailing: 10))
                 productDetail
                 Spacer()
                 buyButton
                     .buttonStyle(BuyButtonStyle(isPurchased: isPurchased))
+                    .padding(.trailing, 16)
             } else {
                 productDetail
+                    .padding(.init(top: 21, leading: 21, bottom: 21, trailing: 16))
             }
         }
+        .roundBorder(Color.DS.bgLightSecondary, cornerRadius: 12)
+        .shadow(color: .DS.shadowLight, radius: 8, x: 0, y: 4)
         .alert(isPresented: $isShowingError) {
             Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
         }
@@ -48,19 +51,29 @@ struct ProductCellView: View {
 
     @ViewBuilder
     var productDetail: some View {
-        if product.type == .autoRenewable {
-            VStack(alignment: .leading) {
-                Text(product.displayName)
-                    .bold()
-                Text(product.description)
-            }
-        } else {
+        VStack(alignment: .leading, spacing: 4) {
             Text(product.description)
-                .frame(alignment: .leading)
+                .font(UIFont.sfBody.asFont)
+            Text(product.displayName)
+                .font(UIFont.sfFootnote.asFont)
+                .foregroundColor(.DS.greysGreyDark)
         }
     }
 
-    @available(iOS 15.0, *)
+    var buyButton: some View {
+        Button {
+            Task { await buy() }
+        } label: {
+            if let subscription = product.subscription {
+                subscribeButton(subscription)
+            } else {
+                Text(product.displayPrice)
+                    .foregroundColor(.white)
+                    .font(UIFont.sfCallout.asFont)
+            }
+        }
+    }
+
     func subscribeButton(_ subscription: Product.SubscriptionInfo) -> some View {
         let unit: String
         let plural = subscription.subscriptionPeriod.value > 1
@@ -91,31 +104,36 @@ struct ProductCellView: View {
         }
     }
 
-    var buyButton: some View {
-        Button {
-            Task { await buy() }
-        } label: {
-            if let subscription = product.subscription {
-                subscribeButton(subscription)
-            } else {
-                Text(product.displayPrice)
-                    .foregroundColor(.white)
-                    .bold()
-            }
-        }
-    }
-
-    @available(iOS 15.0, *)
     func buy() async {
         do {
             if let transaction = try await store.purchase(product) {
-                // FIXME: Working only with coins purchase, not working with subscription.
-                guard let coinsString = transaction.productID.split(separator: ".").last,
-                      let coinsAmount = UInt(coinsString) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                guard let purchaseId = PurchasesID(rawValue: transaction.productID) else { throw StoreError.wrongPurchaseId(id: transaction.productID) }
+                if purchaseId.isSubscription {
 
-                withAnimation {
-                    coins.amount += coinsAmount
-                    isPresented = false
+                    var mostSubscription: PurchasesID
+
+                    if let currentSubscriptionString = KeychainWrapper.standard.string(forKey: .subscriptionLevel),
+                        let currentSubscription = PurchasesID(rawValue: currentSubscriptionString) {
+                        mostSubscription = currentSubscription > purchaseId ? currentSubscription : purchaseId
+                    } else {
+                        mostSubscription = purchaseId
+                    }
+
+                    CoinsTimer.setSubscriptionKeychainValues(Date(), Date(), mostSubscription.rawValue)
+
+                    withAnimation {
+                        if coins.amount < mostSubscription.purchasedCoinsAmount {
+                            coins.amount = mostSubscription.purchasedCoinsAmount
+                        } else {
+                            coinsTimer.checkSubscriptionAmount()
+                        }
+                        isPresented = false
+                    }
+                } else {
+                    withAnimation {
+                        coins.amount += purchaseId.purchasedCoinsAmount
+                        isPresented = false
+                    }
                 }
             }
         } catch StoreError.failedVerification {

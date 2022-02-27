@@ -20,6 +20,10 @@ typealias RenewalInfo = StoreKit.Product.SubscriptionInfo.RenewalInfo
 @available(iOS 15.0, *)
 typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
+struct AppStore {
+    static let products: Set<PurchasesID> = Set(PurchasesID.allCases)
+}
+
 public enum StoreError: Error {
     case failedVerification
     case wrongPurchaseId(id: String)
@@ -89,15 +93,7 @@ class Store: ObservableObject {
     @MainActor
     func requestProducts() async {
         do {
-            let products = ["ru.neatness.TrafficRulesExam.10",
-                            "ru.neatness.TrafficRulesExam.15",
-                            "ru.neatness.TrafficRulesExam.20",
-
-                            "ru.neatness.TrafficRulesExam.OneMonthCoins",
-                            "ru.neatness.TrafficRulesExam.ThreeMonthCoins",
-                            "ru.neatness.TrafficRulesExam.SixMonthCoins"]
-
-            let storeProducts = try await Product.products(for: products)
+            let storeProducts = try await Product.products(for: Set(AppStore.products.map { $0.rawValue }))
 
             var newCoins: [Product] = []
             var newSubscriptions: [Product] = []

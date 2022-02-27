@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: UDKeys.didRan.rawValue) {
             DispatchQueue.global().async(flags: [.barrier]) {
                 UserDefaults.standard.set(true, forKey: UDKeys.didRan.rawValue)
+                /// First time running app Coins amount
                 KeychainWrapper.standard[.coinsAmount] = 20
                 KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
             }
@@ -30,7 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentTicket = CurrentValues()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        true
+
+        DispatchQueue.global().sync { [weak self] in
+            guard let self = self else { return }
+
+            if self.store.currentSubscriptions.isEmpty {
+                CoinsTimer.setSubscriptionKeychainValues(nil, nil, nil)
+            }
+
+            coinsTimer.checkSubscriptionAmount()
+        }
+
+        UITableView.appearance().backgroundColor = UIColor.clear
+        return true
     }
 }
 

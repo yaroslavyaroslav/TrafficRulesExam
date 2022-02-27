@@ -10,14 +10,7 @@ import SwiftUI
 @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase: View {
 
-    lazy var iAPHelper: IAPHelper = .init(productIds: [
-        "ru.neatness.TrafficRulesExam.10",
-        "ru.neatness.TrafficRulesExam.20",
-        "ru.neatness.TrafficRulesExam.40",
-        "ru.neatness.TrafficRulesExam.OneMonthCoins",
-        "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",
-        "ru.neatness.TrafficRulesExam.SixMonthsCoins"
-    ])
+    lazy var iAPHelper: IAPHelper = .init()
 
     @Binding
     var isPresented: Bool

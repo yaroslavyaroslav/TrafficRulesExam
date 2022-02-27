@@ -12,7 +12,7 @@ struct AnswerButton<Content: View>: View {
 
     var label: () -> Content
 
-    var isSelected = false
+    var isSelected: Bool
 
     init(isSelected: Bool = false, action: @escaping () -> Void, @ViewBuilder label: @escaping () -> Content) {
         self.isSelected = isSelected
@@ -31,10 +31,10 @@ struct AnswerButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(Color.white)
-            .opacity(isSelected ? 0.7 : (configuration.isPressed ? 0.7 : 1))
-            .scaleEffect(isSelected ? 0.8 : (configuration.isPressed ? 0.8 : 1))
-            .animation(.easeInOut(duration: 0.2))
+            .foregroundColor(Color.DS.bgDarkBasePrimary)
+//            .opacity(isSelected ? 0.7 : (configuration.isPressed ? 0.7 : 1))
+//            .scaleEffect(isSelected ? 0.8 : (configuration.isPressed ? 0.8 : 1))
+            .animation(.easeInOut, value: 0.2)
     }
 }
 

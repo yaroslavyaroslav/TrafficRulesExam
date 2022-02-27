@@ -17,16 +17,15 @@ struct TicketView: View {
     @EnvironmentObject var currentValues: CurrentValues
 
     var body: some View {
-        VStack(alignment: .leading) {
-            QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
-                .onAppear {
-                    currentValues.ticket = UInt(card.id)
-                    Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
-                }
-        }
-        .navigationBarItems(leading: EmptyView(), trailing: Text("\(coins.amount)"))
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Билет \(card.id)")
+        QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
+            .onAppear {
+                currentValues.ticket = UInt(card.id)
+                Analytics.fire(.ticketStarted(ticketId: UInt(card.id)))
+            }
+            .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Билет \(card.id)")
+            .background(Color.DS.bgLightPrimary.ignoresSafeArea())
     }
 }
 
@@ -41,5 +40,6 @@ struct Card_Previews: PreviewProvider {
     static var previews: some View {
         TicketView(card: cards[0], result: $cardResult)
             .environmentObject(Coin())
+            .environmentObject(CurrentValues())
     }
 }

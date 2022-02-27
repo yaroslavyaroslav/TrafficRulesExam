@@ -37,11 +37,11 @@ enum AnswerID: Int {
 extension AnswerID {
     var stringValue: String {
         switch self {
-        case .a: return "1."
-        case .b: return "2."
-        case .c: return "3."
-        case .d: return "4."
-        case .e: return "5."
+        case .a: return "1"
+        case .b: return "2"
+        case .c: return "3"
+        case .d: return "4"
+        case .e: return "5"
         case .none: return "none"
         }
     }

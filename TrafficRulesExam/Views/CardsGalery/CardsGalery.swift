@@ -13,7 +13,7 @@ struct CardsGalery: View {
     var body: some View {
         CardRow(locCards: cards)
             .onAppear {
-                Analytics.fire(.screenShown(name: "Решать"))
+                Analytics.fire(.screenShown(name: "Билеты"))
             }
     }
 }

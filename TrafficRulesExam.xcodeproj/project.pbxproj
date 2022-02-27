@@ -12,6 +12,7 @@
 		5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B3271A086A004473EA /* QuestionContentView.swift */; };
 		5C121919272ED02D00DB4826 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C121918272ED02D00DB4826 /* RawRepresentable.swift */; };
 		5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C12191F272F2B6100DB4826 /* AnswerButton.swift */; };
+		5C1674EC27BF91D0003F15E7 /* StatsDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */; };
 		5C1AAC5527996340002046DE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5427996340002046DE /* Store.swift */; };
 		5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC582799B9C2002046DE /* StoreView.swift */; };
 		5C1AAC5B2799B9E4002046DE /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1AAC5A2799B9E4002046DE /* SubscriptionsView.swift */; };
@@ -53,16 +54,24 @@
 		5C8A6C72273849FE00572459 /* CardResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C53ECFE2733F5700044905A /* CardResults.swift */; };
 		5C8A6C7327384AA000572459 /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
 		5C8A6C752738596400572459 /* UITestUtilityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */; };
+		5C8B201A27BFFDD4003446F7 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8B201927BFFDD4003446F7 /* PopupView */; };
+		5C8B201C27C0081E003446F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B201B27C0081E003446F7 /* Color.swift */; };
+		5C8B201F27C00974003446F7 /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B201E27C00974003446F7 /* UIFont+Additions.swift */; };
 		5C900ED3278C7AFA004E9198 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C900ED2278C7AF9004E9198 /* Purchase.swift */; };
 		5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49227197B8A0017723A /* ModelLoad.swift */; };
 		5C97B49827197EEF0017723A /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B49727197EEF0017723A /* TicketView.swift */; };
 		5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD344E27902C2200D919DD /* CoinsTimer.swift */; };
+		5CB0AEB027C67732007B4810 /* TicketButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */; };
+		5CB0AEB227C6AF65007B4810 /* CoinsAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */; };
+		5CC107D627C7F7D9006A9D73 /* CardResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */; };
+		5CC107D827C7F94E006A9D73 /* InExamButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */; };
 		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
 		5CDB6372272D946700E888F7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
 		5CDB6374272DC30E00E888F7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
 		5CDB6376272DC36200E888F7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6375272DC36200E888F7 /* Answer.swift */; };
 		5CDB637A272DD0AD00E888F7 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6379272DD0AD00E888F7 /* CardItem.swift */; };
 		5CDE11D32720A7C700981225 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE11D22720A7C700981225 /* CardRow.swift */; };
+		5CFB1FDD27C16BAC00E8B7CF /* CoinsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +97,7 @@
 		5C0F75B3271A086A004473EA /* QuestionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContentView.swift; sourceTree = "<group>"; };
 		5C121918272ED02D00DB4826 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		5C12191F272F2B6100DB4826 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDiagram.swift; sourceTree = "<group>"; };
 		5C1AAC51279950DB002046DE /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = TrafficRulesExam/Products.storekit; sourceTree = SOURCE_ROOT; };
 		5C1AAC5427996340002046DE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		5C1AAC582799B9C2002046DE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
@@ -123,15 +133,22 @@
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtilityDataModel.swift; sourceTree = "<group>"; };
+		5C8B201B27C0081E003446F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5C8B201E27C00974003446F7 /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		5C900ED2278C7AF9004E9198 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		5C97B49227197B8A0017723A /* ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoad.swift; sourceTree = "<group>"; };
 		5C97B49727197EEF0017723A /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		5CAD344E27902C2200D919DD /* CoinsTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTimer.swift; sourceTree = "<group>"; };
+		5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketButtonStyle.swift; sourceTree = "<group>"; };
+		5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsAmountView.swift; sourceTree = "<group>"; };
+		5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResultCell.swift; sourceTree = "<group>"; };
+		5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InExamButtonStyle.swift; sourceTree = "<group>"; };
 		5CDB6371272D946700E888F7 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		5CDB6373272DC30D00E888F7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5CDB6375272DC36200E888F7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		5CDB6379272DD0AD00E888F7 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 		5CDE11D22720A7C700981225 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
+		5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8B201A27BFFDD4003446F7 /* PopupView in Frameworks */,
 				5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */,
 				5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */,
 				5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */,
@@ -176,6 +194,7 @@
 		5C1AAC572799B9A3002046DE /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				5CFB1FDC27C16BAB00E8B7CF /* CoinsStackView.swift */,
 				5C1AAC602799BB7B002046DE /* StatusInfoView.swift */,
 				5C900ED2278C7AF9004E9198 /* Purchase.swift */,
 				5C1AAC582799B9C2002046DE /* StoreView.swift */,
@@ -209,6 +228,7 @@
 		5C453E0F2714730A006BFFCB /* TrafficRulesExam */ = {
 			isa = PBXGroup;
 			children = (
+				5C8B201D27C0095C003446F7 /* DesigntSystem */,
 				5C47E8B327A7D72B009E9F93 /* AppDelegate.swift */,
 				5C97B49627197E610017723A /* Views */,
 				5C97B49427197BDC0017723A /* Model */,
@@ -235,6 +255,8 @@
 			children = (
 				5C45EBB92739964D00C90977 /* TotalStatsNavigationView.swift */,
 				5C45EBC0273BF1FD00C90977 /* TotalStatsView.swift */,
+				5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */,
+				5C1674EB27BF91CF003F15E7 /* StatsDiagram.swift */,
 				5C45EBBB2739968600C90977 /* ExamCardStatsView.swift */,
 				5C45EBBD2739969600C90977 /* ExamStatsView.swift */,
 			);
@@ -257,6 +279,15 @@
 				5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */,
 			);
 			path = TrafficRulesExamUITests;
+			sourceTree = "<group>";
+		};
+		5C8B201D27C0095C003446F7 /* DesigntSystem */ = {
+			isa = PBXGroup;
+			children = (
+				5C8B201E27C00974003446F7 /* UIFont+Additions.swift */,
+				5C8B201B27C0081E003446F7 /* Color.swift */,
+			);
+			path = DesigntSystem;
 			sourceTree = "<group>";
 		};
 		5C97B49427197BDC0017723A /* Model */ = {
@@ -294,6 +325,7 @@
 			children = (
 				5C453E102714730A006BFFCB /* TrafficRulesExamApp.swift */,
 				5C45EBC4273C4CF200C90977 /* MainScreen.swift */,
+				5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */,
 				5C12191A272ED61600DB4826 /* CardsGalery */,
 				5CDE11D12720A79800981225 /* Exam */,
 				5C45EBBF273996A500C90977 /* Stats */,
@@ -310,6 +342,8 @@
 				5C0F75B3271A086A004473EA /* QuestionContentView.swift */,
 				5C0F75B1271A07F1004473EA /* AnswersView.swift */,
 				5C12191F272F2B6100DB4826 /* AnswerButton.swift */,
+				5CB0AEAF27C67732007B4810 /* TicketButtonStyle.swift */,
+				5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */,
 			);
 			path = Exam;
 			sourceTree = "<group>";
@@ -334,6 +368,7 @@
 				5C85387C27158DBB00D8853E /* YandexMobileMetrica */,
 				5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */,
 				5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */,
+				5C8B201927BFFDD4003446F7 /* PopupView */,
 			);
 			productName = TrafficRulesExam;
 			productReference = 5C453E0D2714730A006BFFCB /* TrafficRulesExam.app */;
@@ -413,6 +448,7 @@
 				5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 				5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */,
 				5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 5C453E0E2714730A006BFFCB /* Products */;
 			projectDirPath = "";
@@ -458,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC107D827C7F94E006A9D73 /* InExamButtonStyle.swift in Sources */,
 				5C121919272ED02D00DB4826 /* RawRepresentable.swift in Sources */,
 				5C45EBBA2739964D00C90977 /* TotalStatsNavigationView.swift in Sources */,
 				5C1AAC592799B9C2002046DE /* StoreView.swift in Sources */,
@@ -465,6 +502,7 @@
 				5C45EBC1273BF1FD00C90977 /* TotalStatsView.swift in Sources */,
 				5C1AAC5D2799BA10002046DE /* ProductCellView.swift in Sources */,
 				5C0F75B2271A07F1004473EA /* AnswersView.swift in Sources */,
+				5C1674EC27BF91D0003F15E7 /* StatsDiagram.swift in Sources */,
 				5C453E132714730A006BFFCB /* CardsGalery.swift in Sources */,
 				5C47E8B627A83B40009E9F93 /* Store+iOS14.swift in Sources */,
 				5C0F75B4271A086A004473EA /* QuestionContentView.swift in Sources */,
@@ -472,8 +510,12 @@
 				5C1AAC5527996340002046DE /* Store.swift in Sources */,
 				5C121920272F2B6100DB4826 /* AnswerButton.swift in Sources */,
 				5C1AAC5F2799BA24002046DE /* BuyButtonStyle.swift in Sources */,
+				5CB0AEB227C6AF65007B4810 /* CoinsAmountView.swift in Sources */,
 				5C45EBC3273C07A000C90977 /* Date+PrittyPrint.swift in Sources */,
+				5C8B201F27C00974003446F7 /* UIFont+Additions.swift in Sources */,
 				5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */,
+				5C8B201C27C0081E003446F7 /* Color.swift in Sources */,
+				5CB0AEB027C67732007B4810 /* TicketButtonStyle.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,
 				5C1AAC6727A70477002046DE /* Analytics.swift in Sources */,
 				5C97B49327197B8A0017723A /* ModelLoad.swift in Sources */,
@@ -491,8 +533,10 @@
 				5C45EBBC2739968600C90977 /* ExamCardStatsView.swift in Sources */,
 				5CAD344F27902C2200D919DD /* CoinsTimer.swift in Sources */,
 				5CDE11D32720A7C700981225 /* CardRow.swift in Sources */,
+				5CFB1FDD27C16BAC00E8B7CF /* CoinsStackView.swift in Sources */,
 				5CDB6374272DC30E00E888F7 /* Question.swift in Sources */,
 				5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */,
+				5CC107D627C7F7D9006A9D73 /* CardResultCell.swift in Sources */,
 				5C0F75B0271A0558004473EA /* QuestionCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -645,7 +689,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -670,9 +714,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "ПДД";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,7 +728,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -702,9 +746,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "ПДД";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -715,7 +760,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
@@ -727,7 +771,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +790,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -764,7 +808,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -772,7 +816,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TrafficRulesExam;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
 			};
 			name = Debug;
 		};
@@ -783,7 +826,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5KNF7B55U4;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.neantess.TrafficRulesExamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -791,7 +834,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TrafficRulesExam;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
 			};
 			name = Release;
 		};
@@ -853,6 +895,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Quick/Nimble";
@@ -878,6 +928,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
 			productName = YandexMobileMetricaCrashes;
+		};
+		5C8B201927BFFDD4003446F7 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		5CD7A849273411CD007E1F4F /* Nimble */ = {
 			isa = XCSwiftPackageProductDependency;

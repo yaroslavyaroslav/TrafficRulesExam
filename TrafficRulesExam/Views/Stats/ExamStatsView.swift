@@ -14,9 +14,6 @@ struct ExamStatsView: View {
 
     var body: some View {
         VStack {
-            Text("Билет \(cardId)")
-            Text("Ошибок \(result.mistakes.count)/20")
-
             if result.succeed {
                 Spacer()
                 Text("Решено \(result.examDate.prettyPrint)")
@@ -25,6 +22,12 @@ struct ExamStatsView: View {
                     .padding()
                 Spacer()
             } else {
+                Text("🙁")
+                    .font(.system(size: 64))
+                    .padding(.bottom, 12)
+                Text("Ошибок \(result.mistakes.count)/20")
+                    .font(UIFont.sfTitle2Bold.asFont)
+
                 List(0..<result.mistakes.count) { mistakeIdx in
                     NavigationLink {
                         QuestionContentView(
@@ -34,15 +37,35 @@ struct ExamStatsView: View {
                         )
                         .navigationBarTitle(Text("Вопрос \(result.mistakes[mistakeIdx].id.description)"))
                     } label: {
-                        VStack {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text("Ошибка в \(result.mistakes[mistakeIdx].id.description) вопросе")
-                            Text("Вы ответили \(result.mistakes[mistakeIdx].wrongAnswer.stringValue)")
-                            Text("Правильный ответ \(getCorrectAnswerForQuestion(cardId, mistakeIdx).stringValue)")
+                                .font(UIFont.sfBody.asFont)
+
+                            HStack(spacing: 0) {
+                                Text("Вы ответили: ")
+                                    .font(UIFont.sfCaption.asFont)
+                                Text(result.mistakes[mistakeIdx].wrongAnswer.stringValue)
+                                    .foregroundColor(.DS.tintsPinkLight)
+                                    .padding(.trailing, 12)
+
+                                Circle()
+                                    .foregroundColor(.DS.greysGrey5Light)
+                                    .frame(width: 5, height: 5)
+                                    .padding(.trailing, 12)
+
+                                Text("Правильный ответ: ")
+                                Text(getCorrectAnswerForQuestion(cardId, mistakeIdx).stringValue)
+                                    .font(UIFont.sfCaptionMedium.asFont)
+                                    .foregroundColor(.DS.tintsGreenLight)
+                            }
+                            .font(UIFont.sfCaptionMedium.asFont)
+                            .foregroundColor(.DS.greysGrey2Dark)
                         }
                     }
                 }
             }
         }
+        .navigationBarTitle(result.examDate.relativeDate)
     }
 
     private func getQuestionForStats(_ cardID: Int, _ questionId: Int) -> Question {

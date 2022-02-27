@@ -8,7 +8,6 @@
 import XCTest
 
 class TrafficRulesExamUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

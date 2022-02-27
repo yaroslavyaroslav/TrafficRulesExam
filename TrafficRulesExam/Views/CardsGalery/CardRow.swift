@@ -8,43 +8,68 @@
 import SwiftUI
 
 struct CardRow: View {
-    
-    @State
-    var results: CardResults = {
+    @EnvironmentObject var coins: Coin
+
+    @State var results: CardResults = {
         var object: CardResults!
+
         do {
             object = try CardResults()
         } catch {
-            object = CardResults(items:{ (1...2).map { CardResult(id: $0, resultHistory: Results(items: [])) } }())
+            UserDefaults.standard.removeObject(forKey: UDKeys.cardResults.rawValue)
+            object = CardResults(items: (1...(cards.count)).map { CardResult(id: $0, resultHistory: Results(items: [])) })
         }
         return object
     }()
-    
-    @State var isShowingExamCard = false
 
-    var cards: [ExamCard]
-    
+    @State var isErrorPresented = false
+
+    var locCards: [ExamCard]
+
     var body: some View {
-        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-        
+        let columns: [GridItem] = Array(repeating: .init(.flexible(minimum: 160, maximum: 170)), count: 2)
+
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach($results.items, id: \.id) { $result in
-                    NavigationLink(isActive: $isShowingExamCard) {
-                        Card(card: cards.getElementById(id: result.id), result: $result, isShowingExamCard: $isShowingExamCard)
+                    /*
+                     Если использовать NavigationLink(isActive:) в ForEach тап на кнопку открывает рандомный destination.
+                     Проблема закрытия DestinationView по тапу на кнопку решается через вызов в DestinationView
+                     метода @Environment(\.presentationMode) переменной dismiss()
+                     */
+                    NavigationLink {
+                        TicketView(card: locCards.getElementById(result.id), result: $result)
                     } label: {
-                        CardItem(card: cards.getElementById(id: result.id), results: result)
+                        CardItem(card: locCards.getElementById(result.id), result: $result)
                     }
                     .navigationTitle(Text("Билеты"))
                     .navigationBarTitleDisplayMode(.large)
+                    .alert("Не хватает монет", isPresented: $isErrorPresented, actions: {
+                        Button {
+                            isErrorPresented = false
+                        } label: {
+                            Text("Ок")
+                        }
+                    }, message: {
+                        Text("Чтобы открыть этот билет нужно больше монет. Их можно купить в магазине.")
+                    })
+                    // TODO: Make views blurred or transparent.
+                    .disabled(coins.amount < coins.cardCost ? true : false)
+                    .onTapGesture {
+                        if coins.amount < coins.cardCost {
+                            isErrorPresented = true
+                        }
+                    }
                 }
             }
+            .background(Color.DS.bgLightPrimary)
         }
     }
 }
 
 struct CardRow_Previews: PreviewProvider {
     static var previews: some View {
-        CardRow(cards: cards)
+        CardRow(locCards: cards)
+            .environmentObject(Coin())
     }
 }

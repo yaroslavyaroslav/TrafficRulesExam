@@ -1,0 +1,107 @@
+{
+  "identifier" : "9D6113FF",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "259",
+      "familyShareable" : false,
+      "internalID" : "D6DB3E3A",
+      "localizations" : [
+        {
+          "description" : "1 месяц",
+          "displayName" : "Для пересдачи",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.OneMonthCoins",
+      "referenceName" : "1 month subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "549",
+      "familyShareable" : false,
+      "internalID" : "4001CC38",
+      "localizations" : [
+        {
+          "description" : "3 месяца",
+          "displayName" : "Пока сдаешь город",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.ThreeMonthsCoins",
+      "referenceName" : "3 months subscription",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "749",
+      "familyShareable" : false,
+      "internalID" : "C1888D84",
+      "localizations" : [
+        {
+          "description" : "6 месяцев",
+          "displayName" : "Когда пришел в автошколу",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.SixMonthsCoins",
+      "referenceName" : "6 months subscription",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "15",
+      "familyShareable" : false,
+      "internalID" : "026D0256",
+      "localizations" : [
+        {
+          "description" : "Маленький пак монет",
+          "displayName" : "10 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.Mini",
+      "referenceName" : "10 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "29",
+      "familyShareable" : false,
+      "internalID" : "F5A6074E",
+      "localizations" : [
+        {
+          "description" : "Средний пак монет",
+          "displayName" : "15 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.Middle",
+      "referenceName" : "20 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99",
+      "familyShareable" : false,
+      "internalID" : "B1407256",
+      "localizations" : [
+        {
+          "description" : "Большой пак монет",
+          "displayName" : "40 Монет",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "ru.neatness.TrafficRulesExam.Max",
+      "referenceName" : "40 Coins",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

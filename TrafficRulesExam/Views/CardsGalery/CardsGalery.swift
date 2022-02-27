@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct CardsGalery: View {
-    
     var cards: [ExamCard]
-    
+
     var body: some View {
-        NavigationView {
-            CardRow(cards: cards)
-                .padding()
-        }
+        CardRow(locCards: cards)
+            .onAppear {
+                Analytics.fire(.screenShown(name: "Билеты"))
+            }
     }
 }
 
 struct CardsGalery_Previews: PreviewProvider {
     static var previews: some View {
         CardsGalery(cards: cards)
+            .environmentObject(Coin())
     }
 }

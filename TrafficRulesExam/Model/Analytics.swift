@@ -47,7 +47,11 @@ class Analytics {
     class func initAnalytics(_ system: System = .appMetrica) -> Bool {
         switch system {
         case .appMetrica:
+            #if DEBUG
+            let configuration = YMMYandexMetricaConfiguration(apiKey: "d1bdcdf9-e810-4052-8631-c99702f002b2")
+            #else
             let configuration = YMMYandexMetricaConfiguration(apiKey: "bf58c573-1e85-4e45-9917-ac4d94f1c8bc")
+            #endif
             configuration?.userProfileID = KeychainWrapper.profileId
             guard let configuration = configuration else { return false }
             YMMYandexMetrica.activate(with: configuration)

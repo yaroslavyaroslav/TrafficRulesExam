@@ -8,6 +8,7 @@
 import PopupView
 import SwiftKeychainWrapper
 import SwiftUI
+import os.log
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
@@ -134,7 +135,7 @@ struct QuestionCardView: View {
                     isShowingError = true
                     return
                 } catch {
-                    print("this")
+                    os_log("\(error.localizedDescription)")
                 }
             }
 
@@ -193,10 +194,10 @@ extension QuestionCardView {
 
         answeredQuestions.insert(questionDetails.id)
 
-        print("question.id: \(questionDetails.id)")
+        os_log("question.id: \(questionDetails.id)")
         currentValues.question = UInt(questionDetails.id)
         Analytics.shared.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
-        print(answeredQuestions.count)
+        os_log("\(answeredQuestions.count)")
 
         dropHint()
 
@@ -207,9 +208,9 @@ extension QuestionCardView {
                     try coinsTimer.spendCoin(coins.cardCost)
                 } catch CoinsError.NegativeCoinsAmount {
                     /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
-                    print("Not enough coins.")
+                    os_log("Not enough coins.")
                 } catch {
-                    print("This")
+                    os_log("This")
                 }
                 Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
             } else {

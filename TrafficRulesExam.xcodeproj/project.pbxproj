@@ -66,7 +66,6 @@
 		5CB0AEB227C6AF65007B4810 /* CoinsAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0AEB127C6AF65007B4810 /* CoinsAmountView.swift */; };
 		5CC107D627C7F7D9006A9D73 /* CardResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D527C7F7D9006A9D73 /* CardResultCell.swift */; };
 		5CC107D827C7F94E006A9D73 /* InExamButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC107D727C7F94E006A9D73 /* InExamButtonStyle.swift */; };
-		5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD7A849273411CD007E1F4F /* Nimble */; };
 		5CDB6372272D946700E888F7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6371272D946700E888F7 /* Results.swift */; };
 		5CDB6374272DC30E00E888F7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6373272DC30D00E888F7 /* Question.swift */; };
 		5CDB6376272DC36200E888F7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDB6375272DC36200E888F7 /* Answer.swift */; };
@@ -176,7 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CD7A84A273411CD007E1F4F /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +416,6 @@
 			);
 			name = TrafficRulesExamUITests;
 			packageProductDependencies = (
-				5CD7A849273411CD007E1F4F /* Nimble */,
 			);
 			productName = TrafficRulesExamUITests;
 			productReference = 5C53ED4C27340BCE0044905A /* TrafficRulesExamUITests.xctest */;
@@ -457,7 +454,6 @@
 			mainGroup = 5C453E042714730A006BFFCB;
 			packageReferences = (
 				5C85387B27158DBB00D8853E /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
-				5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */,
 				5C69D3B92747CB2F00E66EAA /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
@@ -915,14 +911,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -945,11 +933,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C8B201827BFFDD4003446F7 /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = PopupView;
-		};
-		5CD7A849273411CD007E1F4F /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5CD7A848273411CD007E1F4F /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

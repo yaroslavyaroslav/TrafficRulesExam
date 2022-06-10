@@ -7,6 +7,7 @@
 
 import Foundation
 
+// This file included in test target by purpose.
 enum UDKeys: String {
     case cardResults
     case didRan

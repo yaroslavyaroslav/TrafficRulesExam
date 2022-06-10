@@ -162,7 +162,7 @@ struct QuestionCardView: View {
     }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
-        let isEnabled = selectedAnswer != .none
+        let disabled = selectedAnswer == .none
 
         return Button {
             withAnimation {
@@ -175,12 +175,12 @@ struct QuestionCardView: View {
                 HStack {
                     Image(systemName: "arrow.forward")
                         .font(.system(size: 24))
-                        .foregroundColor(isEnabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
+                        .foregroundColor(!disabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
                 }
             }
         }
-        .buttonStyle(InExamButtonStyle(isEnabled: isEnabled))
-        .disabled(!isEnabled)
+        .buttonStyle(InExamButtonStyle(isEnabled: !disabled))
+        .disabled(disabled)
     }
 }
 
@@ -211,10 +211,9 @@ extension QuestionCardView {
         dropHint()
 
         /// Checking is user answered all question in the ticket
-        if answeredQuestions.count == 20 {
-            calculateResult()
-            return
-        }
+        guard answeredQuestions.count < 20 else { calculateTestResult(); return }
+        
+        /// Scroll question list to next question if needed.
         scrollQuestionList(proxy)
     }
     
@@ -236,7 +235,7 @@ extension QuestionCardView {
         }
     }
     
-    private func calculateResult() {
+    private func calculateTestResult() {
         // If user made a mistake
         if !result.mistakes.isEmpty {
             do {

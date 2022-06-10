@@ -51,6 +51,5 @@ struct TicketButtonStyle: ButtonStyle {
             .roundBorder(strokeColor, width: 1, cornerRadius: 12)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
             .defaultShadow(shadowType)
-            .disabled(state != .notAnswered)
     }
 }

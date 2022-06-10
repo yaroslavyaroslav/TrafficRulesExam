@@ -112,7 +112,8 @@ struct QuestionCardView: View {
                             .font(UIFont.sfBody.asFont)
                             .foregroundColor(question == questionDetails ? .DS.bgLightPrimary : .DS.greysGrey3Dark)
                     }
-                    .buttonStyle(TicketButtonStyle(state: state))                    
+                    .buttonStyle(TicketButtonStyle(state: state))
+                    .disabled(answeredQuestions.contains(question.id))
                 }
                 .cornerRadius(8)
             }

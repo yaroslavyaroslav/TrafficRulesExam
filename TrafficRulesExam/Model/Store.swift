@@ -9,7 +9,6 @@ import Foundation
 import os.log
 import StoreKit
 import SwiftKeychainWrapper
-import YandexMobileMetrica
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -126,9 +125,7 @@ class Store: ObservableObject {
 
         await updateSubscriptionStatus(transaction)
 
-        if let revenueObject = Analytics.createRevenueObject(for: product, verification) {
-            Analytics.fire(.completePurchase(revenue: revenueObject))
-        }
+        Analytics.fire(.completePurchase(product: product, verification))
 
         // Always finish a transaction.
         await transaction.finish()

@@ -1,69 +1,33 @@
 //
-//  Analytics.swift
+//  AppMetricaAnalytics.swift
 //  TrafficRulesExam
 //
-//  Created by Yaroslav on 30.01.2022.
+//  Created by Yaroslav Yashin on 10.06.2022.
 //
 
 import Foundation
-import os.log
+import YandexMobileMetrica
 import StoreKit
 import SwiftKeychainWrapper
-import YandexMobileMetrica
+import os.log
 
-extension Analytics {
-    enum Conversion {
-        // MARK: - Conversions
+class AppMetrikaAnalytics {
+    class func initAppMetrika() -> Bool {
+#if DEBUG
+        let configuration = YMMYandexMetricaConfiguration(apiKey: "d1bdcdf9-e810-4052-8631-c99702f002b2")
+#else
+        let configuration = YMMYandexMetricaConfiguration(apiKey: "bf58c573-1e85-4e45-9917-ac4d94f1c8bc")
+#endif
+        configuration?.userProfileID = KeychainWrapper.profileId
+        guard let configuration = configuration else { return false }
+        // FIXME: Crashing on Xcode preview
+        YMMYandexMetrica.activate(with: configuration)
 
-        case firstRun
-
-        // MARK: - Purchases
-
-        case completePurchase(revenue: YMMRevenueInfo)
-        case refundPurchase(revenue: YMMRevenueInfo)
-
-        // MARK: - Exam Actions
-
-        case ticketStarted(ticketId: UInt)
-        case ticketCompleted(ticketId: UInt, success: Bool)
-        case questionShown(ticket: UInt, question: UInt)
-        case hintTaken(ticket: UInt, question: UInt)
-
-        // MARK: - Navigation
-
-        case screenShown(name: String)
+        Analytics.fire(.firstRun)
+        return true
     }
-}
-
-class Analytics {
-    struct Payload: Encodable {
-        let coinsAmount: UInt
-        let solvedTickets: Set<UInt>
-        let succedTickets: Set<UInt>
-        let purchases: [String]
-    }
-
-    @discardableResult
-    class func initAnalytics(_ system: System = .appMetrica) -> Bool {
-        switch system {
-        case .appMetrica:
-            #if DEBUG
-            let configuration = YMMYandexMetricaConfiguration(apiKey: "d1bdcdf9-e810-4052-8631-c99702f002b2")
-            #else
-            let configuration = YMMYandexMetricaConfiguration(apiKey: "bf58c573-1e85-4e45-9917-ac4d94f1c8bc")
-            #endif
-            configuration?.userProfileID = KeychainWrapper.profileId
-            guard let configuration = configuration else { return false }
-            YMMYandexMetrica.activate(with: configuration)
-
-            Analytics.fire(.firstRun)
-
-            return true
-        case .segment: return false
-        }
-    }
-
-    class func fire(_ conversion: Conversion) {
+    
+    class func fire(_ conversion: Analytics.Conversion) {
         let fiat0 = YMMECommerceAmount(unit: "USD", value: 0)
         let zedoUSD = YMMECommercePrice(fiat: fiat0)
 
@@ -75,8 +39,12 @@ class Analytics {
         switch conversion {
         case .firstRun: SKAdNetwork.registerAppForAdNetworkAttribution()
 
-        case let .completePurchase(revenueObject), let .refundPurchase(revenueObject):
-            sendRevenueEvent(revenueObject)
+        case let .completePurchase(product, result), let .refundPurchase(product, result):
+            if let revenueObject = AppMetrikaAnalytics.createRevenueObject(for: product, result) {
+                sendRevenueEvent(revenueObject)
+            } else {
+                os_log("revenueObject is nil with ")
+            }
 
         case let .ticketStarted(ticket):
             let product = YMMECommerceProduct(sku: "Билет \(ticket)")
@@ -119,7 +87,7 @@ class Analytics {
             sendECommerceEvent(.showScreenEvent(screen: screen))
         }
     }
-
+    
     private static func sendECommerceEvent(_ event: YMMECommerce) {
         YMMYandexMetrica.report(eCommerce: event) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }
@@ -129,14 +97,7 @@ class Analytics {
     }
 }
 
-extension Analytics {
-    enum System {
-        case appMetrica
-        case segment
-    }
-}
-
-extension Analytics {
+extension AppMetrikaAnalytics {
     @available(iOS 15, *)
     class func createRevenueObject(for product: Product, _ result: VerificationResult<Transaction>) -> YMMRevenueInfo? {
         guard case let .verified(transaction) = result else { return nil }
@@ -144,16 +105,6 @@ extension Analytics {
         let revenueInfo = YMMMutableRevenueInfo(priceDecimal: product.price as NSDecimalNumber, currency: "RUB")
         revenueInfo.productID = product.displayName
         revenueInfo.quantity = UInt(transaction.purchasedQuantity)
-
-        // TODO: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
-        return revenueInfo
-    }
-
-    @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
-    class func createRevenueObject(for product: Decimal, _ result: String) -> YMMRevenueInfo? {
-        let revenueInfo = YMMMutableRevenueInfo(priceDecimal: product as NSDecimalNumber, currency: "RUB")
-        revenueInfo.productID = "(product)"
-        revenueInfo.quantity = 1
 
         // TODO: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
         return revenueInfo

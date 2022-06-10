@@ -8,7 +8,6 @@
 import PopupView
 import SwiftKeychainWrapper
 import SwiftUI
-import YandexMobileMetrica
 
 extension AnyTransition {
     static var moveAndFade: AnyTransition {

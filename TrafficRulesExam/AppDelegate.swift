@@ -7,7 +7,6 @@
 
 import SwiftKeychainWrapper
 import UIKit
-import YandexMobileMetrica
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var coin: Coin = {

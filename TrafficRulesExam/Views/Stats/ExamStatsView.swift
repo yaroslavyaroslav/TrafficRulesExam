@@ -28,7 +28,7 @@ struct ExamStatsView: View {
                 Text("Ошибок \(result.mistakes.count)/20")
                     .font(UIFont.sfTitle2Bold.asFont)
 
-                List(0..<result.mistakes.count) { mistakeIdx in
+                List(0 ..< result.mistakes.count) { mistakeIdx in
                     NavigationLink {
                         QuestionContentView(
                             question: getQuestionForStats(cardId, mistakeIdx),

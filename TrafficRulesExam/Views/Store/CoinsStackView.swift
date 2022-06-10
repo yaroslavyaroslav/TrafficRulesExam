@@ -60,8 +60,8 @@ struct CoinsStackView: View {
 
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
-            ForEach(0..<stacksNumber) { stack in
-                ForEach(0..<coinsAmountInStack) { index in
+            ForEach(0 ..< stacksNumber) { stack in
+                ForEach(0 ..< coinsAmountInStack) { index in
                     /// Since middle coins stack should be at front,
                     /// we're taking it by index
                     if stack == 1 {

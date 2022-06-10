@@ -45,7 +45,7 @@ struct ProductCellView: View {
         .roundBorder(Color.DS.bgLightSecondary, cornerRadius: 12)
         .shadow(color: .DS.shadowLight, radius: 8, x: 0, y: 4)
         .alert(isPresented: $isShowingError) {
-            Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
+            Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Ok")))
         }
     }
 

@@ -129,6 +129,7 @@ struct QuestionCardView: View {
             if !hintPurchased {
                 do {
                     try coinsTimer.spendCoin(coins.hintCost)
+                    hintPurchased = true
                 } catch CoinsError.NegativeCoinsAmount {
                     isShowingError = true
                     return

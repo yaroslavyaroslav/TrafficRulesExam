@@ -15,7 +15,7 @@ struct CoinAmountView: View {
     var body: some View {
         Button {
             self.isModalViewPresented = true
-            Analytics.fire(.screenShown(name: "Покупки"))
+            Analytics.shared.fire(.screenShown(name: "Покупки"))
         } label: {
             HStack {
                 Image("Coin")

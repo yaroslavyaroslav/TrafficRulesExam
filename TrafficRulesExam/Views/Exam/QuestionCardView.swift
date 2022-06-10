@@ -140,7 +140,7 @@ struct QuestionCardView: View {
                 self.isHintShown = true
             }
 
-            Analytics.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
+            Analytics.shared.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 8)
@@ -193,7 +193,7 @@ extension QuestionCardView {
 
         print("question.id: \(questionDetails.id)")
         currentValues.question = UInt(questionDetails.id)
-        Analytics.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
+        Analytics.shared.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
         print(answeredQuestions.count)
 
         dropHint()
@@ -209,10 +209,10 @@ extension QuestionCardView {
                 } catch {
                     print("This")
                 }
-                Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+                Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
             } else {
                 coinsTimer.rewardCoin(coins.cardCost)
-                Analytics.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
+                Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
             }
             resultsHistory.items.append(result)
             presentationMode.wrappedValue.dismiss()

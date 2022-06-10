@@ -41,9 +41,25 @@ class Analytics {
         let succedTickets: Set<UInt>
         let purchases: [String]
     }
+    
+    private var system: System
+    
+    static var system: System?
 
+    private init() {
+        if let system = Analytics.system {
+            self.system = system
+        } else {
+            self.system = .appMetrica
+        }
+    }
+    
+    private static var _analytics: Analytics { Analytics() }
+    
+    static var shared: Analytics { _analytics }
+    
     @discardableResult
-    class func initAnalytics(_ system: System = .appMetrica) -> Bool {
+    func initAnalytics() -> Bool {
         switch system {
         case .appMetrica:
 #if !DEBUG
@@ -55,10 +71,16 @@ class Analytics {
         }
     }
 
-    class func fire(_ conversion: Conversion) {
+    func fire(_ conversion: Conversion) {
+        switch system {
+        case .appMetrica:
 #if !DEBUG
-        AppMetrikaAnalytics.fire(conversion)
+            AppMetrikaAnalytics.fire(conversion)
+#else
+            break
 #endif
+        case .segment: break
+        }
     }
 }
 

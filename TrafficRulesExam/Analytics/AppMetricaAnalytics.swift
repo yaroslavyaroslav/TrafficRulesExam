@@ -23,7 +23,7 @@ class AppMetrikaAnalytics {
         // FIXME: Crashing on Xcode preview
         YMMYandexMetrica.activate(with: configuration)
 
-        Analytics.fire(.firstRun)
+        Analytics.shared.fire(.firstRun)
         return true
     }
     
@@ -97,8 +97,8 @@ class AppMetrikaAnalytics {
     }
 }
 
+@available(iOS 15, *)
 extension AppMetrikaAnalytics {
-    @available(iOS 15, *)
     class func createRevenueObject(for product: Product, _ result: VerificationResult<Transaction>) -> YMMRevenueInfo? {
         guard case let .verified(transaction) = result else { return nil }
 

@@ -114,6 +114,7 @@ struct QuestionCardView: View {
                             .foregroundColor(question == questionDetails ? .DS.bgLightPrimary : .DS.greysGrey3Dark)
                     }
                     .buttonStyle(TicketButtonStyle(state: state))
+                    // TODO: Make here's fireling alert on tap. Maybe with `tapGetsture` and `alert` methods.
                     .disabled(answeredQuestions.contains(question.id))
                 }
                 .cornerRadius(8)
@@ -185,43 +186,39 @@ struct QuestionCardView: View {
 
 extension QuestionCardView {
     func saveAnswer(_ proxy: ScrollViewProxy? = nil) {
+        /// If user didn't select any answer just drop hint and do nothing.
         guard selectedAnswer != .none else { dropHint(); return }
 
+        /// Checking is the selected answer is correct
         if questionDetails.correctAnswer != selectedAnswer {
+            /// Adding question to the list if it's not
             result.addMistake(mistake: (questionDetails.id, selectedAnswer))
         }
+        /// Resetting selected answer state
         selectedAnswer = .none
 
+        /// Adding question to selected answets set.
         answeredQuestions.insert(questionDetails.id)
 
         os_log("question.id: \(questionDetails.id)")
+        
+        /// Updating `currentValues.question` property to send it to analytics
         currentValues.question = UInt(questionDetails.id)
         Analytics.shared.fire(.questionShown(ticket: currentValues.ticket, question: currentValues.question))
         os_log("\(answeredQuestions.count)")
 
+        /// Dropping hint state (purchased or not)
         dropHint()
 
+        /// Checking is user answered all question in the ticket
         if answeredQuestions.count == 20 {
-            // If user made a mistake
-            if !result.mistakes.isEmpty {
-                do {
-                    try coinsTimer.spendCoin(coins.cardCost)
-                } catch CoinsError.NegativeCoinsAmount {
-                    /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
-                    os_log("Not enough coins.")
-                } catch {
-                    os_log("This")
-                }
-                Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
-            } else {
-                coinsTimer.rewardCoin(coins.cardCost)
-                Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
-            }
-            resultsHistory.items.append(result)
-            presentationMode.wrappedValue.dismiss()
+            calculateResult()
             return
         }
-
+        scrollQuestionList(proxy)
+    }
+    
+    private func scrollQuestionList(_ proxy: ScrollViewProxy?) {
         // FIXME: Crashes if skip 20 question.
         let notAnswered = (1...19).filter { !answeredQuestions.contains($0) }
 
@@ -237,6 +234,31 @@ extension QuestionCardView {
             questionDetails = questions[notAnswered[0] - 1]
             proxy.scrollTo(questionDetails.id)
         }
+    }
+    
+    private func calculateResult() {
+        // If user made a mistake
+        if !result.mistakes.isEmpty {
+            do {
+                /// trying to charge coins for a ticket
+                try coinsTimer.spendCoin(coins.cardCost)
+            } catch CoinsError.NegativeCoinsAmount {
+                // FIXME: Make something that this didn't happened
+                /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
+                os_log("Not enough coins.")
+            } catch {
+                os_log("This")
+            }
+            Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+        } else {
+            /// Givening a user reward for successfully solved Ticket
+            coinsTimer.rewardCoin(coins.cardCost)
+            Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
+        }
+        /// Adding this result to result history
+        resultsHistory.items.append(result)
+        /// Closing view.
+        presentationMode.wrappedValue.dismiss()
     }
 
     private func dropHint() {

@@ -257,6 +257,7 @@ extension QuestionCardView {
         /// Adding this result to result history
         resultsHistory.items.append(result)
         /// Closing view.
+        // TODO: Make to open Result screen here.
         presentationMode.wrappedValue.dismiss()
     }
 

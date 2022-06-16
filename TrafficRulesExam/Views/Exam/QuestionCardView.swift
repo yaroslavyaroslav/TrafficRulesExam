@@ -63,7 +63,7 @@ struct QuestionCardView: View {
                 .font(UIFont.sfBodySemibold.asFont)
                 .foregroundColor(.DS.bgGroupedLightSecondary)
                 .padding(16)
-                .background(Color.DS.bgLightPrimary.edgesIgnoringSafeArea(.bottom))
+                .background()
                 .defaultShadow(.up)
             }
             .popup(isPresented: $isHintShown, type: .toast, position: .bottom, closeOnTap: false) {

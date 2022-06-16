@@ -55,7 +55,6 @@ struct StatsDiagram: View {
                 HStack {
                     Text("Монет: \(coins.amount)")
                         .font(UIFont.sfTitle3.asFont)
-                        .opacity(0.8)
                     
                     Spacer()
 
@@ -69,6 +68,7 @@ struct StatsDiagram: View {
                         EmptyView()
                     }
                 }
+                .opacity(0.8)
 
                 ZStack(alignment: .topLeading) {
                     Rectangle()

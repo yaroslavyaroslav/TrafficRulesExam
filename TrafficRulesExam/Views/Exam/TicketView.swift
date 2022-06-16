@@ -25,7 +25,7 @@ struct TicketView: View {
             .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Билет \(card.id)")
-            .background(Color.DS.bgLightPrimary.ignoresSafeArea())
+            .background()
     }
 }
 

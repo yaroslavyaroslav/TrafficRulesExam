@@ -55,7 +55,7 @@ struct MainScreen: View {
             }
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
+        .background()
         .navigationBarItems(leading: modeToggleButton, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 

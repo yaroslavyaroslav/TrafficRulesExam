@@ -26,6 +26,7 @@ struct StatsDiagram: View {
 
     @EnvironmentObject var countdownTimer: CoinsTimer
 
+    @Environment(\.colorScheme) var colorScheme
 
     var triedTickets: CGFloat {
         // swiftformat:disable --indent --spaceInsideComments
@@ -54,7 +55,7 @@ struct StatsDiagram: View {
                 HStack {
                     Text("Монет: \(coins.amount)")
                         .font(UIFont.sfTitle3.asFont)
-                        .foregroundColor(.DS.greysGrey3Dark)
+                        .opacity(0.8)
                     
                     Spacer()
 
@@ -72,7 +73,7 @@ struct StatsDiagram: View {
                 ZStack(alignment: .topLeading) {
                     Rectangle()
                         .frame(width: maxWidth, height: graphHeight)
-                        .foregroundColor(.DS.greysGrey6Light)
+                        .foregroundColor(colorScheme == .light ? .DS.greysGrey6Light : .DS.greysGrey4Dark)
                     Rectangle()
                         .frame(width: triedTickets, height: graphHeight)
                         .foregroundColor(.DS.tintsPinkLight)
@@ -116,7 +117,7 @@ struct StatsDiagram: View {
                             .font(UIFont.sfCaption.asFont)
                         Text(" \(cards.count)")
                             .font(UIFont.sfCallout.asFont)
-                            .foregroundColor(.DS.greysGrey2Dark)
+                            .opacity(0.6)
                     }
                     if successTickets == 0 && triedTickets == 0 {
                         Spacer()

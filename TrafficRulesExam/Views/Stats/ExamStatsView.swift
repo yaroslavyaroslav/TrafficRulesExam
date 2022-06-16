@@ -59,7 +59,6 @@ struct ExamStatsView: View {
                                     .foregroundColor(.DS.tintsGreenLight)
                             }
                             .font(UIFont.sfCaptionMedium.asFont)
-                            .foregroundColor(.DS.greysGrey2Dark)
                         }
                     }
                 }

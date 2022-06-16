@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardRow: View {
     @EnvironmentObject var coins: Coin
+    
+    @Environment(\.colorScheme) var colorScheme
 
     @State var results: CardResults = {
         var object: CardResults!
@@ -62,7 +64,6 @@ struct CardRow: View {
                     }
                 }
             }
-            .background(Color.DS.bgLightPrimary)
         }
     }
 }

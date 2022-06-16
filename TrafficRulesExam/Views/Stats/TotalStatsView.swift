@@ -11,44 +11,39 @@ import SwiftUI
 struct TotalStatsView: View {
 
     var results: CardResults
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         VStack(spacing: 0) {
             StatsDiagram(results: results)
                 .padding(.vertical, 16)
                 .padding(.horizontal, 16)
-                .background(Color.DS.bgLightPrimary)
-                .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
+                .background()
+                .roundBorder(colorScheme == .light ? Color.DS.bgLightSecondary : Color.DS.greysGrey4Dark, width: 1, cornerRadius: 12)
                 .defaultShadow()
-
+            
             let notEmptyResult = results.items.filter { !$0.resultHistory.items.isEmpty }
-
-            if #available(iOS 15.0, *) {
-                List(notEmptyResult, id: \.id) { result in
-                    /*
-                     Если использовать NavigationLink(isActive:) в ForEach тап на кнопку открывает рандомный destination.
-                     Проблема закрытия DestinationView по тапу на кнопку решается через вызов в DestinationView
-                     метода @Environment(\.presentationMode) переменной dismiss()
-                     */
-                    NavigationLink {
-                        ExamCardStatsView(cardResult: result)
-                    } label: {
-                        CardResultCell(result: result)
-                    }
-                    .listRowBackground(Color.clear)
+            
+            List(notEmptyResult, id: \.id) { result in
+                /*
+                 Если использовать NavigationLink(isActive:) в ForEach тап на кнопку открывает рандомный destination.
+                 Проблема закрытия DestinationView по тапу на кнопку решается через вызов в DestinationView
+                 метода @Environment(\.presentationMode) переменной dismiss()
+                 */
+                NavigationLink {
+                    ExamCardStatsView(cardResult: result)
+                } label: {
+                    CardResultCell(result: result)
                 }
-                .listSectionSeparator(.hidden, edges: .all)
-                .listStyle(.inset)
-            } else {
-                // Fallback on earlier versions
-            } // .grouped — will give padding around 44 px.
+                .listRowBackground(Color.clear)
+            }
+            .listSectionSeparator(.hidden, edges: .all)
+            .listStyle(.inset)
+            
         }
-        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
+        .background()
     }
-
-
-
-    
 }
 
 struct TotalStats_Previews: PreviewProvider {

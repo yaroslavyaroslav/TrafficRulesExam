@@ -78,7 +78,7 @@ struct QuestionCardView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.DS.tintsDisabledDark, lineWidth: 1)
                         .frame(width: 40, height: 4)
-                        .background(Color.DS.tintsDisabledDark)
+                        .background()
                         .padding(.vertical, 16)
 
                     Text(questionDetails.hint)
@@ -86,7 +86,7 @@ struct QuestionCardView: View {
                         .padding(.bottom, 40)
                 }
                 .roundBorder(Color.DS.greysGrey6Light, cornerRadius: 30)
-                .background(Color.DS.bgLightPrimary).ignoresSafeArea(.all, edges: .bottom)
+                .background().ignoresSafeArea(.all, edges: .bottom)
                 .defaultShadow()
             }
             .alert("Не хватает монет", isPresented: $isShowingError, actions: {

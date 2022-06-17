@@ -40,14 +40,14 @@ struct QuestionCardView: View {
     @State private var isShowResult = false
 
     @Binding var resultsHistory: Results
+    
+    @Environment(\.colorScheme) var colorScheme
 
     @EnvironmentObject var coins: Coin
 
     @EnvironmentObject var coinsTimer: CoinsTimer
 
     @EnvironmentObject var currentValues: CurrentValues
-
-    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -85,9 +85,10 @@ struct QuestionCardView: View {
                         .padding(.horizontal, 16)
                         .padding(.bottom, 40)
                 }
-                .roundBorder(Color.DS.greysGrey6Light, cornerRadius: 30)
+                .roundBorder(colorScheme == .light ? Color.DS.greysGrey6Light : Color.DS.greysGrey6Dark, cornerRadius: 30)
                 .background().ignoresSafeArea(.all, edges: .bottom)
                 .defaultShadow()
+                .cornerRadius(30)
             }
             .alert("Не хватает монет", isPresented: $isShowingError, actions: {
                 Button {

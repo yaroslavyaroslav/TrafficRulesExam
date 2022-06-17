@@ -15,21 +15,6 @@ struct MainScreen: View {
     @EnvironmentObject
     var coins: Coin
 
-    var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: 8)
-            .onChanged {
-                if $0.translation.width > 100 {
-                    withAnimation {
-                        selectedIndex = .cardGalery
-                    }
-                } else if $0.translation.width < -100 {
-                    withAnimation {
-                        selectedIndex = .totalStatsNavigation
-                    }
-                }
-            }
-    }
-
     private enum Tabs {
         case cardGalery, totalStatsNavigation
     }
@@ -46,18 +31,14 @@ struct MainScreen: View {
             // Поэтому вьюха въезжает слева и уезжает вправо.
             case .cardGalery:
                 CardsGalery(cards: cards)
-                    .padding()
-                    .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .leading))
             case .totalStatsNavigation:
                 TotalStatsNavigationView(cards: cards)
-                    .padding()
-                    .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .trailing))
             }
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .background(Color.DS.bgLightPrimary.ignoresSafeArea())
+        .background()
         .navigationBarItems(leading: modeToggleButton, trailing: CoinAmountView(coinsAmount: coins.amount))
     }
 

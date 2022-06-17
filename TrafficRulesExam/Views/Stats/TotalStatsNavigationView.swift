@@ -25,9 +25,9 @@ struct TotalStatsNavigationView: View {
             .navigationTitle(Text("Статистика"))
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
-                Analytics.fire(.screenShown(name: "Статистика"))
+                Analytics.shared.fire(.screenShown(name: "Статистика"))
             }
-            .background(Color.DS.bgLightPrimary)
+            .background()
     }
 }
 

@@ -52,14 +52,14 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        let testSubscriptionLayer = KeychainWrapper.standard.string(forKey: .subscriptionLevel)
+//        let testSubscriptionLayer = KeychainWrapper.standard.string(forKey: .subscriptionLevel)
         let testStartSubscriptionTimeInterval = KeychainWrapper.standard.double(forKey: .subscriptionStartDate)
-        let testCoinsDropDateTimeInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate)
+//        let testCoinsDropDateTimeInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate)
 
 
 
-        XCTAssert(coins.amount == subscription.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount)")
-        XCTAssert(subscriptionStartDate == Date(timeIntervalSinceReferenceDate: testStartSubscriptionTimeInterval!), "Start dates don't match: \(subscriptionStartDate.prettyPrint) vs ")
+        XCTAssertEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount)")
+        XCTAssertEqual(subscriptionStartDate, Date(timeIntervalSinceReferenceDate: testStartSubscriptionTimeInterval!), "Start dates don't match: \(subscriptionStartDate.prettyPrint) vs ")
     }
 
 
@@ -80,7 +80,7 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        XCTAssert(coins.amount == subscription.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount)")
+        XCTAssertEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount)")
     }
 
     func testThatSubscriptionCoinsAddsOnlyOnceADay() {
@@ -102,8 +102,8 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        XCTAssert(coins.amount == staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
-        XCTAssert(coins.amount != subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
+        XCTAssertEqual(coins.amount, staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
+        XCTAssertNotEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
     }
 
     func testSubscriptionEnds() {
@@ -125,8 +125,8 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        XCTAssert(coins.amount == staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
-        XCTAssert(coins.amount != subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
+        XCTAssertEqual(coins.amount, staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
+        XCTAssertNotEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
 
     }
 
@@ -148,8 +148,8 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        XCTAssert(coins.amount == staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
-        XCTAssert(coins.amount != subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
+        XCTAssertEqual(coins.amount, staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
+        XCTAssertNotEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
     }
 
     func testSetFirstSubscriptionEver() throws {
@@ -171,41 +171,42 @@ class TrafficRulesExamTests: XCTestCase {
 
         wait(for: [expectations[1]], timeout: 0.5)
 
-        XCTAssert(coins.amount == staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
-        XCTAssert(coins.amount != subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
+        XCTAssertEqual(coins.amount, staticCoinsAmount, "Coins amount did not applied well: \(staticCoinsAmount) vs \(coins.amount)")
+        XCTAssertNotEqual(coins.amount, subscription.purchasedCoinsAmount, "Coins shoul'd be appiled on second run in a day")
     }
 
-    func testChangeSubscriptionToHigher() throws {
-
-        let expectations = genExpectations(4)
-
-        let lowerSubscription = PurchasesID(rawValue: threeSubscriptions.dropLast().randomElement()!)!
-        coins.amount = lowerSubscription.purchasedCoinsAmount
-
-        let currentDate = Date()
-        let tmpDate = Calendar.current.date(byAdding: .month, value: -lowerSubscription.subscriptionLength, to: currentDate)!
-        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: tmpDate)
-        let dropDate = currentDate
-
-        CoinsTimer.setSubscriptionKeychainValues(startDate, dropDate, lowerSubscription.rawValue)
-        wait(for: [expectations[0]], timeout: 0.5)
-
-        coinsTimer.checkSubscriptionAmount()
-
-        wait(for: [expectations[1]], timeout: 0.5)
-
-        let firstKeychainSubscription = KeychainWrapper.standard.string(forKey: .subscriptionLevel)
-
-        XCTAssert(firstKeychainSubscription == lowerSubscription.rawValue, "Keychain stores wrong subscription")
-
-        CoinsTimer.setSubscriptionKeychainValues(currentDate, currentDate, PurchasesID.subscriptionSixMonths.rawValue)
-        coins.amount = PurchasesID.subscriptionSixMonths.purchasedCoinsAmount
-
-        wait(for: [expectations[2]], timeout: 0.5)
-
-        XCTAssert(coins.amount == PurchasesID.subscriptionSixMonths.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount) vs \(PurchasesID.subscriptionSixMonths.purchasedCoinsAmount)")
-        XCTAssert(coins.amount != lowerSubscription.purchasedCoinsAmount, "Coins shoul'd be equal to lower subscription: \(coins.amount) vs \(lowerSubscription.purchasedCoinsAmount)")
-    }
+    // FIXME: Disabled because there's no subscriptions.
+//    func testChangeSubscriptionToHigher() throws {
+//
+//        let expectations = genExpectations(4)
+//
+//        let lowerSubscription = PurchasesID(rawValue: threeSubscriptions.dropLast().randomElement()!)!
+//        coins.amount = lowerSubscription.purchasedCoinsAmount
+//
+//        let currentDate = Date()
+//        let tmpDate = Calendar.current.date(byAdding: .month, value: -lowerSubscription.subscriptionLength, to: currentDate)!
+//        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: tmpDate)
+//        let dropDate = currentDate
+//
+//        CoinsTimer.setSubscriptionKeychainValues(startDate, dropDate, lowerSubscription.rawValue)
+//        wait(for: [expectations[0]], timeout: 0.5)
+//
+//        coinsTimer.checkSubscriptionAmount()
+//
+//        wait(for: [expectations[1]], timeout: 0.5)
+//
+//        let firstKeychainSubscription = KeychainWrapper.standard.string(forKey: .subscriptionLevel)
+//
+//        XCTAssertEqual(firstKeychainSubscription, lowerSubscription.rawValue, "Keychain stores wrong subscription")
+//
+//        CoinsTimer.setSubscriptionKeychainValues(currentDate, currentDate, PurchasesID.subscriptionSixMonths.rawValue)
+//        coins.amount = PurchasesID.subscriptionSixMonths.purchasedCoinsAmount
+//
+//        wait(for: [expectations[2]], timeout: 0.5)
+//
+//        XCTAssertEqual(coins.amount, PurchasesID.subscriptionSixMonths.purchasedCoinsAmount, "Coins amount did not applied well: \(coins.amount) vs \(PurchasesID.subscriptionSixMonths.purchasedCoinsAmount)")
+//        XCTAssertNotEqual(coins.amount, lowerSubscription.purchasedCoinsAmount, "Coins should be equal to lower subscription: \(coins.amount) vs \(lowerSubscription.purchasedCoinsAmount)")
+//    }
 
 
     func genExpectations(_ amount: Int) -> [XCTestExpectation] {

@@ -9,7 +9,6 @@ import Foundation
 import os.log
 import StoreKit
 import SwiftKeychainWrapper
-import YandexMobileMetrica
 
 @available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
@@ -51,7 +50,9 @@ class Store: ObservableObject {
     var updateListenerTask: Task<Void, Error>?
 
     init() {
-        Analytics.initAnalytics()
+        /// This line is setting Analytics syngleton.
+        Analytics.system = .appMetrica
+        Analytics.shared.initAnalytics()
 
         // Initialize empty products then do a product request asynchronously to fill them in.
         self.availableCoinPacks = []
@@ -126,9 +127,7 @@ class Store: ObservableObject {
 
         await updateSubscriptionStatus(transaction)
 
-        if let revenueObject = Analytics.createRevenueObject(for: product, verification) {
-            Analytics.fire(.completePurchase(revenue: revenueObject))
-        }
+        Analytics.shared.fire(.completePurchase(product: product, verification))
 
         // Always finish a transaction.
         await transaction.finish()

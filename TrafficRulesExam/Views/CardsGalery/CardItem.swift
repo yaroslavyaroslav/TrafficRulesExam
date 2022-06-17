@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardItem: View {
     let card: ExamCard
+    
+    @Environment(\.colorScheme) var colorScheme
 
     @Binding var result: CardResult
 
@@ -92,7 +94,7 @@ struct CardItem: View {
                 HStack {
                     Text("Билет \(card.id)")
                         .font(UIFont.sfBodySemibold.asFont)
-                        .foregroundColor(.DS.greysGrey3Dark)
+                        .foregroundColor(colorScheme == .light ? .DS.tintsPurpleLight : .DS.greysGrey6Light)
                     Spacer()
                     statsButton
                         .font(.system(size: 22))
@@ -105,7 +107,7 @@ struct CardItem: View {
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 8)
                             .foregroundColor(.DS.tintsPinkLight)
-                            .opacity(0.08)
+                            .opacity(colorScheme == .light ? 0.08 : 0.28)
                         Text("\(result.resultHistory.items.last!.mistakes.count.description)/20")
                             .foregroundColor(.DS.tintsPinkLight)
                     }
@@ -126,15 +128,15 @@ struct CardItem: View {
                         .font(UIFont.sfFootnote.asFont)
                         .opacity(0.8)
                 }
-                .foregroundColor(.DS.bgDarkBasePrimary)
+                .foregroundColor(colorScheme == .light ? .DS.bgDarkBasePrimary : .DS.greysGrey6Light)
                 .padding(.horizontal, insideHorisontalPadding)
 
                 Spacer()
             }
             .foregroundColor(.white)
             .frame(height: cardHeight, alignment: .center)
-            .background(Color.DS.bgLightPrimary)
-            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
+            .background(colorScheme == .light ? Color.DS.bgLightPrimary : Color.black)
+            .roundBorder(colorScheme == .light ? Color.DS.bgLightSecondary : Color.DS.greysGrey4Dark, width: 1, cornerRadius: 12)
         }
     }
 
@@ -144,7 +146,7 @@ struct CardItem: View {
                 HStack {
                     Text("Билет \(card.id)")
                         .font(UIFont.sfBodySemibold.asFont)
-                        .foregroundColor(.DS.greysGrey3Dark)
+                        .foregroundColor(colorScheme == .light ? .DS.greysGrey3Dark : .DS.greysGrey6Light)
                     Spacer()
                     Image("Coin")
                         .font(.system(size: 22))
@@ -172,15 +174,15 @@ struct CardItem: View {
                         .font(UIFont.sfFootnote.asFont)
                     Spacer()
                 }
-                .foregroundColor(.DS.bgDarkBasePrimary)
+                .foregroundColor(colorScheme == .light ? .DS.bgDarkBasePrimary : .DS.greysGrey6Light)
                 .padding(.horizontal, insideHorisontalPadding)
 
                 Spacer()
             }
             .foregroundColor(.white)
             .frame(height: cardHeight, alignment: .center)
-            .background(Color.DS.bgLightPrimary)
-            .roundBorder(Color.DS.bgLightSecondary, width: 1, cornerRadius: 12)
+            .background(colorScheme == .light ? Color.DS.bgLightPrimary : Color.black)
+            .roundBorder(colorScheme == .light ? Color.DS.bgLightSecondary : Color.DS.greysGrey4Dark, width: 1, cornerRadius: 12)
         }
     }
 
@@ -222,5 +224,6 @@ struct CardItem_Previews: PreviewProvider {
                 CardItem(card: cards[2], result: $results.items[2])
             }
         }
+        .environmentObject(Coin())
     }
 }

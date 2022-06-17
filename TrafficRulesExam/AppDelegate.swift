@@ -7,7 +7,6 @@
 
 import SwiftKeychainWrapper
 import UIKit
-import YandexMobileMetrica
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var coin: Coin = {
@@ -25,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var coinsTimer: CoinsTimer = .init(coin)
 
-    @available(iOS 15.0, *)
     lazy var store: Store = .init()
 
     var currentTicket = CurrentValues()

@@ -29,18 +29,15 @@ struct QuestionContentView: View {
                     .multilineTextAlignment(.center)
                     .padding(16)
                     .font(UIFont.sfHeadline.asFont)
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.DS.bgLightSecondary)
             }
             .padding(.top, 10)
-            .background(Color.DS.bgLightPrimary)
+            .background()
             .zIndex(1)
             .defaultShadow()
 
             AnswersView(answers: question.answers, correctAnswer: correctAnswer, selectedAnswer: $selectedAnswer)
                 .padding(.horizontal, 16)
-                .background(Color.DS.bgLightPrimary)
+                .background()
         }
     }
 }

@@ -13,23 +13,19 @@ import SwiftKeychainWrapper
 extension Analytics {
     enum Conversion {
         // MARK: - Conversions
-
         case firstRun
 
         // MARK: - Purchases
-
         case completePurchase(product: Product, _ result: VerificationResult<Transaction>)
         case refundPurchase(product: Product, _ result: VerificationResult<Transaction>)
 
         // MARK: - Exam Actions
-
         case ticketStarted(ticketId: UInt)
         case ticketCompleted(ticketId: UInt, success: Bool)
         case questionShown(ticket: UInt, question: UInt)
         case hintTaken(ticket: UInt, question: UInt)
 
         // MARK: - Navigation
-
         case screenShown(name: String)
     }
 }

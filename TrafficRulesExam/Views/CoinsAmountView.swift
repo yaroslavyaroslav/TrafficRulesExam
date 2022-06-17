@@ -35,12 +35,7 @@ struct CoinAmountView: View {
             )
         }
         .sheet(isPresented: $isModalViewPresented) {
-            if #available(iOS 15.0, *) {
-                StoreView(isPresented: $isModalViewPresented)
-            } else {
-                Purchase(isPresented: $isModalViewPresented)
-                // Fallback on earlier versions
-            }
+            StoreView(isPresented: $isModalViewPresented)
         }
     }
 }

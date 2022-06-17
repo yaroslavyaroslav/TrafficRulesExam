@@ -21,7 +21,7 @@ extension AnyTransition {
 }
 
 struct QuestionCardView: View {
-    let questions: [Question]
+    let card: ExamCard
 
     @State private var result = Result(mistakes: [], examDate: Date())
 
@@ -36,6 +36,8 @@ struct QuestionCardView: View {
     @State var answeredQuestions: Set<Int> = []
 
     @State var isShowingError = false
+    
+    @State private var isShowResult = false
 
     @Binding var resultsHistory: Results
 
@@ -57,8 +59,13 @@ struct QuestionCardView: View {
 
                 HStack(spacing: 16) {
                     hintButton
-                    nextQuestionButton(proxy)
-                        .disabled(selectedAnswer == AnswerID.none)
+                    if answeredQuestions.count >= 19 {
+                        completeTestButton(proxy)
+                            .disabled(selectedAnswer == AnswerID.none)
+                    } else {
+                        nextQuestionButton(proxy)
+                            .disabled(selectedAnswer == AnswerID.none)
+                    }
                 }
                 .font(UIFont.sfBodySemibold.asFont)
                 .foregroundColor(.DS.bgGroupedLightSecondary)
@@ -98,7 +105,7 @@ struct QuestionCardView: View {
     var questionList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 6) {
-                ForEach(questions, id: \.id) { question in
+                ForEach(card.questions, id: \.id) { question in
                     let state: TicketButtonStyle.State = question == questionDetails
                             ? .current : (answeredQuestions.contains(question.id)
                                   ? .answered : .notAnswered)
@@ -160,6 +167,28 @@ struct QuestionCardView: View {
         .buttonStyle(InExamButtonStyle(isEnabled: isEnabled))
         .disabled(coins.amount == 0)
     }
+    
+    func completeTestButton(_ proxy: ScrollViewProxy) -> some View {
+        let disabled = selectedAnswer == .none
+        
+        return NavigationLink(destination: ExamStatsView(isModal: true, result: result, cardId: card.id),
+                              isActive: $isShowResult) {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 52, height: 52)
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(!disabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
+                }
+            }
+            .onTapGesture {
+                saveAnswer()
+                isShowResult = true
+            }
+        }
+        .buttonStyle(InExamButtonStyle(isEnabled: !disabled))
+    }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
         let disabled = selectedAnswer == .none
@@ -180,11 +209,11 @@ struct QuestionCardView: View {
             }
         }
         .buttonStyle(InExamButtonStyle(isEnabled: !disabled))
-        .disabled(disabled)
     }
 }
 
 extension QuestionCardView {
+    // TODO: This method somehow blocking to open StatsView.
     func saveAnswer(_ proxy: ScrollViewProxy? = nil) {
         /// If user didn't select any answer just drop hint and do nothing.
         guard selectedAnswer != .none else { dropHint(); return }
@@ -225,12 +254,12 @@ extension QuestionCardView {
 
         if !answeredQuestions.contains(questionDetails.id + 1) && questionDetails.id != 20 {
             // Id 1 based, array 0 based, so to get next element of array need to do this array[id]
-            questionDetails = questions[questionDetails.id]
+            questionDetails = card.questions[questionDetails.id]
             if questionDetails.id < 20 {
                 proxy.scrollTo(questionDetails.id + 1)
             }
         } else {
-            questionDetails = questions[notAnswered[0] - 1]
+            questionDetails = card.questions[notAnswered[0] - 1]
             proxy.scrollTo(questionDetails.id)
         }
     }
@@ -256,9 +285,6 @@ extension QuestionCardView {
         }
         /// Adding this result to result history
         resultsHistory.items.append(result)
-        /// Closing view.
-        // TODO: Make to open Result screen here.
-        presentationMode.wrappedValue.dismiss()
     }
 
     private func dropHint() {
@@ -285,7 +311,7 @@ struct QuestionCard_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        QuestionCardView(questions: cards[1].questions, questionDetails: cards[1].questions[14], resultsHistory: $history)
+        QuestionCardView(card: cards[1], questionDetails: cards[1].questions[14], resultsHistory: $history)
             .environmentObject(Coin())
     }
 }

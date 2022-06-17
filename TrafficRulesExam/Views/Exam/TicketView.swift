@@ -17,7 +17,7 @@ struct TicketView: View {
     @EnvironmentObject var currentValues: CurrentValues
 
     var body: some View {
-        QuestionCardView(questions: card.questions, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
+        QuestionCardView(card: card, questionDetails: card.questions[0], resultsHistory: $result.resultHistory)
             .onAppear {
                 currentValues.ticket = UInt(card.id)
                 Analytics.shared.fire(.ticketStarted(ticketId: UInt(card.id)))

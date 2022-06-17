@@ -46,11 +46,9 @@ struct MainScreen: View {
             // Поэтому вьюха въезжает слева и уезжает вправо.
             case .cardGalery:
                 CardsGalery(cards: cards)
-                    .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .leading))
             case .totalStatsNavigation:
                 TotalStatsNavigationView(cards: cards)
-                    .highPriorityGesture(swipeGesture)
                     .transition(.move(edge: .trailing))
             }
         }

@@ -15,21 +15,6 @@ struct MainScreen: View {
     @EnvironmentObject
     var coins: Coin
 
-    var swipeGesture: some Gesture {
-        DragGesture(minimumDistance: 8)
-            .onChanged {
-                if $0.translation.width > 100 {
-                    withAnimation {
-                        selectedIndex = .cardGalery
-                    }
-                } else if $0.translation.width < -100 {
-                    withAnimation {
-                        selectedIndex = .totalStatsNavigation
-                    }
-                }
-            }
-    }
-
     private enum Tabs {
         case cardGalery, totalStatsNavigation
     }

@@ -38,7 +38,6 @@ class TrafficRulesExamUITests: XCTestCase {
         for _ in 1...5 {
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             XCTAssertTrue(answerButton.exists, "Answer button doesn't exists")
-//            expect(answerButton.exists).to(beTrue(), description: )
             answerButton.tap()
             nextQuestionButton.tap()
         }
@@ -48,7 +47,6 @@ class TrafficRulesExamUITests: XCTestCase {
         for _ in 1...5 {
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             XCTAssertTrue(answerButton.exists, "Answer button doesn't exists")
-//            expect(answerButton.exists).to(beTrue(), description: "Answer button doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }
@@ -58,7 +56,6 @@ class TrafficRulesExamUITests: XCTestCase {
         for _ in 1...5 {
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             XCTAssertTrue(answerButton.exists, "Answer button doesn't exists")
-//            expect(answerButton.exists).to(beTrue(), description: "Answer button doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }
@@ -68,17 +65,16 @@ class TrafficRulesExamUITests: XCTestCase {
         for _ in 1...4 {
             let answerButton = app.buttons.containing(rndAnswerPredicate()).firstMatch
             XCTAssertTrue(answerButton.exists, "Answer button doesn't exists")
-//            expect(answerButton.exists).to(beTrue(), description: "Answer button doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }
 
         // Tap last question and exit.
         app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
-        app.buttons["arrow.forward"].tap()
+        app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
-//        expect(examCard.exists).to(beTrue(), description: "App didn't go back to exam screen.")
+        XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
     }
 
     func testExamFailedStraightforwardWalktrough() throws {
@@ -91,7 +87,6 @@ class TrafficRulesExamUITests: XCTestCase {
             let nextQuestionButton = app.buttons["arrow.forward"]
 
             XCTAssertTrue(answerButton.exists, "Answer button \(answerButton.label) in question \(id.description) doesn't exists")
-//            expect(answerButton.exists).to(beTrue(), description: "Answer button \(answerButton.label) in question \(id.description) doesn't exists")
 
             answerButton.tap()
             nextQuestionButton.tap()
@@ -99,10 +94,10 @@ class TrafficRulesExamUITests: XCTestCase {
 
         // Tap last question and exit.
         app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
-        app.buttons["arrow.forward"].tap()
+        app.buttons["Выбрано"].tap()
 
+        XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
         XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
-//        expect(examCard.exists).to(beTrue(), description: "App didn't go back to exam screen.")
     }
 
     func testExamSucceedStraightforwardWalktrough() {
@@ -132,8 +127,9 @@ class TrafficRulesExamUITests: XCTestCase {
         let answerID = appExamCard.questions.getElementById(20).correctAnswer.stringValue
         let answerPredicate = exactAnswerPredicate(answerID)
         app.buttons.containing(answerPredicate).firstMatch.tap()
-        app.buttons["arrow.forward"].tap()
+        app.buttons["Выбрано"].tap()
 
+        XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
         XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
     }
 

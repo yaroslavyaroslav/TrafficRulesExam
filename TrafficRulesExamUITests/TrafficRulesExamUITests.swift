@@ -27,7 +27,7 @@ class TrafficRulesExamUITests: XCTestCase {
     }
 
     func testExamFailedRandomOrderWalkthrough() throws {
-        let (app, examCard) = startExam()
+        let (app, _) = startExam()
 
         let rndArray = [18, 9, 6, 14].shuffled()
         let nextQuestionButton = app.buttons["arrow.forward"]
@@ -73,12 +73,11 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons.containing(rndAnswerPredicate()).firstMatch.tap()
         app.buttons["Выбрано"].tap()
 
-        XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
     }
 
     func testExamFailedStraightforwardWalktrough() throws {
-        let (app, examCard) = startExam()
+        let (app, _) = startExam()
 
         // Tap 19 questions
         for id in 1...19 {
@@ -97,13 +96,12 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
-        XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
     }
 
     func testExamSucceedStraightforwardWalktrough() {
         let randomCard = Int.random(in: 1...20)
 
-        let (app, examCard) = startExam(randomCard)
+        let (app, _) = startExam(randomCard)
 
         let appExamCard = cards.getElementById(randomCard)
 
@@ -130,7 +128,6 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
-        XCTAssertTrue(examCard.exists, "App didn't go back to exam screen.")
     }
 
     /// Method to select examcard from all cards

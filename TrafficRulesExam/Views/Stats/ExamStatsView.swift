@@ -47,7 +47,7 @@ struct ExamStatsViewWrapper: View {
                 }
                 /// Adding this result to result history
                 resultsHistory.items.append(result)
-                print("ExamStatsShows")
+                os_log("ExamStatsShows")
                 // FIXME: Previous view appears after poping to the root view.
                 NavigationUtil.popToRootView()
                 Analytics.shared.fire(.ticketCompleted(ticketId: UInt(cardId), success: result.succeed))

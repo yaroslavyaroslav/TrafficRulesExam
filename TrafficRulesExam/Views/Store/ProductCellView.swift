@@ -7,6 +7,7 @@
 import StoreKit
 import SwiftUI
 import SwiftKeychainWrapper
+import os.log
 
 @available(iOS 15.0, *)
 struct ProductCellView: View {
@@ -143,7 +144,7 @@ struct ProductCellView: View {
             errorTitle = "Could not provide coins with such amount as: \(productId)"
             isShowingError = true
         } catch {
-            print("Failed purchase for \(product.id): \(error)")
+            os_log("Failed purchase for \(product.id.description): \(error.localizedDescription)")
         }
     }
 }

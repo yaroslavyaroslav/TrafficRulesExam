@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import os.log
 
 @available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase: View {
@@ -39,7 +40,7 @@ struct Purchase: View {
                         
                         coins.amount += 10
                         isPresented = false
-                        print("purchase Unilimted")
+                        os_log("purchase Unilimted")
                     }
                 }
                 .border(Color.blue)
@@ -53,7 +54,7 @@ struct Purchase: View {
                     Button("Buy") {
                         coins.amount += 15
                         isPresented = false
-                        print("purchase second")
+                        os_log("purchase second")
                     }
                 }
                 .border(Color.blue)
@@ -67,7 +68,7 @@ struct Purchase: View {
                     Button("Buy") {
                         coins.amount += 20
                         isPresented = false
-                        print("purchase third")
+                        os_log("purchase third")
                     }
                 }
                 .border(Color.blue)

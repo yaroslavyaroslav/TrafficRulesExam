@@ -13,8 +13,7 @@ struct ExamCardStatsView: View {
     var body: some View {
         List(cardResult.resultHistory.items.reversed()) { result in
             NavigationLink {
-                ExamStatsView(isModal: false, result: result, cardId: cardResult.id)
-                    
+                ExamStatsView(result: result, cardId: cardResult.id)
             } label: {
                 CardResultCell(result: cardResult)
             }

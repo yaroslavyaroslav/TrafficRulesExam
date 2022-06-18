@@ -6,17 +6,79 @@
 //
 
 import SwiftUI
+import os.log
+
+struct ExamStatsViewWrapper: View {
+//    @Binding var isPresented: Bool
+    
+    @Binding var resultsHistory: Results
+    
+    let result: Result
+    
+    let cardId: Int
+    
+    @EnvironmentObject var coinsTimer: CoinsTimer
+    
+    @EnvironmentObject var coins: Coin
+    
+    @EnvironmentObject var currentValues: CurrentValues
+    
+    var body: some View {
+        VStack {
+            ExamStatsView(result: result, cardId: cardId)
+            Button {
+                // If user made a mistake
+                if !result.mistakes.isEmpty {
+                    do {
+                        /// trying to charge coins for a ticket
+                        try coinsTimer.spendCoin(coins.cardCost)
+                    } catch CoinsError.NegativeCoinsAmount {
+                        // FIXME: Make something that this didn't happened
+                        /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
+                        os_log("Not enough coins.")
+                    } catch {
+                        os_log("This")
+                    }
+                    Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
+                } else {
+                    /// Givening a user reward for successfully solved Ticket
+                    coinsTimer.rewardCoin(coins.cardCost)
+                    Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
+                }
+                /// Adding this result to result history
+                resultsHistory.items.append(result)
+                print("ExamStatsShows")
+                // FIXME: Previous view appears after poping to the root view.
+                NavigationUtil.popToRootView()
+                Analytics.shared.fire(.ticketCompleted(ticketId: UInt(cardId), success: result.succeed))
+            } label: {
+                ZStack(alignment: .center) {
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(height: 52, alignment: .center)
+                    HStack {
+                        Text("Готово")
+                            .font(UIFont.sfBodySemibold.asFont)
+                    }
+                    .foregroundColor(.DS.bgLightPrimary)
+                }
+            }
+            .padding(.horizontal, 20)
+            .buttonStyle(InExamButtonStyle(isEnabled: true))
+        }
+    }
+}
+
+//extension ExamStatsViewWrapper {
+//    init(isPresented: Binding<Bool>, resultsHistory: Binding<Results>, result: Result, cardId: Int) {
+//
+//    }
+//}
 
 struct ExamStatsView: View {
-    
-    let isModal: Bool
-    
+        
     var result: Result
 
     let cardId: Int
-    
-//    @Environment(\.)
-//    @Environment(\.rootPresentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -25,26 +87,6 @@ struct ExamStatsView: View {
             } else {
                 UnsuccessResult(result: result, cardId: cardId)
             }
-            
-            if isModal {
-                Button {
-                    NavigationUtil.popToRootView()
-                    Analytics.shared.fire(.ticketCompleted(ticketId: UInt(cardId), success: result.succeed))
-                } label: {
-                    ZStack(alignment: .center) {
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 52, alignment: .center)
-                        HStack {
-                            Text("Готово")
-                                .font(UIFont.sfBodySemibold.asFont)
-                        }
-                        .foregroundColor(.DS.bgLightPrimary)
-                    }
-                }
-                .padding(.horizontal, 20)
-                .buttonStyle(InExamButtonStyle(isEnabled: true))
-            }
-            
         }
         .navigationBarTitle(result.examDate.relativeDate)
     }
@@ -159,10 +201,11 @@ struct ExamStats_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        ExamStatsView(isModal: false, result: results[2], cardId: 2)
-        ExamStatsView(isModal: false, result: results[1], cardId: 1)
+        // TODO: Add here View with button too.
+        ExamStatsView(result: results[2], cardId: 2)
+        ExamStatsView(result: results[1], cardId: 1)
         
-        ExamStatsView(isModal: true, result: results[2], cardId: 2)
-        ExamStatsView(isModal: true, result: results[1], cardId: 1)
+        ExamStatsView(result: results[2], cardId: 2)
+        ExamStatsView(result: results[1], cardId: 1)
     }
 }

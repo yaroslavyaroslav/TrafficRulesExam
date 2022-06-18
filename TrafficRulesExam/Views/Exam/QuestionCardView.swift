@@ -36,8 +36,6 @@ struct QuestionCardView: View {
     @State var answeredQuestions: Set<Int> = []
 
     @State var isShowingError = false
-    
-    @State private var isShowResult = false
 
     @Binding var resultsHistory: Results
     
@@ -172,23 +170,22 @@ struct QuestionCardView: View {
     func completeTestButton(_ proxy: ScrollViewProxy) -> some View {
         let disabled = selectedAnswer == .none
         
-        return NavigationLink(destination: ExamStatsView(isModal: true, result: result, cardId: card.id),
-                              isActive: $isShowResult) {
+        return NavigationLink {
+            ExamStatsViewWrapper(resultsHistory: $resultsHistory, result: result, cardId: card.id)
+        } label: {
             ZStack(alignment: .center) {
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 52, height: 52)
-                HStack {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 24))
-                        .foregroundColor(!disabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
-                }
-            }
-            .onTapGesture {
-                saveAnswer()
-                isShowResult = true
-            }
+               RoundedRectangle(cornerRadius: 8)
+                   .frame(width: 52, height: 52)
+               HStack {
+                   Image(systemName: "checkmark.circle.fill")
+                       .font(.system(size: 24))
+                       .foregroundColor(!disabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
+               }
+           }
         }
-        .buttonStyle(InExamButtonStyle(isEnabled: !disabled))
+        .simultaneousGesture(TapGesture().onEnded{
+            saveAnswer()
+        })
     }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {
@@ -239,12 +236,11 @@ extension QuestionCardView {
 
         /// Dropping hint state (purchased or not)
         dropHint()
-
-        /// Checking is user answered all question in the ticket
-        guard answeredQuestions.count < 20 else { calculateTestResult(); return }
         
-        /// Scroll question list to next question if needed.
-        scrollQuestionList(proxy)
+        if answeredQuestions.count < 20 {
+            /// Scroll question list to next question if needed.
+            scrollQuestionList(proxy)
+        }
     }
     
     private func scrollQuestionList(_ proxy: ScrollViewProxy?) {
@@ -263,29 +259,6 @@ extension QuestionCardView {
             questionDetails = card.questions[notAnswered[0] - 1]
             proxy.scrollTo(questionDetails.id)
         }
-    }
-    
-    private func calculateTestResult() {
-        // If user made a mistake
-        if !result.mistakes.isEmpty {
-            do {
-                /// trying to charge coins for a ticket
-                try coinsTimer.spendCoin(coins.cardCost)
-            } catch CoinsError.NegativeCoinsAmount {
-                // FIXME: Make something that this didn't happened
-                /// Пользователь может войти сюда с 5 монетами, получить 5 подсказок и не заплатить за билет.
-                os_log("Not enough coins.")
-            } catch {
-                os_log("This")
-            }
-            Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: false))
-        } else {
-            /// Givening a user reward for successfully solved Ticket
-            coinsTimer.rewardCoin(coins.cardCost)
-            Analytics.shared.fire(.ticketCompleted(ticketId: currentValues.ticket, success: true))
-        }
-        /// Adding this result to result history
-        resultsHistory.items.append(result)
     }
 
     private func dropHint() {

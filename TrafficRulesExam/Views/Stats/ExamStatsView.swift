@@ -8,9 +8,7 @@
 import SwiftUI
 import os.log
 
-struct ExamStatsViewWrapper: View {
-//    @Binding var isPresented: Bool
-    
+struct ExamStatsViewWrapper: View {  
     @Binding var resultsHistory: Results
     
     let result: Result
@@ -70,12 +68,6 @@ struct ExamStatsViewWrapper: View {
         .navigationTitle(Text("Билет \(cardId)"))
     }
 }
-
-//extension ExamStatsViewWrapper {
-//    init(isPresented: Binding<Bool>, resultsHistory: Binding<Results>, result: Result, cardId: Int) {
-//
-//    }
-//}
 
 struct ExamStatsView: View {
         

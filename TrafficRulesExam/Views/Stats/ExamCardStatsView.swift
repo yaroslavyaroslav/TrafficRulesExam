@@ -15,7 +15,7 @@ struct ExamCardStatsView: View {
             NavigationLink {
                 ExamStatsView(result: result, cardId: cardResult.id)
             } label: {
-                CardResultCell(result: cardResult)
+                CardResultCell(cardId: cardResult.id, result: result)
             }
         }
         .navigationBarTitle("Билет \(cardResult.id.description)")

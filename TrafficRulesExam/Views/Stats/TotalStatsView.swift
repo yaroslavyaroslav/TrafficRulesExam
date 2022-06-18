@@ -34,7 +34,8 @@ struct TotalStatsView: View {
                 NavigationLink {
                     ExamCardStatsView(cardResult: result)
                 } label: {
-                    CardResultCell(result: result)
+                    // FIXME: Disable force unwrap here.
+                    CardResultCell(cardId: result.id, result: result.resultHistory.items.last!)
                 }
                 .listRowBackground(Color.clear)
             }

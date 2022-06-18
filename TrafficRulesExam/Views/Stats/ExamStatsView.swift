@@ -9,8 +9,6 @@ import SwiftUI
 import os.log
 
 struct ExamStatsViewWrapper: View {
-//    @Binding var isPresented: Bool
-    
     @Binding var resultsHistory: Results
     
     let result: Result
@@ -47,7 +45,7 @@ struct ExamStatsViewWrapper: View {
                 }
                 /// Adding this result to result history
                 resultsHistory.items.append(result)
-                print("ExamStatsShows")
+                os_log("ExamStatsShows")
                 // FIXME: Previous view appears after poping to the root view.
                 NavigationUtil.popToRootView()
                 Analytics.shared.fire(.ticketCompleted(ticketId: UInt(cardId), success: result.succeed))
@@ -65,14 +63,11 @@ struct ExamStatsViewWrapper: View {
             .padding(.horizontal, 20)
             .buttonStyle(InExamButtonStyle(isEnabled: true))
         }
+        .navigationBarBackButtonHidden(true)
+        // FIXME: Not working.
+        .navigationTitle(Text("Билет \(cardId)"))
     }
 }
-
-//extension ExamStatsViewWrapper {
-//    init(isPresented: Binding<Bool>, resultsHistory: Binding<Results>, result: Result, cardId: Int) {
-//
-//    }
-//}
 
 struct ExamStatsView: View {
         

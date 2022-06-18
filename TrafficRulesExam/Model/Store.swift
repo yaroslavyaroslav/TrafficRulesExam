@@ -85,7 +85,7 @@ class Store: ObservableObject {
                     await transaction.finish()
                 } catch {
                     // StoreKit has a receipt it can read but it failed verification. Don't deliver content to the user.
-                    print("Transaction failed verification")
+                    os_log("Transaction failed verification")
                 }
             }
         }
@@ -113,7 +113,7 @@ class Store: ObservableObject {
             availableCoinPacks = newCoins.sorted { $0.price < $1.price }
             availableSubscriptions = newSubscriptions.sorted { $0.price < $1.price }
         } catch {
-            print("Failed product request: \(error)")
+            os_log("Failed product request: \(error.localizedDescription)")
         }
     }
 

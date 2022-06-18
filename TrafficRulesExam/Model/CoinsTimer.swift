@@ -87,7 +87,7 @@ class CoinsTimer: ObservableObject {
         /// Get todays date and time
         let currentDate = Date()
 
-        print(coins.amount)
+        os_log("\(self.coins.amount.description)")
         /// Checking if all values in Keychain are set and valid
         /// If there's not full set (3) subscription records in Keychain - return.
         /// All of it (3) must be set on purchase.
@@ -121,7 +121,7 @@ class CoinsTimer: ObservableObject {
             #if DEBUG
             let someTimeInterval = KeychainWrapper.standard.double(forKey: .coinsDropDate)
             let someDate = Date(timeIntervalSinceReferenceDate: someTimeInterval ?? 0)
-            print(someDate.prettyPrint)
+            os_log("\(someDate.prettyPrint)")
             #endif
             coins.amount = subscriptionLevel.purchasedCoinsAmount
 //            return subscriptionLevel.purchasedCoinsAmount

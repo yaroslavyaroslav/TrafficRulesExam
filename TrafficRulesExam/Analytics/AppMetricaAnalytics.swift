@@ -34,6 +34,7 @@ class AppMetrikaAnalytics {
         let fiat1 = YMMECommerceAmount(unit: "USD", value: 1)
         let oneUSD = YMMECommercePrice(fiat: fiat1)
 
+        // TODO: Add conversion debugDescription
         print("\(conversion)")
 
         switch conversion {

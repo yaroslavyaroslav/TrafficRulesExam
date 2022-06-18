@@ -23,6 +23,7 @@ struct TicketView: View {
                 Analytics.shared.fire(.ticketStarted(ticketId: UInt(card.id)))
             }
             .navigationBarItems(leading: EmptyView(), trailing: CoinAmountView(coinsAmount: coins.amount))
+            .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Билет \(card.id)")
             .background()

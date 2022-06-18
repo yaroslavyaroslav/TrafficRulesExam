@@ -8,7 +8,7 @@
 import SwiftUI
 import os.log
 
-struct ExamStatsViewWrapper: View {  
+struct ExamStatsViewWrapper: View {
     @Binding var resultsHistory: Results
     
     let result: Result

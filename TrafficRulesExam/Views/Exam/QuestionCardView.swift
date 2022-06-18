@@ -186,6 +186,7 @@ struct QuestionCardView: View {
         .simultaneousGesture(TapGesture().onEnded{
             saveAnswer()
         })
+        .buttonStyle(InExamButtonStyle(isEnabled: !disabled))
     }
 
     func nextQuestionButton(_ proxy: ScrollViewProxy) -> some View {

@@ -77,9 +77,9 @@ enum PurchasesID: String, CaseIterable, Comparable {
         case .subscriptionOneMonth: return 40
         case .subscriptionThreeMonths: return 60
         case .subscriptionSixMonths: return 80
-        case .packMini: return 10
-        case .packMiddle: return 20
-        case .packMax: return 40
+        case .packMini: return 15
+        case .packMiddle: return 200
+        case .packMax: return 500
         }
     }
 

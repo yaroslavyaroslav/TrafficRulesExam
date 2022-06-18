@@ -8,7 +8,6 @@
 import SwiftUI
 import os.log
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase: View {
 
     lazy var iAPHelper: IAPHelper = .init()
@@ -78,7 +77,6 @@ struct Purchase: View {
     }
 }
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 struct Purchase_Previews: PreviewProvider {
     @State
     static var isPresentedPreview = true

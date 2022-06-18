@@ -65,6 +65,9 @@ struct ExamStatsViewWrapper: View {
             .padding(.horizontal, 20)
             .buttonStyle(InExamButtonStyle(isEnabled: true))
         }
+        .navigationBarBackButtonHidden(true)
+        // FIXME: Not working.
+        .navigationTitle(Text("Билет \(cardId)"))
     }
 }
 

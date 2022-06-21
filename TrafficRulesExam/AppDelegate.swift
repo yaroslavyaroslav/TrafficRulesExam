@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DispatchQueue.global().async(flags: [.barrier]) {
                 UserDefaults.standard.set(true, forKey: UDKeys.didRan.rawValue)
                 /// First time running app Coins amount
-                KeychainWrapper.standard[.coinsAmount] = 20
+                KeychainWrapper.standard[.coinsAmount] = 100
                 KeychainWrapper.standard[.ticketUsed] = Date().timeIntervalSinceReferenceDate
             }
         }

@@ -42,6 +42,7 @@
 		5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5C69D3BA2747CB2F00E66EAA /* SwiftKeychainWrapper */; };
 		5C73DF8E285336EE001B9DB2 /* AppMetricaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73DF8D285336EE001B9DB2 /* AppMetricaAnalytics.swift */; };
 		5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A6217278EC05C00A630FA /* Purchases.swift */; };
+		5C8148402869D115002B2E1A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C81483F2869D115002B2E1A /* StoreKit.framework */; };
 		5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81B8C8273ED59C00A7121E /* URLSession+async.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
@@ -130,6 +131,7 @@
 		5C53ED5027340BCE0044905A /* TrafficRulesExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficRulesExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5C73DF8D285336EE001B9DB2 /* AppMetricaAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetricaAnalytics.swift; sourceTree = "<group>"; };
 		5C7A6217278EC05C00A630FA /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
+		5C81483F2869D115002B2E1A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5C81B8C8273ED59C00A7121E /* URLSession+async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+async.swift"; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			files = (
 				5C8B201A27BFFDD4003446F7 /* PopupView in Frameworks */,
 				5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */,
+				5C8148402869D115002B2E1A /* StoreKit.framework in Frameworks */,
 				5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */,
 				5C69D3BB2747CB2F00E66EAA /* SwiftKeychainWrapper in Frameworks */,
 			);
@@ -212,6 +215,7 @@
 				5C53ED4027340BBE0044905A /* TrafficRulesExamTests */,
 				5C53ED4D27340BCE0044905A /* TrafficRulesExamUITests */,
 				5C453E0E2714730A006BFFCB /* Products */,
+				5C81483E2869D115002B2E1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +293,14 @@
 				5C73DF8D285336EE001B9DB2 /* AppMetricaAnalytics.swift */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		5C81483E2869D115002B2E1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C81483F2869D115002B2E1A /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5C8B201D27C0095C003446F7 /* DesigntSystem */ = {

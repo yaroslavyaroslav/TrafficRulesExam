@@ -48,7 +48,6 @@ struct ExamStatsViewWrapper: View {
                 os_log("ExamStatsShows")
                 // FIXME: Previous view appears after poping to the root view.
                 NavigationUtil.popToRootView()
-                Analytics.shared.fire(.ticketCompleted(ticketId: UInt(cardId), success: result.succeed))
             } label: {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 8)

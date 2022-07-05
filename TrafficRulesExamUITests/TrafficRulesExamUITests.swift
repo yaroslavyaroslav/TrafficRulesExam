@@ -74,6 +74,8 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
+        app.buttons["Готово"].tap()
+        wait(for: [], timeout: 1)
     }
 
     func testExamFailedStraightforwardWalktrough() throws {
@@ -96,6 +98,8 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
+        app.buttons["Готово"].tap()
+        wait(for: [], timeout: 1)
     }
 
     func testExamSucceedStraightforwardWalktrough() {
@@ -128,6 +132,8 @@ class TrafficRulesExamUITests: XCTestCase {
         app.buttons["Выбрано"].tap()
 
         XCTAssertTrue(app.buttons["Готово"].exists, "Not showed result screen.")
+        app.buttons["Готово"].tap()
+        wait(for: [], timeout: 1)
     }
 
     /// Method to select examcard from all cards

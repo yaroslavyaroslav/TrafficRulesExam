@@ -28,12 +28,6 @@ class AppMetrikaAnalytics {
     }
     
     class func fire(_ conversion: Analytics.Conversion) {
-        let fiat0 = YMMECommerceAmount(unit: "USD", value: 0)
-        let zedoUSD = YMMECommercePrice(fiat: fiat0)
-
-        let fiat1 = YMMECommerceAmount(unit: "USD", value: 1)
-        let oneUSD = YMMECommercePrice(fiat: fiat1)
-
         // TODO: Add conversion debugDescription
         print("\(conversion)")
 
@@ -48,45 +42,33 @@ class AppMetrikaAnalytics {
             }
 
         case let .ticketStarted(ticket):
-            let product = YMMECommerceProduct(sku: "Билет \(ticket)")
-            sendECommerceEvent(.showProductDetailsEvent(product: product, referrer: nil))
+            let userId = KeychainWrapper.profileId
+            sendEvent(Event.TicketStared.rawValue, parameters: [userId: ticket])
 
         case let .ticketCompleted(ticket, success):
-            let product = YMMECommerceProduct(sku: "Билет \(ticket)",
-                                              name: "Билет \(ticket)",
-                                              categoryComponents: nil,
-                                              payload: nil,
-                                              actualPrice: success ? zedoUSD : oneUSD,
-                                              originalPrice: success ? zedoUSD : oneUSD,
-                                              promoCodes: nil)
-
-            let cartItem = YMMECommerceCartItem(product: product, quantity: 1, revenue: product.actualPrice ?? oneUSD, referrer: nil)
-            let order = YMMECommerceOrder(identifier: "Билет \(ticket)", cartItems: [cartItem])
-            sendECommerceEvent(.purchaseEvent(order: order))
+            let userId = KeychainWrapper.profileId
+            let dict = ["\(ticket)": success]
+            sendEvent(Event.TicketCompleted.rawValue, parameters: [userId: dict])
 
         case let .questionShown(ticket, question):
-            let product = YMMECommerceProduct(sku: "Билет \(ticket)")
-            let screen = YMMECommerceScreen(name: "Вопрос \(question)")
-            sendECommerceEvent(.showProductCardEvent(product: product, screen: screen))
+            let userId = KeychainWrapper.profileId
+            let dict = ["\(ticket)": question]
+            sendEvent(Event.QuestionShown.rawValue, parameters: [userId: dict])
 
         case let .hintTaken(ticket, question):
-            let product = YMMECommerceProduct(sku: "\(ticket)_\(question)",
-                                              name: "Подсказка \(ticket) \(question)",
-                                              categoryComponents: nil,
-                                              payload: nil,
-                                              actualPrice: oneUSD,
-                                              originalPrice: oneUSD,
-                                              promoCodes: nil)
-
-            let cartItem = YMMECommerceCartItem(product: product, quantity: 1, revenue: product.actualPrice ?? oneUSD, referrer: nil)
-            let order = YMMECommerceOrder(identifier: "Подсказка_\(ticket)_\(question)", cartItems: [cartItem])
-            sendECommerceEvent(.purchaseEvent(order: order))
+            let userId = KeychainWrapper.profileId
+            let dict = ["\(ticket)": question]
+            sendEvent(Event.HintTaken.rawValue, parameters: [userId: dict])
 
         // FIXME: Make ticketCardShown to eCommerceCard event.
         case let .screenShown(name):
-            let screen = YMMECommerceScreen(name: name)
-            sendECommerceEvent(.showScreenEvent(screen: screen))
+            let userId = KeychainWrapper.profileId
+            sendEvent(Event.ScreenShown.rawValue, parameters: [userId: name])
         }
+    }
+    
+    private static func sendEvent(_ message: String, parameters: [AnyHashable: Any]) {
+        YMMYandexMetrica.reportEvent(message, parameters: parameters) { error in os_log("Metrica failed with error: \(error.localizedDescription)") }
     }
     
     private static func sendECommerceEvent(_ event: YMMECommerce) {
@@ -98,7 +80,6 @@ class AppMetrikaAnalytics {
     }
 }
 
-@available(iOS 15, *)
 extension AppMetrikaAnalytics {
     class func createRevenueObject(for product: Product, _ result: VerificationResult<Transaction>) -> YMMRevenueInfo? {
         guard case let .verified(transaction) = result else { return nil }
@@ -109,5 +90,16 @@ extension AppMetrikaAnalytics {
 
         // TODO: Send sign of transaction with StoreKit 2 to validate on AppMetrica side.
         return revenueInfo
+    }
+}
+
+
+extension AppMetrikaAnalytics {
+    enum Event: String {
+        case TicketStared
+        case TicketCompleted
+        case HintTaken
+        case QuestionShown
+        case ScreenShown
     }
 }

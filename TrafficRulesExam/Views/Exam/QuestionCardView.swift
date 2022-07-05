@@ -138,6 +138,7 @@ struct QuestionCardView: View {
                 do {
                     try coinsTimer.spendCoin(coins.hintCost)
                     hintPurchased = true
+                    Analytics.shared.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
                 } catch CoinsError.NegativeCoinsAmount {
                     isShowingError = true
                     return
@@ -149,8 +150,6 @@ struct QuestionCardView: View {
             withAnimation {
                 self.isHintShown = true
             }
-
-            Analytics.shared.fire(.hintTaken(ticket: currentValues.ticket, question: currentValues.question))
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 8)

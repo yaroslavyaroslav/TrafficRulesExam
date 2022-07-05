@@ -30,6 +30,7 @@ class AppMetrikaAnalytics {
     class func fire(_ conversion: Analytics.Conversion) {
         // TODO: Add conversion debugDescription
         print("\(conversion)")
+        let userId = KeychainWrapper.profileId
 
         switch conversion {
         case .firstRun: SKAdNetwork.registerAppForAdNetworkAttribution()
@@ -42,27 +43,22 @@ class AppMetrikaAnalytics {
             }
 
         case let .ticketStarted(ticket):
-            let userId = KeychainWrapper.profileId
-            sendEvent(Event.TicketStared.rawValue, parameters: [userId: ticket])
+            sendEvent(Event.TicketStared.rawValue, parameters: ["\(ticket)": userId])
 
         case let .ticketCompleted(ticket, success):
-            let userId = KeychainWrapper.profileId
-            let dict = ["\(ticket)": success]
-            sendEvent(Event.TicketCompleted.rawValue, parameters: [userId: dict])
+            let dict = ["\(success)": userId]
+            sendEvent(Event.TicketCompleted.rawValue, parameters: ["\(ticket)": dict])
 
         case let .questionShown(ticket, question):
-            let userId = KeychainWrapper.profileId
-            let dict = ["\(ticket)": question]
-            sendEvent(Event.QuestionShown.rawValue, parameters: [userId: dict])
+            let dict = ["\(question)": userId]
+            sendEvent(Event.QuestionShown.rawValue, parameters: ["\(ticket)": dict])
 
         case let .hintTaken(ticket, question):
-            let userId = KeychainWrapper.profileId
-            let dict = ["\(ticket)": question]
-            sendEvent(Event.HintTaken.rawValue, parameters: [userId: dict])
+            let dict = ["\(question)": userId]
+            sendEvent(Event.HintTaken.rawValue, parameters: ["\(ticket)": dict])
 
         case let .screenShown(name):
-            let userId = KeychainWrapper.profileId
-            sendEvent(Event.ScreenShown.rawValue, parameters: [userId: name])
+            sendEvent(Event.ScreenShown.rawValue, parameters: [name: userId])
         }
     }
     

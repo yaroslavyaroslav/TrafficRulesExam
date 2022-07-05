@@ -120,7 +120,7 @@ class TrafficRulesExamUITests: XCTestCase {
             let answerButton = app.buttons.containing(answerPredicate).firstMatch
             let nextQuestionButton = app.buttons["arrow.forward"]
 
-            XCTAssertTrue(answerButton.exists, "Answer button \(answerID) in question \(id.description) doesn't exists")
+            XCTAssertTrue(answerButton.exists, "Answer button \(answerID) in question \(id.description) in ticket \(randomCard) doesn't exists")
             answerButton.tap()
             nextQuestionButton.tap()
         }

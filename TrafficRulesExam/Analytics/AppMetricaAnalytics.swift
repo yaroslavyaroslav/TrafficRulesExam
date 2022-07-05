@@ -38,7 +38,7 @@ class AppMetrikaAnalytics {
             if let revenueObject = AppMetrikaAnalytics.createRevenueObject(for: product, result) {
                 sendRevenueEvent(revenueObject)
             } else {
-                os_log("revenueObject is nil with ")
+                os_log("revenueObject is nil")
             }
 
         case let .ticketStarted(ticket):
@@ -60,7 +60,6 @@ class AppMetrikaAnalytics {
             let dict = ["\(ticket)": question]
             sendEvent(Event.HintTaken.rawValue, parameters: [userId: dict])
 
-        // FIXME: Make ticketCardShown to eCommerceCard event.
         case let .screenShown(name):
             let userId = KeychainWrapper.profileId
             sendEvent(Event.ScreenShown.rawValue, parameters: [userId: name])

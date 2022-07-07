@@ -72,8 +72,8 @@ struct NavigationUtil {
     static func popToRootView() {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
-        findNavigationController(viewController: windowScene?.windows.filter { $0.isKeyWindow }.first?.rootViewController)?
-            .popToRootViewController(animated: true)
+        let navigationController = findNavigationController(viewController: windowScene?.windows.first?.rootViewController)
+        navigationController?.popToRootViewController(animated: false)
     }
     
     static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {

@@ -8,7 +8,6 @@
 import StoreKit
 import SwiftUI
 
-@available(iOS 15.0, *)
 struct StoreView: View {
     @EnvironmentObject var store: Store
 

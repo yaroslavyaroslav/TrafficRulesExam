@@ -10,7 +10,6 @@ import os.log
 import StoreKit
 import SwiftKeychainWrapper
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 open class IAPHelper: NSObject {
     private let productIdentifiers = AppStore.products
     private(set) var purchasedSubscriptions: Set<PurchasesID> = []
@@ -43,7 +42,6 @@ open class IAPHelper: NSObject {
 
 // MARK: - Async client methods
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 extension IAPHelper {
     func requestProducts() async -> [SKProduct]? {
         await withCheckedContinuation { (continuation: CheckedContinuation<[SKProduct]?, Never>) in
@@ -83,7 +81,6 @@ extension IAPHelper {
 
 // MARK: - SKProductsRequestDelegate
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 extension IAPHelper: SKProductsRequestDelegate {
     public func requestProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
         productsRequest?.cancel()
@@ -138,7 +135,6 @@ extension IAPHelper: SKProductsRequestDelegate {
 
 // MARK: - SKPaymentTransactionObserver
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 extension IAPHelper: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach { transaction in
@@ -186,7 +182,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
 }
 
-@available(swift, obsoleted: 15.0, message: "Please use iOS 15 API.")
 enum PurchaseError: Error {
     case PurchasesAreLocked
 }

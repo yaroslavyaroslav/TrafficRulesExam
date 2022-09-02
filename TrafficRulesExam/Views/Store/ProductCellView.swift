@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftKeychainWrapper
 import os.log
 
-@available(iOS 15.0, *)
 struct ProductCellView: View {
     @EnvironmentObject var store: Store
     @EnvironmentObject var coinsTimer: CoinsTimer

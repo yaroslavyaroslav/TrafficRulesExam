@@ -10,13 +10,10 @@ import os.log
 import StoreKit
 import SwiftKeychainWrapper
 
-@available(iOS 15.0, *)
 typealias Transaction = StoreKit.Transaction
 
-@available(iOS 15.0, *)
 typealias RenewalInfo = StoreKit.Product.SubscriptionInfo.RenewalInfo
 
-@available(iOS 15.0, *)
 typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
 
 struct AppStore {
@@ -39,7 +36,6 @@ public enum SubscriptionTime: Int, Comparable {
     }
 }
 
-@available(iOS 15.0, *)
 class Store: ObservableObject {
     @Published private(set) var availableCoinPacks: [Product]
 

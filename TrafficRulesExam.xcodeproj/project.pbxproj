@@ -43,7 +43,6 @@
 		5C73DF8E285336EE001B9DB2 /* AppMetricaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C73DF8D285336EE001B9DB2 /* AppMetricaAnalytics.swift */; };
 		5C7A6218278EC05C00A630FA /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A6217278EC05C00A630FA /* Purchases.swift */; };
 		5C8148402869D115002B2E1A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C81483F2869D115002B2E1A /* StoreKit.framework */; };
-		5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81B8C8273ED59C00A7121E /* URLSession+async.swift */; };
 		5C85387D27158DBB00D8853E /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387C27158DBB00D8853E /* YandexMobileMetrica */; };
 		5C85387F27158DBB00D8853E /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 5C85387E27158DBB00D8853E /* YandexMobileMetricaCrashes */; };
 		5C85388927182F3900D8853E /* ExamCards.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C85388827182F3800D8853E /* ExamCards.json */; };
@@ -132,7 +131,6 @@
 		5C73DF8D285336EE001B9DB2 /* AppMetricaAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetricaAnalytics.swift; sourceTree = "<group>"; };
 		5C7A6217278EC05C00A630FA /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
 		5C81483F2869D115002B2E1A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		5C81B8C8273ED59C00A7121E /* URLSession+async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+async.swift"; sourceTree = "<group>"; };
 		5C85388827182F3800D8853E /* ExamCards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExamCards.json; sourceTree = "<group>"; };
 		5C85388A27183D5900D8853E /* ExamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCard.swift; sourceTree = "<group>"; };
 		5C8A6C742738596400572459 /* UITestUtilityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtilityDataModel.swift; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 				5C7A6217278EC05C00A630FA /* Purchases.swift */,
 				5CDB6375272DC36200E888F7 /* Answer.swift */,
 				5CDB6373272DC30D00E888F7 /* Question.swift */,
-				5C81B8C8273ED59C00A7121E /* URLSession+async.swift */,
 				5C97B49227197B8A0017723A /* ModelLoad.swift */,
 				5C45EBC2273C07A000C90977 /* Date+PrittyPrint.swift */,
 				5CDB6371272D946700E888F7 /* Results.swift */,
@@ -532,7 +529,6 @@
 				5CB0AEB227C6AF65007B4810 /* CoinsAmountView.swift in Sources */,
 				5C45EBC3273C07A000C90977 /* Date+PrittyPrint.swift in Sources */,
 				5C8B201F27C00974003446F7 /* UIFont+Additions.swift in Sources */,
-				5C81B8C9273ED59C00A7121E /* URLSession+async.swift in Sources */,
 				5C8B201C27C0081E003446F7 /* Color.swift in Sources */,
 				5CB0AEB027C67732007B4810 /* TicketButtonStyle.swift in Sources */,
 				5CDB6376272DC36200E888F7 /* Answer.swift in Sources */,

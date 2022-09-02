@@ -155,9 +155,9 @@ struct QuestionCardView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(height: 52, alignment: .center)
 
-                HStack {
-                    Image("Coin")
+                HStack(spacing: 0) {
                     Text("Подсказка за \(coins.hintCost)")
+                    Image("Coin")
                 }
                 .foregroundColor(isEnabled ? .DS.bgLightPrimary : .DS.greysGrey3Light)
             }

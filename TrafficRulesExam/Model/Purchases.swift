@@ -21,9 +21,9 @@ class Coin: ObservableObject {
         get { UInt(KeychainWrapper.standard.integer(forKey: .coinsAmount) ?? 0) }
     }
 
-    private (set) var cardCost: UInt = 5
+    private (set) var cardCost: UInt = 1
 
-    private (set) var hintCost: UInt = 1
+    private (set) var hintCost: UInt = 5
 }
 
 extension KeychainWrapper.Key {

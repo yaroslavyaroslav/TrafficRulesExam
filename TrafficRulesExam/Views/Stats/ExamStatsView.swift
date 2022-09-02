@@ -102,7 +102,7 @@ struct SuccessResult: View {
             Spacer()
             Image("SuccessSign")
             HStack(spacing: 0) {
-                Text("+5 ")
+                Text("+1 ")
                     .font(.title)
                 Image("Coin")
                     .resizable()
